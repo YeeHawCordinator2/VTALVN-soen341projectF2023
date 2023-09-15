@@ -18,6 +18,7 @@ Alessandro Tiseo 40262416 <br>
 Amine Arrachid 40263585     <br>
 Darren Vafi 40246358      <br>
 Nao Lalancette 40244431  <br>
+Nooralmustafa Abbas 40249828 <br>
 Richard Vo 40236722  <br>
 
 ### Technologies
