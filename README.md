@@ -26,7 +26,15 @@ Richard Vo 40236722  <br>
 Javascript<br>
 Node.js<br>
 Express.js<br>
-Bootstrap ?<br>
-Angular or React ? <br>
+Bootstrap<br>
+
+
+As a team we decided it was best to use javascript as a backend and frontend language to reduce the learning of new material all the member would have to do.
+
+the most popular backend framework for javascript is express.js which works with node.js. It is the most popular for javascript which is why it was chose. Other popular frameworks we looked at was django for python and lavarel for php. The reason express was chosen is mainly because we decided to chose javascript as backend language, because most member did not know php or python. We also found javascript to be the easiest to learn with express being on of the most easy frameworks. There is some issues with express that it becomes hard to understand but since we are doing agile methodoligies and are gonna help each other we thought it didnt matter. 
+
+For front end frameworks, we were stuck between bootstrap, angular and react. Angular and React are very good frontend frameworks except that we are complete beginner at all three of them. Bootstrap is the easiest out of the three and gives us ready made templates to use to make our work easier instead of react which is component base meaning we would have to work harder to achieve the same result as bootstrap. React and angular are much harder to use simpy because it is not template based. Since the project is not very long we decided that taking the easier route would probably be better for us.
+
+
 
 
