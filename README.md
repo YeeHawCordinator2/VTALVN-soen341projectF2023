@@ -27,6 +27,7 @@ Javascript<br>
 Node.js<br>
 Express.js<br>
 Bootstrap<br>
+MongoDB <br>
 
 
 As a team we decided it was best to use javascript as a backend and frontend language to reduce the learning of new material all the member would have to do. This would save time and ressources.
