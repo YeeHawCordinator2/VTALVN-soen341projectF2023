@@ -1,1 +1,15 @@
+User stories:
+
+1.	Visit for properties.
+It is mandatory for a real estate web application to have a future where clients can take an appointment in order to be able to visit the property before buying or renting it.
+
+After the client visit the property on the web that he/her is interested in, there will be many suggestions to the client so he/she can know more about the property. One of the functions will be the calendar.
+
+The calendar will show the availability of the person in charge of selling or renting the property. It will show a period of maximum one month from the moment the client clicks on this function to take an appointment. After the client clicks on an available day, they can then select an available hour so the seller can present the property. It is mandatory to have this function because this is the first time the client will meet with the seller so they can see the property like it is. After the client take an appointment, they will have to provide the e-mail and phone number so the seller can be in contact with them and confirm their reservation. Also, by seeing the available time left the clients can determine if they must hurry up to buy or rent the property since other people may be interested in the same building. Finally, the client will be able to cancel an appointment up to 48 hours from the moment they must meet. If not, a penalty will be directly sent to their e-mail address.
+
+Therefore, the calendar will have many functionalities that the client will benefit of.
+
+•	Take an appointment to see the property
+•	First contact with the seller
+•	Guess how man people are interested in the property by seeing the available time left to take an appointment
 
