@@ -52,8 +52,8 @@ Overall, bootstrap is more simple and easier to learn and use, it also bring con
 
 ### installation instruction
 ***
-1- Install NodeJS and NPM following these [steps](https://radixweb.com/blog/installing-npm-and-nodejs-on-windows-and-mac)
-2- clone the repositery on github by downloading the zip file or using the link
-3- Navigate to inside the project folder on terminal and fine package.json file
-4- Do "npm install" to install all the project dependencies
-5- run "node main.js" in main.js direcxtory to get the localhost running.
+1- Install NodeJS and NPM following these [steps](https://radixweb.com/blog/installing-npm-and-nodejs-on-windows-and-mac) <br>
+2- clone the repositery on github by downloading the zip file or using the link <br>
+3- Navigate to inside the project folder on terminal and fine package.json file <br>
+4- Do "npm install" to install all the project dependencies <br>
+5- run "node main.js" in main.js direcxtory to get the localhost running. <br>
