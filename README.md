@@ -10,24 +10,24 @@ Learn how to work in teams and apply agile methodoligies to develop an applicati
 
 ## Team Members
 ***
-#Alessandro Tiseo - 40262416 - Alessandro-Tiseo<br>
-*strengths:  <br>
-*role: front-end  <br>
-#Amine Arrachid - 40263585 - Amine-Arrachid<br>
-*strengths:  <br>
-*role: front-end <br>
-#Darren Vafi - 40246358 - d-vafi<br>
-*strengths: <br>
-*role: back-end <br>
-#Nao Lalancette - 40244431 - YeeHawCordinator2 <br>
-*strengths: java, git, php, javascript <br>
-*role: back-end, team leader <br>
-#Nooralmustafa Abbas - 40249828 - MusmusIRQ<br>
-*strengths: java <br>
-*role: back-end,  <br>
-#Richard Vo - 40236722 - SeroLycoris <br>
-*strengths: <br>
-*role: fullstack, <br>
+# Alessandro Tiseo - 40262416 - Alessandro-Tiseo<br>
+* strengths:  <br>
+* role: front-end  <br>
+# Amine Arrachid - 40263585 - Amine-Arrachid<br>
+* strengths:  <br>
+* role: front-end <br>
+# Darren Vafi - 40246358 - d-vafi<br>
+* strengths: <br>
+* role: back-end <br>
+# Nao Lalancette - 40244431 - YeeHawCordinator2 <br>
+* strengths: java, git, php, javascript <br>
+* role: back-end, team leader <br>
+# Nooralmustafa Abbas - 40249828 - MusmusIRQ<br>
+* strengths: java <br>
+* role: back-end,  <br>
+# Richard Vo - 40236722 - SeroLycoris <br>
+* strengths: <br>
+* role: fullstack, <br> 
 
 ### Technologies
 ***
@@ -72,5 +72,5 @@ Overall, bootstrap is more simple and easier to learn and use, it also bring con
 
 ### usage guidelines
 ***
-#take a look at [this files](https://github.com/YeeHawCordinator2/VTALVN-soen341projectF2023/wiki/Team-rules) for team rules, management and git rules.
+# take a look at [this files](https://github.com/YeeHawCordinator2/VTALVN-soen341projectF2023/wiki/Team-rules) for team rules, management and git rules.
 
