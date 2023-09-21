@@ -17,7 +17,12 @@ Therefore, the calendar will have many functionalities that the client will bene
 •	Guess how man people are interested in the property by seeing the available time left to take an appointment
 
 2.	CRUD operations on properties.
-A broker should be able to create, read, update, and delete a property that a client has.
+A broker should be able to:
+•Create a property by collecting information about the property, such as its name, location, price, and any other relevant details.
+•Read property details like property price and the number of rooms
+•Update property information to cases such as when the property is rented, sold or transfer of ownership.
+•Delete a property that is no longer availabe.
+NOTE*: Archive option may be useful if the user want to keep historical data while deleting the property from searches.
 
 The client will most likely ask the broker to create his/her property with all the components that come with.
 After the property is created both the client and the user will want to see the property in order to see how it looks like.
@@ -27,7 +32,11 @@ property of the client when it is sold or sometimes the client can change his/he
 from the web before even it is sold.
 
 3.	CRUD operations on brokers.
-The system administrator should be able to create, read, update, and delete brokers depending on his/her demands.
+The system administrator should be able to: 
+•Create broker profile and documentation with infos like name, contact information and certifications.
+•Read detailed information about the broker: areas of expertise, client reviews, and contact details.
+•Update broker information such as contact information.
+•Delete broker profile when unavailable
 
 On the website only client will be able to create an account. Therefore, administrators will have to create an account for the brokers.
 Then, both the broker and the administrator should be able to read their account with all the components that come with.
