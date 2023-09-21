@@ -10,12 +10,24 @@ Learn how to work in teams and apply agile methodoligies to develop an applicati
 
 ## Team Members
 ***
-Alessandro Tiseo - 40262416 - Alessandro-Tiseo<br>
-Amine Arrachid - 40263585 - Amine-Arrachid<br>
-Darren Vafi - 40246358 - d-vafi<br>
-Nao Lalancette - 40244431 - YeeHawCordinator2 <br>
-Nooralmustafa Abbas - 40249828 - MusmusIRQ<br>
-Richard Vo - 40236722 - SeroLycoris <br>
+#Alessandro Tiseo - 40262416 - Alessandro-Tiseo<br>
+*strengths:
+*role: front-end
+#Amine Arrachid - 40263585 - Amine-Arrachid<br>
+*strengths:
+*role: front-end
+#Darren Vafi - 40246358 - d-vafi<br>
+*strengths:
+*role: back-end
+#Nao Lalancette - 40244431 - YeeHawCordinator2 <br>
+*strengths: java, git, php, javascript
+*role: back-end, team leader
+#Nooralmustafa Abbas - 40249828 - MusmusIRQ<br>
+*strengths: java
+*role: back-end, 
+#Richard Vo - 40236722 - SeroLycoris <br>
+*strengths:
+*role: fullstack,
 
 ### Technologies
 ***
@@ -61,3 +73,4 @@ Overall, bootstrap is more simple and easier to learn and use, it also bring con
 ### usage guidelines
 ***
 #take a look at [this files](https://github.com/YeeHawCordinator2/VTALVN-soen341projectF2023/wiki/Team-rules) for team rules, management and git rules.
+
