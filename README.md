@@ -1,31 +1,31 @@
 # SOEN_341
 ***
-### Objective
+## Objective
 ***
 Learn how to work in teams and apply agile methodoligies to develop an application.<br>
-### Project
+## Project
 ***
 
 
 
 ## Team Members
 ***
-# Alessandro Tiseo - 40262416 - Alessandro-Tiseo<br>
+### Alessandro Tiseo - 40262416 - Alessandro-Tiseo<br>
 * strengths:  <br>
 * role: front-end  <br>
-# Amine Arrachid - 40263585 - Amine-Arrachid<br>
+### Amine Arrachid - 40263585 - Amine-Arrachid<br>
 * strengths:  <br>
 * role: front-end <br>
-# Darren Vafi - 40246358 - d-vafi<br>
+### Darren Vafi - 40246358 - d-vafi<br>
 * strengths: <br>
 * role: back-end <br>
-# Nao Lalancette - 40244431 - YeeHawCordinator2 <br>
+### Nao Lalancette - 40244431 - YeeHawCordinator2 <br>
 * strengths: java, git, php, javascript <br>
 * role: back-end, team leader <br>
-# Nooralmustafa Abbas - 40249828 - MusmusIRQ<br>
+### Nooralmustafa Abbas - 40249828 - MusmusIRQ<br>
 * strengths: java <br>
 * role: back-end,  <br>
-# Richard Vo - 40236722 - SeroLycoris <br>
+### Richard Vo - 40236722 - SeroLycoris <br>
 * strengths: <br>
 * role: fullstack, <br> 
 
@@ -62,7 +62,7 @@ cons: learning curve, limited customization freedom, need lot of style overrides
 
 Overall, bootstrap is more simple and easier to learn and use, it also bring consistency and templates with a lot of features. We will not chose angular because it is a lot more difficult and react demand a bigger javascript knowledge. React is also very good but using templates will be easier than creating and using components.
 
-### installation instruction
+## installation instruction
 ***
 1- Install NodeJS and NPM following these [steps](https://radixweb.com/blog/installing-npm-and-nodejs-on-windows-and-mac) <br>
 2- clone the repositery on github by downloading the zip file or using the link <br>
@@ -70,7 +70,7 @@ Overall, bootstrap is more simple and easier to learn and use, it also bring con
 4- Do "npm install" to install all the project dependencies <br>
 5- run "node main.js" in main.js direcxtory to get the localhost running. <br>
 
-### usage guidelines
+## usage guidelines
 ***
-# take a look at [this files](https://github.com/YeeHawCordinator2/VTALVN-soen341projectF2023/wiki/Team-rules) for team rules, management and git rules.
+### take a look at [this files](https://github.com/YeeHawCordinator2/VTALVN-soen341projectF2023/wiki/Team-rules) for team rules, management and git rules.
 
