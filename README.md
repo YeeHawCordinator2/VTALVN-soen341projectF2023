@@ -5,7 +5,26 @@
 Learn how to work in teams and apply agile methodoligies to develop an application.<br>
 ## Project
 ***
+Project Description: The team must create a Real Estate Web Application to allow clients to buy, sell, and rent properties they want. The website will offer a platform where users can have what they are searching for without having more stress than they already have with their property. The platform will be user-friendly and simple to use, so that any person no matter how young or old the person is can use the application without any confusion.
+Key features of our application:
+1. Suggested components
+   Clients will be able to find their ideal property with ease because our application will show them the criteria that clients will only need to fill in order to find their type of property. Criteria will include the location, number of bedrooms, bathrooms, price range, whether there is a pool included or not and much more.
 
+2. Request Property visits
+   Clients will be able to make an appointment in order to see the property in real life. There will be a calendar option where the client will choose a free day and then choose the time available on that day to see the property with the broker.
+
+3. Visual description of the property
+Under each property, there will be many clear images of each room and aspect of the listed building. A detailed description with everything the client needs to now will have to be provided by the owner in order to give a transparent experience to the users.
+
+4. Choosing a broker
+Clients will be able to choose the broker they wish. They will be provided with details about the broker and the number of properties he helped the clients to sell or loan their property so that the clients can make their judgment on who to choose as a broker. Furthermore, the contact information of the broker will be provided so that the interested clients can directly contact them.
+
+5. Mortgage calculator
+Our web application will have a calculator that will help the clients to estimate their monthly payments based on the loan they will take and the interest rate that comes with it.
+
+6. Favorite Properties
+Clients will be able to favourite the properties they are interested in. This feature will allow them to keep looking for other properties while not losing the other ones that they liked. After a long research, they will be able to compare and choose the one property they liked the most.
+      
 
 
 ## Team Members
