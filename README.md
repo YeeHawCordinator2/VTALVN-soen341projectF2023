@@ -11,23 +11,23 @@ Learn how to work in teams and apply agile methodoligies to develop an applicati
 ## Team Members
 ***
 #Alessandro Tiseo - 40262416 - Alessandro-Tiseo<br>
-*strengths:
-*role: front-end
+*strengths:  <br>
+*role: front-end  <br>
 #Amine Arrachid - 40263585 - Amine-Arrachid<br>
-*strengths:
-*role: front-end
+*strengths:  <br>
+*role: front-end <br>
 #Darren Vafi - 40246358 - d-vafi<br>
-*strengths:
-*role: back-end
+*strengths: <br>
+*role: back-end <br>
 #Nao Lalancette - 40244431 - YeeHawCordinator2 <br>
-*strengths: java, git, php, javascript
-*role: back-end, team leader
+*strengths: java, git, php, javascript <br>
+*role: back-end, team leader <br>
 #Nooralmustafa Abbas - 40249828 - MusmusIRQ<br>
-*strengths: java
-*role: back-end, 
+*strengths: java <br>
+*role: back-end,  <br>
 #Richard Vo - 40236722 - SeroLycoris <br>
-*strengths:
-*role: fullstack,
+*strengths: <br>
+*role: fullstack, <br>
 
 ### Technologies
 ***
