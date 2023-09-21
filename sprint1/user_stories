@@ -18,7 +18,6 @@ Therefore, the calendar will have many functionalities that the client will bene
 
 2.	CRUD operations on properties.
 A broker should be able to create, read, update, and delete a property that a client has.
-
 The client will most likely ask the broker to create his/her property with all the components that come with.
 After the property is created both the client and the user will want to see the property in order to see how it looks like.
 Then if the property is not as good as the client wanted it, he/her will ask the broker to modify the property on the web
@@ -43,3 +42,6 @@ A client should be able to search properties and select the details of his/her i
 Client should be able to search for the property that they like with their specific demands. For example, when the client is searching,
 the web should show him/her the location wished, the number of bedrooms, bathrooms and many more options.
 This will allow the client to optimise his/her researches and will lose less time finding the property that they are searching for.
+
+
+5. Test add user story
