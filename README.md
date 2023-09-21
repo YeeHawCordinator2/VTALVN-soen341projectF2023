@@ -30,14 +30,14 @@ Clients will be able to favourite the properties they are interested in. This fe
 ## Team Members
 ***
 ### Alessandro Tiseo - 40262416 - Alessandro-Tiseo<br>
-* strengths:  <br>
+* strengths: Java <br>
 * role: front-end  <br>
 ### Amine Arrachid - 40263585 - Amine-Arrachid<br>
-* strengths:  <br>
+* strengths: Java <br>
 * role: front-end <br>
 ### Darren Vafi - 40246358 - d-vafi<br>
-* strengths: <br>
-* role: back-end <br>
+* strengths: Java, javascript, php, python, C, <br>
+* role: back-end, datavase manager<br>
 ### Nao Lalancette - 40244431 - YeeHawCordinator2 <br>
 * strengths: java, git, php, javascript <br>
 * role: back-end, team leader, code reviewer <br>
@@ -45,8 +45,8 @@ Clients will be able to favourite the properties they are interested in. This fe
 * strengths: java <br>
 * role: back-end<br>
 ### Richard Vo - 40236722 - SeroLycoris <br>
-* strengths: <br>
-* role: fullstack<br> 
+* strengths:Java, javascript, php <br>
+* role: front-end, website designer<br> 
 
 ### Technologies
 ***
@@ -81,7 +81,7 @@ cons: learning curve, limited customization freedom, need lot of style overrides
 
 Overall, bootstrap is more simple and easier to learn and use, it also bring consistency and templates with a lot of features. We will not chose angular because it is a lot more difficult and react demand a bigger javascript knowledge. React is also very good but using templates will be easier than creating and using components.
 
-## installation instruction
+## installation instruction and usage guidelines
 ***
 1- Install NodeJS and NPM following these [steps](https://radixweb.com/blog/installing-npm-and-nodejs-on-windows-and-mac) <br>
 2- clone the repositery on github by downloading the zip file or using the link <br>
@@ -89,7 +89,5 @@ Overall, bootstrap is more simple and easier to learn and use, it also bring con
 4- Do "npm install" to install all the project dependencies <br>
 5- run "node main.js" in main.js direcxtory to get the localhost running. <br>
 
-## usage guidelines
-***
 ### take a look at [this files](https://github.com/YeeHawCordinator2/VTALVN-soen341projectF2023/wiki/Team-rules) for team rules, management and git rules.
 
