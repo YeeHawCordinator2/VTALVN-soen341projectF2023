@@ -40,13 +40,13 @@ Clients will be able to favourite the properties they are interested in. This fe
 * role: back-end <br>
 ### Nao Lalancette - 40244431 - YeeHawCordinator2 <br>
 * strengths: java, git, php, javascript <br>
-* role: back-end, team leader <br>
+* role: back-end, team leader, code reviewer <br>
 ### Nooralmustafa Abbas - 40249828 - MusmusIRQ<br>
 * strengths: java <br>
-* role: back-end,  <br>
+* role: back-end<br>
 ### Richard Vo - 40236722 - SeroLycoris <br>
 * strengths: <br>
-* role: fullstack, <br> 
+* role: fullstack<br> 
 
 ### Technologies
 ***
