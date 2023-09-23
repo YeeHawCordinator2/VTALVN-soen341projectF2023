@@ -32,10 +32,9 @@ A broker should be able to:
 •Delete a property that is no longer availabe.
 NOTE*: Archive option may be useful if the user want to keep historical data while deleting the property from searches.
 
-
-The client will most likely ask the broker to create his/her property with all the components that come with it.
-After the property is created both the client and the user will want to see the property in order to see what it looks like.
-Then if the property is not as good as the client wanted it, he/she will ask the broker to modify the property on the web
+The client will most likely ask the broker to create his/her property with all the components that come with.
+After the property is created both the client and the user will want to see the property in order to see how it looks like.
+Then if the property is not as good as the client wanted it, he/her will ask the broker to modify the property on the web
 and so the broker will have to update the property to satisfy the client. Finally, the broker should be able to delete the
 property of the client when it is sold or sometimes the client can change his/her mind and will like to remove the property
 from the web before it is sold.
@@ -71,3 +70,4 @@ Client should be able to enter his/her information (username and password) to re
 NOTE*: log-in = sign-in.
 
 
+5. Test add user story
