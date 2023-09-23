@@ -92,4 +92,3 @@ Overall, bootstrap is more simple and easier to learn and use, it also bring con
 ## usage guidelines
 ***
 ### take a look at [this files](https://github.com/YeeHawCordinator2/VTALVN-soen341projectF2023/wiki/Team-rules) for team rules, management and git rules.
-
