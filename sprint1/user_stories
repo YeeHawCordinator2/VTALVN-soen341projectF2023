@@ -17,7 +17,16 @@ Therefore, the calendar will have many functionalities that the client will bene
 •	Guess how man people are interested in the property by seeing the available time left to take an appointment
 
 2.	CRUD operations on properties.
+
 A broker should be able to create, read, update, and delete a property that a client has.
+=======
+A broker should be able to:
+•Create a property by collecting information about the property, such as its name, location, price, and any other relevant details.
+•Read property details like property price and the number of rooms
+•Update property information to cases such as when the property is rented, sold or transfer of ownership.
+•Delete a property that is no longer availabe.
+NOTE*: Archive option may be useful if the user want to keep historical data while deleting the property from searches.
+
 
 The client will most likely ask the broker to create his/her property with all the components that come with.
 After the property is created both the client and the user will want to see the property in order to see how it looks like.
@@ -28,6 +37,12 @@ from the web before even it is sold.
 
 3.	CRUD operations on brokers.
 The system administrator should be able to create, read, update, and delete brokers depending on his/her demands.
+=======
+The system administrator should be able to: 
+•Create broker profile and documentation with infos like name, contact information and certifications.
+•Read detailed information about the broker: areas of expertise, client reviews, and contact details.
+•Update broker information such as contact information.
+•Delete broker profile when unavailable.
 
 On the website only client will be able to create an account. Therefore, administrators will have to create an account for the brokers.
 Then, both the broker and the administrator should be able to read their account with all the components that come with.
@@ -42,6 +57,12 @@ A client should be able to search properties and select the details of his/her i
 
 Client should be able to search for the property that they like with their specific demands. For example, when the client is searching,
 the web should show him/her the location wished, the number of bedrooms, bathrooms and many more options.
+
 This will allow the client to optimise his/her researches and will lose less time finding the property that they are searching for.
+
+5. Log-in and sign-up.
+A client should be able to open a session with an account that already exists (log-in) or create a new account if the client doesn't have one yet (sign-up).
+Client should be able to enter his/her information (username and password) to register (sign-up). The web has to "remember" the client's information for other sessions (log-in).
+NOTE*: log-in = sign-in.
 
 
