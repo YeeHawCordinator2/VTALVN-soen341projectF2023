@@ -1,36 +1,56 @@
 User stories:
 
-1.	Visit for properties.
-A client should be able to request a visit for a property that he/her is more than interested in.
 
-It is mandatory for a real estate web application to have a future where clients can take an appointment in order to be able to visit the property before buying or renting it.
-After the client visit the property on the web that he/her is interested in, there will be many suggestions to the client so he/she can know more about the property. One of the functions will be the calendar.
+1.	Visit for properties.
+As a client, I should be able to request a visit for a property that I am interested in so I can see my property in real life by clicking on the "request for a meeting" button. I want a calendar
+to see the days available for me to make an appointment. There should be a calendar button available on the property listed for me to click on it and proceed with my demand for a meeting.
+I should then see a calendar for the next month and click on the day I wish. After clicking on the day I want to be able to choose the time that fits me the most by clicking on the available hour.
+When making an appointment the web application should ask me to enter my e-mail so I can be in contact with the broker and plan the meeting. This is a medium priority, since making an appointment
+or not will not stop the user from listing a property.
+
+It is mandatory for a real estate web application to have a future where clients can make an appointment in order to be able to visit the property before buying or renting it.
+After the client visits the property on the web that he/she is interested in, there will be many suggestions to the client so he/she can know more about the property. One of the functions will be the calendar.
 The calendar will show the availability of the person in charge of selling or renting the property. It will show a period of maximum one month from the moment the client clicks on this function to take an appointment.
 After the client clicks on an available day, they can then select an available hour so the seller can present the property. It is mandatory to have this function because this is the first time the client will meet with
-the seller so they can see the property like it is. After the client take an appointment, they will have to provide the e-mail and phone number so the seller can be in contact with them and confirm their reservation.
+the seller so they can see the property like it is. After the client makes an appointment, they will have to provide the e-mail and phone number so the seller can be in contact with them and confirm their reservation.
 Also, by seeing the available time left the clients can determine if they must hurry up to buy or rent the property since other people may be interested in the same building. Finally, the client will be able to cancel
-an appointment up to 48 hours from the moment they must meet. If not, a penalty will be directly sent to their e-mail address.
-Therefore, the calendar will have many functionalities that the client will benefit of.
+an appointment up to 48 hours from the moment they meet. If not, a penalty will be directly sent to their e-mail address.
+Therefore, the calendar will have many functionalities that the client will benefit from.
 
-•	Take an appointment to see the property
+•	Make an appointment to see the property
 •	First contact with the seller
-•	Guess how man people are interested in the property by seeing the available time left to take an appointment
+•	Guess how many people are interested in the property by seeing the available time left to make an appointment
 
 2.	CRUD operations on properties.
+
 A broker should be able to create, read, update, and delete a property that a client has.
 
-The client will most likely ask the broker to create his/her property with all the components that come with.
-After the property is created both the client and the user will want to see the property in order to see how it looks like.
-Then if the property is not as good as the client wanted it, he/her will ask the broker to modify the property on the web
+A broker should be able to:
+•Create a property by collecting information about the property, such as its name, location, price, and any other relevant details.
+•Read property details like property price and the number of rooms
+•Update property information to cases such as when the property is rented, sold or transfer of ownership.
+•Delete a property that is no longer availabe.
+NOTE*: Archive option may be useful if the user want to keep historical data while deleting the property from searches.
+
+
+The client will most likely ask the broker to create his/her property with all the components that come with it.
+After the property is created both the client and the user will want to see the property in order to see what it looks like.
+Then if the property is not as good as the client wanted it, he/she will ask the broker to modify the property on the web
 and so the broker will have to update the property to satisfy the client. Finally, the broker should be able to delete the
 property of the client when it is sold or sometimes the client can change his/her mind and will like to remove the property
-from the web before even it is sold.
+from the web before it is sold.
 
 3.	CRUD operations on brokers.
-The system administrator should be able to create, read, update, and delete brokers depending on his/her demands.
 
-On the website only client will be able to create an account. Therefore, administrators will have to create an account for the brokers.
-Then, both the broker and the administrator should be able to read their account with all the components that come with.
+The system administrator should be able to create, read, update, and delete brokers depending on his/her demands.
+The system administrator should be able to: 
+•Create broker profile and documentation with infos like name, contact information and certifications.
+•Read detailed information about the broker: areas of expertise, client reviews, and contact details.
+•Update broker information such as contact information.
+•Delete broker profile when unavailable.
+
+On the website, only clients will be able to create an account. Therefore, administrators will have to create an account for the brokers.
+Then, both the broker and the administrator should be able to read their account with all the components that come with it.
 Depending on the demands of the broker, the administrator should be able to update the broker's account. For example, if the broker
 sold a property, clients should be able to see it in order to trust even more the broker about his/her capabilities. Finally,
 the administrators should be able to delete a broker's account for any valuable reason, so the clients do not see a broker that does
@@ -38,10 +58,16 @@ not work anymore with the web.
 
 
 4.	Search for properties.
-A client should be able to search properties and select the details of his/her ideal property.
+As a client, I should be able to search properties and select the details to find his/her ideal property.
 
-Client should be able to search for the property that they like with their specific demands. For example, when the client is searching,
+The client should be able to search for the property that they like with their specific demands. For example, when the client is searching,
 the web should show him/her the location wished, the number of bedrooms, bathrooms and many more options.
+
 This will allow the client to optimise his/her researches and will lose less time finding the property that they are searching for.
+
+5. Log-in and sign-up.
+A client should be able to open a session with an account that already exists (log-in) or create a new account if the client doesn't have one yet (sign-up).
+Client should be able to enter his/her information (username and password) to register (sign-up). The web has to "remember" the client's information for other sessions (log-in).
+NOTE*: log-in = sign-in.
 
 
