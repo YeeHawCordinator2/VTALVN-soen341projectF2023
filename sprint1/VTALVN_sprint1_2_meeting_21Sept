@@ -1,27 +1,23 @@
-The team held a meeting during the lab period for about 60 minutes (6:30-7:30).
+The team held a meeting during the lab period for about 90 minutes (6:30-8:00 PM) on .
 
 We met up with the lab instructor and showed him the progress made throughout the week on the Sprint 1.
 So far, we have worked on the README file containing the project description, the team members and roles,
 the technologies used for this project, as well as an installation instruction section for the NodeJS framework.
 
 The lab instructor reviewed our work and suggested some further guidelines/improvements to bring our Spring 1 documents.
-    First, TASK BREAKDOWN
+    First, for the user stories, we will need to define the realistic priorities of each features as well as the
+    acceptance criteria for the users (relevant to the CRUD operations).
+    Second, for the GITHUB, it is recommended to add to the WIKI section any information containing details about the
+    implementation and technologies used for this project. Furthermore, we will need to assign a role to each
+    team members, and add further details (for example the member's strengths). Then, it is recommended to keep
+    the README file concise.
+    Third, he suggests that our team should hold frequent meetings throughout the week to observe the progress made,
+    and checkup on the other team members.
 
+Today, our team, with our lab instructor, have discussed how we should breakdown/divide our tasks to complete the
+project and how we can resolve some issues on our GITHUB page such as the issue regarding branch protection.
 
+Our team leader also took the time to explain GITHUB functionalities such as "PULL REQUESTS", "COMMIT", and "PUSH" to
+the team members.
 
-
-  WIKI, ADDITIOANAL TEAM ROLES,
-  STORIES: REALISTIC PRIORITIES ACCEPTANCE CRITERIAS
-  BRANCH PROTECTION
-  DIFFERENCE ON TASK BREAKDOWN AND ISSUES ON GITHB
-  PULL REQUESTS
-  SUGGEST
-
-
-We first presented ourself and what program we were in
-we then talked about programming languages we were good and comfortable with along
-with which programming classes we took in the past.
-We then decided that Javascript was the smartest language to use for our project because it is
-a front end langage but also because it can be used as a backend language with the use of some frameworks
-We then decided who will be frontend (amine and alessandro), backend (nao, nooralmustafa amd darren) and fullstack (Richard)
-Nao had already created the repositery so we then gave out our fullname, id and github username so we could all be added in the repositery.
+Finally, each team members worked together to revise the Sprint 1 release, and work on their own tasks.
