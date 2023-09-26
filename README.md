@@ -24,20 +24,29 @@ Learn how to work in teams by developing a web application with the Agile develo
    <!-- //The user should be able to cancel their appointment. -->  
    </p>
 
-3. <h4> Visual description of the property </h4>
-   <p align="justify"> Under each property, there will be many clear images of each room and aspect of the listed building. A detailed description with everything the client needs to know will have to be provided by the owner in order to give a transparent experience to the users.
+3. <h4> Visual Description of the Property </h4>
+   <p align="justify">
+   Under each property listing, multiple images depicting the different rooms, common areas, and exterior of the property will be made available to the client with a detailed description of the house. 
+   Such descriptions include the dimensions of the house, the amount of bedrooms and bathrooms, the presence of an attic or a basement, the year the house was built, any major renovations made to the house, etc.
    </p>
 
 4. <h4> Choosing a broker </h4>
-   <p align="justify"> Clients will be able to choose the broker they wish. They will be provided with details about the broker and the number of properties he helped the clients to sell or loan their property so that the clients can make their judgment on who to choose as a broker. Furthermore, the contact information of the broker will be provided so that the interested clients can directly contact them.
+   <p align="justify"> 
+   A list of brokers will be made available to the client to choose from, containing the brokers' contact information, their contract history, and previous clients' reviews and ratings. 
+   
    </p>
 
-5. <h4> Mortgage calculator </h4> 
-   <p align="justify"> Our web application will have a calculator that will help the clients to estimate their monthly payments based on the loan they will take and the interest rate that comes with it.
+5. <h4> Mortgage Calculator </h4> 
+   <p align="justify"> 
+   A mortgage calculator will be implemented to allow the clients to estimate their monthly payments based on their loan with the appropriate interest rate.
    </p>
 
-6.  <h4>Favorite Properties </h4>
-   <p align="justify"> Clients will be able to favourite the properties they are interested in. This feature will allow them to keep looking for other properties while not losing the other ones that they liked. After a long research, they will be able to compare and choose the one property they liked the most.
+6.  <h4>Additional Feature: Favorites </h4>
+   <p align="justify"> 
+   A "Favorite" feature will be implemented which allows the client to bookmark and save the listing of a certain property that they find interesting.
+   Each "Favorite" property will be added to the "Favorite" list, where the client can easily access all of their saved properties.
+   <br>
+   This feature also includes a "Compare" functionality which allows the client to compare the different key features of two to three properties in a single page.
    </p>
 
 
