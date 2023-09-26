@@ -89,4 +89,4 @@ Overall, bootstrap is more simple and easier to learn and use, it also bring con
 4- Do "npm install" to install all the project dependencies <br>
 5- run "node main.js" in main.js direcxtory to get the localhost running. <br>
 
-### take a look at [this files](https://github.com/YeeHawCordinator2/VTALVN-soen341projectF2023/wiki/Team-rules) for team rules, management and git rules.
+### take a look at [this files](https://github.com/YeeHawCordinator2/VTALVN-soen341projectF2023/wiki/Team-rules) for team rules, management and git rules
