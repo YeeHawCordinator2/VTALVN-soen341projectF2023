@@ -7,5 +7,24 @@ tasks for sprint 1
 
 User storying task breakdown: 
 
-User Story 3:
+== Alessandro-Tiseo ==
+* User Story 3 - Implementation of the System Administrator Delete , Add and Update Tools #17 (#30) 
+* User Story 4 - Implementation of a Search Bar. #18 (#26)
+* User Story 4 - Implementation of a Form #18 (#25)
 
+====== d-vafi ========
+* User Story 3 - Implementation of the System Administrator #17 (#28)
+* User Story 3 - As a system administrator, I want to be able to create, read, update, and delete brokers (#17)
+* User Story 2 - As a broker, I want to be able to create, read, update, and delete a property that a client has (#16)
+
+== Amine-Arrachid ====
+* User Story 1 - The implementation of a UI to book on-site appointments. #15 (#24)
+
+==== MusmusIRQ =======
+* User Story 1 - As a user, I want to request a scheduled visit for a property that I am interested in (#15)
+
+== YeeHawCordinator2 =
+* Create the data bases which will hold the users, the brokers, the system administrator and the listings (#29)
+
+==== SeroLycoris =====
+* User Story 4 - As a client, I want to search properties and select the details of my ideal property. (#18)
