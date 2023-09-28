@@ -1,4 +1,4 @@
-# SOEN_341
+# SOEN 341
 ***
 ## Objective
 ***
@@ -41,7 +41,7 @@ Learn how to work in teams by developing a web application with the Agile develo
       A mortgage calculator will be implemented to allow the clients to estimate their monthly payments based on their loan with the appropriate interest rate.
       </p>
 
-   6.  <h4>Additional Feature: Favorites </h4>
+   6. <h4>Additional Feature: Favorites </h4>
       <p align="justify"> 
       A "Favorite" feature will be implemented which allows the client to bookmark and save the listing of a certain property that they find interesting.
       Each "Favorite" property will be added to the "Favorite" list, where the client can easily access all of their saved properties.
@@ -53,23 +53,23 @@ Learn how to work in teams by developing a web application with the Agile develo
 ## Team Members
 ***
 ### Alessandro Tiseo - 40262416 - Alessandro-Tiseo<br>
-* strengths: Java <br>
-* role: front-end  <br>
+* Strengths: Java <br>
+* Role: Front-end  <br>
 ### Amine Arrachid - 40263585 - Amine-Arrachid<br>
-* strengths: Java <br>
-* role: front-end <br>
+* Strengths: Java <br>
+* Role: Front-end <br>
 ### Darren Vafi - 40246358 - d-vafi<br>
-* strengths: Java, javascript, php, python, C, <br>
-* role: back-end, datavase manager<br>
+* Strengths: Java, JavaScript, PHP, Python, C, <br>
+* Role: Back-end, Database Manager<br>
 ### Nao Lalancette - 40244431 - YeeHawCordinator2 <br>
-* strengths: java, git, php, javascript <br>
-* role: back-end, team leader, code reviewer <br>
+* Strengths: Java, Git, PHP, JavaScript <br>
+* Role: Back-end, Team Leader, Code Reviewer <br>
 ### Nooralmustafa Abbas - 40249828 - MusmusIRQ<br>
-* Strengths: java <br>
-* Roles: back-end<br>
+* Strengths: Java <br>
+* Role: Back-end<br>
 ### Richard Vo - 40236722 - SeroLycoris <br>
-* strengths:Java, javascript, php <br>
-* role: front-end, website designer<br> 
+* Strengths:Java, JavaScript, PHP <br>
+* Role: Front-end, Website Designer<br> 
 
 ## Technologies
 ***
@@ -265,12 +265,13 @@ For these reasons, Bootstrap became the better framework option for our team for
 </p>
 
 
-## installation instruction and usage guidelines
+## Installation Instruction and Usage Guidelines
 ***
-1- Install NodeJS and NPM following these [steps](https://radixweb.com/blog/installing-npm-and-nodejs-on-windows-and-mac) <br>
-2- clone the repository on github by downloading the zip file or using the link <br>
-3- Navigate to inside the project folder on terminal and fine package.json file <br>
-4- Do "npm install" to install all the project dependencies <br>
-5- run "node main.js" in main.js directory to get the localhost running. <br>
+<h3>Installation of Node.js and NPM</h4>
+1- Install Node.js and NPM following these [steps](https://radixweb.com/blog/installing-npm-and-nodejs-on-windows-and-mac) <br>
+2- Clone the repository on github by downloading the zip file or using the GitHub link. <br>
+3- Navigate inside the project folder on terminal and find package.json file. <br>
+4- Run "npm install" to install all the project dependencies. <br>
+5- Run "node main.js" in main.js directory to get the localhost running. <br>
 
-### take a look at [this files](https://github.com/YeeHawCordinator2/VTALVN-soen341projectF2023/wiki/Team-rules) for team rules, management and git rules
+### [This file](https://github.com/YeeHawCordinator2/VTALVN-soen341projectF2023/wiki/Team-rules) contains the team, management, and Git rules.
