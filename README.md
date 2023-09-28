@@ -85,7 +85,7 @@ The following list regroups the technologies that will be used to develop the Re
    <li>MongoDB</li>
 </ul>
 
-<h4> Why JavaScript? </h4>
+<h3> Why JavaScript? </h3>
 
 <p align="justify">
       
@@ -93,42 +93,176 @@ As a team, we chose to develop the web application by using JavaScript for both 
 all the team members have prior experience with programming using this language, which would save time and resources
 by avoiding learning a new programming language. 
 </p>
-<h4>Supporting Technologies</h4>
-<ul><li>Back-End</li></ul>
+<h3>Supporting Technologies</h3>
+<h4>Back-End</h4>
+
 <p align="justify">
 For this project, we chose to use the most popular back-end framework for JavaScript, Express.js, since it is also compatible with Node.js. 
 <br><br>
 We have taken in consideration other popular frameworks such as Django for Python and Lavarel for PHP,
 but we ultimately decided to opt with Express.js and Node.js since our team members feel more confident programming with JavaScript compared with Python or PHP.
-
-
+Furthermore, we have concluded that JavaScript was the easiest language to learn with Express being one of the easier framework to program with.
+On the other hand, Django is an excellent framework that requires a strong foundation in Python that works great for bigger projects, but not for smaller projects. 
+Lavarel is also not difficult to learn,  but requires a lot of MVC framework knowledge in order to be operate properly. 
+Unfortunately, only a few members from our team were familiar with Python and PHP. 
+Thus, having the majority of the team having a prior experience working with JavaScript, Express was chosen for its easy and intuitive application, which Express is known to be good for beginners, for its scalability, and its efficiency.
 </p>
-<br><br>
 
-The most popular backend framework for javascript is express.js which works with node.js. Other popular frameworks we looked at were django for python and lavarel for php. The reason express was chosen is mainly because we decided to chose javascript as backend language, and most member did not know php or python. We also found javascript to be the easiest to learn with express being on of the most easy frameworks. Django is also a very good framework but it required a strong foundation of Python which 1 member had on top of being much better for big project instead of small projects. Lavarel is also not very hard but demands lots of MVC framework knowledge which we did not have on the team. Looking at those three options we chose express which is easy and intuitve. Express is also known to be good for beginners, scalable and efficient. 
+<h4>Pros and Cons</h4>
+<ul>
+      <li>Express
+            <ul>
+                  <li>Pros:
+                        <ul>
+                              <li>Simple</li>
+                              <li>Flexible</li>
+                              <li>Scalable</li>
+                              <li>Cross-Platform Compatible</li>
+                              <li>Light Weight</li>
+                              <li>Template Engine</li>
+                              <li>Database Support</li>
+                        </ul>
+                  </li>
+                  <li>Cons:
+                        <ul>
+                              <li>Frequent Software Updates</li>
+                              <li>Lack of Structure</li>
+                              <li>Limited Built-In Features</li>
+                        </ul>
+                  </li>
+            </ul>
+      </li>
+      <li>Django
+            <ul>
+                  <li>Pros:
+                        <ul>
+                              <li>Fast Processing</li>
+                              <li>Rapid-Development</li>
+                              <li>Scalable</li>
+                              <li>Lots of Functionality</li>
+                              <li>Secure</li>
+                        </ul>
+                  </li>
+                  <li>Cons:
+                        <ul>
+                              <li>Strong Python Foundation Required</li>
+                              <li>Monolithic</li>
+                              <li>Not Good for Small Projects</li>
+                        </ul>
+                  </li>
+            </ul>
+      </li>
+      <li>Lavarel
+            <ul>
+                  <li>Pros:
+                        <ul>
+                              <li>Simple</li>
+                              <li>Secure</li>
+                              <li>Robust Deployment</li>
+                              <li>Good Integration</li>
+                              <li>Template Engine</li>
+                        </ul>
+                  </li>
+                  <li>Cons:
+                        <ul>
+                              <li>Frequent Software Updates</li>
+                              <li>PHP Foundation Required</li>
+                              <li>Unoptimized Performance Efficiency</li>
+                              <li>Not Intuitive/Confusing</li>
+                              <li>Steep Learning Curve</li>
+                        </ul>
+                  </li>
+            </ul>
+      </li>
+</ul>
+<p>
+As such, Express is the preferred framework for our team to use for its simplicity, flexibility, scalability, and template engine.
+For this project, we believe that we can produce a better product through JavaScript and save time and resources by avoiding the need to learn a new language.
+</p>
+<h4>Front-End</h4>
+<p>
+When choosing the front-end framework, our team came across three options: Bootstrap, Angular, and React.
+All three options are excellent front-end frameworks for JavaScript that fulfill different needs for different programmers.
+For instance, Bootstrap is objectively the easiest framework to work with as it proposes pre-made templates for programmers to use which simplifies the coding.
+On the other hand, React is a component base framework that requires the programmer to create manually their own components to use which is great as you have less constraint of how the program should look, but is less evident to use for beginners. This issue is solved with Bootstrap through its pre-made templates which avoids the need to create your own components.
+For the same reason, both Angular and React are more challenging to work with since it is not template-based.
+Due to the limited time constraint of this project, Bootstrap became the best option for our team as it can save us a lot of time programming for its simplicity of use and its set of available templates, at the cost of creativity.
+</p>
 
-<br><br>
-Express: pros: simple, flexible, scalable, cross-platform, lightweight, template engine, database support, for javascript <br>
-cons: frequent updates, lack of structure, limited built-in features <br>
-Django: pros:fast processing, rapid-development, scalable, lots of functionality, secure <br>
-cons: for python, monolithic, not good for small project <br>
-lavarel: pros: secure, simple, robust deployment, good integration, template engine <br>
-cons:for php, not flexible, not the best efficiency for performance, confusing, steep learning curve, frequent updates <br>
-
-Overall, express is the easiest, template base and is for javascript. Learning python or php on top of already learning javascript for frontend is a waste of time and is not worth it since express is very good. 
-
-For front end frameworks, we were stuck between bootstrap, angular and react. Angular and React are very good frontend frameworks except that we are complete beginner at all three framework. Bootstrap is the easiest out of the three and gives us ready made templates to use to make our work easier instead of react which is component base meaning we would have to work harder to achieve the same result as bootstrap. React and angular are much harder to use simpy because it is not template based. Since the project is not very long we decided that taking the easier route would probably be better for us. We are limiting ourself in term of creativity and what we can do since we are chosing a set template but it will save us lots of time. 
-
-react: pros: easy to learn, good for dynamic web apps, reusable components, high perfomance, component base <br>
-cons:high pace development, poor documentation, not full feature, lack of conventions, not full-feature, learning curve <br>
-angular: pros: component based, reusability, readability, maintainability, MVC architecture <br>
-cons:complex, hard learning curve, bad documentation <br>
-bootstrap: pros: responsive, simple, superior components, user-made template, lots of features, fast, avoid cross browser bug, consistent <br>
-cons: learning curve, limited customization freedom, need lot of style overrides  <br>
-
-Overall, bootstrap is more simple and easier to learn and use, it also bring consistency and templates with a lot of features. We will not chose angular because it is a lot more difficult and react demand a bigger javascript knowledge. React is also very good but using templates will be easier than creating and using components.
-
-
+<h4>Pros and Cons</h4>
+<ul>
+      <li>React
+            <ul>
+                  <li>Pros:
+                        <ul>
+                              <li>Easy to Learn</li>
+                              <li>Great for Dynamic Web Apps</li>
+                              <li>Reusable Components</li>
+                              <li>High Performance</li>
+                              <li>Component Base</li>
+                        </ul>
+                  </li>
+                  <li>Cons:
+                        <ul>
+                              <li>High-Pace Development</li>
+                              <li>Poor Documentation</li>
+                              <li>Missing Features</li>
+                              <li>Lack of Conventions</li>
+                              <li>Steep Learning Curve</li>
+                        </ul>
+                  </li>
+            </ul>
+      </li>
+      <li>Angular
+            <ul>
+                  <li>Pros:
+                        <ul>
+                              <li>Component Based</li>
+                              <li>Reusable Components</li>
+                              <li>Readability</li>
+                              <li>Maintainability</li>
+                              <li>MVC Architecture</li>
+                        </ul>
+                  </li>
+                  <li>Cons:
+                        <ul>
+                              <li>Complex</li>
+                              <li>Steep Learning Curve</li>
+                              <li>Poor Documentation</li>
+                        </ul>
+                  </li>
+            </ul>
+      </li>
+      <li>Bootstrap
+            <ul>
+                  <li>Pros:
+                        <ul>
+                              <li>Responsive</li>
+                              <li>Simple</li>
+                              <li>Superior Components</li>
+                              <li>User-Made Templates</li>
+                              <li>Lots of Available Features</li>
+                              <li>Fast</li>
+                              <li>Cross-Browser Compatible</li>
+                              <li>Consistent</li>
+                        </ul>
+                  </li>
+                  <li>Cons:
+                        <ul>
+                              <li>Steep Learning Curve</li>
+                              <li>Limited Customization Freedom</li>
+                              <li>Requires Many Style Overrides</li>
+                        </ul>
+                  </li>
+            </ul>
+      </li>
+</ul>
+<p align="justify">
+In conclusion, our team has chosen to use Bootstrap for its simplicity, consistency, and for its numerous templates and available features.
+Angular was omitted as it is a lot more difficult to learn compared to Bootstrap while providing less features. 
+React is an excellent but difficult front-end framework that works well for an expert of JavaScript as it requires the components to be created individually to function. 
+For these reasons, Bootstrap became the better framework option for our team for its implemented templates, which reduce the overall workload for our members.  
+</p>
 
 ## Installation Instructions
 ***
