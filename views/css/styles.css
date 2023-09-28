@@ -1,0 +1,50 @@
+
+header {
+    background-size: cover;
+    background-position: center;
+    height: 100px;
+    text-align: center;
+    color: #ff585f;
+    font-family: sans-serif;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Style the header text */
+
+#logo {
+    float: left;
+    width: 20%;
+}
+
+/* Style the "Sign In" button */
+
+#header-button {
+    border: none;
+    position: absolute; /* Position the button absolutely */
+    top: 10px; /* Adjust the top value to position it in the top right corner */
+    right: 10px; /* Adjust the right value to position it in the top right corner */
+    background-color: #ff5733;
+    color: #fff;
+    font-size: 20px;
+    text-decoration: none;
+    border-radius: 50%;
+    padding: 1% 2%;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+}
+
+#header-button:hover {
+    background-color: #e64c00;
+}
+
+/* Absolute positioning for page_title */
+#move-page_title {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
