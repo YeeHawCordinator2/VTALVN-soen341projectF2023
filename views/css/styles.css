@@ -12,20 +12,20 @@ header {
 }
 
 
-/* Style the header text */
+
 
 #logo {
     float: left;
     width: 20%;
 }
 
-/* Style the "Sign In" button */
+
 
 #header-button {
     border: none;
-    position: absolute; /* Position the button absolutely */
-    top: 10px; /* Adjust the top value to position it in the top right corner */
-    right: 10px; /* Adjust the right value to position it in the top right corner */
+    position: absolute;
+    top: 10px;
+    right: 10px;
     background-color: #ff5733;
     color: #fff;
     font-size: 20px;
@@ -42,7 +42,7 @@ header {
     background-color: #e64c00;
 }
 
-/* Absolute positioning for page_title */
+
 #move-page_title {
     position: absolute;
     top: 10px;
