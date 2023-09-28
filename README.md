@@ -53,23 +53,23 @@ Learn how to work in teams by developing a web application with the Agile develo
 ## Team Members
 ***
 ### Alessandro Tiseo - 40262416 - Alessandro-Tiseo<br>
-* Strengths:  <br>
-* Roles: front-end  <br>
+* strengths: Java <br>
+* role: front-end  <br>
 ### Amine Arrachid - 40263585 - Amine-Arrachid<br>
-* Strengths:  <br>
-* Roles: front-end <br>
+* strengths: Java <br>
+* role: front-end <br>
 ### Darren Vafi - 40246358 - d-vafi<br>
-* Strengths: <br>
-* Roles: back-end <br>
+* strengths: Java, javascript, php, python, C, <br>
+* role: back-end, datavase manager<br>
 ### Nao Lalancette - 40244431 - YeeHawCordinator2 <br>
-* Strengths: java, git, php, javascript <br>
-* Roles: back-end, team leader, code reviewer <br>
+* strengths: java, git, php, javascript <br>
+* role: back-end, team leader, code reviewer <br>
 ### Nooralmustafa Abbas - 40249828 - MusmusIRQ<br>
 * Strengths: java <br>
 * Roles: back-end<br>
 ### Richard Vo - 40236722 - SeroLycoris <br>
-* Strengths: <br>
-* Roles: fullstack<br> 
+* strengths:Java, javascript, php <br>
+* role: front-end, website designer<br> 
 
 ## Technologies
 ***
@@ -264,7 +264,8 @@ React is an excellent but difficult front-end framework that works well for an e
 For these reasons, Bootstrap became the better framework option for our team for its implemented templates, which reduce the overall workload for our members.  
 </p>
 
-## Installation Instructions
+
+## installation instruction and usage guidelines
 ***
 1- Install NodeJS and NPM following these [steps](https://radixweb.com/blog/installing-npm-and-nodejs-on-windows-and-mac) <br>
 2- clone the repository on github by downloading the zip file or using the link <br>
@@ -272,6 +273,4 @@ For these reasons, Bootstrap became the better framework option for our team for
 4- Do "npm install" to install all the project dependencies <br>
 5- run "node main.js" in main.js directory to get the localhost running. <br>
 
-## Usage guidelines
-***
-### take a look at [this files](https://github.com/YeeHawCordinator2/VTALVN-soen341projectF2023/wiki/Team-rules) for team rules, management and git rules.
+### take a look at [this files](https://github.com/YeeHawCordinator2/VTALVN-soen341projectF2023/wiki/Team-rules) for team rules, management and git rules
