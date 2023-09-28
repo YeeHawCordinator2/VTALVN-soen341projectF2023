@@ -3,6 +3,13 @@ const {MongoClient} = require('mongodb');
 const bcrypt = require('bcryptjs');
 
 
+const app = express();
+
+app.listen(3000, function()
+{
+    console.log("Server running on port 3000.");
+});
+
 async function connectToDatabase(){
     /**
      * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
@@ -42,9 +49,7 @@ async  function listDatabases(client){
 async function addNewHouse(client, listingName, price, location, seller, broker, numOfBed, numOfBath, furnished, buildYRS, extra, type, buildType, stories, photo, clName, brkName, sizeOfProp, garage, listingType){
 
     const house = await client.db("soen_341").collection("houses").insertOne({
-        name: listingName
-    });
-    const details = await client.db("soen_341").collection("house_details").insertOne({
+        name: listingName,
         house_id: house.insertedId,
         price: price,
         location: location,
@@ -59,18 +64,13 @@ async function addNewHouse(client, listingName, price, location, seller, broker,
         sizeOfProp: sizeOfProp,
         garage: garage,
         listingType: listingType,
-        listingDate: new Date()
-
-    });
-    const sellers = await client.db("soen_341").collection("seller").insertOne({
-        house_id: house.insertedId,
+        listingDate: new Date(),
         seller: getUserID(client, clName),  // maybe fine seller id
         broker: getBrokerID(client, brkName) // maybe find broker id
     });
 
     console.log(`New house listing created with the following id: ${house.insertedId}`);
-console.log(`New house detail listing created with the following id: ${details.insertedId}`);
-console.log(`New seller detail listing created with the following id: ${sellers.insertedId}`);
+
 }
 
 async function addNewBroker(client, username, name, password){  //encrypt user n pass
@@ -81,7 +81,6 @@ async function addNewBroker(client, username, name, password){  //encrypt user n
     });
 }
 
-
 async function addNewUser(client, username, name, password){ //encrypt user n pass
     const user = await client.db("soen_341").collection("users").insertOne({
         name: name,
@@ -90,9 +89,19 @@ async function addNewUser(client, username, name, password){ //encrypt user n pa
     });
     const userPref = await client.db("soen_341").collection("user_preference").insertOne({
         user_id: user.insertedId,
-
+        pricelow: "NA",
+        pricehigh: "NA",
+        location: "NA",
+        numOfBath: "NA",
+        numOfBed: "NA",
+        furnished: "NA",
+        extra: "NA", // heating, pool, gym, ect.
+        buildType: "NA",
+        stories: "NA",
+        sizeOfProp: "NA",
+        garage: "NA",
+        listingType: "NA",
     });
-
 
     // will create user preferences but it will all be null for now
 }
@@ -102,26 +111,34 @@ async function addNewUser(client, username, name, password){ //encrypt user n pa
 async function editHouse(client, listingName, tag, newText){
     try {
         const house = await client.db("soen_341").collection("houses").findOne({name: listingName});
-        const listing = await client.db("soen_341").collection("house_details").findOne({house_id: house.insertedId});
         // have specific listing now have to update
     }catch (e) {
         console.log("house not found");
     }
 } // include details
 
-async function editBroker(){} //broker #, user &pass, name
+async function editBroker(){
+
+
+} //broker #, user &pass, name
 
 // maybe edit user to change pass or name or smt
 
-async function editHousePreference(){} //user
+async function editHousePreference(){
+
+
+
+
+
+
+} //user
 
 
 //delete fcts
 async function deleteHouse(client, nameOfListing) {
       try {
           const houseList = await client.db("soen_341").collection("houses").deleteOne({name: nameOfListing});
-          const housedetailsList = await client.db("soen_341").collection("house_details").deleteOne({house_id: houseList.insertedId}); // maybe have to find before delete
-          const houseSellerList = await client.db("soen_341").collection("seller").deleteOne({house_id: houseList.insertedId});
+
       }catch (e) {
           console.log("element not found");
       }
@@ -151,10 +168,8 @@ async function deleteUser(client, username){
 
 
 //read fcts - user aggregate and pipeline
-async function readHouse(client){
-    const houseList = await client.db("soen_341").collection("houses").find();
-
-return houseList
+async function readHouses(client){
+    return await client.db("soen_341").collection("houses").find()
 }
 
 async function getHouseList(){}
@@ -168,9 +183,6 @@ async function getHouseSellerAndBroker(){
 async function getHousePreferences(){} //from user
 
 async function getHouseByBroker(){}
-
-
-
 
 
 

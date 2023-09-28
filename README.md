@@ -65,8 +65,10 @@ Learn how to work in teams by developing a web application with the Agile develo
 * Strengths: Java, Git, PHP, JavaScript <br>
 * Role: Back-end, Team Leader, Code Reviewer <br>
 ### Nooralmustafa Abbas - 40249828 - MusmusIRQ<br>
-* Strengths: Java <br>
-* Role: Back-end<br>
+
+* Strengths: java <br>
+* Roles: full-stack<br>
+
 ### Richard Vo - 40236722 - SeroLycoris <br>
 * Strengths:Java, JavaScript, PHP <br>
 * Role: Front-end, Website Designer<br> 
