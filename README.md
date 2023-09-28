@@ -73,6 +73,10 @@ Learn how to work in teams by developing a web application with the Agile develo
 
 ## Technologies
 ***
+<p align="justify">
+The following list regroups the technologies that will be used to develop the Real Estate Web Application.
+</p>
+
 <ul>
    <li>Javascript</li>
    <li>Node.js</li>
@@ -81,12 +85,29 @@ Learn how to work in teams by developing a web application with the Agile develo
    <li>MongoDB</li>
 </ul>
 
+<h4> Why JavaScript? </h4>
+
 <p align="justify">
-As a team, we chose to use    
-As a team we decided it was best to use javascript as a backend and frontend language to reduce the learning of new material all the member would have to do. This would save time and ressources.
+      
+As a team, we chose to develop the web application by using JavaScript for both the front-end and back-end since
+all the team members have prior experience with programming using this language, which would save time and resources
+by avoiding learning a new programming language. 
+</p>
+<h4>Supporting Technologies</h4>
+<ul><li>Back-End</li></ul>
+<p align="justify">
+For this project, we chose to use the most popular back-end framework for JavaScript, Express.js, since it is also compatible with Node.js. 
+<br><br>
+We have taken in consideration other popular frameworks such as Django for Python and Lavarel for PHP,
+but we ultimately decided to opt with Express.js and Node.js since our team members feel more confident programming with JavaScript compared with Python or PHP.
+
+
+</p>
+<br><br>
 
 The most popular backend framework for javascript is express.js which works with node.js. Other popular frameworks we looked at were django for python and lavarel for php. The reason express was chosen is mainly because we decided to chose javascript as backend language, and most member did not know php or python. We also found javascript to be the easiest to learn with express being on of the most easy frameworks. Django is also a very good framework but it required a strong foundation of Python which 1 member had on top of being much better for big project instead of small projects. Lavarel is also not very hard but demands lots of MVC framework knowledge which we did not have on the team. Looking at those three options we chose express which is easy and intuitve. Express is also known to be good for beginners, scalable and efficient. 
 
+<br><br>
 Express: pros: simple, flexible, scalable, cross-platform, lightweight, template engine, database support, for javascript <br>
 cons: frequent updates, lack of structure, limited built-in features <br>
 Django: pros:fast processing, rapid-development, scalable, lots of functionality, secure <br>
@@ -107,7 +128,7 @@ cons: learning curve, limited customization freedom, need lot of style overrides
 
 Overall, bootstrap is more simple and easier to learn and use, it also bring consistency and templates with a lot of features. We will not chose angular because it is a lot more difficult and react demand a bigger javascript knowledge. React is also very good but using templates will be easier than creating and using components.
 
-</p>
+
 
 ## Installation Instructions
 ***
