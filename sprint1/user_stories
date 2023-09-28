@@ -69,5 +69,3 @@ A client should be able to open a session with an account that already exists (l
 Client should be able to enter his/her information (username and password) to register (sign-up). The web has to "remember" the client's information for other sessions (log-in).
 NOTE*: log-in = sign-in.
 
-
-5. Test add user story
