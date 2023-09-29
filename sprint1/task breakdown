@@ -7,5 +7,43 @@ tasks for sprint 1
 
 User storying task breakdown: 
 
-User Story 3:
+== Alessandro-Tiseo ==
+* User Story 3 - Implementation of the System Administrator Delete , Add and Update Tools #17 (#30) | 5 story points 
+* User Story 4 - Implementation of a Search Bar. #18 (#26) | 5 story points 
+* User Story 4 - Implementation of a Form #18 (#25) | 3 story points 
 
+Dependencies - HTML, CSS (Bootstrap) and Javascript. No database or back-end tasks needed.
+Estimated time would be before Sprint 2. 
+
+====== d-vafi ========
+* User Story 3 - Implementation of the System Administrator #17 (#28) | 5 story points
+* User Story 3 - As a system administrator, I want to be able to create, read, update, and delete brokers (#17) | 5 story points
+* User Story 2 - As a broker, I want to be able to create, read, update, and delete a property that a client has (#16) | 8 story points
+
+Dependencies - Access to database; MondoDB, Node.js, BCrpyt. 
+Estimated time is before Sprint 2. 
+
+== Amine-Arrachid ====
+* User Story 1 - The implementation of a UI to book on-site appointments. #15 (#24) | 4 story points 
+
+Dependencies - HTML, CSS (Bootstrap) and Javascript. No database or back-end tasks needed. 
+Estimated time is before Sprint 2.
+
+==== MusmusIRQ =======
+* User Story 1 - As a user, I want to request a scheduled visit for a property that I am interested in (#15) | 5 story points
+
+Dependencies -  HTML, CSS (Bootstrap) and Javascript. Minimal access to database is required. 
+Estimated time is before Sprint 2. 
+
+== YeeHawCordinator2 =
+* Create the data bases which will hold the users, the brokers, the system administrator and the listings (#29) | 8 story points
+* Login credentials should be secure in the database. (#34) | 5 story points 
+
+Dependencies - Backend database, access to local host for testing & creation 
+Estimated time is before Sprint 2. 
+
+==== SeroLycoris =====
+* User Story 4 - As a client, I want to search properties and select the details of my ideal property. (#18) | 5 story points
+
+Dependencies - HTML, CSS (Bootstrap) and Javascript. No database or back-end tasks needed.
+Estimated time is before Sprint 2. 
