@@ -66,11 +66,11 @@ Learn how to work in teams by developing a web application with the Agile develo
 * Role: Back-end, Team Leader, Code Reviewer <br>
 ### Nooralmustafa Abbas - 40249828 - MusmusIRQ<br>
 
-* Strengths: java <br>
-* Roles: full-stack<br>
+* Strengths: Java <br>
+* Role: Full-stack<br>
 
 ### Richard Vo - 40236722 - SeroLycoris <br>
-* Strengths:Java, JavaScript, PHP <br>
+* Strengths: Java, JavaScript, HTML, CSS <br>
 * Role: Front-end, Website Designer<br> 
 
 ## Technologies
