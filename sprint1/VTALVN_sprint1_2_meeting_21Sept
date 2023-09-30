@@ -1,0 +1,71 @@
+Meeting 2: September 21st
+
+Attendees:
+-Alessandro Tiseo
+-Amine Arrachid
+-Darren Vafi
+-Nao Lalancette
+-Nooralmustafa Abbas
+-Richard Vo
+
+Objectives:
+Discuss the project with the TA.
+Make sure that the team members are up to date with the project.
+Answering any questions that members may have.
+Distributing the work.
+
+Meeting Content:
+-Overview of what the members have completed since the first meeting. (10 min)
+-TA reviewed the GITHUB repository and gave some feedbacks on which aspect the team should work on. (10 min)
+-TA and team leader answered questions from the team members. (10 min)
+-Each member worked on their own tasks for the remaining of the lab session. (60 min)
+
+What was completed since last meeting:
+Creating the Repository and a few user stories.
+
+What will be done for next meeting:
+-Writing out the acceptance criteria and realistic priorities for the User Stories.
+-Task Breakdown.
+-First design of the web application.
+
+Problems encountered:
+-We need to work on the User Stories by writing out acceptance criteria and realistic priorities.
+-Utilizing more of the WIKI feature on GITHUB.
+-Review the README document.
+-Not enough meetings.
+
+Next meeting:
+The next meeting is planned for September 24th.
+
+Total time of meeting:
+Around 90 min (from 6:30 to 8:00 PM)
+
+
+
+
+
+******DETAILED VERSION******
+
+The team held a meeting during the lab period for about 90 minutes (6:30-8:00 PM) on September 21st.
+
+We met up with the lab instructor and showed him the progress made throughout the week on the Sprint 1.
+So far, we have worked on the README file containing the project description, the team members and roles,
+the technologies used for this project, as well as an installation instruction section for the Node.js framework.
+
+The lab instructor reviewed our work and suggested some further guidelines/improvements to bring our Spring 1 documents.
+    First, for the user stories, we will need to define the realistic priorities of each features as well as the
+    acceptance criteria for the users (relevant to the CRUD operations).
+    Second, for the GITHUB, it is recommended to add to the WIKI section any information containing details about the
+    implementation and technologies used for this project. Furthermore, we will need to assign a role to each
+    team members, and add further details (for example the member's strengths). Then, it is recommended to keep
+    the README file concise.
+    Third, he suggests that our team should hold frequent meetings throughout the week to observe the progress made,
+    and checkup on the other team members.
+
+Today, our team, with our lab instructor, have discussed how we should breakdown/divide our tasks to complete the
+project and how we can resolve some issues on our GITHUB page such as the issue regarding branch protection.
+
+Our team leader also took the time to explain GITHUB functionalities such as "PULL REQUESTS", "COMMIT", and "PUSH" to
+the team members.
+
+Finally, each team members worked together to revise the Sprint 1 release, and work on their own tasks.
