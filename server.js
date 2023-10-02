@@ -36,7 +36,7 @@ async function connectToDatabase(){
     }
 }
 
-main().catch(console.error);
+connectToDatabase().catch(console.error);
 
 // list all the databases in the cluster
 async  function listDatabases(client){
