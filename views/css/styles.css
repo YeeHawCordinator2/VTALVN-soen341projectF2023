@@ -1,50 +1,95 @@
-
+/* CSS for the header */
 header {
-    background-size: cover;
-    background-position: center;
-    height: 100px;
-    text-align: center;
-    color: #ff585f;
-    font-family: sans-serif;
-    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
-
-
-
 
 #logo {
-    float: left;
-    width: 20%;
+    width: 120px;
+    height: auto;
 }
 
-
-
 #header-button {
-    border: none;
-    position: absolute;
-    top: 10px;
-    right: 10px;
     background-color: #ff5733;
     color: #fff;
-    font-size: 20px;
-    text-decoration: none;
-    border-radius: 50%;
-    padding: 1% 2%;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 2;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
 #header-button:hover {
     background-color: #e64c00;
 }
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
 
+.nav-open .nav {
+    transform: translateX(0);
+}
 
-#move-page_title {
-    position: absolute;
-    top: 10px;
-    left: 10px;
+.nav-open .main {
+    transform: translateX(350px);
+}
+
+.nav {
+    width: 350px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #333333;
+    transform: translateX(-350px);
+    transition: transform 0.2s;
+    overflow: hidden;
+}
+
+.nav-close {
+    background: none;
+    display: flex;
+    align-items: center;
+    border: none;
+    padding: 15px 25px;
+    color: #dddddd;
+    margin-top: auto;
+    cursor: pointer;
+}
+
+.nav-close:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-links-container {
+    box-shadow: 0 -10px 10px rgba(0, 0, 0, 0.15);
+}
+
+.nav__link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 25px;
+    text-decoration: none;
+    color: #dddddd;
+}
+
+.nav__text {
+    font-size: 22px;
+    font-family: "Assistant", sans-serif;
+    font-weight: 500;
+}
+
+.nav__link:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.main {
+    transition: transform 0.2s;
 }
