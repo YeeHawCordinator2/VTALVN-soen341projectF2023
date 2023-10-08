@@ -3,9 +3,7 @@ const {MongoClient} = require('mongodb');
 //const bcrypt = require('bcryptjs');
 
 
-
 const app = express();
-
 
 app.listen(3000, function()
 {
@@ -42,7 +40,7 @@ connectToDatabase().catch(console.error);
 
 // list all the databases in the cluster
 async  function listDatabases(client){
-    let databasesList = await client.db().admin().listDatabases();
+    databasesList = await client.db().admin().listDatabases();
 
     console.log("Databases:");
     databasesList.databases.forEach(db => console.log(` - ${db.name}`));
