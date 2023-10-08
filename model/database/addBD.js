@@ -1,13 +1,18 @@
 // add to database
 
 
-async function addNewHouse(client, listingName, price, location, seller, broker, numOfBed, numOfBath, furnished, buildYRS, extra, type, buildType, stories, photo, clName, brkName, sizeOfProp, garage, listingType){
+const {getUserID, getBrokerID} = require("./getDB");
+
+async function addNewHouse(client, listingName, price, location, seller, broker, numOfBed, numOfBath, furnished, buildYRS, extra, type, buildType, stories, photo, clName, brkName, sizeOfProp, garage, listingType, piclink){
     const user= await getUserID(client, clName);  // maybe fine seller id
     const brokers= await getBrokerID(client, brkName);
+    const image= await client.db("soen_341").collection("house_pic").insertOne({
+        file: piclink
+    });
 
     const house = await client.db("soen_341").collection("houses").insertOne({
         name: listingName,
-        house_id: house.insertedId,
+        image_id: image.insertedId,
         price: price,
         location: location,
         numOfBath: numOfBath,
@@ -31,7 +36,7 @@ async function addNewHouse(client, listingName, price, location, seller, broker,
 }
 
 async function addNewBroker(client, username, name, password){  //encrypt user n pass
-    const broker = await client.db("soen_341").collection("brokers").insertOne({
+    return await client.db("soen_341").collection("brokers").insertOne({
         name: name,
         username: username,
         password: bcrypt.hash(password, 10)
@@ -44,7 +49,7 @@ async function addNewUser(client, username, name, password){ //encrypt user n pa
         username: username,
         password: bcrypt.hash(password, 10)
     });
-    const userPref = await client.db("soen_341").collection("user_preference").insertOne({
+    return await client.db("soen_341").collection("user_preference").insertOne({
         user_id: user.insertedId,
         pricelow: "NA",
         pricehigh: "NA",
@@ -64,7 +69,7 @@ async function addNewUser(client, username, name, password){ //encrypt user n pa
 }
 
 async function addNewAdmin(client, username, name, password){ //encrypt user n pass
-    const admin = await client.db("soen_341").collection("system_admin").insertOne({
+    return await client.db("soen_341").collection("system_admin").insertOne({
         name: name,
         username: username,
         password: bcrypt.hash(password, 10)
