@@ -28,6 +28,9 @@
     position:relative;
     /*bottom:50px;*/
 }
+.propCardOuterBody {
+    display: block;
+}
 .propCard {
     border: 1px solid #ccc;
     /*display: inline block;*/
@@ -82,7 +85,79 @@
     margin: auto;
 }
 
-.propCardBody
+.propCardImage {
+    object-fit: contain;
+    margin: auto;
+    display: block;
+    vertical-align: middle;
+    width: 256px;
+    height: 200px;
+}
+
+.propCardBody {
+    padding: 15px;
+}
+.propCardTopBody{
+    display: block;
+}
+.propCardPrice {
+    font-size: 1.6rem;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 30px;
+    display: block;
+    white-space: nowrap;
+    color: #1c7e97;
+}
+
+.propCardAddress {
+    font-size: 1rem;
+    padding-top: 7px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-height: 1.2em;
+    max-height: 3.6em;
+}
+
+.propCardIconStrip {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    padding: 15px 0;
+    color: #666;
+    margin-top: 7px;
+}
+
+.propCardIconCon{
+    text-align: center;
+    flex-basis: 33%;
+    -ms-flex-preferred-size: 33%;
+}
+
+.propCardIconTopCon {
+    height: 24px;
+}
+
+.propCardIconNum {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.propCardIcon {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.propCardIconText {
+    font-size: .75rem;
+}
 .swiper-wrapper {
     position: relative;
     width: 100%;
