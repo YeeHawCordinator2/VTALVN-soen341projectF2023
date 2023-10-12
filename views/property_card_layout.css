@@ -1,0 +1,91 @@
+/*
+/Richard Vo
+/40236722
+/Question 7 (CSS File) */
+
+.red {
+    color:red;
+    font-weight:bold;
+}
+
+.first {
+    border: 2px dotted green;
+    padding:5px;
+    width:25%;
+    height:100%;
+    position:relative;
+    text-align: center;
+    /*position:relative;	*/
+    top: 200%;
+}
+
+.second {
+    border: 2px dotted green;
+    padding:5px;
+    width:95%;
+    height:50%;
+    text-align: center;
+    position:relative;
+    /*bottom:50px;*/
+}
+.propCard {
+    border: 1px solid #ccc;
+    /*display: inline block;*/
+    width: 290px;
+    max-width: 290px;
+    background-color: #fff;
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.propCardHeader {
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    padding: 7px;
+    min-height:calc(45px - 14px);
+}
+
+.propCardHeaderLeft {
+    text-align: left;
+}
+
+.propCardHeaderRight {
+    text-align: right;
+}
+
+.propCardFooter {
+    font-size: .85rem;
+    border-top: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.propCardFooterLeft {
+    width: 70px;
+}
+
+.propCardFooterCenter {
+    text-align: center;
+}
+
+.propCardFooterRight{
+    width: 70px;
+}
+
+.propCardImageCon {
+    width: 280px;
+    height: 200px;
+    margin: auto;
+}
+
+.propCardBody
+.swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+}
