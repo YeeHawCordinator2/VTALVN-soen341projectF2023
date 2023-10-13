@@ -3,6 +3,7 @@
 
 //House
 const {deleteUser} = require("./deleteDB");
+const bcrypt = require("bcrypt");
 //HOUSE
 async function edit1HouseAllProperty(client, listingName, updatedListing){
     try {

@@ -2,6 +2,7 @@
 
 
 const {getUserID, getBrokerID} = require("./getDB");
+const bcrypt = require("bcrypt");
 
 async function addNewHouse(client, listingName, price, location, seller, broker, numOfBed, numOfBath, furnished, buildYRS, extra, type, buildType, stories, photo, clName, brkName, sizeOfProp, garage, listingType, piclink){
     const user= await getUserID(client, clName);  // maybe fine seller id
