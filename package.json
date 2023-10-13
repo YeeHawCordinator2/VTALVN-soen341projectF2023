@@ -1,0 +1,42 @@
+{
+  "name": "soen_341",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "express": "^4.18.2",
+    "http-errors": "~1.6.3",
+    "mongodb": "^6.1.0",
+    "mongoose": "^7.6.2",
+    "morgan": "~1.9.1",
+    "nodemon": "^3.0.1",
+    "pug": "^3.0.2"
+  },
+  "description": "***\r ## Objective\r ***\r Learn how to work in teams and apply agile methodoligies to develop an application.<br>\r ## Project\r ***\r Project Description: The team must create a Real Estate Web Application to allow clients to buy, sell, and rent properties they want. The website will offer a platform where users can have what they are searching for without having more stress than they already have with their property. The platform will be user-friendly and simple to use, so that any person no matter how young or old the person is can use the application without any confusion.\r Key features of our application:\r 1. Suggested components\r    Clients will be able to find their ideal property with ease because our application will show them the criteria that clients will only need to fill in order to find their type of property. Criteria will include the location, number of bedrooms, bathrooms, price range, whether there is a pool included or not and much more.",
+  "main": "app.js",
+  "author": "alessandro tiseo, amine arrachid, darren vafi, nao lalancette, nooralmustafa abbas and richard vo",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YeeHawCordinator2/VTALVN-soen341projectF2023.git"
+  },
+  "keywords": [
+    "agile",
+    "methodologies",
+    "real",
+    "estate",
+    "app"
+  ],
+  "bugs": {
+    "url": "https://github.com/YeeHawCordinator2/VTALVN-soen341projectF2023/issues"
+  },
+  "homepage": "https://github.com/YeeHawCordinator2/VTALVN-soen341projectF2023#readme",
+  "devDependencies": {
+    "bcrypt": "^5.1.1"
+  }
+}
