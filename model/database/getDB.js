@@ -11,7 +11,7 @@ async function getHouseID(client, listingName){
 
 async function getBrokerID(client, brokerName){
     try {
-        const brokerid = client.db("soen_341").collection("brokers").findOne({name: brokerName});
+        const brokerid = client.db("soen_341").collection("brokers").findOne({username: brokerName});
         return brokerid.insertedId;
     }catch (e) {
         console.log("broker not found");

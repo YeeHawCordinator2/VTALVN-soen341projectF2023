@@ -4,7 +4,7 @@
 const {getUserID, getBrokerID} = require("./getDB");
 const bcrypt = require("bcrypt");
 
-async function addNewHouse(client, listingName, price, location, seller, broker, numOfBed, numOfBath, furnished, buildYRS, extra, type, buildType, stories, photo, clName, brkName, sizeOfProp, garage, listingType, piclink){
+async function addNewHouse(client, listingName, price, location, numOfBed, numOfBath, furnished, buildYRS, extra, buildType, stories, clName, brkName, sizeOfProp, garage, listingType, piclink){
     const user= await getUserID(client, clName);  // maybe fine seller id
     const brokers= await getBrokerID(client, brkName);
     const image= await client.db("soen_341").collection("house_pic").insertOne({
@@ -23,7 +23,6 @@ async function addNewHouse(client, listingName, price, location, seller, broker,
         extra: extra, // heating, pool, gym, ect.
         buildType: buildType,
         stories: stories,
-        photo: photo,
         sizeOfProp: sizeOfProp,
         garage: garage,
         listingType: listingType,
