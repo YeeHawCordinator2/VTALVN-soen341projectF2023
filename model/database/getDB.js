@@ -53,6 +53,9 @@ async function get1Broker(client, brokername){
 async function get1User(client, username){
     return await client.db("soen_341").collection("users").findOne(username)
 }
+async function get1Admin(client, adminname) {
+    return await client.db("soen_341").collection("system_admin").findOne(adminname)
+}
 
 async function getHouseSeller(client, Listingname){
     const result= await client.db("soen_341").collection("houses").findOne({name:Listingname});

@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const rateLimit = require("express-rate-limit");
 const {addNewUser, addNewBroker, addNewAdmin, addNewHouse} = require("./model/database/addBD");
+const {get1Broker, get1User} = require("./model/database/getDB");
 const app = express();
 const server = http.createServer(app);
 
@@ -64,18 +65,24 @@ app.post('/newBroker', function(req,res){
 
 // retrieve login info -> check if broker or admin -> call js fct that change the menu bar .
 
-app.post('/view', function(req,res){
-    db.serialize(()=>{
-        db.each('SELECT id ID, name NAME FROM emp WHERE id =?', [req.body.id], function(err,row){     //db.each() is only one which is funtioning while reading data from the DB
-            if(err){
-                res.send("Error encountered while displaying");
-                return console.error(err.message);
-            }
-            res.send(` ID: ${row.ID},    Name: ${row.NAME}`);
-            console.log("Entry displayed successfully");
+// View
+    app.post('/login', function(req,res){
+
+        get1Broker()
+        get1User()
+        get1A
+
+        db.serialize(()=>{
+            db.each('SELECT id ID, name NAME FROM emp WHERE id =?', [req.body.id], function(err,row){     //db.each() is only one which is funtioning while reading data from the DB
+                if(err){
+                    res.send("Error encountered while displaying");
+                    return console.error(err.message);
+                }
+                res.send(` ID: ${row.ID},    Name: ${row.NAME}`);
+                console.log("Entry displayed successfully");
+            });
         });
     });
-});
 
 
 

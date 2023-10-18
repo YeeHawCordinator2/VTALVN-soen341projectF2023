@@ -16,7 +16,7 @@ async function checkBroker(client, username, password){
 }
 
 async function checkAdmin(client, username, password){
-    const hashPass = await client.db("soen_341").collection("brokers").findOne({username: username});
+    const hashPass = await client.db("soen_341").collection("system_admin").findOne({username: username});
     return bcrypt.compare(password, hashPass.password); // check if good return
 
 }
