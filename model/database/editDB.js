@@ -29,7 +29,7 @@ async function editImage(client, newpic, listingName){
 
 async function editBrokerPassword(client,listingName, pass){
     try {
-        const brk = await client.db("soen_341").collection("brokers").updateOne({name: listingName}, {$set:{password: bcrypt.hash(pass, 10)}});
+        const brk = await client.db("soen_341").collection("brokers").updateOne({name: listingName}, {$set:{password: await bcrypt.hash(pass, 10)}});
 return await editBrokerHouse(client, listingName, brk);
 
     }catch (e) {
@@ -90,7 +90,7 @@ return await editUserHouse(client, listingName, usr);
 
 async function editUserPassword(client, listingName, pass){
     try {
-        const user = await client.db("soen_341").collection("users").updateOne({name: listingName}, {$set:{password: bcrypt.hash(pass, 10)}});
+        const user = await client.db("soen_341").collection("users").updateOne({name: listingName}, {$set:{password: await bcrypt.hash(pass, 10)}});
         return await editUserHouse(client, listingName, user);
     }catch (e) {
         console.log("house not found");

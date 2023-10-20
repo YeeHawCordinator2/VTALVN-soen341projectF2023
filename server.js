@@ -106,11 +106,11 @@ try{
    });
 
 */
+//
+
 app.post("/login",async (req,res)=> {
     const username = req.body.username;
     const password = req.body.password;
-
-
 if(await get1Admin(client, username) != null) {
     if(await checkAdmin(client, username, password)===true)
         res.redirect('login_success.html'); // once done it redirect to new page
@@ -126,8 +126,6 @@ if(await get1Admin(client, username) != null) {
             res.redirect('login_success.html'); // once done it redirect to new page
         else console.log("WRONG PASSWORD");
     }
-
-
 
 });
 
