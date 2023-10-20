@@ -106,7 +106,32 @@ try{
    });
 
 */
-        app.get("/",(req,res)=> {
+app.post("/login",async (req,res)=> {
+    const username = req.body.username;
+    const password = req.body.password;
+
+
+if(await get1Admin(client, username) != null) {
+    if(await checkAdmin(client, username, password)===true)
+        res.redirect('login_success.html'); // once done it redirect to new page
+    else console.log("WRONG PASSWORD");
+}
+    if(await get1Broker(client, username) != null) {
+        if(await checkBroker(client, username, password)===true)
+            res.redirect('login_success.html'); // once done it redirect to new page
+        else console.log("WRONG PASSWORD");
+    }
+    if(await get1User(client, username) != null) {
+        if(await checkUser(client, username, password)===true)
+            res.redirect('login_success.html'); // once done it redirect to new page
+        else console.log("WRONG PASSWORD");
+    }
+
+
+
+});
+
+app.get("/",(req,res)=> {
             res.set({
                 "Allow-access-Allow-Origin": '*'
             })
@@ -114,7 +139,6 @@ try{
         }).listen(3000);
 
         console.log("Server listening on port 3000");
-
 
 
 

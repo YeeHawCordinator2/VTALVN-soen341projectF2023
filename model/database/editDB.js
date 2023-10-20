@@ -81,7 +81,6 @@ async function editHousePreference(client, listingName, updatedListing){
     try {
         const house = await client.db("soen_341").collection("users").find({name: listingName});
         const pref = await client.db("soen_341").collection("user_preference").updateOne({user_id: house._id}, {$set:updatedListing});
-        const usr = await client.db("soen_341").collection("users").updateOne({name: listingName}, {$set:{user_preference: pref._id}});
 return await editUserHouse(client, listingName, usr);
     }catch (e) {
         console.log("house not found");

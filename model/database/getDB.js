@@ -48,13 +48,13 @@ async function get1House(client, listingname){
     return await client.db("soen_341").collection("houses").findOne(listingname)
 }
 async function get1Broker(client, brokername){
-    return await client.db("soen_341").collection("brokers").findOne(brokername)
+    return await client.db("soen_341").collection("brokers").findOne({username:brokername})
 }
 async function get1User(client, username){
-    return await client.db("soen_341").collection("users").findOne(username)
+    return await client.db("soen_341").collection("users").findOne({username:username});
 }
-async function get1Admin(client, adminname) {
-    return await client.db("soen_341").collection("system_admin").findOne(adminname)
+async function get1Admin(client, username) {
+    return await client.db("soen_341").collection("system_admin").findOne({username:username})
 }
 
 async function getHouseSeller(client, Listingname){
