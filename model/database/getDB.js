@@ -32,7 +32,7 @@ async function getHouseImage(client, listingName) {
         const imageid = await client.db("soen_341").collection("houses").findOne({name: listingName});
         return await client.db("soen_341").collection("house_pic").findOne({house_id: imageid});
     } catch (e) {
-        console.log("image not found");
+        return void 0;
     }
 }
 
@@ -126,4 +126,4 @@ async function getHouseListingType(client, listingType){
 
 
 
-module.exports = { getHouseID, getBrokerID, getUserID, get1Broker, get1User, getHousesBy1Broker, readHouses, get1House, getHouseSeller,getHouseBroker , getHousePreferences, readBrokers, getHouseImage, getHouseLocation, getHousePriceLower, getHousePriceHigher, getHouseBeforeDate, getHouseAfterDate, getHouseBathgreaterThan, getHouseBedgreaterThan, getHouseFurnished, getHouseBuildYRSGreater, getHouseBuildType, getHouseStories, getHouseSizeOfPropGreater, getHouseSizeOfPropLess, getHouseGarage, getHouseListingType};
+module.exports = { getHouseID, get1Admin, getBrokerID, getUserID, get1Broker, get1User, getHousesBy1Broker, readHouses, get1House, getHouseSeller,getHouseBroker , getHousePreferences, readBrokers, getHouseImage, getHouseLocation, getHousePriceLower, getHousePriceHigher, getHouseBeforeDate, getHouseAfterDate, getHouseBathgreaterThan, getHouseBedgreaterThan, getHouseFurnished, getHouseBuildYRSGreater, getHouseBuildType, getHouseStories, getHouseSizeOfPropGreater, getHouseSizeOfPropLess, getHouseGarage, getHouseListingType};
