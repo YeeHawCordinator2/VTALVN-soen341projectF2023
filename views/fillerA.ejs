@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real Estate </title>
-    <link rel="stylesheet" href="css/styles.css" type="text/css">
-
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <header>
@@ -20,35 +19,25 @@
     <button type="button" class="nav-close" onclick="toggleNav()">
         <ion-icon name="close-outline" size="large"></ion-icon>
     </button>
-    <div class="nav-links-container" id="BaseMenu" >
-        <a href="buy_rentU" class="nav__link">
-            <span class="nav__text">Buy/Rent</span>
-            <ion-icon name="cash-outline" size="large"></ion-icon>
+
+    <div class="nav-links-container" id="AdminMenu" >
+        <a href="ViewBrokers" class="nav__link">
+            <span class="nav__text">View All Brokers</span>
+            <ion-icon name="eye-outline" size="large"></ion-icon>
         </a>
 
-        <a href="fillerU" class="nav__link">
-            <span class="nav__text">Favorites</span>
-            <ion-icon name="heart-outline" size="large"></ion-icon>
-        </a>
-        <a href="calendarU" class="nav__link">
-            <span class="nav__text">Calendar</span>
-            <ion-icon name="calendar-outline" size="large"></ion-icon>
-        </a>
-        <a href="fillerU" class="nav__link">
+        <a href="fillerA" class="nav__link">
             <span class="nav__text">Personal Info</span>
             <ion-icon name="person-outline" size="large"></ion-icon>
         </a>
-        <a href="fillerU" class="nav__link">
-            <span class="nav__text">Morgage Calculator</span>
-            <ion-icon name="calculator-outline" size="large"></ion-icon>
-        </a>
-        <a href="fillerU" class="nav__link">
-            <span class="nav__text">Find Agent</span>
+
+        <a href="fillerA" class="nav__link">
+            <span class="nav__text">CRUD Admin</span>
             <ion-icon name="search-outline" size="large"></ion-icon>
         </a>
 
-    </div>
 
+    </div>
 </nav>
 <main class="main">
     <button onclick="toggleNav()"><ion-icon name="menu-outline"></ion-icon></button>
@@ -59,6 +48,9 @@
         document.body.classList.toggle("nav-open");
     }
 </script>
+
+
+<h1> Page is under construction </h1>
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

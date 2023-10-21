@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real Estate </title>
-    <link rel="stylesheet" href="css/styles.css" type="text/css">
-
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <header>
@@ -20,31 +19,40 @@
     <button type="button" class="nav-close" onclick="toggleNav()">
         <ion-icon name="close-outline" size="large"></ion-icon>
     </button>
-    <div class="nav-links-container" id="BaseMenu" >
-        <a href="buy_rentU" class="nav__link">
-            <span class="nav__text">Buy/Rent</span>
+    <div class="nav-links-container" id="BrokerMenu"  >
+        <a href="buy_rentB" class="nav__link">
+            <span class="nav__text">Buy / Rent</span>
             <ion-icon name="cash-outline" size="large"></ion-icon>
         </a>
 
-        <a href="fillerU" class="nav__link">
-            <span class="nav__text">Favorites</span>
-            <ion-icon name="heart-outline" size="large"></ion-icon>
+        <a href="myListings" class="nav__link">
+            <span class="nav__text">My Listings</span>
+            <ion-icon name="list-outline" size="large"></ion-icon>
+
         </a>
-        <a href="calendarU" class="nav__link">
-            <span class="nav__text">Calendar</span>
+        <a href="fillerB" class="nav__link">
+            <span class="nav__text">My Visits</span>
             <ion-icon name="calendar-outline" size="large"></ion-icon>
         </a>
-        <a href="fillerU" class="nav__link">
+        <a href="fillerB" class="nav__link">
+            <span class="nav__text">Visit Requests</span>
+            <ion-icon name="calendar-outline" size="large"></ion-icon>
+        </a>
+        <a href="fillerB" class="nav__link">
             <span class="nav__text">Personal Info</span>
             <ion-icon name="person-outline" size="large"></ion-icon>
         </a>
-        <a href="fillerU" class="nav__link">
-            <span class="nav__text">Morgage Calculator</span>
+        <a href="calendarB" class="nav__link">
+            <span class="nav__text">Calendar</span>
             <ion-icon name="calculator-outline" size="large"></ion-icon>
         </a>
-        <a href="fillerU" class="nav__link">
-            <span class="nav__text">Find Agent</span>
+        <a href="fillerB" class="nav__link">
+            <span class="nav__text">Match Property</span>
             <ion-icon name="search-outline" size="large"></ion-icon>
+        </a>
+        <a href="fillerB" class="nav__link">
+            <span class="nav__text">Offers</span>
+            <ion-icon name="cash-outline" size="large"></ion-icon>
         </a>
 
     </div>
@@ -59,6 +67,8 @@
         document.body.classList.toggle("nav-open");
     }
 </script>
+
+<H1> YOU ARE NOW LOGGED IN</H1>
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
