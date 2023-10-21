@@ -34,19 +34,19 @@ app.post("/login", async (req,res)=> {
     //user = await get1Admin(client, username);
     if (await checkAdmin(client, username, password) === true)
         res.redirect("/login_successA")
-    else console.log("Password incorrect");
+    else res.redirect("/logins")
 }
 else if (await get1Broker(client, username) != null) {
     if (await checkBroker(client, username, password) === true)
         res.redirect("/login_successB")
-    else console.log("Password incorrect");
+    else res.redirect("/logins")
 }
 else if (await get1User(client, username) != null) {
     if (await checkUser(client, username, password) === true)
         res.redirect("/login_successU");
-    else console.log("Password incorrect");
+    else res.redirect("/logins")
 }
-else console.log("No user with that username");
+else res.redirect("/loginss");
 
 });
 
@@ -71,6 +71,12 @@ app.get('/',(req,res)=> {
         });
 app.get('/login',(req,res)=> {
     res.render( 'login.ejs' ); // opens localhost on index.html
+});
+app.get('/logins',(req,res)=> {
+    res.render( 'login_WRONGPASS.ejs' ); // opens localhost on index.html
+});
+app.get('/loginss',(req,res)=> {
+    res.render( 'login_WRONGUSER.ejs' ); // opens localhost on index.html
 });
 app.get('/register',(req,res)=> {
     res.render( 'register.ejs' ); // opens localhost on index.html
