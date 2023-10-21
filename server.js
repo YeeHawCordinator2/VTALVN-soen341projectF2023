@@ -10,6 +10,7 @@ const app = express();
 //stuff for request????
 app.use(bodyParser.json());
 app.set('view-engine', 'ejs');
+app.use(express.static(__dirname+'/views'));
 app.use(bodyParser.urlencoded({
     extended: true
 }));
