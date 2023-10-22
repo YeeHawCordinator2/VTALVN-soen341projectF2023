@@ -55,11 +55,11 @@
 <a href="/addBroker"> <button id="header-button" >Add Broker</button></a>
 
 <% brokers.forEach(broker => { %>
-    <div class="card-brk" style=" outline: 5px solid black; margin: 5%; padding-left:10%; padding-top:3%; height:10vmin; font-size: 2.5vmax">
+    <div class="card-brk" style=" outline: 1vmin solid black; margin: 5%;  padding:3% 0; padding-left:10%; font-size: 2.5vmax">
         <%= broker.name %>
         <a href="broker/edit/<%= broker.username %>" id="header-button" style="margin: 0 5%" >Edit</a>
         <form action="/broker/<%= broker.username %>?_method=DELETE" method="POST" class="d-inline">
-            <button type="submit" id="header-button" style="float:right; top:0;">Delete</button>
+            <button type="submit" id="header-button">Delete</button>
         </form>
     </div>
 
