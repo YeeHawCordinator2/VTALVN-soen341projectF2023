@@ -1,42 +1,102 @@
 const express = require('express');
 const {MongoClient} = require('mongodb');
-const bcrypt = require('bcryptjs');
-
-
+const http = require('http');
+const path = require("path");
+const bodyParser = require('body-parser');
+const helmet = require('helmet');
+const rateLimit = require("express-rate-limit");
+const {addNewUser, addNewBroker, addNewAdmin, addNewHouse} = require("./model/database/addBD");
 const app = express();
+const server = http.createServer(app);
+
+
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100 // limit each IP to 100 requests per windowMs
+});
+const uri = "mongodb+srv://naolal30:ConnectdatabasetoWebstorm100.@cluster0.ttfusik.mongodb.net/test?retryWrites=true&w=majority";
+
+
+const client = new MongoClient(uri); // create a new MongoClient
+
+try {
+    // Connect to the MongoDB cluster
+    await client.connect();
+
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.static(path.join(__dirname,'./views')));
+app.use(helmet());
+app.use(limiter);
+
+
+
+// ADD NEW
+app.get('/', function(req,res){
+    res.sendFile(path.join(__dirname,'./views/signUp.html'));//change to wtv ADD FNCT - SYSTEM ADMIN + HOUSE+ USER + BROKER
+}); //X4
+app.post('/signUp', function(req,res){
+        addNewUser(client, req.body.uUsername, req.body.uName, req.body.uPassword).then(r => console.log("New employee has been added")).catch(console.error);
+        res.send("New employee has been added into the database with ID = " + req.body.id + " and Name = " + req.body.name);
+
+});
+app.get('/', function(req,res){
+    res.sendFile(path.join(__dirname,'./views/houseAdd.html'));//change to wtv ADD FNCT - SYSTEM ADMIN + HOUSE+ USER + BROKER
+}); //X4
+
+app.post('/newHouse', function(req,res){
+        addNewHouse(client, req.body.listingName, req.body.price, req.body.loc, req.body.bed, req.body.bath, req.body.furnished, req.body.buildYRS, req.body.extra, req.body.buildType, req.body.stories, req.body.client, req.body.broker, req.body.propSize, req.body.garage, req.body.type , req.body.pic).then(r => console.log("New house has been added")).catch(console.error);
+});
+
+app.get('/', function(req,res){
+    res.sendFile(path.join(__dirname,'./views/adminAdd.html'));//change to wtv ADD FNCT - SYSTEM ADMIN + HOUSE+ USER + BROKER
+}); //X4
+app.post('/newAdmin', function(req,res){
+        addNewAdmin(client, req.body.aUsername, req.body.aName, req.body.aPassword).then(r => console.log("New admin has been added")).catch(console.error);
+        res.send("New broker has been added into the database with ID = " + req.body.id + " and Name = " + req.body.name);
+});
+app.get('/', function(req,res){
+    res.sendFile(path.join(__dirname,'./views/brokerAdd.html'));//change to wtv ADD FNCT - SYSTEM ADMIN + HOUSE+ USER + BROKER
+}); //X4
+
+app.post('/newBroker', function(req,res){
+        addNewBroker(client, req.body.bUsername, req.body.bName, req.body.bPassword).then(r => console.log("New broker has been added")).catch(console.error);
+});
+
+// retrieve login info -> check if broker or admin -> call js fct that change the menu bar .
+
+app.post('/view', function(req,res){
+    db.serialize(()=>{
+        db.each('SELECT id ID, name NAME FROM emp WHERE id =?', [req.body.id], function(err,row){     //db.each() is only one which is funtioning while reading data from the DB
+            if(err){
+                res.send("Error encountered while displaying");
+                return console.error(err.message);
+            }
+            res.send(` ID: ${row.ID},    Name: ${row.NAME}`);
+            console.log("Entry displayed successfully");
+        });
+    });
+});
+
+
+
+
+
+
+
 
 app.listen(3000, function()
 {
     console.log("Server running on port 3000.");
 });
 
-async function connectToDatabase(){
-    /**
-     * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
-     * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
-     */
-    const uri = "mongodb+srv://naolal30:ConnectdatabasetoWebstorm100.@cluster0.ttfusik.mongodb.net/test?retryWrites=true&w=majority";
-
-
-    const client = new MongoClient(uri); // create a new MongoClient
-
-    try {
-        // Connect to the MongoDB cluster
-        await client.connect();
-
-        // Make the appropriate DB calls
-//call fct here
-
-
-
+// HANDLE CLOSE DIFFF????? + IDK IF BEFORE OR AFTER APP.LISTEN
     } catch (e) {
         console.error(e);
     } finally {
         await client.close();
     }
-}
 
-main().catch(console.error);
+
 
 // list all the databases in the cluster
 async  function listDatabases(client){
@@ -45,192 +105,4 @@ async  function listDatabases(client){
     console.log("Databases:");
     databasesList.databases.forEach(db => console.log(` - ${db.name}`));
 }
-// add to database
-async function addNewHouse(client, listingName, price, location, seller, broker, numOfBed, numOfBath, furnished, buildYRS, extra, type, buildType, stories, photo, clName, brkName, sizeOfProp, garage, listingType){
 
-    const house = await client.db("soen_341").collection("houses").insertOne({
-        name: listingName,
-        house_id: house.insertedId,
-        price: price,
-        location: location,
-        numOfBath: numOfBath,
-        numOfBed: numOfBed,
-        furnished: furnished,
-        buildYRS: buildYRS,
-        extra: extra, // heating, pool, gym, ect.
-        buildType: buildType,
-        stories: stories,
-        photo: photo,
-        sizeOfProp: sizeOfProp,
-        garage: garage,
-        listingType: listingType,
-        listingDate: new Date(),
-        seller: getUserID(client, clName),  // maybe fine seller id
-        broker: getBrokerID(client, brkName) // maybe find broker id
-    });
-
-    console.log(`New house listing created with the following id: ${house.insertedId}`);
-
-}
-
-async function addNewBroker(client, username, name, password){  //encrypt user n pass
-    const broker = await client.db("soen_341").collection("brokers").insertOne({
-        name: name,
-        username: username,
-        password: bcrypt.hash(password, 10)
-    });
-}
-
-async function addNewUser(client, username, name, password){ //encrypt user n pass
-    const user = await client.db("soen_341").collection("users").insertOne({
-        name: name,
-        username: username,
-        password: bcrypt.hash(password, 10)
-    });
-    const userPref = await client.db("soen_341").collection("user_preference").insertOne({
-        user_id: user.insertedId,
-        pricelow: "NA",
-        pricehigh: "NA",
-        location: "NA",
-        numOfBath: "NA",
-        numOfBed: "NA",
-        furnished: "NA",
-        extra: "NA", // heating, pool, gym, ect.
-        buildType: "NA",
-        stories: "NA",
-        sizeOfProp: "NA",
-        garage: "NA",
-        listingType: "NA",
-    });
-
-    // will create user preferences but it will all be null for now
-}
-
-//edit fcts
-
-async function editHouse(client, listingName, tag, newText){
-    try {
-        const house = await client.db("soen_341").collection("houses").findOne({name: listingName});
-        // have specific listing now have to update
-    }catch (e) {
-        console.log("house not found");
-    }
-} // include details
-
-async function editBroker(){
-
-
-} //broker #, user &pass, name
-
-// maybe edit user to change pass or name or smt
-
-async function editHousePreference(){
-
-
-
-
-
-
-} //user
-
-
-//delete fcts
-async function deleteHouse(client, nameOfListing) {
-      try {
-          const houseList = await client.db("soen_341").collection("houses").deleteOne({name: nameOfListing});
-
-      }catch (e) {
-          console.log("element not found");
-      }
-
-}
-
-async function deleteBroker(client, brokerName){
-    try {
-        const houseList = await client.db("soen_341").collection("brokers").deleteOne({name: brokerName});
-        //maybe edit listing to remove any instance of that broker
-         }catch (e) {
-        console.log("element not found");
-    }
-}
-
-async function deleteUser(client, username){
-    try{
-        const userList = await client.db("soen_341").collection("users").deleteOne({username: username});
-        const userPrefList = await client.db("soen_341").collection("user_preference").deleteOne({user_id: userList.insertedId});
-    }catch (e) {
-        console.log("user not found or user preference not found");
-    }
-} //delete house pref with
-
-
-
-
-
-//read fcts - user aggregate and pipeline
-async function readHouses(client){
-    return await client.db("soen_341").collection("houses").find()
-}
-
-async function getHouseList(){}
-
-async function getHouseBYDetails(){}
-
-async function getHouseSellerAndBroker(){
-
-}
-
-async function getHousePreferences(){} //from user
-
-async function getHouseByBroker(){}
-
-
-
-
-//check password DONE
-async function checkUser(client, username, password){
-    const hashPass = await client.db("soen_341").collection("users").findOne({username: username});
-    return bcrypt.compare(password, hashPass.password) // check if good return
-
-}
-
-async function checkBroker(client, username, password){
-    const hashPass = await client.db("soen_341").collection("brokers").findOne({username: username});
-    return bcrypt.compare(password, hashPass.password) // check if good return
-
-}
-
-async function checkAdmin(client, username, password){
-    const hashPass = await client.db("soen_341").collection("brokers").findOne({username: username});
-    return bcrypt.compare(password, hashPass.password); // check if good return
-
-}
-
-// get LISTING ID, done
-
-async function getHouseID(client, listingName){
-    try {
-        const houseid = client.db("soen_341").collection("houses").findOne({name: listingName});
-        return houseid.insertedId;
-    }catch (e) {
-        console.log("houselisting not found");
-    }
-}
-
-async function getBrokerID(client, brokerName){
-    try {
-        const brokerid = client.db("soen_341").collection("brokers").findOne({name: brokerName});
-        return brokerid.insertedId;
-    }catch (e) {
-        console.log("broker not found");
-    }
-}
-
-async function getUserID(client, username){
-    try{
-    const userid = client.db("soen_341").collection("users").findOne({username: username});
-    return userid.insertedId;
-    }catch (e) {
-        console.log("user not found");
-    }
-}
