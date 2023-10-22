@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real Estate </title>
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 <body>
 <header>
@@ -51,19 +49,20 @@
     }
 </script>
 
-<h1> List of brokers</h1>
-<a href="/addBroker"> <button id="header-button" >Add Broker</button></a>
-
-<% brokers.forEach(broker => { %>
-    <div class="card-brk" style=" outline: 5px solid black; margin: 5%; padding-left:10%; padding-top:3%; height:10vmin; font-size: 2.5vmax">
-        <%= broker.name %>
-        <a href="views/edit/<%= broker._id %>" id="header-button" style="margin: 0 5%" >Edit</a>
-        <form action="/views/<%= broker._id %>?_method=DELETE" method="POST" class="d-inline">
-            <button type="submit" id="header-button" style="float:right; top:0;">Delete</button>
-        </form>
+<h1> Add a broker</h1>
+<form action="/addBroker" method="POST">
+    <div class="input-box">
+        <input type="text" placeholder="Name" name="name" required>
     </div>
+    <div class="input-box">
+        <input type="text" placeholder="Username" name="username" required>
+    </div>
+    <div class="input-box">
+        <input type="password" placeholder="Password" name="password" required>
+    </div>
+    <button id="header-button" type="submit" class="btn">Create</button>
+</form>
 
- <% }) %>
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

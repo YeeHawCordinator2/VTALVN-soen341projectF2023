@@ -5,8 +5,10 @@ const {MongoClient} = require('mongodb');
 const bodyParser = require('body-parser');
 const {get1Broker, get1User, get1Admin} = require("./model/database/getDB");
 const {checkBroker, checkUser, checkAdmin} = require("./model/database/checkPassword");
-const {addNewUser} = require("./model/database/addBD");
+const {addNewUser, addNewBroker} = require("./model/database/addBD");
 const app = express();
+const brkRouter = require('./broker');
+const methodOverride = require('method-override')
 
 app.use(bodyParser.json());
 app.set('view-engine', 'ejs');
@@ -14,6 +16,7 @@ app.use(express.static(__dirname+'/views'));
 app.use(bodyParser.urlencoded({
     extended: true
 })); //
+app.use(methodOverride('_method'))
 
 const uri = "mongodb+srv://naolal30:ConnectdatabasetoWebstorm100.@cluster0.ttfusik.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
@@ -64,6 +67,21 @@ app.post("/register",async(req,res)=> {
     }
 });
 
+app.post("/addBroker",async(req,res)=> {
+    const username = req.body.username;
+    const name = req.body.name;
+    const password = req.body.password;
+
+    try{
+        const user = await addNewBroker(client, username, name, password);
+        res.redirect("/ViewBrokers");
+    }catch (e) {
+        console.log("Error adding user");
+        res.redirect("/addBroker");
+    }
+});
+
+
 
 
 app.get('/',(req,res)=> {
@@ -111,11 +129,16 @@ app.get('/login_successU',(req,res)=> {
 app.get('/login_successA',(req,res)=> {
     res.render( 'login_successA.ejs' );
 });
+app.get('/ViewBrokers',async (req,res)=> {
+    const brokers = await client.db("soen_341").collection("brokers").find().toArray();
 
-app.get('/myListings',(req,res)=> {
-    res.render( 'myListings.ejs' );
+    res.render( 'ViewBrokers.ejs' ,{brokers: brokers});
+});
+app.get('/addBroker',(req,res)=> {
+    res.render( 'addBroker.ejs' );
 });
 
+app.use('/ViewBroker', brkRouter)
 
 
 
