@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const {get1Broker, get1User, get1Admin} = require("./model/database/getDB");
 const {checkBroker, checkUser, checkAdmin, checkUsername} = require("./model/database/checkPassword");
 const {addNewUser, addNewBroker} = require("./model/database/addBD");
+const listingsRouter = require('./routes/listings');
 const app = express();
 const brkRouter = require('./routes/brokers');
 const methodOverride = require('method-override')
@@ -170,7 +171,21 @@ app.get('/editBroker',(req,res)=> {
     res.render( 'broker/editBroker.ejs' );
 });
 
+//connects to server
+app.get('/myListings', async (req,res)=> {
+    
+    const houses = await client.db("soen_341").collection("houses").find().toArray();
 
+    //NEEDS .EJS EXTENSION, ELSE IT THROWS NO EXTENSION ERROR
+    res.render('listings/myListings.ejs' , {houses: houses});
+});
+
+//connects to server
+app.get('/newListings', (req,res)=> {
+    res.render('listings/newListings.ejs');
+});
+/* GET users listing. */
+app.use('/listings', listingsRouter); //use listings as the route for myListings
 app.use('/broker', brkRouter)
 
 
