@@ -7,8 +7,10 @@ const {get1Broker, get1User, get1Admin} = require("./model/database/getDB");
 const {checkBroker, checkUser, checkAdmin} = require("./model/database/checkPassword");
 const {addNewUser, addNewBroker} = require("./model/database/addBD");
 const app = express();
-const brkRouter = require('./broker');
+const brkRouter = require('./routes/brokers');
 const methodOverride = require('method-override')
+const {editBroker} = require("./model/database/editDB");
+const bcrypt = require("bcrypt");
 
 app.use(bodyParser.json());
 app.set('view-engine', 'ejs');
@@ -16,7 +18,10 @@ app.use(express.static(__dirname+'/views'));
 app.use(bodyParser.urlencoded({
     extended: true
 })); //
-app.use(methodOverride('_method'))
+app.use(express.urlencoded({
+    extended: true
+}));
+app.use(methodOverride('_method'));
 
 const uri = "mongodb+srv://naolal30:ConnectdatabasetoWebstorm100.@cluster0.ttfusik.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
@@ -80,6 +85,23 @@ app.post("/addBroker",async(req,res)=> {
         res.redirect("/addBroker");
     }
 });
+app.post("/editBroker",async(req,res)=> {
+    const username = req.body.username;
+    const name = req.body.name;
+    const password = req.body.password;
+    const og= req.body.user_id;
+    console.log(og);
+    try{
+        const user = await editBroker(client,og, { name: name, username: username, password: await bcrypt.hash(password, 10) });
+        res.redirect("/ViewBrokers");
+    }catch (e) {
+        console.log("Error adding user");
+        res.redirect("/editBroker");
+    }
+    console.log("edit broker");
+
+
+});
 
 
 
@@ -132,13 +154,17 @@ app.get('/login_successA',(req,res)=> {
 app.get('/ViewBrokers',async (req,res)=> {
     const brokers = await client.db("soen_341").collection("brokers").find().toArray();
 
-    res.render( 'ViewBrokers.ejs' ,{brokers: brokers});
+    res.render( 'broker/ViewBrokers.ejs' ,{brokers: brokers});
 });
 app.get('/addBroker',(req,res)=> {
-    res.render( 'addBroker.ejs' );
+    res.render( 'broker/addBroker.ejs' );
+});
+app.get('/editBroker',(req,res)=> {
+    res.render( 'broker/editBroker.ejs' );
 });
 
-app.use('/ViewBroker', brkRouter)
+
+app.use('/broker', brkRouter)
 
 
 

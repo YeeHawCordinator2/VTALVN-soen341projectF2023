@@ -1,8 +1,17 @@
 const express = require('express')
-const {get1Broker} = require("./model/database/getDB");
+const {get1Broker} = require("../model/database/getDB");
 const {MongoClient} = require("mongodb");
-const {deleteBroker} = require("./model/database/deleteDB");
+const {deleteBroker} = require("../model/database/deleteDB");
+const bodyParser = require("body-parser");
 const router = express.Router()
+const app = express();
+app.use(bodyParser.json());
+
+app.set('view-engine', 'ejs');
+app.use(express.static(__dirname+'/views'));
+app.use(bodyParser.urlencoded({
+    extended: true
+})); //
 
 
 const uri = "mongodb+srv://naolal30:ConnectdatabasetoWebstorm100.@cluster0.ttfusik.mongodb.net/test?retryWrites=true&w=majority";
@@ -15,14 +24,19 @@ try{
     console.log("Error connecting to database");
 }
 
+
+
 router.get('/edit/:id', async (req, res) => {
-    const broker = await get1Broker(client, req.params.username);
-    res.render('views/editBroker.js', { broker: broker })
+    const broker = await get1Broker(client, req.params.id);
+    //console.log(broker.name)
+    res.render('broker/editBroker.ejs', {broker: broker})
+    //res.send("patoe")
+
 })
 
 
 router.delete('/:id', async (req, res) => {
-    await deleteBroker(client, req.params.username)
+    await deleteBroker(client, req.params.id);
     res.redirect('/ViewBrokers')
 })
 
