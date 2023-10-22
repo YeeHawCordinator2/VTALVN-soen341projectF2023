@@ -4,7 +4,7 @@ const express = require('express');
 const {MongoClient} = require('mongodb');
 const bodyParser = require('body-parser');
 const {get1Broker, get1User, get1Admin} = require("./model/database/getDB");
-const {checkBroker, checkUser, checkAdmin} = require("./model/database/checkPassword");
+const {checkBroker, checkUser, checkAdmin, checkUsername} = require("./model/database/checkPassword");
 const {addNewUser, addNewBroker} = require("./model/database/addBD");
 const app = express();
 const brkRouter = require('./routes/brokers');
@@ -64,8 +64,12 @@ app.post("/register",async(req,res)=> {
     const password = req.body.password;
 
     try{
-        const user = await addNewUser(client, username, name, password);
-        res.redirect("/login");
+        if(await checkUsername(client, username) === true) {
+            const user = await addNewUser(client, username, name, password);
+            res.redirect("/login");
+        }
+        else
+            res.redirect("/registerUserExist");
     }catch (e) {
         console.log("Error adding user");
         res.redirect("/register");
@@ -120,6 +124,9 @@ app.get('/loginss',(req,res)=> {
 });
 app.get('/register',(req,res)=> {
     res.render( 'register.ejs' ); // opens localhost on index.html
+});
+app.get('/registerUserExist',(req,res)=> {
+    res.render( 'registerUserExist.ejs' ); // opens localhost on index.html
 });
 app.get('/buy_rentB',(req,res)=> {
     res.render( 'buy_rentB.ejs' ); // opens localhost on index.html

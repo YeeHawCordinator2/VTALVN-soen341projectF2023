@@ -8,6 +8,10 @@ async function checkUser(client, username, password){
     return await bcrypt.compare(password, hashPass.password) // check if good return
 
 }
+async function checkUsername(client, username){
+    return await client.db("soen_341").collection("users").findOne({username: username}) === null;
+
+}
 
 async function checkBroker(client, username, password){
     const hashPass = await client.db("soen_341").collection("brokers").findOne({username: username});
@@ -21,4 +25,4 @@ async function checkAdmin(client, username, password){
 
 }
 
-module.exports = {checkUser, checkBroker, checkAdmin };
+module.exports = {checkUser, checkBroker, checkAdmin, checkUsername };
