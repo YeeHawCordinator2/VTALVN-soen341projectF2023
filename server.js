@@ -39,22 +39,22 @@ app.post("/login", async (req,res)=> {
     const password = req.body.password;
 
     if (await get1Admin(client, username) != null) {
-    //user = await get1Admin(client, username);
-    if (await checkAdmin(client, username, password) === true)
-        res.redirect("/login_successA")
-    else res.redirect("/logins")
-}
-else if (await get1Broker(client, username) != null) {
-    if (await checkBroker(client, username, password) === true)
-        res.redirect("/login_successB")
-    else res.redirect("/logins")
-}
-else if (await get1User(client, username) != null) {
-    if (await checkUser(client, username, password) === true)
-        res.redirect("/login_successU");
-    else res.redirect("/logins")
-}
-else res.redirect("/loginss");
+        //user = await get1Admin(client, username);
+        if (await checkAdmin(client, username, password) === true)
+            res.redirect("/login_successA")
+        else res.redirect("/logins")
+    }
+    else if (await get1Broker(client, username) != null) {
+        if (await checkBroker(client, username, password) === true)
+            res.redirect("/login_successB")
+        else res.redirect("/logins")
+    }
+    else if (await get1User(client, username) != null) {
+        if (await checkUser(client, username, password) === true)
+            res.redirect("/login_successU");
+        else res.redirect("/logins")
+    }
+    else res.redirect("/loginss");
 
 });
 
@@ -111,8 +111,8 @@ app.post("/editBroker",async(req,res)=> {
 
 
 app.get('/',(req,res)=> {
-            res.render( 'Homepage.ejs' ); // opens localhost on index.html
-        });
+    res.render( 'Homepage.ejs' ); // opens localhost on index.html
+});
 app.get('/login',(req,res)=> {
     res.render( 'login.ejs' ); // opens localhost on index.html
 });
@@ -138,7 +138,7 @@ app.get('/calendarU',(req,res)=> {
     res.render('calendarU.ejs');
 });
 app.get('/calendarB',(req,res)=> {
-        res.render( 'calendarB.ejs' );
+    res.render( 'calendarB.ejs' );
 });
 app.get('/fillerA',(req,res)=> {
     res.render( 'fillerA.ejs' );
@@ -176,7 +176,9 @@ app.use('/broker', brkRouter)
 
 
 app.listen(3000);
-        console.log("Server listening on port 3000");
+console.log("Server listening on port 3000");
+
+
 
 
 
