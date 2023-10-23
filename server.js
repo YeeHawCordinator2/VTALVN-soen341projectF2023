@@ -111,7 +111,7 @@ app.post("/editBroker",async(req,res)=> {
 
 
 app.get('/',(req,res)=> {
-    res.render( 'Homepage.ejs' ); // opens localhost on index.html
+    res.render( 'buy_rentU.ejs' ); // opens localhost on index.html
 });
 app.get('/login',(req,res)=> {
     res.render( 'login.ejs' ); // opens localhost on index.html
