@@ -5,7 +5,7 @@ const {MongoClient} = require('mongodb');
 const bodyParser = require('body-parser');
 const {get1Broker, get1User, get1Admin} = require("./model/database/getDB");
 const {checkBroker, checkUser, checkAdmin, checkUsername} = require("./model/database/checkPassword");
-const {addNewUser, addNewBroker} = require("./model/database/addBD");
+const {addNewUser, addNewBroker, addNewHouse} = require("./model/database/addBD");
 const listingsRouter = require('./routes/listings');
 const app = express();
 const brkRouter = require('./routes/brokers');
@@ -108,7 +108,51 @@ app.post("/editBroker",async(req,res)=> {
 
 });
 
+app.post("/newListings",async(req,res)=> {
+    
+    
+    const name = req.body.name;
+    const price = req.body.price;
+    const location = req.body.location;
+    const numOfBed = req.body.numOfBed;
+    const numOfBath = req.body.numOfBath;
+    const furnished = req.body.furnished;
+    const buildYRS = req.body.buildYRS;
+    const extra = req.body.extra;
+    const buildType = req.body.buildType;
+    const stories = req.body.stories;
+    const clName = req.body.clName;
+    const brkName = req.body.brkName;
+    const sizeOfProp = req.body.sizeOfProp;
+    const garage = req.body.garage;
+    const listingType = req.body.listingType;
+    const piclink = req.body.piclink;
 
+    try{
+        const houses = await addNewHouse(client,name,price,location, numOfBed, numOfBath, furnished, buildYRS, extra, buildType, stories, clName, brkName, sizeOfProp, garage, listingType, piclink);
+        res.redirect("/myListings");
+    }catch (e) {
+        console.log("Error adding house");
+        res.redirect("/newListings");
+    }
+});
+app.post("/editListings",async(req,res)=> {
+    // const username = req.body.username;
+    // const name = req.body.name;
+    // const password = req.body.password;
+    // const og= req.body.user_id;
+    // console.log(og);
+    // try{
+    //     const user = await editBroker(client,og, { name: name, username: username, password: await bcrypt.hash(password, 10) });
+    //     res.redirect("/ViewBrokers");
+    // }catch (e) {
+    //     console.log("Error adding user");
+    //     res.redirect("/editBroker");
+    // }
+    // console.log("edit broker");
+
+
+});
 
 
 app.get('/',(req,res)=> {
@@ -184,6 +228,10 @@ app.get('/myListings', async (req,res)=> {
 app.get('/newListings', (req,res)=> {
     res.render('listings/newListings.ejs');
 });
+app.get('/editListings', (req,res)=> {
+    res.render('listings/editListings.ejs');
+});
+
 /* GET users listing. */
 app.use('/listings', listingsRouter); //use listings as the route for myListings
 app.use('/broker', brkRouter)
