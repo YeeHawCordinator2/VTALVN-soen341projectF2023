@@ -94,8 +94,3 @@ body {
 .main {
     transition: transform 0.2s;
 }
-/*new*/
-form{
-    background-color:rgb(229, 239, 242);
-    cursor:pointer;
-}
