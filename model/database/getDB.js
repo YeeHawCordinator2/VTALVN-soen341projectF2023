@@ -39,10 +39,10 @@ async function getHouseImage(client, listingName) {
 
 //read fcts - user aggregate and pipeline
 async function readHouses(client){
-    return await client.db("soen_341").collection("houses").find()
+    return await client.db("soen_341").collection("houses").find({}).toArray();
 }
 async function readBrokers(client){
-    return await client.db("soen_341").collection("brokers").find()
+    return await client.db("soen_341").collection("brokers").find().toArray()
 }
 async function get1House(client, listingname){
     return await client.db("soen_341").collection("houses").findOne(listingname)
@@ -80,50 +80,54 @@ async function getHousesBy1Broker(client, username){
 }
 
 async function getHousePriceLower(client, price){
-    return await client.db("soen_341").collection("houses").find({ price : { $lt : price }});}
+    return await client.db("soen_341").collection("houses").find({ price : { $lt : price }}).toArray();
+}
 async function getHousePriceHigher(client, price){
-    return await client.db("soen_341").collection("houses").find( {price: {$gt: price}});
+    return await client.db("soen_341").collection("houses").find( {price: {$gt: price}}).toArray();
 }
 async function getHouseBeforeDate(client, date){
     return await client.db("soen_341").collection("houses").find( {listingDate: {$lte: date}});
 }
 async function getHouseAfterDate(client, date){
-    return await client.db("soen_341").collection("houses").find( {listingDate: {$gte: date}});
+    return await client.db("soen_341").collection("houses").find( {listingDate: {$gte: date}}).toArray();
 }
 async function getHouseLocation(client, location){
-    return await client.db("soen_341").collection("houses").find( {location: location});
+    return await client.db("soen_341").collection("houses").find( {location: location}).toArray();
 }
 async function getHouseBathgreaterThan(client, numOfBath){
-    return await client.db("soen_341").collection("houses").find( {numOfBath: {$gte: numOfBath}});
+    return await client.db("soen_341").collection("houses").find( {numOfBath: {$gte: numOfBath}}).toArray();
 }
 async function getHouseBedgreaterThan(client, numOfBed){
-    return await client.db("soen_341").collection("houses").find( {numOfBed: {$gte: numOfBed}});
+   return await client.db("soen_341").collection("houses").find( {numOfBed: {$gte: numOfBed}}).toArray();
 }
 async function getHouseFurnished(client, furnished){
-    return await client.db("soen_341").collection("houses").find( {furnished: furnished});
+    return await client.db("soen_341").collection("houses").find( {furnished: furnished}).toArray();
 }
 async function getHouseBuildYRSGreater(client, buildYRS){
-    return await client.db("soen_341").collection("houses").find( {buildYRS: {$gte: buildYRS}});
+    return await client.db("soen_341").collection("houses").find( {buildYRS: {$gte: buildYRS}}).toArray();
 }
 async function getHouseBuildType(client, buildType){
-    return await client.db("soen_341").collection("houses").find( {buildType: buildType});
+    return await client.db("soen_341").collection("houses").find( {buildType: buildType}).toArray();
 }
 async function getHouseStories(client, stories){
-    return await client.db("soen_341").collection("houses").find( {stories: stories});
+    return await client.db("soen_341").collection("houses").find( {stories:{$gte: stories}}).toArray();
 }
 async function getHouseSizeOfPropGreater(client, sizeOfProp){
-    return await client.db("soen_341").collection("houses").find( {sizeOfProp: {$gte: sizeOfProp}});
+    return await client.db("soen_341").collection("houses").find( {sizeOfProp: {$gte: sizeOfProp}}).toArray();
 }
 async function getHouseSizeOfPropLess(client, sizeOfProp){
-    return await client.db("soen_341").collection("houses").find( {sizeOfProp: {$lte: sizeOfProp}});
+    return await client.db("soen_341").collection("houses").find( {sizeOfProp: {$lte: sizeOfProp}}).toArray();
 }
 async function getHouseGarage(client, garage){
-    return await client.db("soen_341").collection("houses").find( {garage: garage});
+    return await client.db("soen_341").collection("houses").find( {garage: garage}).toArray();
 }
 async function getHouseListingType(client, listingType){
-    return await client.db("soen_341").collection("houses").find( {listingType: listingType});
+    return await client.db("soen_341").collection("houses").find( {listingType: listingType}).toArray();
+}
+async function getHouseextra(client, extra){
+    return await client.db("soen_341").collection("houses").find( {extra: extra}).toArray();
 }
 
 
 
-module.exports = { getHouseID, get1Admin, getBrokerID, getUserID, get1Broker, get1User, getHousesBy1Broker, readHouses, get1House, getHouseSeller,getHouseBroker , getHousePreferences, readBrokers, getHouseImage, getHouseLocation, getHousePriceLower, getHousePriceHigher, getHouseBeforeDate, getHouseAfterDate, getHouseBathgreaterThan, getHouseBedgreaterThan, getHouseFurnished, getHouseBuildYRSGreater, getHouseBuildType, getHouseStories, getHouseSizeOfPropGreater, getHouseSizeOfPropLess, getHouseGarage, getHouseListingType};
+module.exports = { getHouseID, getHouseextra, get1Admin, getBrokerID, getUserID, get1Broker, get1User, getHousesBy1Broker, readHouses, get1House, getHouseSeller,getHouseBroker , getHousePreferences, readBrokers, getHouseImage, getHouseLocation, getHousePriceLower, getHousePriceHigher, getHouseBeforeDate, getHouseAfterDate, getHouseBathgreaterThan, getHouseBedgreaterThan, getHouseFurnished, getHouseBuildYRSGreater, getHouseBuildType, getHouseStories, getHouseSizeOfPropGreater, getHouseSizeOfPropLess, getHouseGarage, getHouseListingType};
