@@ -25,7 +25,7 @@ try{
 }
 
 
-
+//Not for creating new brokers, this function takes REGISTERED brokers and 'gets' them from the database
 router.get('/edit/:id', async (req, res) => {
     const broker = await get1Broker(client, req.params.id);
     //console.log(broker.name)
