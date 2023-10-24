@@ -21,7 +21,7 @@ test('check broker right user wrong pass', async() => {
 });
 test('check broker wrong user random pass', async() => {
     await client.connect();
-    expect(await checkBroker(client,"hanseltime","potatoland")).resolves.toBe(false);
+    await expect(await checkBroker(client,"hanseltime","potatoland")).resolves.toBe(false);
     await client.close();
 
 });
