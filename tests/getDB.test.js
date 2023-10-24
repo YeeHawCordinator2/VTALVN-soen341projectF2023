@@ -1,4 +1,9 @@
-const sum = require('../model/database/getDB');
+const sum = require('../model/sum');
+
+test('adds 1 + 2 to equal 3', () => {
+    expect(sum(1, 2)).toBe(3);
+});
+/*const sum = require('../model/database/getDB');
 const {MongoClient} = require("mongodb");
 const {checkBroker} = require("../model/database/checkPassword");
 const {get1Broker, get1House, readHouses, readBrokers, get1User, get1Admin, getHouseSeller, getHousePreferences,
@@ -13,7 +18,8 @@ try{
 }   catch (e) {
     console.log("Error connecting to database");
 }
-/*
+
+
 test('test get 1 Houses exist', () => {
     expect(get1House(client,"Luffy's chalet style house")).toBe(true);
 });
