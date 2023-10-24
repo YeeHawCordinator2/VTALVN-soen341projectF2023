@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "test": "jest",
     "devStart": "nodemon server.js"
   },
   "author": "",

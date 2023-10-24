@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real Estate </title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/searchBar.css">
+
 </head>
 <body>
 <header>
@@ -58,6 +60,84 @@
         document.body.classList.toggle("nav-open");
     }
 </script>
+
+<div  id="searchbar">
+    <form action="/buy_rent" method="POST">
+        <div class="horizontal">
+            <input type="text" class="answ" name ="location" placeholder="Location">
+            <input type="text" class="answ" id="minPrice"  name ="minPrice" placeholder="minPrice">
+            <input type="text" class="answ" id="maxPrice" name ="maxPrice" placeholder="maxPrice">
+
+            <select name="bath"  class="answ" id="baths">
+                <option value="any" disabled selected>Baths</option>
+                <option value="any">Any</option>
+                <option value="1">1+</option>
+                <option value="2">2+</option>
+                <option value="3">3+</option>
+                <option value="4">4+</option>
+                <option value="5">5+</option>
+            </select>
+
+            <select name="beds" class="answ" id="beds">
+                <option value="any" disabled selected>Beds</option>
+                <option value="any">Any</option>
+                <option value="1">1+</option>
+                <option value="2">2+</option>
+                <option value="3">3+</option>
+                <option value="4">4+</option>
+                <option value="5">5+</option>
+            </select>
+            <input type="text" id="yearBuilt" class="answ" name ="yearBuild" placeholder="yearBuilt >">
+            <select name="floors" id="floors" class="answ">
+                <option value="any" disabled selected>Floors</option>
+                <option value="any">Any</option>
+                <option value="1">1+</option>
+                <option value="2">2+</option>
+                <option value="3">3+</option>
+            </select>
+            <select name="garage" id="garage" class="answ">
+                <option value="any" disabled selected>Garage</option>
+                <option value="any" >Any</option>
+                <option value="no">no</option>
+                <option value="yes" >yes</option>
+
+            </select>
+
+            <select name="prop" id="propertyType" class="answ">
+                <option value="any" disabled selected>Build type</option>
+                <option value="any">Any</option>
+                <option value="house">House</option>
+                <option value="apartment">Apartment</option>
+                <option value="condo">Condo</option>
+
+            </select>
+
+        </div>
+        <div class="horizontal" id="h2">
+            <select name="furnished" id="furnished" class="answ">
+                <option value="any" disabled selected>Furnished</option>
+                <option value="any" >Any</option>
+                <option value="no">no</option>
+                <option value="yes" >yes</option>
+            </select>
+            <select name="extra" id="extra" class="answ">
+                <option value="any" disabled selected>Extra</option>
+                <option value="any" >Any</option>
+                <option value="pool">pool</option>
+                <option value="gym" >gym</option>
+            </select>
+            <input type="text" id="propsize" class="answ" name ="propsize" placeholder="Property size >">
+            <select name="listing" id="listing" class="answ">
+                <option value="any" disabled selected>Listing Type</option>
+                <option value="sell" >sell</option>
+                <option value="rent">rent</option>
+                <option value="sold" >sold</option>
+            </select>
+            <input type="text" id="time" class="answ" name ="time" placeholder="Listed since (yyyy-mm-dd)">
+            <input type="submit" value="Search" id="button">
+        </div>
+    </form>
+</div>
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
