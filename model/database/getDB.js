@@ -1,32 +1,4 @@
 
-// get LISTING ID, done
-async function getHouseID(client, listingName){
-    try {
-        const houseid = client.db("soen_341").collection("houses").findOne({name: listingName});
-        return houseid.insertedId;
-    }catch (e) {
-        console.log("houselisting not found");
-    }
-}
-
-async function getBrokerID(client, brokerName){
-    try {
-        const brokerid = client.db("soen_341").collection("brokers").findOne({username: brokerName});
-        return brokerid.insertedId;
-    }catch (e) {
-        console.log("broker not found");
-    }
-}
-
-async function getUserID(client, username){
-    try{
-        const userid = client.db("soen_341").collection("users").findOne({username: username});
-        return userid.insertedId;
-    }catch (e) {
-        console.log("user not found");
-    }
-}
-
 async function getHouseImage(client, listingName) {
     try {
         const imageid = await client.db("soen_341").collection("houses").findOne({name: listingName});
@@ -130,4 +102,4 @@ async function getHouseextra(client, extra){
 
 
 
-module.exports = { getHouseID, getHouseextra, get1Admin, getBrokerID, getUserID, get1Broker, get1User, getHousesBy1Broker, readHouses, get1House, getHouseSeller,getHouseBroker , getHousePreferences, readBrokers, getHouseImage, getHouseLocation, getHousePriceLower, getHousePriceHigher, getHouseBeforeDate, getHouseAfterDate, getHouseBathgreaterThan, getHouseBedgreaterThan, getHouseFurnished, getHouseBuildYRSGreater, getHouseBuildType, getHouseStories, getHouseSizeOfPropGreater, getHouseSizeOfPropLess, getHouseGarage, getHouseListingType};
+module.exports = {  getHouseextra, get1Admin, get1Broker, get1User, getHousesBy1Broker, readHouses, get1House, getHouseSeller,getHouseBroker , getHousePreferences, readBrokers, getHouseImage, getHouseLocation, getHousePriceLower, getHousePriceHigher, getHouseBeforeDate, getHouseAfterDate, getHouseBathgreaterThan, getHouseBedgreaterThan, getHouseFurnished, getHouseBuildYRSGreater, getHouseBuildType, getHouseStories, getHouseSizeOfPropGreater, getHouseSizeOfPropLess, getHouseGarage, getHouseListingType};
