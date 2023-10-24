@@ -4,6 +4,7 @@
 //House
 const {deleteUser} = require("./deleteDB");
 const bcrypt = require("bcrypt");
+const {ObjectId} = require("mongodb");
 //HOUSE
 async function edit1HouseAllProperty(client, listingName, updatedListing){
     try {
@@ -29,7 +30,7 @@ async function editImage(client, newpic, listingName){
 
 async function editBrokerPassword(client,listingName, pass){
     try {
-        const brk = await client.db("soen_341").collection("brokers").updateOne({name: listingName}, {$set:{password: bcrypt.hash(pass, 10)}});
+        const brk = await client.db("soen_341").collection("brokers").updateOne({name: listingName}, {$set:{password: await bcrypt.hash(pass, 10)}});
 return await editBrokerHouse(client, listingName, brk);
 
     }catch (e) {
@@ -55,10 +56,10 @@ async  function editBrokerUsername(client, listingName,user){
 }
 async function editBroker(client, listingName,all){
     try {
-        const brk = await client.db("soen_341").collection("brokers").updateOne({name: listingName}, {$set: all});
+        const brk = await client.db("soen_341").collection("brokers").updateOne({username: listingName}, {$set: all});
         return await editBrokerHouse(client, listingName, brk);
     }catch (e) {
-        console.log("house not found");
+        console.log("broker not found");
     }
 }
 
@@ -81,7 +82,6 @@ async function editHousePreference(client, listingName, updatedListing){
     try {
         const house = await client.db("soen_341").collection("users").find({name: listingName});
         const pref = await client.db("soen_341").collection("user_preference").updateOne({user_id: house._id}, {$set:updatedListing});
-        const usr = await client.db("soen_341").collection("users").updateOne({name: listingName}, {$set:{user_preference: pref._id}});
 return await editUserHouse(client, listingName, usr);
     }catch (e) {
         console.log("house not found");
@@ -91,7 +91,7 @@ return await editUserHouse(client, listingName, usr);
 
 async function editUserPassword(client, listingName, pass){
     try {
-        const user = await client.db("soen_341").collection("users").updateOne({name: listingName}, {$set:{password: bcrypt.hash(pass, 10)}});
+        const user = await client.db("soen_341").collection("users").updateOne({name: listingName}, {$set:{password: await bcrypt.hash(pass, 10)}});
         return await editUserHouse(client, listingName, user);
     }catch (e) {
         console.log("house not found");

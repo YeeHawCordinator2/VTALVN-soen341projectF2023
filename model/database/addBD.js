@@ -45,7 +45,7 @@ async function addNewBroker(client, username, name, password){  //encrypt user n
      await client.db("soen_341").collection("brokers").insertOne({
         name: name,
         username: username,
-        password: bcrypt.hash(password, 10)
+        password: await bcrypt.hash(password, 10)
     });}
     catch(e){
         console.log("error - add broker");
@@ -57,7 +57,7 @@ async function addNewUser(client, username, name, password){ //encrypt user n pa
        const user = await client.db("soen_341").collection("users").insertOne({
            name: name,
            username: username,
-           password: bcrypt.hash(password, 10)
+           password: await bcrypt.hash(password, 10)
        });
        return await client.db("soen_341").collection("user_preference").insertOne({
            user_id: user.insertedId,
@@ -86,7 +86,7 @@ async function addNewAdmin(client, username, name, password){ //encrypt user n p
         return await client.db("soen_341").collection("system_admin").insertOne({
             name: name,
             username: username,
-            password: bcrypt.hash(password, 10)
+            password: await bcrypt.hash(password, 10)
         });
     }catch(e){
         console.log("error - add admin");
