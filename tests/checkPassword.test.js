@@ -57,3 +57,4 @@ test('check user wrong username', async() => {
     expect(await checkUsername(client,"user0")).toBe(false);
 });
 
+client.close();
