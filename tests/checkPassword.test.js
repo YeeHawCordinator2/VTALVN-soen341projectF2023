@@ -1,4 +1,4 @@
-const sum = require('../model/database/checkPassword');
+require('../model/database/checkPassword');
 const {MongoClient} = require("mongodb");
 const {checkBroker, checkUser, checkAdmin, checkUsername} = require("../model/database/checkPassword");
 
@@ -57,4 +57,3 @@ test('check user wrong username', async() => {
     expect(await checkUsername(client,"user0")).toBe(false);
 });
 
-client.close();
