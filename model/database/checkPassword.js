@@ -1,7 +1,7 @@
 
 
 //check password DONE
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 
 async function checkUser(client, username, password){
     const hashPass = await client.db("soen_341").collection("users").findOne({username: username});
