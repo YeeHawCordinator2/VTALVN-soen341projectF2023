@@ -100,7 +100,7 @@
 }
  -->
 
-<form action="/newListings" method="POST">
+<form action="/newListings" enctype="multipart/form-data" method="POST">
     <div class="input-box">
         <input class="form-control" type="text" placeholder="Name" name="name" required>
     </div>
@@ -145,7 +145,7 @@
     </div>
     <div class="input-box">
         <label for="image">Upload Image</label>
-        <input class="file-upload-input" type="file"  name="image" required>
+        <input class="file-upload-input" type="file"  name="picpic" required>
     </div>
     <button id="header-button" type="submit" class="btn"> Add Listing </button>
 

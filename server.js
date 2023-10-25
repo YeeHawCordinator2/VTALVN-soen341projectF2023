@@ -1,8 +1,20 @@
-
-
 const express = require('express');
 const {MongoClient, ObjectId} = require('mongodb');
 const bodyParser = require('body-parser');
+const path = require('path');
+const multer = require("multer");
+const fs = require("fs");
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "uploads");
+    },
+    filename:(req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now());
+    }}
+);
+const encode = require('nodejs-base64-encode');
+
+const upload = multer({storage: storage});
 const {get1Broker, get1User, get1Admin, getHouseGarage, getHouseLocation, getHousePriceLower, getHousePriceHigher,
     getHouseBathgreaterThan, getHouseBuildYRSGreater, getHouseBedgreaterThan, getHouseBuildType, getHouseFurnished,
     getHouseStories, getHouseextra, getHouseSizeOfPropGreater, getHouseListingType, getHouseBeforeDate, readHouses,
@@ -17,15 +29,17 @@ const methodOverride = require('method-override')
 const {editBroker} = require("./model/database/editDB");
 const bcrypt = require("bcrypt");
 
+async function processing() {
+
+}
+
+
+
 app.use(bodyParser.json());
 app.set('view-engine', 'ejs');
 app.use(express.static(__dirname+'/views'));
-app.use(bodyParser.urlencoded({
-    extended: true
-})); //
-app.use(express.urlencoded({
-    extended: true
-}));
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 
 const uri = "mongodb+srv://naolal30:ConnectdatabasetoWebstorm100.@cluster0.ttfusik.mongodb.net/test?retryWrites=true&w=majority";
@@ -37,7 +51,11 @@ try{
 }   catch (e) {
     console.log("Error connecting to database");
 }
-
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 app.post("/login", async (req,res)=> {
     const username = req.body.username;
@@ -339,8 +357,8 @@ for(let i = 0; i<newArr.length; i++){
     res.redirect("/");
 });
 
-app.post("/newListings",async(req,res)=> {
-    
+app.post("/newListings", upload.single("picpic"), async(req,res)=> {
+
     
     const name = req.body.name;
     const price = req.body.price;
@@ -352,16 +370,20 @@ app.post("/newListings",async(req,res)=> {
     const extra = req.body.extra;
     const buildType = req.body.buildType;
     const stories = req.body.stories;
-    const clName = req.body.clName;
-    const brkName = req.body.brkName;
+    const clName = req.body.user;
+    const brkName = req.body.broker;
     const sizeOfProp = req.body.sizeOfProp;
     const garage = req.body.garage;
     const listingType = req.body.listingType;
-    const piclink = req.body.piclink;
+    const piclink = fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename));
+    const base64data = encode.encode(piclink, 'base64');
+    const pic = "data:image/jpg;base64," + base64data;
+
 
     try{
-        const houses = await addNewHouse(client,name,price,location, numOfBed, numOfBath, furnished, buildYRS, extra, buildType, stories, clName, brkName, sizeOfProp, garage, listingType, piclink);
-        res.redirect("/myListings");
+       const houses = await addNewHouse(client,name,price,location, numOfBed, numOfBath, furnished, buildYRS, extra, buildType, stories, clName, brkName, sizeOfProp, garage, listingType, pic);
+       res.redirect("/myListings");
+
     }catch (e) {
         console.log("Error adding house");
         res.redirect("/newListings");
