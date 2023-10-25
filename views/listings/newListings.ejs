@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate </title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<header>
+    <img id="logo3" src="../css/logo3.png" alt="logo3">
+    <a href="login"> <button id="header-button" >Sign in</button></a>
+</header>
+<nav class="nav" style = "z-index:1000;">
+    <button type="button" class="nav-close" onclick="toggleNav()">
+        <ion-icon name="close-outline" size="large"></ion-icon>
+    </button>
+    <div class="nav-links-container" id="BrokerMenu"  >
+        <a href="buy_rentB" class="nav__link">
+            <span class="nav__text">Buy / Rent</span>
+            <ion-icon name="cash-outline" size="large"></ion-icon>
+        </a>
+
+        <a href="myListings" class="nav__link">
+            <span class="nav__text">My Listings</span>
+            <ion-icon name="list-outline" size="large"></ion-icon>
+
+        </a>
+        <a href="fillerB" class="nav__link">
+            <span class="nav__text">My Visits</span>
+            <ion-icon name="calendar-outline" size="large"></ion-icon>
+        </a>
+        <a href="fillerB" class="nav__link">
+            <span class="nav__text">Visit Requests</span>
+            <ion-icon name="calendar-outline" size="large"></ion-icon>
+        </a>
+        <a href="fillerB" class="nav__link">
+            <span class="nav__text">Personal Info</span>
+            <ion-icon name="person-outline" size="large"></ion-icon>
+        </a>
+        <a href="calendarB" class="nav__link">
+            <span class="nav__text">Calendar</span>
+            <ion-icon name="calculator-outline" size="large"></ion-icon>
+        </a>
+        <a href="fillerB" class="nav__link">
+            <span class="nav__text">Match Property</span>
+            <ion-icon name="search-outline" size="large"></ion-icon>
+        </a>
+        <a href="fillerB" class="nav__link">
+            <span class="nav__text">Offers</span>
+            <ion-icon name="cash-outline" size="large"></ion-icon>
+        </a>
+
+    </div>
+
+</nav>
+<main class="main">
+    <button onclick="toggleNav()"><ion-icon name="menu-outline"></ion-icon></button>
+
+</main>
+
+<!-- Rest of your website content goes here -->
+
+<div class="container">
+<h1> New Listings </h1>
+<p> Enter "N/A" if entries are not applicable </p>
+
+<!-- 
+    {
+  "_id": {
+    "$oid": "6529eaf90c613feaf25b5ded"
+  },
+  "name": "Luffy's chalet style house",
+  "image_id": {
+    "$oid": "6529eaf80c613feaf25b5dec"
+  },
+  "price": 1000000,
+  "location": "westmount",
+  "numOfBath": 4,
+  "numOfBed": 6,
+  "furnished": "no",
+  "buildYRS": 2020,
+  "extra": "NA",
+  "buildType": "house",
+  "stories": 2,
+  "sizeOfProp": 5000,
+  "garage": "no",
+  "listingType": "buy",
+  "listingDate": {
+    "$date": "2023-10-14T01:12:25.193Z"
+  },
+  "seller": {
+    "$oid": "6529a71bcc11df68872e8495"
+  },
+  "broker": {
+    "$oid": "6529a49298c4e6aa7e85982f"
+  }
+}
+ -->
+
+<form action="/newListings" method="POST">
+    <div class="input-box">
+        <input class="form-control" type="text" placeholder="Name" name="name" required>
+    </div>
+    <div class="input-box">
+        <input class="form-control" type="text" placeholder="Price" name="price" required>
+    </div>
+    <div class="input-box">
+        <input class="form-control" type="text" placeholder="Seller" name="user" required>
+    </div>
+    <div class="input-box">
+        <input class="form-control" type="text" placeholder="Broker" name="brokers" required>
+    </div>
+    <div class="input-box">
+        <input class="form-control"  type="text" placeholder="Type of Building" name="buildType" required>
+    </div>
+    <div class="input-box">
+        <input class="form-control" type="text" placeholder="Number of Floors" name="stories" required>
+    </div>
+    <div class="input-box">
+        <input class="form-control" type="text" placeholder="Number Of Bathrooms" name="numOfBath" required>
+    </div>
+    <div class="input-box">
+        <input class="form-control" type="text" placeholder="Size of Property (In Square/Feet)" name="sizeOfProp" required>
+    </div>
+    <div class="input-box">
+        <input class="form-control" type="text" placeholder="Location" name="location" required>
+    </div>
+    <div class="input-box">
+        <input class="form-control" type="text" placeholder="Garage Included? (Enter 'yes' or 'no')" name="buildType" required>
+    </div>
+    <div class="input-box">
+        <input class="form-control" type="text" placeholder="Year of Construction" name="buildYRS" required>
+    </div>
+    <div class="input-box">
+        <input class="form-control" type="text" placeholder="Furnished? (Enter 'yes' or 'no')" name="furnished" required>
+    </div>
+    <div class="input-box">
+        <input class="form-control" type="text" placeholder="Extra" name="extra" required>
+    </div>
+    <div class="input-box">
+        <input class="form-control" type="text" placeholder="Listing Type" name="listingType" required>
+    </div>
+    <div class="input-box">
+        <label for="image">Upload Image</label>
+        <input class="file-upload-input" type="file"  name="image" required>
+    </div>
+    <button id="header-button" type="submit" class="btn"> Add Listing </button>
+
+    <a href="myListings" class="btn btn-secondary"> Cancel </a>
+</form>
+
+</div>
+
+<script>
+    function toggleNav() {
+        document.body.classList.toggle("nav-open");
+    }
+</script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
