@@ -2,6 +2,9 @@ const express = require('express');
 const {MongoClient, ObjectId} = require('mongodb');
 const bodyParser = require('body-parser');
 const path = require('path');
+const cookieParser = require("cookie-parser");
+const sessions = require('express-session');
+//const MongoStore = require('connect-mongo')(sessions);
 const multer = require("multer");
 const fs = require("fs");
 const storage = multer.diskStorage({
@@ -29,18 +32,13 @@ const methodOverride = require('method-override')
 const {editBroker} = require("./model/database/editDB");
 const bcrypt = require("bcrypt");
 
-async function processing() {
-
-}
-
-
-
 app.use(bodyParser.json());
 app.set('view-engine', 'ejs');
 app.use(express.static(__dirname+'/views'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
+app.use(cookieParser());
 
 const uri = "mongodb+srv://naolal30:ConnectdatabasetoWebstorm100.@cluster0.ttfusik.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
@@ -56,29 +54,59 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
+const oneDay = 1000 * 60 * 60 * 24;
+
+//session middleware
+app.use(sessions({
+    secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
+    saveUninitialized:true,
+    cookie: { maxAge: oneDay },
+    resave: false,
+   // store: new MongoStore({ })
+}));
+
 
 app.post("/login", async (req,res)=> {
     const username = req.body.username;
     const password = req.body.password;
+    let session = null;
 
     if (await get1Admin(client, username) != null) {
         //user = await get1Admin(client, username);
-        if (await checkAdmin(client, username, password) === true)
+        if (await checkAdmin(client, username, password) === true) {
             res.redirect("/login_successA")
+            session=req.session;
+            session.userid=username;
+            session.type = "admin";
+        }
         else res.redirect("/logins")
     }
     else if (await get1Broker(client, username) != null) {
-        if (await checkBroker(client, username, password) === true)
+        if (await checkBroker(client, username, password) === true){
+            session=req.session;
+            session.userid=username;
+            session.type = "broker";
             res.redirect("/login_successB")
+        }
         else res.redirect("/logins")
     }
     else if (await get1User(client, username) != null) {
-        if (await checkUser(client, username, password) === true)
+        if (await checkUser(client, username, password) === true){
             res.redirect("/login_successU");
+        session=req.session;
+        session.userid=username;
+        session.type = "user";
+    }
         else res.redirect("/logins")
     }
     else res.redirect("/loginss");
 
+});
+
+
+app.post("/logout", (req,res)=> {
+    req.session.destroy();
+    res.redirect("/buy_rentU");
 });
 
 app.post("/register",async(req,res)=> {
@@ -129,7 +157,7 @@ app.post("/editBroker",async(req,res)=> {
 
 
 });
-app.post("/buy_rent",async(req,res)=> {
+app.post("/buy_rentU",async(req,res)=> {
     let location = req.body.location.toLowerCase();
     let minPrice = req.body.minPrice;
     let maxPrice = req.body.maxPrice;
@@ -341,20 +369,237 @@ for(let i = 0; i<newArr.length; i++){
     houseArr.push(await client.db("soen_341").collection("houses").findOne({_id: new ObjectId(newArr[i])}));
 }
 
+  //  const houses = await client.db("soen_341").collection("houses").find().toArray();
+    const pics= await client.db("soen_341").collection("house_pic").find().toArray();
+    for(let i=0;i<houseArr.length;i++){
+        for(let j=0;j<pics.length;j++){
+            if(houseArr[i].image_id.toString() === pics[j]._id.toString())
+                houseArr[i].image=pics[j].file;
+        }}
 
+    res.render( 'buy_rentU.ejs' , {houses: houseArr}); // opens localhost on index.html
+});
+app.post("/buy_rentB",async(req,res)=> {
+    let location = req.body.location.toLowerCase();
+    let minPrice = req.body.minPrice;
+    let maxPrice = req.body.maxPrice;
+    let bath = req.body.bath;
+    let beds = req.body.beds;
+    let yearBuild = req.body.yearBuild;
+    let floors = req.body.floors;
+    let garage = req.body.garage;
+    let prop = req.body.prop;
+    let furnished = req.body.furnished;
+    let extra = req.body.extra;
+    let propsize = req.body.propsize;
+    let listingType = req.body.listingType;
+    let time = req.body.time;
 
-  /*  console.log(og);
-    try{
-        const user = await editBroker(client,og, { name: name, username: username, password: await bcrypt.hash(password, 10) });
-        res.redirect("/ViewBrokers");
-    }catch (e) {
-        console.log("Error adding user");
-        res.redirect("/editBroker");
+    arr= [];
+    let arr11=[];
+    let isEmpty=false; // if is empty is true at the end whatever that was search was no good
+
+    if(location!==""){
+        location= await getHouseLocation(client, location);
+        if(location.length!==0){
+            for (let i = 0; i < location.length; i++) {
+                arr11.push(location[i]._id.toString());
+            }
+            arr.push(arr11);
+            arr11 = [];
+        }
+        else if(isEmpty===true) isEmpty=true;
+
     }
-    console.log("edit broker");
+    if(minPrice!==""){
+        minPrice= await getHousePriceHigher(client, parseInt(minPrice));
+        if(minPrice.length!==0){
+            for (let i = 0; i < minPrice.length; i++) {
+                arr11.push(minPrice[i]._id.toString());
+            }
+            arr.push(arr11);
+            arr11 = [];
+        }
+        else if(isEmpty===true) isEmpty=true;
 
-*/
-    res.redirect("/");
+    }
+    if(maxPrice!==""){
+        maxPrice= await getHousePriceLower(client, parseInt(maxPrice));
+        if(maxPrice.length!==0){
+
+            for (let i = 0; i < maxPrice.length; i++) {
+                arr11.push(maxPrice[i]._id.toString());
+            }
+            arr.push(arr11);
+            arr11 = [];
+        }
+        else if(isEmpty===true) isEmpty=true;
+
+    }
+    if(bath!=="any") {
+        bath = await getHouseBathgreaterThan(client, parseInt(bath));
+        if(bath.length!==0) {
+
+            for (let i = 0; i < bath.length; i++) {
+                arr11.push(bath[i]._id.toString());
+            }
+            arr.push(arr11);
+            arr11 = [];
+
+        }
+
+    }
+    if(beds!=="any"){
+        beds= await getHouseBedgreaterThan(client, parseInt(beds));
+        if(beds.length!==0) {
+
+            for (let i = 0; i < beds.length; i++) {
+                arr11.push(beds[i]._id.toString());
+            }
+            arr.push(arr11);
+            arr11 = [];
+
+        }
+
+    }
+    if(yearBuild!==""){
+        yearBuild= await getHouseBuildYRSGreater(client, parseInt(yearBuild));
+        if(yearBuild.length!==0){
+            for (let i = 0; i < yearBuild.length; i++) {
+                arr11.push(yearBuild[i]._id.toString());
+            }
+            arr.push(arr11);
+            arr11 = [];
+        }
+        else if(isEmpty===true) isEmpty=true;
+
+    }
+    if(floors!=="any"){
+        floors= await getHouseStories(client, parseInt(floors));
+
+        if(floors.length!==0){
+            for (let i = 0; i < floors.length; i++) {
+                arr11.push(floors[i]._id.toString());
+            }
+            arr.push(arr11);
+            arr11 = [];
+
+        }
+
+    }
+
+    if(garage!=="any"){
+        garage= await getHouseGarage(client, garage);
+        if(garage.length!==0) {
+            for (let i = 0; i < garage.length; i++) {
+                arr11.push(garage[i]._id.toString());
+            }
+            arr.push(arr11);
+            arr11 = [];
+
+        }
+
+    }
+    if(prop!=="any"){
+        prop= await getHouseBuildType(client, prop);
+        if(prop.length!==0) {
+            for (let i = 0; i < prop.length; i++) {
+                arr11.push(prop[i]._id.toString());
+            }
+            arr.push(arr11);
+            arr11 = [];
+
+        }
+
+    }
+    if(furnished!=="any"){
+        furnished= await getHouseFurnished(client, furnished);
+        if(furnished.length!==0){
+            for (let i = 0; i < furnished.length; i++) {
+                arr11.push(furnished[i]._id.toString());
+            }
+            arr.push(arr11);
+            arr11 = [];
+        }
+
+    }
+    if(extra!=="any") {
+        extra = await getHouseextra(client, extra);
+        if(extra.length!==0){
+            for (let i = 0; i < extra.length; i++) {
+                arr11.push(extra[i]._id.toString());
+            }
+            arr.push(arr11);
+            arr11 = [];
+        }
+
+    }
+    if(propsize!==""){
+        propsize= await getHouseSizeOfPropGreater(client, propsize);
+        if(propsize.length!==0) {
+            for (let i = 0; i < propsize.length; i++) {
+                arr11.push(propsize[i]._id.toString());
+            }
+            arr.push(arr11);
+            arr11 = [];
+        }
+        else if(isEmpty===true) isEmpty=true;
+
+    }
+    if(listingType!=="any"){
+        listingType= await getHouseListingType(client, listingType);
+        if(listingType.length!==0){
+
+            for (let i = 0; i < listingType.length; i++) {
+                arr11.push(listingType[i]._id.toString());
+            }
+            arr.push(arr11);
+            arr11 = [];
+        }
+
+    }
+    if(time!==""){ //CHECK
+        time= await getHouseAfterDate(client, new Date(time));
+        if(time.length!==0) {
+            for (let i = 0; i < time.length; i++) {
+                arr11.push(time[i]._id.toString());
+            }
+            arr.push(arr11);
+            arr11 = [];
+        }
+        else if(isEmpty===true) isEmpty=true;
+
+    }
+
+
+
+    let holdArr=[];
+    if(arr.length===0){
+        holdArr = await readHouses(client);
+        for (let i = 0; i < holdArr.length; i++) {
+            arr11.push(holdArr[i]._id.toString());
+        }
+        arr.push(arr11);
+    }
+
+    let newArr = arr.reduce((x, y) => x.filter((z) => y.includes(z)));
+
+    console.log(newArr);
+
+    let houseArr = [];
+    for(let i = 0; i<newArr.length; i++){
+        houseArr.push(await client.db("soen_341").collection("houses").findOne({_id: new ObjectId(newArr[i])}));
+    }
+
+    //  const houses = await client.db("soen_341").collection("houses").find().toArray();
+    const pics= await client.db("soen_341").collection("house_pic").find().toArray();
+    for(let i=0;i<houseArr.length;i++){
+        for(let j=0;j<pics.length;j++){
+            if(houseArr[i].image_id.toString() === pics[j]._id.toString())
+                houseArr[i].image=pics[j].file;
+        }}
+
+    res.render( 'buy_rentB.ejs' , {houses: houseArr}); // opens localhost on index.html
 });
 
 app.post("/newListings", upload.single("picpic"), async(req,res)=> {
@@ -377,7 +622,7 @@ app.post("/newListings", upload.single("picpic"), async(req,res)=> {
     const listingType = req.body.listingType;
     const piclink = fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename));
     const base64data = encode.encode(piclink, 'base64');
-    const pic = "data:image/jpg;base64," + base64data;
+    const pic = "data:image/jpeg;base64," + base64data;
 
 
     try{
@@ -409,8 +654,16 @@ app.post("/editListings",async(req,res)=> {
 });
 
 
-app.get('/',(req,res)=> {
-    res.render( 'buy_rentU.ejs' ); // opens localhost on index.html
+app.get('/',async(req,res)=> {
+    const houses = await client.db("soen_341").collection("houses").find().toArray();
+    const pics= await client.db("soen_341").collection("house_pic").find().toArray();
+    for(let i=0;i<houses.length;i++){
+        for(let j=0;j<pics.length;j++){
+            if(houses[i].image_id.toString() === pics[j]._id.toString())
+                houses[i].image=pics[j].file;
+        }}
+
+    res.render( 'buy_rentU.ejs' , {houses: houses}); // opens localhost on index.html
 });
 app.get('/login',(req,res)=> {
     res.render( 'login.ejs' ); // opens localhost on index.html
@@ -427,11 +680,27 @@ app.get('/register',(req,res)=> {
 app.get('/registerUserExist',(req,res)=> {
     res.render( 'registerUserExist.ejs' ); // opens localhost on index.html
 });
-app.get('/buy_rentB',(req,res)=> {
-    res.render( 'buy_rentB.ejs' ); // opens localhost on index.html
+app.get('/buy_rentB',async(req,res)=> {
+    const houses = await client.db("soen_341").collection("houses").find().toArray();
+    const pics= await client.db("soen_341").collection("house_pic").find().toArray();
+    for(let i=0;i<houses.length;i++){
+        for(let j=0;j<pics.length;j++){
+            if(houses[i].image_id.toString() === pics[j]._id.toString())
+                houses[i].image=pics[j].file;
+        }}
+
+    res.render( 'buy_rentB.ejs' , {houses: houses}); // opens localhost on index.html
 });
-app.get('/buy_rentU',(req,res)=> {
-    res.render( 'buy_rentU.ejs' );
+app.get('/buy_rentU',async(req,res)=> {
+    const houses = await client.db("soen_341").collection("houses").find().toArray();
+    const pics= await client.db("soen_341").collection("house_pic").find().toArray();
+    for(let i=0;i<houses.length;i++){
+        for(let j=0;j<pics.length;j++){
+            if(houses[i].image_id.toString() === pics[j]._id.toString())
+                houses[i].image=pics[j].file;
+        }}
+
+    res.render( 'buy_rentU.ejs' ,{houses: houses});
 });
 app.get('/calendarU',(req,res)=> {
     res.render('calendarU.ejs');
@@ -471,8 +740,14 @@ app.get('/editBroker',(req,res)=> {
 
 //connects to server
 app.get('/myListings', async (req,res)=> {
-    
+
     const houses = await client.db("soen_341").collection("houses").find().toArray();
+    const pics= await client.db("soen_341").collection("house_pic").find().toArray();
+    for(let i=0;i<houses.length;i++){
+        for(let j=0;j<pics.length;j++){
+        if(houses[i].image_id.toString() === pics[j]._id.toString())
+            houses[i].image=pics[j].file;
+        }}
 
     //NEEDS .EJS EXTENSION, ELSE IT THROWS NO EXTENSION ERROR
     res.render('listings/myListings.ejs' , {houses: houses});
