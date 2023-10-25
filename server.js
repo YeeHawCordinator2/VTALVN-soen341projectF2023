@@ -381,7 +381,31 @@ app.post("/editListings",async(req,res)=> {
     //     res.redirect("/editBroker");
     // }
     // console.log("edit broker");
+    const name = req.body.name;
+    const price = req.body.price;
+    const location = req.body.location;
+    const numOfBed = req.body.numOfBed;
+    const numOfBath = req.body.numOfBath;
+    const furnished = req.body.furnished;
+    const buildYRS = req.body.buildYRS;
+    const extra = req.body.extra;
+    const buildType = req.body.buildType;
+    const stories = req.body.stories;
+    const clName = req.body.clName;
+    const brkName = req.body.brkName;
+    const sizeOfProp = req.body.sizeOfProp;
+    const garage = req.body.garage;
+    const listingType = req.body.listingType;
+    const piclink = req.body.piclink;
+    const og = req.body.house_id;
 
+    try{
+        const houses = await editBroker(client, og, {name: name, price: price, location: location, numOfBed: numOfBed, numOfBath: numOfBath, furnished: furnished, buildYRS: buildYRS, extra: extra, buildType: buildType, stories: stories, seller: clName, broker: brkName, sizeOfProp: sizeOfProp, garage: garage, listingType: listingType, piclink: piclink});
+        res.redirect("/myListings");
+    }catch (e) {
+        console.log("Error editing house");
+        res.redirect("/editListings");
+    }
 
 
 });
