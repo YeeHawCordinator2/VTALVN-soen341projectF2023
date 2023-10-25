@@ -28,14 +28,17 @@ try{
 
 
 //Not for creating new listings, this function takes REGISTERED listings and 'gets' them from the database
-router.get('/edit/:id', async (req, res) => {
-    const listing = await get1House(client, req.params.id);
+router.put('/:id', async (req, res) => {
+    const houses = await get1House(client, req.params.id);
     //console.log(broker.name)
-    res.render('listings/editListings.ejs', {listings: listings})
+    res.render('listings/editListings.ejs', {houses: houses})
     //res.send("patoe")
 
 })
-
+router.get('/edit/:id', async (req, res) => {
+    const houses = await get1House(client, req.params.id);
+    res.render('listings/editListings.ejs', {houses: houses})
+})
 
 router.delete('/:id', async (req, res) => {
     await deleteHouse(client, req.params.id);

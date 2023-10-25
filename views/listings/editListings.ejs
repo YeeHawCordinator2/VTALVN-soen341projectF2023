@@ -65,15 +65,15 @@
 
 <div class="container">
 <h1> Edit Listings </h1>
-<p> Change values of an existing property </p>
+<p> Change values of a property </p>
 
 
 <form action="/editListings" method="POST">
     <div class="input-box">
-        <input class="form-control" type="text" placeholder="Name" name="name" required>
+        <input class="form-control" type="text" placeholder="<%= houses.name %>" name="name" required>
     </div>
     <div class="input-box">
-        <input class="form-control" type="text" placeholder="Price" name="price" required>
+        <input class="form-control" type="text" placeholder="price" name="price" required>
     </div>
     <div class="input-box">
         <input class="form-control" type="text" placeholder="User's Username" name="user" required>
