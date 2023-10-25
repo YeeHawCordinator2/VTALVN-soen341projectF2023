@@ -1,7 +1,62 @@
 1- specific login for admin (WE ALREADY HAVE ISSUE ABOUT SO DELETE ISSUE OR WE IMPLEMENT NEXT SPRINT)
 2- session after loging
-4- admin, broker, user edit their own info (name, username, password)
-5- search for broker
-6- Submit an offer to buy a property
-7- Offers management (view, accept, reject)
+3- admin, broker, user edit their own info (name, username, password)
+[4] - Search for Broker
+
+User Story Description:
+As a client , I should be able to search and acquire a broker for my transactions. 
+There should be a search bar and predefined specifications to facilitate in the process of searching for a broker. 
+Predefined specifications are the following; the number of years of experience, skills, education level and more.   
+
+User Acceptance Flow:
+The client should be able to search for the broker by clicking on “Search for Broker” a search bar will appear and predefined specifications. 
+The predefined specifications are the number of years of experience, skills, education level, % of transaction value, achievements and languages.
+
+Acceptance Criteria:
+1.Given that the client is logged in and on the home page.
+2.When the client clicks on “Search for brokers”.
+3.Then the client is redirected to a page to search for a broker. 
+A list of predefined specifications and search bar appear, the client can select the options and type on the search bar for the ideal broker. 
+Click the “search icon” to search for the Brokers.
+
+
+[5] -  Submit an offer to buy a property
+
+User Story Description:
+As a client, I should be able to submit an offer to acquire a property. 
+This includes a proposed sum , financial contingencies and the closing date of this offer. 
+Each offer should be reviewed by a broker.
+
+User Acceptance Flow:
+
+The user should be able to click on the button called “Create Offer” which allows the user to create an offer. 
+The offer should consist of the proposed sum, the financial contingencies and the closing date of this offer. 
+In addition, the broker should review the offer and see if the offer is filled out properly and verify the contingencies with the user of the listing. 
+
+Acceptance Criteria:
+1.Given that the client is logged in and is viewing the property listing.
+2.When the client clicks on “Create Offer”.
+3.Then the client is redirected to a page to fill out the offer. 
+After completing the offer, the user can click the “Submit Offer” and the offer is submitted to the broker and user of that listing.  
+
+
+[6] - Offers management (view, accept, reject)
+
+User Story Description: 
+As a user, I should be able to manage offers from the property. 
+In contrast, this includes viewing, accepting and rejecting the offer. 
+To view the offer, the user can click on the button that says “View Offers” it will create a page containing all the offers 
+where there will be an interactive button to either accept or reject the offer from the client.
+
+User Acceptance Flow:
+
+The user should be able to view the offers from other clients by clicking on the button called “View Offers” .
+Thus, it should redirect the user to another page where he can view the offers and make his decision whether or not to accept the offer. 
+
+Acceptance Criteria:
+
+1.Given that the user is logged in and is viewing his property listing.
+2.When user clicks on “View Offers”
+3.Then user is redirected to a page where it can see all the offers from the clients and the user can either accept or reject the offer. 
+
 
