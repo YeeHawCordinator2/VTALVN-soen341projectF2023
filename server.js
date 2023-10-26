@@ -659,11 +659,29 @@ app.post("/editListings",async(req,res)=> {
     const sizeOfProp = req.body.sizeOfProp;
     const garage = req.body.garage;
     const listingType = req.body.listingType;
-    const piclink = req.body.piclink;
     const og = req.body.house_id;
 
     try{
-        const house = await edit1HouseAllProperty(client, og, {name: name, price: price, location: location, numOfBed: numOfBed, numOfBath: numOfBath, furnished: furnished, buildYRS: buildYRS, extra: extra, buildType: buildType, stories: stories, seller: clName, broker: brkName, sizeOfProp: sizeOfProp, garage: garage, listingType: listingType, piclink: piclink});
+        const house = await edit1HouseAllProperty(client, og,
+            {
+                name: name,
+                image_id: (await client.db("soen_341").collection("houses").findOne({_id: new ObjectId(og)}))._id, //NEED TO CHANGE
+                price: price,
+                location: location,
+                numOfBath: numOfBath,
+                numOfBed: numOfBed,
+                furnished: furnished,
+                buildYRS: buildYRS,
+                extra: extra, // heating, pool, gym, ect.
+                buildType: buildType,
+                stories: stories,
+                sizeOfProp: sizeOfProp,
+                garage: garage,
+                listingType: listingType,
+                listingDate: (await client.db("soen_341").collection("houses").findOne({_id: new ObjectId(og)})).listingDate,
+                seller: (await client.db("soen_341").collection("users").findOne({username: clName}))._id,
+                broker: (await client.db("soen_341").collection("brokers").findOne({username: brkName}))._id
+            });
         res.redirect("/myListings");
     }catch (e) {
         console.log("Error editing house");
