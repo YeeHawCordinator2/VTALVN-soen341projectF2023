@@ -805,12 +805,22 @@ app.get('/editListings', (req,res)=> {
 
 app.get('/show.ejs', async (req,res)=> {
     
-    res.render('listings/show.ejs');
+    res.render('listings/showU.ejs');
 });
 
 app.get('/request.ejs', async (req,res)=> {
-    res.render('listings/request.ejs');
+    res.render('listings/requestU.ejs');
 });
+
+// app.get('/show.ejs', async (req,res)=> {
+    
+//     res.render('listings/show.ejs');
+// });
+
+// app.get('/request.ejs', async (req,res)=> {
+//     res.render('listings/request.ejs');
+// });
+
 /* GET users listing. */
 app.use('/listings', listingsRouter); //use listings as the route for myListings
 app.use('/broker', brkRouter);

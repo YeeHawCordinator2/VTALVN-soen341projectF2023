@@ -27,6 +27,19 @@ try{
 
 router.get('/request/:id', async (req, res) => {
     const houses = await get1House(client, req.params.id);
+    res.render('listings/requestU.ejs', {houses: houses})
+});
+
+router.get('/:id', async (req, res) => {
+    const houses = await get1House(client, req.params.id);
+    const pics= await client.db("soen_341").collection("house_pic").findOne({_id: houses.image_id});
+    houses.image=pics.file;
+    res.render('listings/showU.ejs', {houses: houses})
+})
+
+/*
+router.get('/request/:id', async (req, res) => {
+    const houses = await get1House(client, req.params.id);
     res.render('listings/request.ejs', {houses: houses})
 });
 
@@ -36,7 +49,7 @@ router.get('/:id', async (req, res) => {
     houses.image=pics.file;
     res.render('listings/show.ejs', {houses: houses})
 })
-
+*/
 
 
 router.get('/edit/:id', async (req, res) => {
