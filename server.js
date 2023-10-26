@@ -681,7 +681,7 @@ app.get('/', async(req,res)=> {
                 houses[i].image=pics[j].file;
         }}
     let message= "";
-    res.render('listings/buy_rentU.ejs' , {houses: houses, message:message}, {houses: houses});
+    res.render('listings/buy_rentU.ejs' , {houses: houses, message:message});
     
 });
 app.get('/login',(req,res)=> {
@@ -707,10 +707,11 @@ app.get('/buy_rentU',async(req,res)=> {
         for(let j=0;j<pics.length;j++){
             if(houses[i].image_id.toString() === pics[j]._id.toString())
                 houses[i].image=pics[j].file;
-        }}
+        }
+    }
     let message= "";
 
-    res.render( 'buy_rentU.ejs' ,{houses: houses, message: message}); // opens localhost on index.html
+    res.render( 'listings/buy_rentU.ejs' ,{houses: houses, message: message}); // opens localhost on index.html
 });
 app.get('/buy_rentB',async (req,res)=> {
     const houses = await client.db("soen_341").collection("houses").find().toArray();
