@@ -115,7 +115,7 @@ app.post("/register",async(req,res)=> {
     const password = req.body.password;
 
     try{
-        if(await checkUsername(client, username) === true) {
+        if(await checkUsername(client, username) === false) {
             await addNewUser(client, username, name, password);
             res.redirect("/login");
         }
@@ -606,7 +606,7 @@ let houseArr = [];
 }); */
 
 app.post("/newListings", upload.single("picpic"), async(req,res)=> {
-
+console.log("TPPPTOEF FE")
     
     const name = req.body.name;
     const price = req.body.price;
@@ -618,8 +618,8 @@ app.post("/newListings", upload.single("picpic"), async(req,res)=> {
     const extra = req.body.extra;
     const buildType = req.body.buildType;
     const stories = req.body.stories;
-    const clName = req.body.user;
-    const brkName = req.body.broker;
+    const clName = req.body.clName;
+    const brkName = req.body.brkName;
     const sizeOfProp = req.body.sizeOfProp;
     const garage = req.body.garage;
     const listingType = req.body.listingType;
@@ -629,7 +629,7 @@ app.post("/newListings", upload.single("picpic"), async(req,res)=> {
 
 
     try{
-       const houses = await addNewHouse(client,name,price,location, numOfBed, numOfBath, furnished, buildYRS, extra, buildType, stories, clName, brkName, sizeOfProp, garage, listingType, pic);
+       const message = await addNewHouse(client,name,price,location, numOfBed, numOfBath, furnished, buildYRS, extra, buildType, stories, clName, brkName, sizeOfProp, garage, listingType, pic);
        res.redirect("/myListings");
 
     }catch (e) {
@@ -686,7 +686,6 @@ app.post('/request',async(req,res)=> {
 app.get('/', async(req,res)=> {
     const houses = await client.db("soen_341").collection("houses").find().toArray();
 
-    //NEEDS .EJS EXTENSION, ELSE IT THROWS NO EXTENSION ERROR
     const pics= await client.db("soen_341").collection("house_pic").find().toArray();
     for(let i=0;i<houses.length;i++){
         for(let j=0;j<pics.length;j++){
@@ -794,7 +793,7 @@ app.get('/myListings', async (req,res)=> {
 
 //connects to server
 app.get('/newListings', (req,res)=> {
-    res.render('listings/newListings.ejs');
+    res.render('listings/newListings.ejs',);
 });
 app.get('/editListings', (req,res)=> {
     res.render('listings/editListings.ejs');

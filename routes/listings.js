@@ -40,10 +40,10 @@ router.get('/:id', async (req, res) => {
 
 
 router.get('/edit/:id', async (req, res) => {
-    const houses = await get1House(client, req.params.id);
-    // for (let i = 0; i < houses.length; i++) {
-    //     houses.brokers = (await get1Broker(client, houses[i].broker)).username;
-    // }
+    const houses = await get1House(client, req.params.listingname);
+    for (let i = 0; i < houses.length; i++) {
+        houses.brokers = (await get1Broker(client, houses[i].broker)).username;
+    }
     res.render('listings/editListings.ejs', {houses: houses})
 })
 

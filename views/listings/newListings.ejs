@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real Estate </title>
     <link rel="stylesheet" href="../css/styles.css">
-    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
 <header>
@@ -65,7 +65,8 @@
 
 <div class="container">
 <h1> New Listings </h1>
-<p> Enter "N/A" if entries are not applicable </p>
+<p> Enter "N/A" if entries are not applicable <br>
+Make sure to write the correct usernames for the user and broker</p>
 
 
 <form action="/newListings" enctype="multipart/form-data" method="POST">
@@ -134,10 +135,9 @@
     </div>
     <div class="input-box">
 
-        <label for="image">Upload Image</label>
-        <input class="file-upload-input" type="file"  name="picpic" required>
+
         <label for="image">Upload Image (JPG/JPEG)</label>
-        <input class="file-upload-input" type="file" accept=".jpg, .jpeg"  name="image" required>
+        <input class="file-upload-input" type="file" accept=".jpg, .jpeg"  name="picpic" required>
 
     </div>
     <button id="header-button" type="submit" class="btn"> Add Listing </button>

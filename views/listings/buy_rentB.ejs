@@ -16,9 +16,7 @@
     <a href="login"> <button id="header-button" >Sign in</button></a>
 </header>
 
-<!-- Rest of your website content goes here -->
-
-<nav class="nav">
+<nav class="nav" style="z-index: 1000">
     <button type="button" class="nav-close" onclick="toggleNav()">
         <ion-icon name="close-outline" size="large"></ion-icon>
     </button>
@@ -33,30 +31,33 @@
             <ion-icon name="list-outline" size="large"></ion-icon>
 
         </a>
-        <a href="filler" class="nav__link">
+        <a href="fillerB" class="nav__link">
             <span class="nav__text">My Visits</span>
             <ion-icon name="calendar-outline" size="large"></ion-icon>
         </a>
-        <a href="filler" class="nav__link">
+        <a href="fillerB" class="nav__link">
             <span class="nav__text">Visit Requests</span>
             <ion-icon name="calendar-outline" size="large"></ion-icon>
         </a>
-        <a href="filler" class="nav__link">
+        <a href="fillerB" class="nav__link">
             <span class="nav__text">Personal Info</span>
             <ion-icon name="person-outline" size="large"></ion-icon>
         </a>
-        <a href="calendarB" class="nav__link">
+        <a href="fillerB" class="nav__link">
             <span class="nav__text">Calendar</span>
             <ion-icon name="calculator-outline" size="large"></ion-icon>
         </a>
-        <a href="filler" class="nav__link">
+        <a href="fillerB" class="nav__link">
             <span class="nav__text">Match Property</span>
             <ion-icon name="search-outline" size="large"></ion-icon>
         </a>
-        <a href="filler" class="nav__link">
+        <a href="fillerB" class="nav__link">
             <span class="nav__text">Offers</span>
             <ion-icon name="cash-outline" size="large"></ion-icon>
         </a>
+        <form action="/logout" method="post">
+            "<button id="header-button"> log out </button>
+        </form>
 
     </div>
 
@@ -97,7 +98,7 @@
                 <option value="4">4+</option>
                 <option value="5">5+</option>
             </select>
-            <input type="text" id="yearBuilt" class="answ" name ="yearBuild >" placeholder="yearBuilt">
+            <input type="text" id="yearBuilt" class="answ" name ="yearBuild +" placeholder="yearBuilt">
             <select name="floors" id="floors" class="answ">
                 <option value="any" disabled selected>Floors</option>
                 <option value="any">Any</option>
@@ -136,11 +137,11 @@
                 <option value="pool">pool</option>
                 <option value="gym" >gym</option>
             </select>
-            <input type="text" id="propsize" class="answ" name ="propsize" placeholder="Property size >">
+            <input type="text" id="propsize" class="answ" name ="propsize" placeholder="Property size +">
             <select name="listing" id="listing" class="answ">
                 <option value="any" disabled selected>Listing Type</option>
-                <option value="sell" >sell</option>
-                <option value="rent">buy</option>
+                <option value="buy" >buy</option>
+                <option value="rent">rent</option>
                 <option value="sold" >sold</option>
             </select>
             <input type="text" id="time" class="answ" name ="time" placeholder="Listed since (yyyy-mm-dd)">
@@ -150,6 +151,7 @@
 </div>
 
 <div class="container">
+    <h1 style="color: red"> <%= message %> </h1>
     <h1 class="mb-4">Listings</h1>
     <% houses.forEach(houses => { %>
         <div class="card mt-4">
@@ -172,6 +174,11 @@
         </div>
     <% }) %>
 </div>
+<script>
+    function toggleNav() {
+        document.body.classList.toggle("nav-open");
+    }
+</script>
 
 
 
