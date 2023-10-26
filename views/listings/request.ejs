@@ -5,12 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real Estate </title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../../css/styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js">
+
+    <style>
+        /* Optional: Add some basic styling to the date picker input */
+        input[type="date"] {
+            padding: 5px;
+        }
+    </style>
 </head>
 <body>
 <header>
-    <img id="logo3" src="../css/logo3.png" alt="logo3">
+    <img id="logo3" src="../../css/logo3.png" alt="logo3">
     <a href="login"> <button id="header-button" >Sign in</button></a>
 </header>
 <nav class="nav" style = "z-index:1000;">
@@ -63,55 +71,25 @@
 
 <!-- Rest of your website content goes here -->
 
-<div class="container">
-    <div class="card-body">
-        <h2 class="card-title"><%= houses.name %></h2>
-        <img src="<%= houses.image %>" alt="" class="img-fluid mb-3">
-        <div class="card-subtitle text-muted mb-2">
-            Price: <%= houses.price.toString().concat("$") %>
-        </div>
+<h1> Request A Visit For <%= houses.name %> </h1>
 
-        <div class="card-subtitle text-muted mb-2">
-            Location: <%= houses.location %>
-        </div>
-        <div class="card-subtitle text-muted mb-2">
-            Type of Building: <%= houses.buildType %>
-        </div>
-        <div class="card-subtitle text-muted mb-2">
-            Number of Stories: <%= houses.stories %>
-        </div>
-        <div class="card-subtitle text-muted mb-2">
-            Number Of Bathrooms: <%= houses.numOfBath %>
-        </div>
-        <div class="card-subtitle text-muted mb-2">
-            Number Of Bedrooms: <%= houses.numOfBed %>
-        </div>
-        <div class="card-subtitle text-muted mb-2">
-            Size of Property (In Square/Feet): <%= houses.sizeOfProp %>
-        </div>
-        <div class="card-subtitle text-muted mb-2">
-            Year of Construction: <%= houses.buildYRS %>
-        </div>
-        <div class="card-subtitle text-muted mb-2">
-            Furnished?: <%= houses.furnished %>
-        </div>
-        <div class="card-subtitle text-muted mb-2">
-            Listing Type: <%= houses.listingType %>
-        </div>
-        <div class="card-subtitle text-muted mb-2">
-            Extra: <%= houses.extra %>
-        </div>
-        <div class="card-subtitle text-muted mb-2">
-            Garage: <%= houses.garage %>
-        </div>
-        <div class="card-subtitle text-muted mb-2">
-            Listing Date: <%= houses.listingDate %>
-        </div>
-        <div class="card-subtitle text-muted mb-2">
-            Listing Type: <%= houses.listingType %>
-        </div>
-    </div>
-</div>
+<form action="/request" method="POST">
+    <label for="datePicker">Select a Date:</label>
+    <input type="date" id="datePicker" name="selectedDate"><br>
+    <input type="submit" value="Submit">
+</form>
+
+<script>
+    // Optional: Add JavaScript to handle the selected date
+    const datePicker = document.getElementById('datePicker');
+
+    datePicker.addEventListener('change', function () {
+        const selectedDate = datePicker.value;
+        console.log('Selected Date: ' + selectedDate);
+        
+    });
+</script>
+
 
 <script>
     function toggleNav() {

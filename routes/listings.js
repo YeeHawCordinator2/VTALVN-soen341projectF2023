@@ -25,13 +25,19 @@ try{
     console.log("Error connecting to database");
 }
 
+router.get('/request/:id', async (req, res) => {
+    const houses = await get1House(client, req.params.id);
+    res.render('listings/request.ejs', {houses: houses})
+});
+
 router.get('/:id', async (req, res) => {
     const houses = await get1House(client, req.params.id);
     const pics= await client.db("soen_341").collection("house_pic").findOne({_id: houses.image_id});
     houses.image=pics.file;
-    console.log(houses.image);
     res.render('listings/show.ejs', {houses: houses})
 })
+
+
 
 router.get('/edit/:id', async (req, res) => {
     const houses = await get1House(client, req.params.id);

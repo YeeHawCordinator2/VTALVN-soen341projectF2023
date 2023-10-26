@@ -72,7 +72,7 @@
 </script>
 
 <div  id="searchbar">
-    <form action="" method="POST">
+    <form action="/buy_rent" method="POST">
         <div class="horizontal">
             <input type="text" class="answ" name ="location" placeholder="Location">
             <input type="text" class="answ" id="minPrice"  name ="minPrice" placeholder="minPrice">
@@ -165,6 +165,9 @@
             </div>
             <div class="card-body"> 
                 <a href="listings/<%= houses.name %>" class="btn btn-primary"> Read More</a>
+            </div>
+            <div class="card-body"> 
+                <a href="listings/request/<%= houses.name %>" class="btn btn-primary">  Request Visit </a>
             </div>
         </div>
     <% }) %>
