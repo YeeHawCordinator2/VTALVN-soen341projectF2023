@@ -2,9 +2,9 @@
 //delete fcts
 async function deleteHouse(client, nameOfListing) {
     try {
-        const houseList = await client.db("soen_341").collection("houses").deleteOne({name: nameOfListing});
+        const houseList = await client.db("soen_341").collection("houses").findOne({name: nameOfListing});
         await client.db("soen_341").collection("house_pic").deleteOne({_id: houseList.image_id});
-
+        await client.db("soen_341").collection("houses").deleteOne({name: nameOfListing});
     }catch (e) {
         console.log("element not found");
     }
