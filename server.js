@@ -170,7 +170,7 @@ app.post("/buy_rentU",async(req,res)=> {
     let furnished = req.body.furnished;
     let extra = req.body.extra;
     let propsize = req.body.propsize;
-    let listingType = req.body.listingType;
+    let listingType = req.body.listing;
     let time = req.body.time;
 
     arr= [];
@@ -395,7 +395,7 @@ app.post("/buy_rentB",async(req,res)=> {
     let furnished = req.body.furnished;
     let extra = req.body.extra;
     let propsize = req.body.propsize;
-    let listingType = req.body.listingType;
+    let listingType = req.body.listing;
     let time = req.body.time;
 
     arr= [];
