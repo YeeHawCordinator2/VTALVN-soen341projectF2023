@@ -11,9 +11,9 @@ async function deleteHouse(client, nameOfListing) {
 
 }
 
-async function deleteBroker(client, brokerName){
+async function deleteBroker(client, id){
     try {
-        return await client.db("soen_341").collection("brokers").deleteOne({name: brokerName});
+        return await client.db("soen_341").collection("brokers").deleteOne({username: id});
         //maybe edit listing to remove any instance of that broker
     }catch (e) {
         console.log("element not found");
