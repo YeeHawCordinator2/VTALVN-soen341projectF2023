@@ -1,71 +1,68 @@
-const sum = require('../model/sum');
+test("string matchers",() => {
 
-test('adds 1 + 2 to equal 3', () => {
-    expect(sum(1, 2)).toBe(3);
-});
-/*const sum = require('../model/database/getDB');
-const {MongoClient} = require("mongodb");
-const {checkBroker} = require("../model/database/checkPassword");
-const {get1Broker, get1House, readHouses, readBrokers, get1User, get1Admin, getHouseSeller, getHousePreferences,
-    getHouseBroker
-} = require("../model/database/getDB");
-const uri = "mongodb+srv://naolal30:ConnectdatabasetoWebstorm100.@cluster0.ttfusik.mongodb.net/test?retryWrites=true&w=majority";
-const client = new MongoClient(uri);
+    var string1 = "BrowserStack - Automation tool"
 
-try{
-    client.connect();
-    console.log("Connected to database");
-}   catch (e) {
-    console.log("Error connecting to database");
-}
+    // test for match the string - Success
+
+    expect(string1).toMatch(/tool/);
 
 
-test('test get 1 Houses exist', () => {
-    expect(get1House(client,"Luffy's chalet style house")).toBe(true);
-});
-
-test('test get 1 Houses dont exist', () => {
-    expect(get1House(client,"Luffy's homeless house")).toBe(true);
-});
-test('test get 1 broker exist', () => {
-    expect(get1Broker(client,"broker1")).toBe(true);
-});
-
-test('test get 1 broker dont exist', () => {
-    expect(get1Broker(client,"broker00")).toBe(true);
-});
-test('test get 1 user exist', () => {
-    expect(get1User(client,"user1")).toBe(true);
-});
-
-test('test get 1 user dont exist', () => {
-    expect(get1User(client,"broker00")).toBe(true);
-});
-test('test get 1 admin exist', () => {
-    expect(get1Admin(client,"Admin1")).toBe(true);
-});
-
-test('test get 1 admin dont exist', () => {
-    expect(get1Admin(client,"broker00")).toBe(true);
-});
-test('test get house seller with house exist', () => {
-    expect(getHouseSeller(client,"Luffy's chalet style house")).toBe(true);
-});
-test('test get house seller with house no exist', () => {
-    expect(getHouseSeller(client,"Luffy's jail")).toBe(true);
-});
-test('test get house broker with house exist', () => {
-    expect(getHouseBroker(client,"Luffy's chalet style house")).toBe(true);
-});
-test('test get house broker with house no exist', () => {
-    expect(getHouseBroker(client,"Luffy's jail")).toBe(true);
-});
-test('test get house pref with user exist', () => {
-    expect(getHousePreferences(client,"user1")).toBe(true);
-});
-test('test get house pref with user no exist', () => {
-    expect(getHousePreferences(client,"user1")).toBe(true);
-});
 
 
-*/
+    // test for not match the string - Failure
+
+    expect(string1).not.toMatch(/abc/)});
+test("numeric comparison", () => {
+
+    var number1 = 100;
+
+    var number2 = -20;
+
+    var number3 = 0;
+
+    // validate greater than
+
+    expect(number1).toBeGreaterThan(10)
+
+    // validate less than or equal
+
+    expect(number2).toBeLessThanOrEqual(0)
+
+    // validate greater than or equal
+
+    expect(number3).toBeGreaterThanOrEqual(0)
+
+});
+test("truthiness Assertion", () => {
+
+    var test="Software Testing demo"
+
+    var n = null
+
+    expect(n).toBeNull()
+
+    expect(n).not.toBeNull
+
+    // test should have a valid value
+
+    expect(test).toBeTruthy()
+
+
+
+    // pass - null worked as false or negative
+
+    expect(n).toBeFalsy()
+
+    // 0 - work as false
+
+    expect(0).toBeFalsy()
+
+});
+test("Exact value matchers", () => {
+
+    expect(2*2).toBe(4);
+
+    expect(4-2).not.toBe(1);
+
+});
+

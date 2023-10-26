@@ -37,6 +37,10 @@
             <span class="nav__text">CRUD Admin</span>
             <ion-icon name="search-outline" size="large"></ion-icon>
         </a>
+        <form action="/logout" method="post">
+            "<button id="header-button"> log out </button>
+        </form>
+
 
 
     </div>
@@ -54,7 +58,7 @@
 
 
 <h1> Edit Broker <%= broker.name %></h1>
-<p> change whatever infomation you need to change <br> to keep old password type it again</p>
+<p> change whatever information you need to change <br> to keep old password type it again</p>
 <form action="/editBroker" method="POST">
 <div class="input-box">
 
@@ -62,7 +66,7 @@
     <input type="text" value="<%= broker.name %>" name="name" required>
 </div> <br>
 <div class="input-box">
-    <label for="email">Email</label> <br>
+    <label for="email">Username</label> <br>
     <input type="text" value="<%= broker.username %>" name="username" required>
     <input type="text" value="<%= broker.username %>" name="user_id" style="display: none">
 </div> <br>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real Estate </title>
     <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
 </head>
 <body>
 <header>
@@ -40,7 +40,7 @@
             <span class="nav__text">Personal Info</span>
             <ion-icon name="person-outline" size="large"></ion-icon>
         </a>
-        <a href="calendarB" class="nav__link">
+        <a href="fillerB" class="nav__link">
             <span class="nav__text">Calendar</span>
             <ion-icon name="calculator-outline" size="large"></ion-icon>
         </a>
@@ -67,40 +67,8 @@
 <h1> New Listings </h1>
 <p> Enter "N/A" if entries are not applicable </p>
 
-<!-- 
-    {
-  "_id": {
-    "$oid": "6529eaf90c613feaf25b5ded"
-  },
-  "name": "Luffy's chalet style house",
-  "image_id": {
-    "$oid": "6529eaf80c613feaf25b5dec"
-  },
-  "price": 1000000,
-  "location": "westmount",
-  "numOfBath": 4,
-  "numOfBed": 6,
-  "furnished": "no",
-  "buildYRS": 2020,
-  "extra": "NA",
-  "buildType": "house",
-  "stories": 2,
-  "sizeOfProp": 5000,
-  "garage": "no",
-  "listingType": "buy",
-  "listingDate": {
-    "$date": "2023-10-14T01:12:25.193Z"
-  },
-  "seller": {
-    "$oid": "6529a71bcc11df68872e8495"
-  },
-  "broker": {
-    "$oid": "6529a49298c4e6aa7e85982f"
-  }
-}
- -->
 
-<form action="/newListings" method="POST">
+<form action="/newListings" enctype="multipart/form-data" method="POST">
     <div class="input-box">
         <input class="form-control" type="text" placeholder="Name" name="name" required>
     </div>
@@ -108,19 +76,27 @@
         <input class="form-control" type="text" placeholder="Price" name="price" required>
     </div>
     <div class="input-box">
-        <input class="form-control" type="text" placeholder="Seller" name="user" required>
+        <input class="form-control" type="text" placeholder="User's Username" name="clName" required>
     </div>
     <div class="input-box">
-        <input class="form-control" type="text" placeholder="Broker" name="brokers" required>
+        <input class="form-control" type="text" placeholder="Broker's Username" name="brkName" required>
     </div>
     <div class="input-box">
-        <input class="form-control"  type="text" placeholder="Type of Building" name="buildType" required>
+        <select class="form-control" name="buildType" required>
+            <option value="house" disabled selected>Build Type  </option>
+            <option value="house"> House </option>
+            <option value="condo"> Condo </option>
+            <option value="apartment"> Apartment </option>
+        </select>
     </div>
     <div class="input-box">
-        <input class="form-control" type="text" placeholder="Number of Floors" name="stories" required>
+        <input class="form-control" type="text" placeholder="Number Of Stories" name="stories" required>
     </div>
     <div class="input-box">
         <input class="form-control" type="text" placeholder="Number Of Bathrooms" name="numOfBath" required>
+    </div>
+    <div class="input-box">
+        <input class="form-control" type="text" placeholder="Number Of Bedrooms" name="numOfBed" required>
     </div>
     <div class="input-box">
         <input class="form-control" type="text" placeholder="Size of Property (In Square/Feet)" name="sizeOfProp" required>
@@ -129,23 +105,40 @@
         <input class="form-control" type="text" placeholder="Location" name="location" required>
     </div>
     <div class="input-box">
-        <input class="form-control" type="text" placeholder="Garage Included? (Enter 'yes' or 'no')" name="buildType" required>
+        <select class="form-control" name="garage" required>
+            <option value="any" disabled selected>Garage Included  </option>
+            <option value="yes"> Yes </option>
+            <option value="no"> No </option>
+        </select>
     </div>
     <div class="input-box">
         <input class="form-control" type="text" placeholder="Year of Construction" name="buildYRS" required>
     </div>
     <div class="input-box">
-        <input class="form-control" type="text" placeholder="Furnished? (Enter 'yes' or 'no')" name="furnished" required>
+        <select class="form-control" name="furnished" required>
+            <option value="any" disabled selected>Furnished? </option>
+            <option value="yes"> Yes </option>
+            <option value="no"> No </option>
+        </select>
     </div>
     <div class="input-box">
         <input class="form-control" type="text" placeholder="Extra" name="extra" required>
     </div>
     <div class="input-box">
-        <input class="form-control" type="text" placeholder="Listing Type" name="listingType" required>
+        <select class="form-control" name="listingType" required>
+            <option value="any" disabled selected> Listing Type </option>
+            <option value="buy"> Buy </option>
+            <option value="rent"> Rent </option>
+            <option value="sold"> Sold </option>
+        </select>
     </div>
     <div class="input-box">
+
         <label for="image">Upload Image</label>
-        <input class="file-upload-input" type="file"  name="image" required>
+        <input class="file-upload-input" type="file"  name="picpic" required>
+        <label for="image">Upload Image (JPG/JPEG)</label>
+        <input class="file-upload-input" type="file" accept=".jpg, .jpeg"  name="image" required>
+
     </div>
     <button id="header-button" type="submit" class="btn"> Add Listing </button>
 
