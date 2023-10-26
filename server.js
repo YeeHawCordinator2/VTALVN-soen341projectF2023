@@ -669,9 +669,24 @@ app.post("/editListings",async(req,res)=> {
 
 });
 
+app.post('/request',async(req,res)=> {
 
-app.get('/',async(req,res)=> {
     const houses = await client.db("soen_341").collection("houses").find().toArray();
+    const pics= await client.db("soen_341").collection("house_pic").find().toArray();
+    for(let i=0;i<houses.length;i++){
+        for(let j=0;j<pics.length;j++){
+            if(houses[i].image_id.toString() === pics[j]._id.toString())
+                houses[i].image=pics[j].file;
+        }
+    }
+    let message= "";
+
+    res.render( 'listings/buy_rentU.ejs' ,{houses: houses, message: message}); // opens localhost on index.html
+});
+app.get('/', async(req,res)=> {
+    const houses = await client.db("soen_341").collection("houses").find().toArray();
+
+    //NEEDS .EJS EXTENSION, ELSE IT THROWS NO EXTENSION ERROR
     const pics= await client.db("soen_341").collection("house_pic").find().toArray();
     for(let i=0;i<houses.length;i++){
         for(let j=0;j<pics.length;j++){
@@ -679,7 +694,8 @@ app.get('/',async(req,res)=> {
                 houses[i].image=pics[j].file;
         }}
     let message= "";
-    res.render( 'buy_rentU.ejs' , {houses: houses, message:message}); // opens localhost on index.html
+    res.render('listings/buy_rentU.ejs' , {houses: houses, message:message});
+    
 });
 app.get('/login',(req,res)=> {
     res.render( 'login.ejs' ); // opens localhost on index.html
@@ -704,11 +720,27 @@ app.get('/buy_rentU',async(req,res)=> {
         for(let j=0;j<pics.length;j++){
             if(houses[i].image_id.toString() === pics[j]._id.toString())
                 houses[i].image=pics[j].file;
-        }}
+        }
+    }
     let message= "";
 
-    res.render( 'buy_rentU.ejs' ,{houses: houses, message: message}); // opens localhost on index.html
+    res.render( 'listings/buy_rentU.ejs' ,{houses: houses, message: message}); // opens localhost on index.html
 });
+app.get('/buy_rentB',async (req,res)=> {
+    const houses = await client.db("soen_341").collection("houses").find().toArray();
+    const pics= await client.db("soen_341").collection("house_pic").find().toArray();
+    for(let i=0;i<houses.length;i++){
+        for(let j=0;j<pics.length;j++){
+            if(houses[i].image_id.toString() === pics[j]._id.toString())
+                houses[i].image=pics[j].file;
+        }
+    }
+    let message= "";
+
+    res.render( 'listings/buy_rentB.ejs' ,{houses: houses, message: message}); // opens localhost on index.html
+   
+});
+
 app.get('/calendarU',(req,res)=> {
     res.render('calendarU.ejs');
 });
@@ -768,9 +800,17 @@ app.get('/editListings', (req,res)=> {
     res.render('listings/editListings.ejs');
 });
 
+app.get('/show.ejs', async (req,res)=> {
+    
+    res.render('listings/show.ejs');
+});
+
+app.get('/request.ejs', async (req,res)=> {
+    res.render('listings/request.ejs');
+});
 /* GET users listing. */
 app.use('/listings', listingsRouter); //use listings as the route for myListings
-app.use('/broker', brkRouter)
+app.use('/broker', brkRouter);
 
 
 

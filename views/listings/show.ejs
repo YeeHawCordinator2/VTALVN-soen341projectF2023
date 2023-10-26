@@ -40,7 +40,7 @@
             <span class="nav__text">Personal Info</span>
             <ion-icon name="person-outline" size="large"></ion-icon>
         </a>
-        <a href="fillerB" class="nav__link">
+        <a href="calendarB" class="nav__link">
             <span class="nav__text">Calendar</span>
             <ion-icon name="calculator-outline" size="large"></ion-icon>
         </a>
@@ -64,30 +64,54 @@
 <!-- Rest of your website content goes here -->
 
 <div class="container">
-    <h1 class="mb-4">My Listings</h1>
-    <a href="newListings" class="btn btn-success">New Listings</a>
-    
-    <% houses.forEach(houses => { %>
-        <div class="card mt-4">
-            <div class="card-body">
-                <img src="<%= houses.image %>" alt="" class="img-fluid mb-3">
-                <h4 class="card-title"><%= houses.name %></h4>
-                <div class="card-subtitle text-muted mb-2">
-                    Price: <%= houses.price.toString().concat("$") %>
-                </div>
-                <div class="card-text mb-2"> 
-                    <%= houses.location %>
-                </div>
-                <a href="listings/edit/<%= houses.name %>" class="btn btn-info">Edit</a>
-                <form onSubmit="return confirm('Are you sure you want to delete?')" action="/listings/<%= houses.name %>?_method=DELETE" method="POST" class="d-inline">
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
-            </div>
+    <div class="card-body">
+        <h2 class="card-title"><%= houses.name %></h2>
+        <img src="<%= houses.image %>" alt="" class="img-fluid mb-3">
+        <div class="card-subtitle text-muted mb-2">
+            Price: <%= houses.price.toString().concat("$") %>
         </div>
-    <% }) %>
-</div>
 
-<!-- ====================================== -->
+        <div class="card-subtitle text-muted mb-2">
+            Location: <%= houses.location %>
+        </div>
+        <div class="card-subtitle text-muted mb-2">
+            Type of Building: <%= houses.buildType %>
+        </div>
+        <div class="card-subtitle text-muted mb-2">
+            Number of Stories: <%= houses.stories %>
+        </div>
+        <div class="card-subtitle text-muted mb-2">
+            Number Of Bathrooms: <%= houses.numOfBath %>
+        </div>
+        <div class="card-subtitle text-muted mb-2">
+            Number Of Bedrooms: <%= houses.numOfBed %>
+        </div>
+        <div class="card-subtitle text-muted mb-2">
+            Size of Property (In Square/Feet): <%= houses.sizeOfProp %>
+        </div>
+        <div class="card-subtitle text-muted mb-2">
+            Year of Construction: <%= houses.buildYRS %>
+        </div>
+        <div class="card-subtitle text-muted mb-2">
+            Furnished?: <%= houses.furnished %>
+        </div>
+        <div class="card-subtitle text-muted mb-2">
+            Listing Type: <%= houses.listingType %>
+        </div>
+        <div class="card-subtitle text-muted mb-2">
+            Extra: <%= houses.extra %>
+        </div>
+        <div class="card-subtitle text-muted mb-2">
+            Garage: <%= houses.garage %>
+        </div>
+        <div class="card-subtitle text-muted mb-2">
+            Listing Date: <%= houses.listingDate %>
+        </div>
+        <div class="card-subtitle text-muted mb-2">
+            Listing Type: <%= houses.listingType %>
+        </div>
+    </div>
+</div>
 
 <script>
     function toggleNav() {
