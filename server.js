@@ -606,8 +606,7 @@ let houseArr = [];
 }); */
 
 app.post("/newListings", upload.single("picpic"), async(req,res)=> {
-console.log("TPPPTOEF FE")
-    
+
     const name = req.body.name;
     const price = req.body.price;
     const location = req.body.location;
@@ -630,15 +629,18 @@ console.log("TPPPTOEF FE")
 
     try{
        const message = await addNewHouse(client,name,price,location, numOfBed, numOfBath, furnished, buildYRS, extra, buildType, stories, clName, brkName, sizeOfProp, garage, listingType, pic);
-       res.redirect("/myListings");
+       if(message===1)
+           res.redirect("/myListings");
+       else
+           res.redirect("/newListingsFail")
 
     }catch (e) {
         console.log(e)
         console.log("Error adding house");
-        res.redirect("/newListings");
+        res.redirect("/newListingsFail");
     }
 });
-app.post("/editListings",async(req,res)=> {
+app.post("/editListingss",async(req,res)=> {
 
     const name = req.body.name;
     const price = req.body.price;
@@ -794,6 +796,8 @@ app.get('/myListings', async (req,res)=> {
 //connects to server
 app.get('/newListings', (req,res)=> {
     res.render('listings/newListings.ejs',);
+});app.get('/newListingsFail', (req,res)=> {
+    res.render('listings/newListingsFail.ejs',);
 });
 app.get('/editListings', (req,res)=> {
     res.render('listings/editListings.ejs');

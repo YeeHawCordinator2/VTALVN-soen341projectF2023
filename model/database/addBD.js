@@ -35,11 +35,11 @@ async function addNewHouse(client, listingName, price, location, numOfBed, numOf
         });
 
         console.log(`New house listing created with the following id: ${house.insertedId}`);
-        return "House added successfully"
+        return 1;
     }catch(e){
         console.log(e);
         console.log("error - add house");
-        return "House not added successfully"
+        return 0;
     }
 
 }
