@@ -642,7 +642,7 @@ console.log
         res.redirect("/newListings");
     }
 });
-app.post("/editListings",async(req,res)=> {
+app.post("/editListingss",async(req,res)=> {
 
     const name = req.body.name;
     const price = req.body.price;
@@ -661,11 +661,12 @@ app.post("/editListings",async(req,res)=> {
     const listingType = req.body.listingType;
     const og = req.body.house_id;
 
+
     try{
-        const house = await edit1HouseAllProperty(client, og,
+       const house = await edit1HouseAllProperty(client, og,
             {
                 name: name,
-                image_id: (await client.db("soen_341").collection("houses").findOne({_id: new ObjectId(og)}))._id, //NEED TO CHANGE
+                image_id: (await client.db("soen_341").collection("houses").findOne({name: og})).image_id, //NEED TO CHANGE
                 price: price,
                 location: location,
                 numOfBath: numOfBath,
@@ -678,14 +679,14 @@ app.post("/editListings",async(req,res)=> {
                 sizeOfProp: sizeOfProp,
                 garage: garage,
                 listingType: listingType,
-                listingDate: (await client.db("soen_341").collection("houses").findOne({_id: new ObjectId(og)})).listingDate,
+                listingDate: (await client.db("soen_341").collection("houses").findOne({name: og})).listingDate,
                 seller: (await client.db("soen_341").collection("users").findOne({username: clName}))._id,
                 broker: (await client.db("soen_341").collection("brokers").findOne({username: brkName}))._id
             });
         res.redirect("/myListings");
     }catch (e) {
         console.log("Error editing house");
-        res.redirect("/editListings");
+        res.redirect("/myListings");
     }
 
 

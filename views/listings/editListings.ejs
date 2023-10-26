@@ -67,10 +67,11 @@
 <h1> Edit Listings </h1>
 <p> Change values of <%= houses.name %> </p>
 
-<form action="/editListings" method="POST">
+<form action="/editListingss" method="POST">
     <div class="input-box">
         <label >House Name</label>
         <input class="form-control" type="text" value="<%= houses.name %>" name="name" >
+        <input type="text" value="<%= houses.name %>" name="house_id" style="display: none">
     </div>
     <div class="input-box">
         <label >House Price</label>
