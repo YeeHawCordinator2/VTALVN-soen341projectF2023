@@ -670,11 +670,10 @@ app.post("/editListings",async(req,res)=> {
 });
 
 
-app.get('/', asyncasync(req,res)=> {
+app.get('/', async(req,res)=> {
     const houses = await client.db("soen_341").collection("houses").find().toArray();
 
     //NEEDS .EJS EXTENSION, ELSE IT THROWS NO EXTENSION ERROR
-    const houses = await client.db("soen_341").collection("houses").find().toArray();
     const pics= await client.db("soen_341").collection("house_pic").find().toArray();
     for(let i=0;i<houses.length;i++){
         for(let j=0;j<pics.length;j++){
@@ -712,6 +711,7 @@ app.get('/buy_rentU',async(req,res)=> {
     let message= "";
 
     res.render( 'buy_rentU.ejs' ,{houses: houses, message: message}); // opens localhost on index.html
+});
 app.get('/buy_rentB',async (req,res)=> {
     const houses = await client.db("soen_341").collection("houses").find().toArray();
 
@@ -786,7 +786,7 @@ app.get('/show.ejs', async (req,res)=> {
 
 /* GET users listing. */
 app.use('/listings', listingsRouter); //use listings as the route for myListings
-app.use('/broker', brkRouter)
+app.use('/broker', brkRouter);
 
 
 
