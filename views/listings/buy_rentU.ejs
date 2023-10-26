@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real Estate </title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/searchBar.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/searchBar.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
 
 </head>
 <body>
@@ -17,44 +19,35 @@
 
 <!-- Rest of your website content goes here -->
 
-<nav class="nav">
+<nav style="z-index: 1000;" class="nav">
     <button type="button" class="nav-close" onclick="toggleNav()">
         <ion-icon name="close-outline" size="large"></ion-icon>
     </button>
-    <div class="nav-links-container" id="BrokerMenu"  >
-        <a href="buy_rentB" class="nav__link">
-            <span class="nav__text">Buy / Rent</span>
+    <div class="nav-links-container" id="BaseMenu" >
+        <a href="listings/buy_rentU" class="nav__link">
+            <span class="nav__text">Buy/Rent</span>
             <ion-icon name="cash-outline" size="large"></ion-icon>
         </a>
 
-        <a href="myListings" class="nav__link">
-            <span class="nav__text">My Listings</span>
-            <ion-icon name="list-outline" size="large"></ion-icon>
-
+        <a href="fillerU" class="nav__link">
+            <span class="nav__text">Favorites</span>
+            <ion-icon name="heart-outline" size="large"></ion-icon>
         </a>
-        <a href="filler" class="nav__link">
-            <span class="nav__text">My Visits</span>
+        <a href="calendarU" class="nav__link">
+            <span class="nav__text">Calendar</span>
             <ion-icon name="calendar-outline" size="large"></ion-icon>
         </a>
-        <a href="filler" class="nav__link">
-            <span class="nav__text">Visit Requests</span>
-            <ion-icon name="calendar-outline" size="large"></ion-icon>
-        </a>
-        <a href="filler" class="nav__link">
+        <a href="fillerU" class="nav__link">
             <span class="nav__text">Personal Info</span>
             <ion-icon name="person-outline" size="large"></ion-icon>
         </a>
-        <a href="calendarB" class="nav__link">
-            <span class="nav__text">Calendar</span>
+        <a href="fillerU" class="nav__link">
+            <span class="nav__text">Morgage Calculator</span>
             <ion-icon name="calculator-outline" size="large"></ion-icon>
         </a>
-        <a href="filler" class="nav__link">
-            <span class="nav__text">Match Property</span>
+        <a href="fillerU" class="nav__link">
+            <span class="nav__text">Find Agent</span>
             <ion-icon name="search-outline" size="large"></ion-icon>
-        </a>
-        <a href="filler" class="nav__link">
-            <span class="nav__text">Offers</span>
-            <ion-icon name="cash-outline" size="large"></ion-icon>
         </a>
 
     </div>
@@ -71,7 +64,7 @@
 </script>
 
 <div  id="searchbar">
-    <form action="" method="POST">
+    <form action="/buy_rentU" method="POST">
         <div class="horizontal">
             <input type="text" class="answ" name ="location" placeholder="Location">
             <input type="text" class="answ" id="minPrice"  name ="minPrice" placeholder="minPrice">
@@ -96,7 +89,7 @@
                 <option value="4">4+</option>
                 <option value="5">5+</option>
             </select>
-            <input type="text" id="yearBuilt" class="answ" name ="yearBuild >" placeholder="yearBuilt">
+            <input type="text" id="yearBuilt" class="answ" name ="yearBuild" placeholder="yearBuilt >">
             <select name="floors" id="floors" class="answ">
                 <option value="any" disabled selected>Floors</option>
                 <option value="any">Any</option>
@@ -131,7 +124,7 @@
             </select>
             <select name="extra" id="extra" class="answ">
                 <option value="any" disabled selected>Extra</option>
-                <option value="none" >none</option>
+                <option value="any" >Any</option>
                 <option value="pool">pool</option>
                 <option value="gym" >gym</option>
             </select>
@@ -139,7 +132,7 @@
             <select name="listing" id="listing" class="answ">
                 <option value="any" disabled selected>Listing Type</option>
                 <option value="sell" >sell</option>
-                <option value="rent">buy</option>
+                <option value="rent">rent</option>
                 <option value="sold" >sold</option>
             </select>
             <input type="text" id="time" class="answ" name ="time" placeholder="Listed since (yyyy-mm-dd)">
@@ -147,6 +140,22 @@
         </div>
     </form>
 </div>
+
+<% houses.forEach(houses => { %>
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title"><%= houses.name %></h4>
+            <div class="card-subtitle text-muted mb-2">
+                Price: <%= houses.price.toString().concat("$") %>
+            </div>
+            <div class="card-text mb-2"> 
+                <%= houses.location %>
+            </div>
+            <a href="listings/show/<%= houses.name %>" class="btn btn-info"> Read More </a>
+        </div>
+    </div>
+<% }) %>
+
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

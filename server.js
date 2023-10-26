@@ -400,8 +400,12 @@ app.post("/editListings",async(req,res)=> {
 });
 
 
-app.get('/',(req,res)=> {
-    res.render( 'buy_rentU.ejs' ); // opens localhost on index.html
+app.get('/', async(req,res)=> {
+    const houses = await client.db("soen_341").collection("houses").find().toArray();
+
+    //NEEDS .EJS EXTENSION, ELSE IT THROWS NO EXTENSION ERROR
+    res.render('listings/buy_rentU.ejs' , {houses: houses});
+    
 });
 app.get('/login',(req,res)=> {
     res.render( 'login.ejs' ); // opens localhost on index.html
@@ -418,12 +422,14 @@ app.get('/register',(req,res)=> {
 app.get('/registerUserExist',(req,res)=> {
     res.render( 'registerUserExist.ejs' ); // opens localhost on index.html
 });
-app.get('/buy_rentB',(req,res)=> {
-    res.render( 'buy_rentB.ejs' ); // opens localhost on index.html
+app.get('/buy_rentB',async (req,res)=> {
+    const houses = await client.db("soen_341").collection("houses").find().toArray();
+
+    //NEEDS .EJS EXTENSION, ELSE IT THROWS NO EXTENSION ERROR
+    res.render('listings/buy_rent.ejs' , {houses: houses});
+   
 });
-app.get('/buy_rentU',(req,res)=> {
-    res.render( 'buy_rentU.ejs' );
-});
+
 app.get('/calendarU',(req,res)=> {
     res.render('calendarU.ejs');
 });
@@ -475,6 +481,11 @@ app.get('/newListings', (req,res)=> {
 });
 app.get('/editListings', (req,res)=> {
     res.render('listings/editListings.ejs');
+});
+
+app.get('/show.ejs', async (req,res)=> {
+    
+    res.render('listings/show.ejs');
 });
 
 /* GET users listing. */
