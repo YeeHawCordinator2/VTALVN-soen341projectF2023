@@ -65,52 +65,53 @@
 
 <div class="container">
 <h1> Edit Listings </h1>
-<p> Change values of a property </p>
-
+<p> Change values of <%= houses.name %> </p>
 
 <form action="/editListings" method="POST">
     <div class="input-box">
-        <input class="form-control" type="text" placeholder="<%= houses.name %>" name="name" required>
+        <input class="form-control" type="text" value="<%= houses.name %>" name="name" >
     </div>
     <div class="input-box">
-        <input class="form-control" type="text" placeholder="price" name="price" required>
+        <input class="form-control" type="text" value="<%= houses.price %>" name="price" >
     </div>
     <div class="input-box">
-        <input class="form-control" type="text" placeholder="User's Username" name="user" required>
+        <input class="form-control" type="text" value="<%= houses.seller.toString() %>" name="clName" >
     </div>
     <div class="input-box">
-        <input class="form-control" type="text" placeholder="Broker's Username" name="brokers" required>
+        <input class="form-control" type="text" value="<%= houses.broker.toString() %>" name="brkName" required>
     </div>
     <div class="input-box">
         <select class="form-control" name="buildType" required>
-            <option value="any" disabled selected>Build Type  </option>
+            <option value="house" disabled selected>Build Type  </option>
             <option value="house"> House </option>
             <option value="condo"> Condo </option>
             <option value="apartment"> Apartment </option>
         </select>
-        
     </div>
     <div class="input-box">
-        <input class="form-control" type="text" placeholder="Number Of Stories" name="stories" required>
+        <input class="form-control" type="text" value="<%= houses.stories %>" name="stories" required>
     </div>
     <div class="input-box">
-        <input class="form-control" type="text" placeholder="Number Of Bathrooms" name="numOfBath" required>
+        <input class="form-control" type="text" value="<%= houses.numOfBath %>" name="numOfBath" required>
     </div>
     <div class="input-box">
-        <input class="form-control" type="text" placeholder="Size of Property (In Square/Feet)" name="sizeOfProp" required>
+        <input class="form-control" type="text" value="<%= houses.numOfBed %>" name="numOfBed" required>
     </div>
     <div class="input-box">
-        <input class="form-control" type="text" placeholder="Location" name="location" required>
+        <input class="form-control" type="text" value="<%= houses.sizeOfProp %>" name="sizeOfProp" required>
     </div>
     <div class="input-box">
-        <select class="form-control" name="buildType" required>
+        <input class="form-control" type="text" value="<%= houses.location %>" name="location" required>
+    </div>
+    <div class="input-box">
+        <select class="form-control" name="garage" required>
             <option value="any" disabled selected>Garage Included  </option>
             <option value="yes"> Yes </option>
             <option value="no"> No </option>
         </select>
     </div>
     <div class="input-box">
-        <input class="form-control" type="text" placeholder="Year of Construction" name="buildYRS" required>
+        <input class="form-control" type="text" value="<%= houses.buildYRS%>" name="buildYRS" required>
     </div>
     <div class="input-box">
         <select class="form-control" name="furnished" required>
@@ -120,7 +121,7 @@
         </select>
     </div>
     <div class="input-box">
-        <input class="form-control" type="text" placeholder="Extra" name="extra" required>
+        <input class="form-control" type="text" value="<%= houses.extra %>" name="extra" required>
     </div>
     <div class="input-box">
         <select class="form-control" name="listingType" required>
