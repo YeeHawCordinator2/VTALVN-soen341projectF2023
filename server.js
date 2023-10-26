@@ -715,9 +715,16 @@ app.get('/buy_rentU',async(req,res)=> {
 });
 app.get('/buy_rentB',async (req,res)=> {
     const houses = await client.db("soen_341").collection("houses").find().toArray();
+    const pics= await client.db("soen_341").collection("house_pic").find().toArray();
+    for(let i=0;i<houses.length;i++){
+        for(let j=0;j<pics.length;j++){
+            if(houses[i].image_id.toString() === pics[j]._id.toString())
+                houses[i].image=pics[j].file;
+        }
+    }
+    let message= "";
 
-    //NEEDS .EJS EXTENSION, ELSE IT THROWS NO EXTENSION ERROR
-    res.render('listings/buy_rent.ejs' , {houses: houses});
+    res.render( 'listings/buy_rentB.ejs' ,{houses: houses, message: message}); // opens localhost on index.html
    
 });
 

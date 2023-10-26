@@ -7,6 +7,7 @@
     <title>Real Estate </title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/searchBar.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 </head>
 <body>
@@ -147,6 +148,29 @@
         </div>
     </form>
 </div>
+
+<div class="container">
+    <h1 class="mb-4">Listings</h1>
+    <% houses.forEach(houses => { %>
+        <div class="card mt-4">
+            <div class="card-body">
+                <img src="<%= houses.image %>" alt="" class="img-fluid mb-3">
+                <h4 class="card-title"><%= houses.name %></h4>
+                <div class="card-subtitle text-muted mb-2">
+                    Price: <%= houses.price.toString().concat("$") %>
+                </div>
+                <div class="card-text mb-2"> 
+                    <%= houses.location %>
+                </div>
+            </div>
+            <div class="card-body"> 
+                <a href="listings/<%= houses.name %>" class="btn btn-primary"> Read More</a>
+            </div>
+        </div>
+    <% }) %>
+</div>
+
+
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

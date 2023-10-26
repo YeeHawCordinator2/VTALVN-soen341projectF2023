@@ -17,7 +17,7 @@ async function readBrokers(client){
     return await client.db("soen_341").collection("brokers").find().toArray()
 }
 async function get1House(client, listingname){
-    return await client.db("soen_341").collection("houses").findOne(listingname)
+    return await client.db("soen_341").collection("houses").findOne({name:listingname})
 }
 async function get1Broker(client, brokername){
     return await client.db("soen_341").collection("brokers").findOne({username:brokername})
