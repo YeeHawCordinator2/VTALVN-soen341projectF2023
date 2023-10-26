@@ -13,49 +13,37 @@
     <img id="logo3" src="../css/logo3.png" alt="logo3">
     <a href="../../login"> <button id="header-button" >Sign in</button></a>
 </header>
-<nav class="nav" style = "z-index:1000;">
+<nav class="nav" style="z-index: 1000">
     <button type="button" class="nav-close" onclick="toggleNav()">
         <ion-icon name="close-outline" size="large"></ion-icon>
     </button>
-    <div class="nav-links-container" id="BrokerMenu"  >
-        <a href="/buy_rentB" class="nav__link">
-            <span class="nav__text">Buy / Rent</span>
+    <div class="nav-links-container" id="BaseMenu" >
+        <a href="/buy_rentU" class="nav__link">
+            <span class="nav__text">Buy/Rent</span>
             <ion-icon name="cash-outline" size="large"></ion-icon>
         </a>
 
-        <a href="/myListings" class="nav__link">
-            <span class="nav__text">My Listings</span>
-            <ion-icon name="list-outline" size="large"></ion-icon>
-
+        <a href="../../fillerU" class="nav__link">
+            <span class="nav__text">Favorites</span>
+            <ion-icon name="heart-outline" size="large"></ion-icon>
         </a>
-        <a href="../../fillerB" class="nav__link">
-            <span class="nav__text">My Visits</span>
+        <a href="../../fillerU" class="nav__link">
+            <span class="nav__text">Calendar</span>
             <ion-icon name="calendar-outline" size="large"></ion-icon>
         </a>
-        <a href="../../fillerB" class="nav__link">
-            <span class="nav__text">Visit Requests</span>
-            <ion-icon name="calendar-outline" size="large"></ion-icon>
-        </a>
-        <a href="../../fillerB" class="nav__link">
+        <a href="../../fillerU" class="nav__link">
             <span class="nav__text">Personal Info</span>
             <ion-icon name="person-outline" size="large"></ion-icon>
         </a>
-        <a href="../../fillerB" class="nav__link">
-            <span class="nav__text">Calendar</span>
+        <a href="../../fillerU" class="nav__link">
+            <span class="nav__text">Morgage Calculator</span>
             <ion-icon name="calculator-outline" size="large"></ion-icon>
         </a>
-        <a href="../../fillerB" class="nav__link">
-            <span class="nav__text">Match Property</span>
+        <a href="../../fillerU" class="nav__link">
+            <span class="nav__text">Find Agent</span>
             <ion-icon name="search-outline" size="large"></ion-icon>
         </a>
-        <a href="../../fillerB" class="nav__link">
-            <span class="nav__text">Offers</span>
-            <ion-icon name="cash-outline" size="large"></ion-icon>
-        </a>
 
-        <form action="../../logout" method="post">
-            <button id="header-button"> log out </button>
-        </form>
     </div>
 
 </nav>
@@ -68,6 +56,7 @@
 
 <div class="container">
     <div class="card-body">
+        <h1>Listing Details</h1>
         <h2 class="card-title"><%= houses.name %></h2>
         <img src="<%= houses.image %>" alt="" class="img-fluid mb-3">
         <div class="card-subtitle text-muted mb-2">
