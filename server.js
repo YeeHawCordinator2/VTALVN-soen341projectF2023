@@ -157,7 +157,7 @@ app.post("/editBroker",async(req,res)=> {
 
 
 });
-app.post("/buy_rent",async(req,res)=> {
+app.post("/buy_rentU",async(req,res)=> {
     let location = req.body.location.toLowerCase();
     let minPrice = req.body.minPrice;
     let maxPrice = req.body.maxPrice;
@@ -380,9 +380,9 @@ let houseArr = [];
     let message= "";
     if(isEmpty===true) message="No results found";
 
-    res.render( 'buy_rentU.ejs' , {houses: houseArr, message: message}); // opens localhost on index.html
+    res.render( 'listings/buy_rentU.ejs' , {houses: houseArr, message: message}); // opens localhost on index.html
 });
-/*app.post("/buy_rent",async(req,res)=> {
+app.post("/buy_rentB",async(req,res)=> {
     let location = req.body.location.toLowerCase();
     let minPrice = req.body.minPrice;
     let maxPrice = req.body.maxPrice;
@@ -412,7 +412,6 @@ let houseArr = [];
             arr11 = [];
         }
         else if(isEmpty===true) isEmpty=true;
-
     }
     if(minPrice!==""){
         minPrice= await getHousePriceHigher(client, parseInt(minPrice));
@@ -437,7 +436,6 @@ let houseArr = [];
             arr11 = [];
         }
         else if(isEmpty===true) isEmpty=true;
-
     }
     if(bath!=="any") {
         bath = await getHouseBathgreaterThan(client, parseInt(bath));
@@ -450,7 +448,6 @@ let houseArr = [];
             arr11 = [];
 
         }
-
     }
     if(beds!=="any"){
         beds= await getHouseBedgreaterThan(client, parseInt(beds));
@@ -513,7 +510,6 @@ let houseArr = [];
             arr11 = [];
 
         }
-
     }
     if(furnished!=="any"){
         furnished= await getHouseFurnished(client, furnished);
@@ -535,7 +531,6 @@ let houseArr = [];
             arr.push(arr11);
             arr11 = [];
         }
-
     }
     if(propsize!==""){
         propsize= await getHouseSizeOfPropGreater(client, propsize);
@@ -559,7 +554,6 @@ let houseArr = [];
             arr.push(arr11);
             arr11 = [];
         }
-
     }
     if(time!==""){ //CHECK
         time= await getHouseAfterDate(client, new Date(time));
@@ -574,10 +568,9 @@ let houseArr = [];
 
     }
 
-
-
     let holdArr=[];
     if(arr.length===0){
+        isEmpty=true;
         holdArr = await readHouses(client);
         for (let i = 0; i < holdArr.length; i++) {
             arr11.push(holdArr[i]._id.toString());
@@ -587,11 +580,18 @@ let houseArr = [];
 
     let newArr = arr.reduce((x, y) => x.filter((z) => y.includes(z)));
 
+
     console.log(newArr);
 
     let houseArr = [];
-    for(let i = 0; i<newArr.length; i++){
-        houseArr.push(await client.db("soen_341").collection("houses").findOne({_id: new ObjectId(newArr[i])}));
+    if(newArr.length===0){
+        isEmpty=true;
+        houseArr = await client.db("soen_341").collection("houses").find().toArray();
+
+    }else {
+        for (let i = 0; i < newArr.length; i++) {
+            houseArr.push(await client.db("soen_341").collection("houses").findOne({_id: new ObjectId(newArr[i])}));
+        }
     }
 
     //  const houses = await client.db("soen_341").collection("houses").find().toArray();
@@ -602,8 +602,12 @@ let houseArr = [];
                 houseArr[i].image=pics[j].file;
         }}
 
-    res.render( 'buy_rentB.ejs' , {houses: houseArr}); // opens localhost on index.html
-}); */
+    let message= "";
+    if(isEmpty===true) message="No results found";
+
+
+    res.render( 'listings/buy_rentB.ejs' , {houses: houseArr, message: message}); // opens localhost on index.html
+});
 
 app.post("/newListings", upload.single("picpic"), async(req,res)=> {
 
