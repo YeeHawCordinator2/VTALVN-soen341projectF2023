@@ -130,17 +130,17 @@
             <input type="text" id="propsize" class="answ" name ="propsize" placeholder="Property size >">
             <select name="listing" id="listing" class="answ">
                 <option value="any" disabled selected>Listing Type</option>
-                <option value="sell" >sell</option>
+                <option value="buy" >buy</option>
                 <option value="rent">rent</option>
                 <option value="sold" >sold</option>
             </select>
-            <input type="text" id="time" class="answ" name ="time" placeholder="Listed since (yyyy-mm-dd)">
+            <input type="text" id="time" class="answ" name ="time" placeholder="Listed since(yyyy-mm-dd)">
             <input type="submit" value="Search" id="button">
         </div>
     </form>
 </div>
 
-
+<h1 style="color:red; margin:2%;"> <%= message %> </h1>
 <div class="container">
     <h1 class="mb-4">Listings</h1>
     <% houses.forEach(houses => { %>
