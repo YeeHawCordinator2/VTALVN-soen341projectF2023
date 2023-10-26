@@ -6,13 +6,14 @@ const bcrypt = require("bcrypt");
 
 async function addNewHouse(client, listingName, price, location, numOfBed, numOfBath, furnished, buildYRS, extra, buildType, stories, clName, brkName, sizeOfProp, garage, listingType, piclink){
     try {
+
         const user = (await client.db("soen_341").collection("users").findOne({username: clName}))._id;
         const brokers = (await client.db("soen_341").collection("brokers").findOne({username: brkName}))._id;
         
+
         const image = await client.db("soen_341").collection("house_pic").insertOne({
             file: piclink
         });
-
         const house = await client.db("soen_341").collection("houses").insertOne({
             name: listingName,
             image_id: image.insertedId,
