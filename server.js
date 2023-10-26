@@ -807,14 +807,24 @@ app.get('/editListings', (req,res)=> {
     res.render('listings/editListings.ejs');
 });
 
-app.get('/show.ejs', async (req,res)=> {
+app.get('/showU.ejs', async (req,res)=> {
     
-    res.render('listings/show.ejs');
+    res.render('listings/showU.ejs');
 });
 
-app.get('/request.ejs', async (req,res)=> {
-    res.render('listings/request.ejs');
+app.get('/requestU.ejs', async (req,res)=> {
+    res.render('listings/requestU.ejs');
 });
+
+app.get('/showB.ejs', async (req,res)=> {
+    
+    res.render('listings/showB.ejs');
+});
+
+app.get('/requestB.ejs', async (req,res)=> {
+    res.render('listings/requestB.ejs');
+});
+
 /* GET users listing. */
 app.use('/listings', listingsRouter); //use listings as the route for myListings
 app.use('/broker', brkRouter);

@@ -25,16 +25,29 @@ try{
     console.log("Error connecting to database");
 }
 
-router.get('/request/:id', async (req, res) => {
+router.get('/requestU/:id', async (req, res) => {
     const houses = await get1House(client, req.params.id);
-    res.render('listings/request.ejs', {houses: houses})
+    res.render('listings/requestU.ejs', {houses: houses})
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/showU/:id', async (req, res) => {
     const houses = await get1House(client, req.params.id);
     const pics= await client.db("soen_341").collection("house_pic").findOne({_id: houses.image_id});
     houses.image=pics.file;
-    res.render('listings/show.ejs', {houses: houses})
+    res.render('listings/showU.ejs', {houses: houses})
+})
+
+
+router.get('/requestB/:id', async (req, res) => {
+    const houses = await get1House(client, req.params.id);
+    res.render('listings/requestB.ejs', {houses: houses})
+});
+
+router.get('/showB/:id', async (req, res) => {
+    const houses = await get1House(client, req.params.id);
+    const pics= await client.db("soen_341").collection("house_pic").findOne({_id: houses.image_id});
+    houses.image=pics.file;
+    res.render('listings/showB.ejs', {houses: houses})
 })
 
 
