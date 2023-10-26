@@ -29,7 +29,7 @@ const listingsRouter = require('./routes/listings');
 const app = express();
 const brkRouter = require('./routes/brokers');
 const methodOverride = require('method-override')
-const {editBroker} = require("./model/database/editDB");
+const {editBroker, edit1HouseAllProperty} = require("./model/database/editDB");
 const bcrypt = require("bcrypt");
 
 app.use(bodyParser.json());
@@ -637,25 +637,38 @@ console.log
        res.redirect("/myListings");
 
     }catch (e) {
+        console.log(e)
         console.log("Error adding house");
         res.redirect("/newListings");
     }
 });
 app.post("/editListings",async(req,res)=> {
-    // const username = req.body.username;
-    // const name = req.body.name;
-    // const password = req.body.password;
-    // const og= req.body.user_id;
-    // console.log(og);
-    // try{
-    //     const user = await editBroker(client,og, { name: name, username: username, password: await bcrypt.hash(password, 10) });
-    //     res.redirect("/ViewBrokers");
-    // }catch (e) {
-    //     console.log("Error adding user");
-    //     res.redirect("/editBroker");
-    // }
-    // console.log("edit broker");
 
+    const name = req.body.name;
+    const price = req.body.price;
+    const location = req.body.location;
+    const numOfBed = req.body.numOfBed;
+    const numOfBath = req.body.numOfBath;
+    const furnished = req.body.furnished;
+    const buildYRS = req.body.buildYRS;
+    const extra = req.body.extra;
+    const buildType = req.body.buildType;
+    const stories = req.body.stories;
+    const clName = req.body.clName;
+    const brkName = req.body.brkName;
+    const sizeOfProp = req.body.sizeOfProp;
+    const garage = req.body.garage;
+    const listingType = req.body.listingType;
+    const piclink = req.body.piclink;
+    const og = req.body.house_id;
+
+    try{
+        const house = await edit1HouseAllProperty(client, og, {name: name, price: price, location: location, numOfBed: numOfBed, numOfBath: numOfBath, furnished: furnished, buildYRS: buildYRS, extra: extra, buildType: buildType, stories: stories, seller: clName, broker: brkName, sizeOfProp: sizeOfProp, garage: garage, listingType: listingType, piclink: piclink});
+        res.redirect("/myListings");
+    }catch (e) {
+        console.log("Error editing house");
+        res.redirect("/editListings");
+    }
 
 
 });

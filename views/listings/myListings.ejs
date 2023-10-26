@@ -78,8 +78,7 @@
                 <div class="card-text mb-2"> 
                     <%= houses.location %>
                 </div>
-                <a href="" class="btn btn-primary">Read More</a>
-                <a href="" class="btn btn-info">Edit</a>
+                <a href="listings/edit/<%= houses.name %>" class="btn btn-info">Edit</a>
                 <form onSubmit="return confirm('Are you sure you want to delete?')" action="/listings/<%= houses.name %>?_method=DELETE" method="POST" class="d-inline">
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
