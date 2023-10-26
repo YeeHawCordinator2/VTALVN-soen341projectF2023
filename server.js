@@ -642,6 +642,7 @@ console.log
         res.redirect("/newListings");
     }
 });
+
 app.post("/editListingss",async(req,res)=> {
 
     const name = req.body.name;
@@ -687,6 +688,7 @@ app.post("/editListingss",async(req,res)=> {
     }catch (e) {
         console.log("Error editing house");
         res.redirect("/myListings");
+
     }
 
 

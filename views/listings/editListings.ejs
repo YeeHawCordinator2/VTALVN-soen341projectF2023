@@ -5,12 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real Estate </title>
+
     <link rel="stylesheet" href="../../css/styles.css">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
 <header>
+
     <img id="logo3" src="../../css/logo3.png" alt="logo3">
+
     <a href="login"> <button id="header-button" >Sign in</button></a>
 </header>
 <nav class="nav" style = "z-index:1000;">
@@ -67,6 +71,7 @@
 <h1> Edit Listings </h1>
 <p> Change values of <%= houses.name %> </p>
 
+
 <form action="/editListingss" method="POST">
     <div class="input-box">
         <label >House Name</label>
@@ -89,12 +94,14 @@
         <label >House Type</label>
         <select class="form-control" name="buildType" required>
             <option value="<%= houses.buildType%>" > <%= houses.buildType%> </option>
+
             <option value="house"> House </option>
             <option value="condo"> Condo </option>
             <option value="apartment"> Apartment </option>
         </select>
     </div>
     <div class="input-box">
+
         <label >Number of Stories</label>
         <input class="form-control" type="text" value="<%= houses.stories %>" name="stories" required>
     </div>
@@ -118,11 +125,13 @@
         <label >Garage</label>
         <select class="form-control" name="garage" required>
             <option value="<%= houses.garage%>" ><%= houses.garage%></option>
+
             <option value="yes"> Yes </option>
             <option value="no"> No </option>
         </select>
     </div>
     <div class="input-box">
+    
         <label >House build year</label>
         <input class="form-control" type="text" value="<%= houses.buildYRS%>" name="buildYRS" required>
     </div>
@@ -130,11 +139,13 @@
         <label >Furnished</label>
         <select class="form-control" name="furnished" required>
             <option value="<%= houses.furnished%>" > <%= houses.furnished%> </option>
+
             <option value="yes"> Yes </option>
             <option value="no"> No </option>
         </select>
     </div>
     <div class="input-box">
+
         <label >House extras</label>
         <input class="form-control" type="text" value="<%= houses.extra %>" name="extra" required>
     </div>
@@ -142,6 +153,7 @@
         <label >Listing Type</label>
         <select class="form-control" name="listingType" required>
             <option value="<%= houses.listingType%>"> <%= houses.listingType%> </option>
+
             <option value="buy"> Buy </option>
             <option value="rent"> Rent </option>
             <option value="sold"> Sold </option>

@@ -28,6 +28,7 @@ try{
 
 
 router.get('/edit/:id', async (req, res) => {
+
     console.log(req.params.id);
     const houses = await get1House(client,  req.params.id);
     const broker = await client.db("soen_341").collection("brokers").findOne({_id: houses.broker});
@@ -35,6 +36,7 @@ router.get('/edit/:id', async (req, res) => {
     //console.log(await get1Broker(client, houses[0].broker));
     houses.brk = broker.username;
     houses.seller = user.username;
+
     res.render('listings/editListings.ejs', {houses: houses})
 })
 
