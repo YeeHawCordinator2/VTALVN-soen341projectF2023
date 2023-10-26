@@ -19,23 +19,36 @@ Acceptance Criteria:
 5. If the information given are valid, the user is prompted with a security question.
 6. If the information given are false, the user is prompted with an error message, asking them to enter their information again.
 
-2- User Session (Logged In)
+[2] - Favorites
 
+2.1 Favorites Listing
 User Story Description:
-As a client, I should be able to save any properties of my liking to easily come back to these properties in the future.
+As a client, I should be able to retrieve any properties of my liking that have been saved.
 There should be a "Favorites" section in the menu tab which contains all the properties that have been marked as "Favorite" by the client.
 
-As a client, I should be able to access my calendar listing.
-
 User Acceptance Flow:
-The client should be able to save any property of their liking by clicking on the "Favorite" button attached to the property.
-The client is then able to see all their saved properties by clicking on the "Favorite" button from the menu tab on the top left of the screen.
+The client is able to see all their saved properties by clicking on the "Favorite" button from the menu tab on the top left of the screen.
 
 Acceptance Criteria:
 1. Given that the client is logged in and on the home page.
-2. When the client clicks on the "Favorites" button on the property card on the home page.
+2. When the client clicks on the "Add to Favorites" button on the property card on the home page.
 3. When the client clicks on the "Favorites" button from the menu tab.
 4. The client is redirected to a page containing all the properties that have been marked as "Favorites".
+
+2.2 Add to Favorite
+User Story Description
+As a client, I should be able to save any properties of my liking.
+There should be a "Add to Favorites" button implemented on each property card for the client to save the properties of their liking.
+
+User Acceptance Flow:
+The client should be able to save any property of their liking by clicking on the "Favorite" button attached to the property.
+
+Acceptance Criteria:
+1. Given that the client is logged in and on the home page.
+2. When the client clicks on the "Add to Favorites" button on the property card on the home page.
+3. When the client clicks on the "Favorites" button from the menu tab.
+4. The client is redirected to a page containing all the properties that have been marked as "Favorites".
+
 
 [3] - Personal Information Setting
 
