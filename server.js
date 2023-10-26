@@ -157,7 +157,7 @@ app.post("/editBroker",async(req,res)=> {
 
 
 });
-app.post("/buy_rentU",async(req,res)=> {
+app.post("/buy_rent",async(req,res)=> {
     let location = req.body.location.toLowerCase();
     let minPrice = req.body.minPrice;
     let maxPrice = req.body.maxPrice;
@@ -172,9 +172,6 @@ app.post("/buy_rentU",async(req,res)=> {
     let propsize = req.body.propsize;
     let listingType = req.body.listingType;
     let time = req.body.time;
-
-    console.log(bath)
-    console.log(beds)
 
     arr= [];
     let arr11=[];
@@ -343,7 +340,7 @@ app.post("/buy_rentU",async(req,res)=> {
             arr11 = [];
         }
         else if(isEmpty===true) isEmpty=true;
-console.log("time");
+
     }
 
     let holdArr=[];
@@ -355,7 +352,6 @@ if(arr.length===0){
     }
     arr.push(arr11);
 }
-console.log(arr);
 
     let newArr = arr.reduce((x, y) => x.filter((z) => y.includes(z)));
 
@@ -386,7 +382,7 @@ let houseArr = [];
 
     res.render( 'buy_rentU.ejs' , {houses: houseArr, message: message}); // opens localhost on index.html
 });
-app.post("/buy_rentB",async(req,res)=> {
+/*app.post("/buy_rent",async(req,res)=> {
     let location = req.body.location.toLowerCase();
     let minPrice = req.body.minPrice;
     let maxPrice = req.body.maxPrice;
@@ -607,7 +603,7 @@ app.post("/buy_rentB",async(req,res)=> {
         }}
 
     res.render( 'buy_rentB.ejs' , {houses: houseArr}); // opens localhost on index.html
-});
+}); */
 
 app.post("/newListings", upload.single("picpic"), async(req,res)=> {
 
@@ -623,14 +619,14 @@ app.post("/newListings", upload.single("picpic"), async(req,res)=> {
     const buildType = req.body.buildType;
     const stories = req.body.stories;
     const clName = req.body.user;
-    const brkName = req.body.brokers;
+    const brkName = req.body.broker;
     const sizeOfProp = req.body.sizeOfProp;
     const garage = req.body.garage;
     const listingType = req.body.listingType;
     const piclink = fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename));
     const base64data = encode.encode(piclink, 'base64');
     const pic = "data:image/jpeg;base64," + base64data;
-console.log
+
 
     try{
        const houses = await addNewHouse(client,name,price,location, numOfBed, numOfBath, furnished, buildYRS, extra, buildType, stories, clName, brkName, sizeOfProp, garage, listingType, pic);
@@ -642,8 +638,7 @@ console.log
         res.redirect("/newListings");
     }
 });
-
-app.post("/editListingss",async(req,res)=> {
+app.post("/editListings",async(req,res)=> {
 
     const name = req.body.name;
     const price = req.body.price;
@@ -660,43 +655,38 @@ app.post("/editListingss",async(req,res)=> {
     const sizeOfProp = req.body.sizeOfProp;
     const garage = req.body.garage;
     const listingType = req.body.listingType;
+    const piclink = req.body.piclink;
     const og = req.body.house_id;
 
-
     try{
-       const house = await edit1HouseAllProperty(client, og,
-            {
-                name: name,
-                image_id: (await client.db("soen_341").collection("houses").findOne({name: og})).image_id, //NEED TO CHANGE
-                price: price,
-                location: location,
-                numOfBath: numOfBath,
-                numOfBed: numOfBed,
-                furnished: furnished,
-                buildYRS: buildYRS,
-                extra: extra, // heating, pool, gym, ect.
-                buildType: buildType,
-                stories: stories,
-                sizeOfProp: sizeOfProp,
-                garage: garage,
-                listingType: listingType,
-                listingDate: (await client.db("soen_341").collection("houses").findOne({name: og})).listingDate,
-                seller: (await client.db("soen_341").collection("users").findOne({username: clName}))._id,
-                broker: (await client.db("soen_341").collection("brokers").findOne({username: brkName}))._id
-            });
+        const house = await edit1HouseAllProperty(client, og, {name: name, price: price, location: location, numOfBed: numOfBed, numOfBath: numOfBath, furnished: furnished, buildYRS: buildYRS, extra: extra, buildType: buildType, stories: stories, seller: clName, broker: brkName, sizeOfProp: sizeOfProp, garage: garage, listingType: listingType, piclink: piclink});
         res.redirect("/myListings");
     }catch (e) {
         console.log("Error editing house");
-        res.redirect("/myListings");
-
+        res.redirect("/editListings");
     }
 
 
 });
 
+app.post('/request',async(req,res)=> {
 
-app.get('/',async(req,res)=> {
     const houses = await client.db("soen_341").collection("houses").find().toArray();
+    const pics= await client.db("soen_341").collection("house_pic").find().toArray();
+    for(let i=0;i<houses.length;i++){
+        for(let j=0;j<pics.length;j++){
+            if(houses[i].image_id.toString() === pics[j]._id.toString())
+                houses[i].image=pics[j].file;
+        }
+    }
+    let message= "";
+
+    res.render( 'listings/buy_rentU.ejs' ,{houses: houses, message: message}); // opens localhost on index.html
+});
+app.get('/', async(req,res)=> {
+    const houses = await client.db("soen_341").collection("houses").find().toArray();
+
+    //NEEDS .EJS EXTENSION, ELSE IT THROWS NO EXTENSION ERROR
     const pics= await client.db("soen_341").collection("house_pic").find().toArray();
     for(let i=0;i<houses.length;i++){
         for(let j=0;j<pics.length;j++){
@@ -704,7 +694,8 @@ app.get('/',async(req,res)=> {
                 houses[i].image=pics[j].file;
         }}
     let message= "";
-    res.render( 'buy_rentU.ejs' , {houses: houses, message:message}); // opens localhost on index.html
+    res.render('listings/buy_rentU.ejs' , {houses: houses, message:message});
+    
 });
 app.get('/login',(req,res)=> {
     res.render( 'login.ejs' ); // opens localhost on index.html
@@ -722,18 +713,34 @@ app.get('/registerUserExist',(req,res)=> {
     res.render( 'registerUserExist.ejs' ); // opens localhost on index.html
 });
 
-app.get('/buy_rentB',async(req,res)=> {
+app.get('/buy_rentU',async(req,res)=> {
     const houses = await client.db("soen_341").collection("houses").find().toArray();
     const pics= await client.db("soen_341").collection("house_pic").find().toArray();
     for(let i=0;i<houses.length;i++){
         for(let j=0;j<pics.length;j++){
             if(houses[i].image_id.toString() === pics[j]._id.toString())
                 houses[i].image=pics[j].file;
-        }}
+        }
+    }
     let message= "";
 
-    res.render( 'buy_rentB.ejs' ,{houses: houses, message: message}); // opens localhost on index.html
+    res.render( 'listings/buy_rentU.ejs' ,{houses: houses, message: message}); // opens localhost on index.html
 });
+app.get('/buy_rentB',async (req,res)=> {
+    const houses = await client.db("soen_341").collection("houses").find().toArray();
+    const pics= await client.db("soen_341").collection("house_pic").find().toArray();
+    for(let i=0;i<houses.length;i++){
+        for(let j=0;j<pics.length;j++){
+            if(houses[i].image_id.toString() === pics[j]._id.toString())
+                houses[i].image=pics[j].file;
+        }
+    }
+    let message= "";
+
+    res.render( 'listings/buy_rentB.ejs' ,{houses: houses, message: message}); // opens localhost on index.html
+   
+});
+
 app.get('/calendarU',(req,res)=> {
     res.render('calendarU.ejs');
 });
@@ -793,9 +800,17 @@ app.get('/editListings', (req,res)=> {
     res.render('listings/editListings.ejs');
 });
 
+app.get('/show.ejs', async (req,res)=> {
+    
+    res.render('listings/show.ejs');
+});
+
+app.get('/request.ejs', async (req,res)=> {
+    res.render('listings/request.ejs');
+});
 /* GET users listing. */
 app.use('/listings', listingsRouter); //use listings as the route for myListings
-app.use('/broker', brkRouter)
+app.use('/broker', brkRouter);
 
 
 

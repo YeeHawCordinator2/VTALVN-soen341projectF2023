@@ -16,8 +16,9 @@
     <a href="login"> <button id="header-button" >Sign in</button></a>
 </header>
 
+<!-- Rest of your website content goes here -->
 
-<nav class="nav" style = "z-index:1000;">
+<nav class="nav">
     <button type="button" class="nav-close" onclick="toggleNav()">
         <ion-icon name="close-outline" size="large"></ion-icon>
     </button>
@@ -32,15 +33,15 @@
             <ion-icon name="list-outline" size="large"></ion-icon>
 
         </a>
-        <a href="fillerB" class="nav__link">
+        <a href="filler" class="nav__link">
             <span class="nav__text">My Visits</span>
             <ion-icon name="calendar-outline" size="large"></ion-icon>
         </a>
-        <a href="fillerB" class="nav__link">
+        <a href="filler" class="nav__link">
             <span class="nav__text">Visit Requests</span>
             <ion-icon name="calendar-outline" size="large"></ion-icon>
         </a>
-        <a href="fillerB" class="nav__link">
+        <a href="filler" class="nav__link">
             <span class="nav__text">Personal Info</span>
             <ion-icon name="person-outline" size="large"></ion-icon>
         </a>
@@ -48,18 +49,14 @@
             <span class="nav__text">Calendar</span>
             <ion-icon name="calculator-outline" size="large"></ion-icon>
         </a>
-        <a href="fillerB" class="nav__link">
+        <a href="filler" class="nav__link">
             <span class="nav__text">Match Property</span>
             <ion-icon name="search-outline" size="large"></ion-icon>
         </a>
-        <a href="fillerB" class="nav__link">
+        <a href="filler" class="nav__link">
             <span class="nav__text">Offers</span>
             <ion-icon name="cash-outline" size="large"></ion-icon>
         </a>
-        <form action="/logout" method="post">
-            "<button id="header-button"> log out </button>
-        </form>
-
 
     </div>
 
@@ -68,10 +65,14 @@
     <button onclick="toggleNav()"><ion-icon name="menu-outline"></ion-icon></button>
 
 </main>
-
+<script>
+    function toggleNav() {
+        document.body.classList.toggle("nav-open");
+    }
+</script>
 
 <div  id="searchbar">
-    <form action="buy_rentB" method="POST">
+    <form action="/buy_rent" method="POST">
         <div class="horizontal">
             <input type="text" class="answ" name ="location" placeholder="Location">
             <input type="text" class="answ" id="minPrice"  name ="minPrice" placeholder="minPrice">
@@ -147,33 +148,34 @@
         </div>
     </form>
 </div>
+
 <div class="container">
-<% houses.forEach(houses => { %>
-    <div class="card mt-4">
-        <div class="card-body">
-            <img src="<%= houses.image %>" alt="" class="img-fluid mb-3">
-            <h4 class="card-title"><%= houses.name %></h4>
-            <div class="card-subtitle text-muted mb-2">
-                Price: <%= houses.price.toString().concat("$") %>
+    <h1 class="mb-4">Listings</h1>
+    <% houses.forEach(houses => { %>
+        <div class="card mt-4">
+            <div class="card-body">
+                <img src="<%= houses.image %>" alt="" class="img-fluid mb-3">
+                <h4 class="card-title"><%= houses.name %></h4>
+                <div class="card-subtitle text-muted mb-2">
+                    Price: <%= houses.price.toString().concat("$") %>
+                </div>
+                <div class="card-text mb-2"> 
+                    <%= houses.location %>
+                </div>
             </div>
-            <div class="card-text mb-2">
-                <%= houses.location %>
+            <div class="card-body"> 
+                <a href="listings/<%= houses.name %>" class="btn btn-primary"> Read More</a>
             </div>
-            <a href="" class="btn btn-primary">Read More</a>
-            <a href="" class="btn btn-info">Request visit</a>
+            <div class="card-body"> 
+                <a href="listings/request/<%= houses.name %>" class="btn btn-primary">  Request Visit </a>
+            </div>
         </div>
-    </div>
-<% }) %>
+    <% }) %>
 </div>
 
 
-<script>
-    function toggleNav() {
-        document.body.classList.toggle("nav-open");
-    }
-</script>
+
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
-

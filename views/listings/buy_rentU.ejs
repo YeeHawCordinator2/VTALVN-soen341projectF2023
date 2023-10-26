@@ -18,7 +18,7 @@
 
 <!-- Rest of your website content goes here -->
 
-<nav class="nav" style = "z-index:1000;">
+<nav class="nav">
     <button type="button" class="nav-close" onclick="toggleNav()">
         <ion-icon name="close-outline" size="large"></ion-icon>
     </button>
@@ -48,9 +48,6 @@
             <span class="nav__text">Find Agent</span>
             <ion-icon name="search-outline" size="large"></ion-icon>
         </a>
-        <form action="/logout" method="post">
-            "<button id="header-button"> log out </button>
-        </form>
 
     </div>
 
@@ -59,7 +56,11 @@
     <button onclick="toggleNav()"><ion-icon name="menu-outline"></ion-icon></button>
 
 </main>
-
+<script>
+    function toggleNav() {
+        document.body.classList.toggle("nav-open");
+    }
+</script>
 
 <div  id="searchbar">
     <form action="/buy_rentU" method="POST">
@@ -87,7 +88,7 @@
                 <option value="4">4+</option>
                 <option value="5">5+</option>
             </select>
-            <input type="text" id="yearBuilt" class="answ" name ="yearBuild" placeholder="yearBuilt +">
+            <input type="text" id="yearBuilt" class="answ" name ="yearBuild" placeholder="yearBuilt >">
             <select name="floors" id="floors" class="answ">
                 <option value="any" disabled selected>Floors</option>
                 <option value="any">Any</option>
@@ -126,10 +127,10 @@
                 <option value="pool">pool</option>
                 <option value="gym" >gym</option>
             </select>
-            <input type="text" id="propsize" class="answ" name ="propsize" placeholder="Property size +">
+            <input type="text" id="propsize" class="answ" name ="propsize" placeholder="Property size >">
             <select name="listing" id="listing" class="answ">
                 <option value="any" disabled selected>Listing Type</option>
-                <option value="buy" >buy</option>
+                <option value="sell" >sell</option>
                 <option value="rent">rent</option>
                 <option value="sold" >sold</option>
             </select>
@@ -138,31 +139,32 @@
         </div>
     </form>
 </div>
-<div class="container">
-<h1 style="color: red"> <%= message %> </h1>
-<% houses.forEach(houses => { %>
-    <div class="card mt-4">
-        <div class="card-body">
-            <img src="<%= houses.image %>" alt="" class="img-fluid mb-3">
-            <h4 class="card-title"><%= houses.name %></h4>
-            <div class="card-subtitle text-muted mb-2">
-                Price: <%= houses.price.toString().concat("$") %>
-            </div>
-            <div class="card-text mb-2">
-                <%= houses.location %>
-            </div>
-            <a href="" class="btn btn-primary">Read More</a>
-            <a href="" class="btn btn-info">Request visit</a>
 
+
+<div class="container">
+    <h1 class="mb-4">Listings</h1>
+    <% houses.forEach(houses => { %>
+        <div class="card mt-4">
+            <div class="card-body">
+                <img src="<%= houses.image %>" alt="" class="img-fluid mb-3">
+                <h4 class="card-title"><%= houses.name %></h4>
+                <div class="card-subtitle text-muted mb-2">
+                    Price: <%= houses.price.toString().concat("$") %>
+                </div>
+                <div class="card-text mb-2"> 
+                    <%= houses.location %>
+                </div>
+            </div>
+            <div class="card-body"> 
+                <a href="listings/<%= houses.name %>" class="btn btn-primary"> Read More</a>
+            </div>
+            <div class="card-body"> 
+                <a href="listings/request/<%= houses.name %>" class="btn btn-primary">  Request Visit </a>
+            </div>
         </div>
-    </div>
-<% }) %>
+    <% }) %>
 </div>
-<script>
-    function toggleNav() {
-        document.body.classList.toggle("nav-open");
-    }
-</script>
+
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
