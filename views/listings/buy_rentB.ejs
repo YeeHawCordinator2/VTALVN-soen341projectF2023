@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real Estate </title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/searchBar.css">
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/searchBar.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 </head>
 <body>
 <header>
-    <img id="logo3" src="css/logo3.png" alt="logo3">
-    <a href="login"> <button id="header-button" >Sign in</button></a>
+    <img id="logo3" src="../../css/logo3.png" alt="logo3">
+    <a href="../../login"> <button id="header-button" >Sign in</button></a>
 </header>
 
 <nav class="nav" style="z-index: 1000">
@@ -21,41 +21,41 @@
         <ion-icon name="close-outline" size="large"></ion-icon>
     </button>
     <div class="nav-links-container" id="BrokerMenu"  >
-        <a href="buy_rentB" class="nav__link">
+        <a href="/buy_rentB" class="nav__link">
             <span class="nav__text">Buy / Rent</span>
             <ion-icon name="cash-outline" size="large"></ion-icon>
         </a>
 
-        <a href="myListings" class="nav__link">
+        <a href="/myListings" class="nav__link">
             <span class="nav__text">My Listings</span>
             <ion-icon name="list-outline" size="large"></ion-icon>
 
         </a>
-        <a href="fillerB" class="nav__link">
+        <a href="../../fillerB" class="nav__link">
             <span class="nav__text">My Visits</span>
             <ion-icon name="calendar-outline" size="large"></ion-icon>
         </a>
-        <a href="fillerB" class="nav__link">
+        <a href="../../fillerB" class="nav__link">
             <span class="nav__text">Visit Requests</span>
             <ion-icon name="calendar-outline" size="large"></ion-icon>
         </a>
-        <a href="fillerB" class="nav__link">
+        <a href="../../fillerB" class="nav__link">
             <span class="nav__text">Personal Info</span>
             <ion-icon name="person-outline" size="large"></ion-icon>
         </a>
-        <a href="fillerB" class="nav__link">
+        <a href="../../fillerB" class="nav__link">
             <span class="nav__text">Calendar</span>
             <ion-icon name="calculator-outline" size="large"></ion-icon>
         </a>
-        <a href="fillerB" class="nav__link">
+        <a href="../../fillerB" class="nav__link">
             <span class="nav__text">Match Property</span>
             <ion-icon name="search-outline" size="large"></ion-icon>
         </a>
-        <a href="fillerB" class="nav__link">
+        <a href="../../fillerB" class="nav__link">
             <span class="nav__text">Offers</span>
             <ion-icon name="cash-outline" size="large"></ion-icon>
         </a>
-        <form action="/logout" method="post">
+        <form action="../../logout" method="post">
             "<button id="header-button"> log out </button>
         </form>
 
@@ -73,7 +73,7 @@
 </script>
 
 <div  id="searchbar">
-    <form action="/buy_rent" method="POST">
+    <form action="/buy_rentB" method="POST">
         <div class="horizontal">
             <input type="text" class="answ" name ="location" placeholder="Location">
             <input type="text" class="answ" id="minPrice"  name ="minPrice" placeholder="minPrice">
@@ -144,7 +144,7 @@
                 <option value="rent">rent</option>
                 <option value="sold" >sold</option>
             </select>
-            <input type="text" id="time" class="answ" name ="time" placeholder="Listed since (yyyy-mm-dd)">
+            <input type="text" id="time" class="answ" name ="time" placeholder="Listed since(yyyy-mm-dd)">
             <input type="submit" value="Search" id="button">
         </div>
     </form>
@@ -166,10 +166,10 @@
                 </div>
             </div>
             <div class="card-body"> 
-                <a href="listings/<%= houses.name %>" class="btn btn-primary"> Read More</a>
+                <a href="listings/showB/<%= houses.name %>" class="btn btn-primary"> Read More</a>
             </div>
             <div class="card-body"> 
-                <a href="listings/request/<%= houses.name %>" class="btn btn-primary">  Request Visit </a>
+                <a href="listings/requestB/<%= houses.name %>" class="btn btn-primary">  Request Visit </a>
             </div>
         </div>
     <% }) %>

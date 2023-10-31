@@ -157,7 +157,7 @@ app.post("/editBroker",async(req,res)=> {
 
 
 });
-app.post("/buy_rent",async(req,res)=> {
+app.post("/buy_rentU",async(req,res)=> {
     let location = req.body.location.toLowerCase();
     let minPrice = req.body.minPrice;
     let maxPrice = req.body.maxPrice;
@@ -170,7 +170,7 @@ app.post("/buy_rent",async(req,res)=> {
     let furnished = req.body.furnished;
     let extra = req.body.extra;
     let propsize = req.body.propsize;
-    let listingType = req.body.listingType;
+    let listingType = req.body.listing;
     let time = req.body.time;
 
     arr= [];
@@ -380,9 +380,9 @@ let houseArr = [];
     let message= "";
     if(isEmpty===true) message="No results found";
 
-    res.render( 'buy_rentU.ejs' , {houses: houseArr, message: message}); // opens localhost on index.html
+    res.render( 'listings/buy_rentU.ejs' , {houses: houseArr, message: message}); // opens localhost on index.html
 });
-/*app.post("/buy_rent",async(req,res)=> {
+app.post("/buy_rentB",async(req,res)=> {
     let location = req.body.location.toLowerCase();
     let minPrice = req.body.minPrice;
     let maxPrice = req.body.maxPrice;
@@ -395,7 +395,7 @@ let houseArr = [];
     let furnished = req.body.furnished;
     let extra = req.body.extra;
     let propsize = req.body.propsize;
-    let listingType = req.body.listingType;
+    let listingType = req.body.listing;
     let time = req.body.time;
 
     arr= [];
@@ -412,7 +412,6 @@ let houseArr = [];
             arr11 = [];
         }
         else if(isEmpty===true) isEmpty=true;
-
     }
     if(minPrice!==""){
         minPrice= await getHousePriceHigher(client, parseInt(minPrice));
@@ -578,6 +577,7 @@ let houseArr = [];
 
     let holdArr=[];
     if(arr.length===0){
+        isEmpty=true;
         holdArr = await readHouses(client);
         for (let i = 0; i < holdArr.length; i++) {
             arr11.push(holdArr[i]._id.toString());
@@ -586,6 +586,7 @@ let houseArr = [];
     }
 
     let newArr = arr.reduce((x, y) => x.filter((z) => y.includes(z)));
+
 
     console.log(newArr);
 
@@ -602,8 +603,12 @@ let houseArr = [];
                 houseArr[i].image=pics[j].file;
         }}
 
-    res.render( 'buy_rentB.ejs' , {houses: houseArr}); // opens localhost on index.html
-}); */
+    let message= "";
+    if(isEmpty===true) message="No results found";
+
+
+    res.render( 'listings/buy_rentB.ejs' , {houses: houseArr, message: message}); // opens localhost on index.html
+});
 
 app.post("/newListings", upload.single("picpic"), async(req,res)=> {
 
@@ -803,13 +808,22 @@ app.get('/editListings', (req,res)=> {
     res.render('listings/editListings.ejs');
 });
 
-app.get('/show.ejs', async (req,res)=> {
+app.get('/showU.ejs', async (req,res)=> {
     
-    res.render('listings/show.ejs');
+    res.render('listings/showU.ejs');
 });
 
-app.get('/request.ejs', async (req,res)=> {
-    res.render('listings/request.ejs');
+app.get('/requestU.ejs', async (req,res)=> {
+    res.render('listings/requestU.ejs');
+});
+
+app.get('/showB.ejs', async (req,res)=> {
+
+    res.render('listings/showB.ejs');
+});
+
+app.get('/requestB.ejs', async (req,res)=> {
+    res.render('listings/requestB.ejs');
 });
 app.get('/searchBroker', async (req,res)=> {
     const broker = await client.db("soen_341").collection("brokers").find().toArray();
