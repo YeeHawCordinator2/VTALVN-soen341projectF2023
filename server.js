@@ -811,6 +811,10 @@ app.get('/show.ejs', async (req,res)=> {
 app.get('/request.ejs', async (req,res)=> {
     res.render('listings/request.ejs');
 });
+app.get('/searchBroker', async (req,res)=> {
+    const broker = await client.db("soen_341").collection("brokers").find().toArray();
+    res.render('broker/searchBrokers.ejs',{broker:broker});
+});
 /* GET users listing. */
 app.use('/listings', listingsRouter); //use listings as the route for myListings
 app.use('/broker', brkRouter);
