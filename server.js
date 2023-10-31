@@ -157,6 +157,29 @@ app.post("/editBroker",async(req,res)=> {
 
 
 });
+
+
+
+app.post("/searchBroker",async(req,res)=> {
+    const username = req.body.username;
+    let brokers = await client.db("soen_341").collection("brokers").find().toArray();
+    let broker = [];
+    let isEmpty =true;
+    for(let i =0;i<brokers.length;i++){
+        if(((brokers[i].name).toLowerCase()).includes(username.toLowerCase())) {
+            broker.push(brokers[i]);
+            isEmpty=false;
+        }
+    }
+
+    let message= "";
+    if(isEmpty===true){
+        message = "No results found";
+        broker = await client.db("soen_341").collection("brokers").find().toArray();
+    }
+    res.render( 'searchBroker.ejs' , {brokers: broker, message: message}); // opens localhost on index.html
+});
+
 app.post("/buy_rentU",async(req,res)=> {
     let location = req.body.location.toLowerCase();
     let minPrice = req.body.minPrice;
@@ -436,6 +459,7 @@ app.post("/buy_rentB",async(req,res)=> {
             arr11 = [];
         }
         else if(isEmpty===true) isEmpty=true;
+
     }
     if(bath!=="any") {
         bath = await getHouseBathgreaterThan(client, parseInt(bath));
@@ -448,6 +472,7 @@ app.post("/buy_rentB",async(req,res)=> {
             arr11 = [];
 
         }
+
     }
     if(beds!=="any"){
         beds= await getHouseBedgreaterThan(client, parseInt(beds));
@@ -510,6 +535,7 @@ app.post("/buy_rentB",async(req,res)=> {
             arr11 = [];
 
         }
+
     }
     if(furnished!=="any"){
         furnished= await getHouseFurnished(client, furnished);
@@ -531,6 +557,7 @@ app.post("/buy_rentB",async(req,res)=> {
             arr.push(arr11);
             arr11 = [];
         }
+
     }
     if(propsize!==""){
         propsize= await getHouseSizeOfPropGreater(client, propsize);
@@ -554,6 +581,7 @@ app.post("/buy_rentB",async(req,res)=> {
             arr.push(arr11);
             arr11 = [];
         }
+
     }
     if(time!==""){ //CHECK
         time= await getHouseAfterDate(client, new Date(time));
@@ -567,6 +595,8 @@ app.post("/buy_rentB",async(req,res)=> {
         else if(isEmpty===true) isEmpty=true;
 
     }
+
+
 
     let holdArr=[];
     if(arr.length===0){
@@ -584,14 +614,8 @@ app.post("/buy_rentB",async(req,res)=> {
     console.log(newArr);
 
     let houseArr = [];
-    if(newArr.length===0){
-        isEmpty=true;
-        houseArr = await client.db("soen_341").collection("houses").find().toArray();
-
-    }else {
-        for (let i = 0; i < newArr.length; i++) {
-            houseArr.push(await client.db("soen_341").collection("houses").findOne({_id: new ObjectId(newArr[i])}));
-        }
+    for(let i = 0; i<newArr.length; i++){
+        houseArr.push(await client.db("soen_341").collection("houses").findOne({_id: new ObjectId(newArr[i])}));
     }
 
     //  const houses = await client.db("soen_341").collection("houses").find().toArray();
@@ -817,14 +841,17 @@ app.get('/requestU.ejs', async (req,res)=> {
 });
 
 app.get('/showB.ejs', async (req,res)=> {
-    
+
     res.render('listings/showB.ejs');
 });
 
 app.get('/requestB.ejs', async (req,res)=> {
     res.render('listings/requestB.ejs');
 });
-
+app.get('/searchBroker', async (req,res)=> {
+    const broker = await client.db("soen_341").collection("brokers").find().toArray();
+    res.render('searchBroker.ejs',{brokers:broker, message:""});
+});
 /* GET users listing. */
 app.use('/listings', listingsRouter); //use listings as the route for myListings
 app.use('/broker', brkRouter);
