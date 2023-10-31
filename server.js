@@ -157,6 +157,29 @@ app.post("/editBroker",async(req,res)=> {
 
 
 });
+
+
+
+app.post("/searchBroker",async(req,res)=> {
+    const username = req.body.username;
+    let brokers = await client.db("soen_341").collection("brokers").find().toArray();
+    let broker = [];
+    let isEmpty =true;
+    for(let i =0;i<brokers.length;i++){
+        if(((brokers[i].name).toLowerCase()).includes(username.toLowerCase())) {
+            broker.push(brokers[i]);
+            isEmpty=false;
+        }
+    }
+
+    let message= "";
+    if(isEmpty===true){
+        message = "No results found";
+        broker = await client.db("soen_341").collection("brokers").find().toArray();
+    }
+    res.render( 'searchBroker.ejs' , {brokers: broker, message: message}); // opens localhost on index.html
+});
+
 app.post("/buy_rentU",async(req,res)=> {
     let location = req.body.location.toLowerCase();
     let minPrice = req.body.minPrice;
@@ -827,7 +850,7 @@ app.get('/requestB.ejs', async (req,res)=> {
 });
 app.get('/searchBroker', async (req,res)=> {
     const broker = await client.db("soen_341").collection("brokers").find().toArray();
-    res.render('broker/searchBrokers.ejs',{broker:broker});
+    res.render('searchBroker.ejs',{brokers:broker, message:""});
 });
 /* GET users listing. */
 app.use('/listings', listingsRouter); //use listings as the route for myListings
