@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real Estate </title>
-    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 <body>
 <header>
-    <img id="logo3" src="../../css/logo3.png" alt="logo3">
+    <img id="logo3" src="css/logo3.png" alt="logo3">
     <a href="/login"> <button id="header-button" style="right:0;" >Sign in</button></a>
 </header>
 
@@ -22,37 +22,37 @@
         <ion-icon name="close-outline" size="large"></ion-icon>
     </button>
     <div class="nav-links-container" id="BrokerMenu"  >
-        <a href="buy_rentB" class="nav__link">
+        <a href="/buy_rentB" class="nav__link">
             <span class="nav__text">Buy / Rent</span>
             <ion-icon name="cash-outline" size="large"></ion-icon>
         </a>
 
-        <a href="myListings" class="nav__link">
+        <a href="/myListings" class="nav__link">
             <span class="nav__text">My Listings</span>
             <ion-icon name="list-outline" size="large"></ion-icon>
 
         </a>
-        <a href="fillerB" class="nav__link">
+        <a href="/fillerB" class="nav__link">
             <span class="nav__text">My Visits</span>
             <ion-icon name="calendar-outline" size="large"></ion-icon>
         </a>
-        <a href="fillerB" class="nav__link">
+        <a href="/fillerB" class="nav__link">
             <span class="nav__text">Visit Requests</span>
             <ion-icon name="calendar-outline" size="large"></ion-icon>
         </a>
-        <a href="editMyInfoB.ejs" class="nav__link">
+        <a href="/editMyInfoB" class="nav__link">
             <span class="nav__text">Personal Info</span>
             <ion-icon name="person-outline" size="large"></ion-icon>
         </a>
-        <a href="calendarB" class="nav__link">
+        <a href="/calendarB" class="nav__link">
             <span class="nav__text">Calendar</span>
             <ion-icon name="calculator-outline" size="large"></ion-icon>
         </a>
-        <a href="fillerB" class="nav__link">
+        <a href="/fillerB" class="nav__link">
             <span class="nav__text">Match Property</span>
             <ion-icon name="search-outline" size="large"></ion-icon>
         </a>
-        <a href="fillerB" class="nav__link">
+        <a href="/fillerB" class="nav__link">
             <span class="nav__text">Offers</span>
             <ion-icon name="cash-outline" size="large"></ion-icon>
         </a>
@@ -93,13 +93,29 @@
 <div class="input-box">
     <label for="password">Password</label> <br>
     <input type="password" placeholder="****" name="password" required>
-</div>
+</div><br>
+    <div class="input-box">
+        <label for="phone">Phone</label> <br>
+        <input type="tel" value="<%= broker.phone %>" name="phone" required>
+    </div><br>
+    <div class="input-box">
+        <label for="agency">Agency</label> <br>
+        <input type="text" value="<%= broker.agency %>" name="agency" required>
+    </div><br>
+    <div class="input-box">
+        <label for="license">License</label> <br>
+        <input type="number" value="<%= parseInt(broker.license) %>"  name="license" required>
+    </div><br>
+    <div class="input-box">
+        <label for="email">Email</label> <br>
+        <input type="email" Value="<%= broker.email %>" name="email" required>
+    </div>
 <button id="header-button" type="submit" class="btn"> Edit </button>
 </form>
 
 
 
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script type="module" src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@ const {MongoClient, ObjectId} = require('mongodb');
 const bodyParser = require('body-parser');
 const path = require('path');
 const cookieParser = require("cookie-parser");
-const sessions = require('express-session');
+const session = require('express-session');
 //const MongoStore = require('connect-mongo')(sessions);
 const multer = require("multer");
 const fs = require("fs");
@@ -20,7 +20,7 @@ const encode = require('nodejs-base64-encode');
 const upload = multer({storage: storage});
 const {get1Broker, get1User, get1Admin, getHouseGarage, getHouseLocation, getHousePriceLower, getHousePriceHigher,
     getHouseBathgreaterThan, getHouseBuildYRSGreater, getHouseBedgreaterThan, getHouseBuildType, getHouseFurnished,
-    getHouseStories, getHouseextra, getHouseSizeOfPropGreater, getHouseListingType, getHouseBeforeDate, readHouses,
+    getHouseStories, getHouseextra, getHouseSizeOfPropGreater, getHouseListingType, readHouses,
     getHouseAfterDate
 } = require("./model/database/getDB");
 const {checkBroker, checkUser, checkAdmin, checkUsername} = require("./model/database/checkPassword");
@@ -55,9 +55,9 @@ app.use(function(req, res, next) {
     next();
 });
 const oneDay = 1000 * 60 * 60 * 24;
-
+app.set('trust proxy', 1)
 //session middleware
-app.use(sessions({
+app.use(session({
     secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
     saveUninitialized:true,
     cookie: { maxAge: oneDay },
@@ -69,13 +69,10 @@ app.use(sessions({
 app.post("/login", async (req,res)=> {
     const username = req.body.username;
     const password = req.body.password;
-    let session = null;
-
     if (await get1Admin(client, username) != null) {
         //user = await get1Admin(client, username);
         if (await checkAdmin(client, username, password) === true) {
             res.redirect("/login_successA")
-            session=req.session;
             session.userid=username;
             session.type = "admin";
         }
@@ -83,7 +80,6 @@ app.post("/login", async (req,res)=> {
     }
     else if (await get1Broker(client, username) != null) {
         if (await checkBroker(client, username, password) === true){
-            session=req.session;
             session.userid=username;
             session.type = "broker";
             res.redirect("/login_successB")
@@ -93,7 +89,6 @@ app.post("/login", async (req,res)=> {
     else if (await get1User(client, username) != null) {
         if (await checkUser(client, username, password) === true){
             res.redirect("/login_successU");
-        session=req.session;
         session.userid=username;
         session.type = "user";
     }
@@ -105,6 +100,8 @@ app.post("/login", async (req,res)=> {
 
 
 app.post("/logout", (req,res)=> {
+    req.session.userid = undefined;
+    req.session.type = undefined;
     req.session.destroy();
     res.redirect("/buy_rentU");
 });
@@ -700,7 +697,6 @@ app.post("/editListingss",async(req,res)=> {
     const og = req.body.house_id;
 
     try{
-        const house = await edit1HouseAllProperty(client, og, {name: name, price: price, location: location, numOfBed: numOfBed, numOfBath: numOfBath, furnished: furnished, buildYRS: buildYRS, extra: extra, buildType: buildType, stories: stories, seller: clName, broker: brkName, sizeOfProp: sizeOfProp, garage: garage, listingType: listingType, piclink: piclink});
         res.redirect("/myListings");
     }catch (e) {
         console.log("Error editing house");
@@ -710,7 +706,7 @@ app.post("/editListingss",async(req,res)=> {
 
 });
 
-app.post('/request',async(req,res)=> {
+app.post('/request',async (req,res)=> {
 
     const houses = await client.db("soen_341").collection("houses").find().toArray();
     const pics= await client.db("soen_341").collection("house_pic").find().toArray();
@@ -864,15 +860,25 @@ app.get('/searchBroker', async (req,res)=> {
     res.render('broker/searchBroker.ejs',{brokers:broker, message:""});
 });
 app.get('/editMyInfoA', async (req,res)=> {
-    res.render('editMyInfoA.ejs',{brokers:broker, message:""});
-});
+    if(session.userid===undefined || session.type!=="admin"){
+        res.redirect("/login");
+    }
+    else {
+        const admin = await client.db("soen_341").collection("system_admin").findOne({username: session.userid});
+    res.render('editMyInfoA.ejs',{admin:admin});
+}});
 app.get('/editMyInfoB', async (req,res)=> {
-    res.render('editMyInfoB.ejs',{brokers:broker, message:""});
-});
+    if(session.userid===undefined || session.type!=="broker"){
+        res.redirect("/login");
+    }
+    else {
+        const broker = await client.db("soen_341").collection("brokers").findOne({username: session.userid});
+    console.log(broker.license);
+        res.render('editMyInfoB.ejs',{broker:broker});
+}});
 app.get('/editMyInfoU', async (req,res)=> {
-    let session = null
-    session = req.session;
-    if(session.userid===undefined){
+
+    if(session.userid===undefined || session.type!=="user"){
         res.redirect("/login");
     }
     else {
