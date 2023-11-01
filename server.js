@@ -188,7 +188,7 @@ app.post("/searchBroker",async(req,res)=> {
         message = "No results found";
         broker = await client.db("soen_341").collection("brokers").find().toArray();
     }
-    res.render( 'searchBroker.ejs' , {brokers: broker, message: message}); // opens localhost on index.html
+    res.render( 'broker/searchBroker.ejs' , {brokers: broker, message: message}); // opens localhost on index.html
 });
 
 app.post("/buy_rentU",async(req,res)=> {
@@ -861,7 +861,7 @@ app.get('/requestB.ejs', async (req,res)=> {
 });
 app.get('/searchBroker', async (req,res)=> {
     const broker = await client.db("soen_341").collection("brokers").find().toArray();
-    res.render('searchBroker.ejs',{brokers:broker, message:""});
+    res.render('broker/searchBroker.ejs',{brokers:broker, message:""});
 });
 /* GET users listing. */
 app.use('/listings', listingsRouter); //use listings as the route for myListings

@@ -78,6 +78,9 @@
     <div class="card-brk" style=" outline: 1vmin solid black; margin: 5%;  padding:3% 0; padding-left:10%; font-size: 2.5vmax">
         <h4 class="card-title">   <%= broker.name %></h4>
         <div class="card-text mb-2"> <%= broker.username%></div>
+        <div class="card-body">
+            <a href="listings/showB/<%= broker.username %>" class="btn btn-primary"> Read More</a>
+        </div>
     </div>
 
  <% }) %>
