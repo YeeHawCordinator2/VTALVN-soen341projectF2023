@@ -131,9 +131,14 @@ app.post("/addBroker",async(req,res)=> {
     const username = req.body.username;
     const name = req.body.name;
     const password = req.body.password;
+    const agency = req.body.agency;
+    const phone = req.body.phone;
+    const email = req.body.email;
+    const license = req.body.license;
+
 
     try{
-        await addNewBroker(client, username, name, password);
+        await addNewBroker(client, username, name, password, license, agency, email, phone);
         res.redirect("/ViewBrokers");
     }catch (e) {
         console.log("Error adding user");
@@ -145,9 +150,15 @@ app.post("/editBroker",async(req,res)=> {
     const name = req.body.name;
     const password = req.body.password;
     const og= req.body.user_id;
+    const agency = req.body.agency;
+    const phone = req.body.phone;
+    const email = req.body.email;
+    const license = req.body.license;
+
+
     console.log(og);
     try{
-        await editBroker(client,og, { name: name, username: username, password: await bcrypt.hash(password, 10) });
+        await editBroker(client,og, { name: name, username: username, password: await bcrypt.hash(password, 10), agency: agency, phone: phone, email: email, license: license});
         res.redirect("/ViewBrokers");
     }catch (e) {
         console.log("Error adding user");
