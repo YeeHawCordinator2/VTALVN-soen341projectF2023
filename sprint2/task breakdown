@@ -1,18 +1,45 @@
- for 1 =  already have it
+Task Breakdown for each User Stories:
+1. Login Procedure for Administrative Level Account
 
- for 2 = half done: need to create mongo database for stuff
+    Issue #28: Task - Implementation of the System Administrator  - Darren
+    Issue #30: Task - Implementation of the System Administrator CRUD - Alessandro
+    Issue #31: Task - Implementation of the System Administrator Log-In User Interface - Alessandro
+    Issue #32: Task - Implementation of the System Administrator Security Questions - Alessandro & Amine
 
- for 3 = 1 task for each ( admin, broker user)
+    Current Status: Pending
+
+2. Favorites
+    Issue #103: Task - Implementation of a Favorites Section for Clients -Nao
+    Issue #116: Task - Implementation of an "Add to Favorites" Feature for Clients -Amine
+
+    Current Status: Half done, need to create mongo database to contain the properties marked as favorites.
+
+3. Personal Information Settings
+    Issue #104: Task - Implementation of a Form to Change Client's Personal Information - Amine
+    Issue #107: Task - Implementation of a Form to Change Broker's Personal Information - Nao
+    Issue #108: Task - Implementation of a Form to Change Administrator's Personal Information -Nao
+
+    Current Status: Pending
+
+4. Search for Broker
+    Issue #101: Task - Implementation of a Button for "Search for Broker" - Mustafa
+    Issue #102: Task - Implementation of a Search Bar for Broker - Mustafa
+    Issue #105: Task - Implementation of predefined specifications for Broker Search - Nao
+
+    Current Status: Pending
+
+5. Submit an offer to buy a property
+    Issue #106: Task - Implementation of a Button for "Create Offer" -Richard
+    Issue #109: Task - Implementation of an Offer Forum - Darren
+
+    Current Status: Pending
+
+6. Offers management (view, accept, reject)
+    Issue #110: Task - Implementation of a Button for "View Offers" - Richard
+    Issue #111: Task - Implementation of the User Interface Viewing the Offers -Richard
+    Issue #112: Task - Implementation of a Button to Reject and Accept an Offer - Darren
+
+    Current Status: Pending
 
 
- for4 =
- -display all brokers
- - get all brokers from database
 
- for 5=
- - create front end ( button to submit(how much you offer) and tab offer for broker)
- - create back end (  put in database)
-
- for6=
-- creat front end (link to the offer page and make UI)
--create backend ( retrive from database)

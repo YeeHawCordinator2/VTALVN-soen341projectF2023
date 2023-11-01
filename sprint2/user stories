@@ -1,6 +1,73 @@
-1- specific login for admin (WE ALREADY HAVE ISSUE ABOUT SO DELETE ISSUE OR WE IMPLEMENT NEXT SPRINT)
-2- session after loging
-3- admin, broker, user edit their own info (name, username, password)
+[1] - Login for Admin
+
+User Story Description:
+As an admin, I should be able to log into my account to access administrative features.
+The system will need to identify the account type based on the login credentials inputted by the user.
+When the user logs into their administrator account, the login process should ask the user to answer a security question to verify their identity.
+
+User Acceptance Flow:
+The administrator should be able to log into their account by clicking on the "Sign in" button.
+This will open the sign in page where the user will be prompted to enter their login credentials (Username and Password).
+Then, if the inputted login credentials are valid, the user should be prompted to answer a personalized security question to validate the user's identity.
+If the inputted login credentials are invalid, the user will be prompted with an error message, asking them to try logging in again.
+
+Acceptance Criteria:
+1. Given that the user has access to the home page.
+2. When the user clicks on the "Sign in" button.
+3. Then the user is redirected to a "sign in" page available to all type of users.
+4. The user inputs their login credentials. These information are checked in the database to validate the account entered.
+5. If the information given are valid, the user is prompted with a security question.
+6. If the information given are false, the user is prompted with an error message, asking them to enter their information again.
+
+[2] - Favorites
+
+2.1 Favorites Listing
+User Story Description:
+As a client, I should be able to retrieve any properties of my liking that have been saved.
+There should be a "Favorites" section in the menu tab which contains all the properties that have been marked as "Favorite" by the client.
+
+User Acceptance Flow:
+The client is able to see all their saved properties by clicking on the "Favorite" button from the menu tab on the top left of the screen.
+
+Acceptance Criteria:
+1. Given that the client is logged in and on the home page.
+2. When the client clicks on the "Add to Favorites" button on the property card on the home page.
+3. When the client clicks on the "Favorites" button from the menu tab.
+4. The client is redirected to a page containing all the properties that have been marked as "Favorites".
+
+2.2 Add to Favorite
+User Story Description
+As a client, I should be able to save any properties of my liking.
+There should be a "Add to Favorites" button implemented on each property card for the client to save the properties of their liking.
+
+User Acceptance Flow:
+The client should be able to save any property of their liking by clicking on the "Favorite" button attached to the property.
+
+Acceptance Criteria:
+1. Given that the client is logged in and on the home page.
+2. When the client clicks on the "Add to Favorites" button on the property card on the home page.
+3. When the client clicks on the "Favorites" button from the menu tab.
+4. The client is redirected to a page containing all the properties that have been marked as "Favorites".
+
+
+[3] - Personal Information Setting
+
+User Story Description:
+As a user (admin, broker, and client), I should be able to change my account's information which includes the name, the username, and the password.
+There should be a form in the "Personal Info" section found in the menu tab which will allow the user to change their name, username, and password to use at their next sign in.
+
+User Acceptance Flow:
+The user should be able to change their account's information by clicking on "Personal Info" section from the menu tab.
+The user can then click on the different forms to change their name, username, and password.
+
+Acceptance Criteria:
+1. Given that the user is logged in and on the home page.
+2. When the user clicks on the "Personal Info" button from the menu tab.
+3. The user is redirected to a page containing their personal information.
+4. The user clicks on the different forms which allows the user to change their information.
+5. The user then changes their information of choice (either their profile name, username, or password).
+6. The user can re-log into their account with their new login credentials.
+
 [4] - Search for Broker
 
 User Story Description:
@@ -58,3 +125,8 @@ Acceptance Criteria:
 1.Given that the broker is logged in and is viewing his property listing.
 2.When broker clicks on “View Offers”
 3.Then broker is redirected to a page where it can see all the offers from the clients and the broker can either accept or reject the offer.
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> Nao

@@ -269,11 +269,12 @@ For these reasons, Bootstrap became the better framework option for our team for
 
 ## Installation Instruction and Usage Guidelines
 ***
-<h3>Installation of Node.js and NPM</h4>
-1- Install Node.js and NPM following these [steps](https://radixweb.com/blog/installing-npm-and-nodejs-on-windows-and-mac) <br>
+<h3>Installation of Node.js and NPM</h3>
+1- Install Node.js and NPM following these [steps](https://radixweb.com/blog/installing-npm-and-nodejs-on-windows-and-mac) make sure npm is in environment variable<br>
 2- Clone the repository on github by downloading the zip file or using the GitHub link. <br>
-3- Navigate inside the project folder on terminal and find package.json file. <br>
+3- Navigate inside the project folder on terminal <br>
 4- Run "npm install" to install all the project dependencies. <br>
-5- Run "node main.js" in main.js directory to get the localhost running. <br>
+5- Run "npm run devStart" in root directory to get the localhost running. <br>
+6- Open "localhost:3000" on google/edge to run the project.
 
 ### [This file](https://github.com/YeeHawCordinator2/VTALVN-soen341projectF2023/wiki/Team-rules) contains the team, management, and Git rules.
