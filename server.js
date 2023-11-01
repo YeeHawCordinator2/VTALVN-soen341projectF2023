@@ -863,6 +863,22 @@ app.get('/searchBroker', async (req,res)=> {
     const broker = await client.db("soen_341").collection("brokers").find().toArray();
     res.render('broker/searchBroker.ejs',{brokers:broker, message:""});
 });
+app.get('/editMyInfoA', async (req,res)=> {
+    res.render('editMyInfoA.ejs',{brokers:broker, message:""});
+});
+app.get('/editMyInfoB', async (req,res)=> {
+    res.render('editMyInfoB.ejs',{brokers:broker, message:""});
+});
+app.get('/editMyInfoU', async (req,res)=> {
+    let session = null
+    session = req.session;
+    if(session.userid===undefined){
+        res.redirect("/login");
+    }
+    else {
+        const user = await client.db("soen_341").collection("users").findOne({username: session.userid});
+        res.render('editMyInfoU.ejs', {user: user});
+    }});
 /* GET users listing. */
 app.use('/listings', listingsRouter); //use listings as the route for myListings
 app.use('/broker', brkRouter);
