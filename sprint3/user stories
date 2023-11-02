@@ -1,0 +1,27 @@
+User Stories for on:
+1. Mortgage Calculator (in the Homebuyer profile)
+    Not much information available currently on the implementation of the Mortgage Calculator.
+    There are many different Mortgage Calculator available online such as:
+        - Mortgage Payment Calculator
+        - Mortgage Affordability Calculator
+        - Down Payment Calculator
+
+    Here are some examples of some Mortgage Calculator from Banks:
+        - RBC: https://apps.royalbank.com/apps/mortgages/mortgage-payment-calculator/
+        - TD Bank: https://www.td.com/ca/en/personal-banking/products/mortgages/calculators-tools
+        - Scotiabank: https://www.scotiabank.com/ca/en/personal/mortgages/mortgage-calculator.html
+
+    The following Real-Estate website has three different Mortgage Calculators implemented:
+        From REALTOR.ca: https://www.realtor.ca/calculator#v=payment
+        - Payment Calculator
+        - Land Transfer Tax Calculator
+        - Affordability Calculator
+
+        (It would be easier for us to implement just one of the calculators - probably the Payment Calculator - but we
+        could implement more than one if the team wants to.)
+
+2. A new feature proposed by the team to make the web app more productive than the competence.
+    This feature will be discussed and chosen among the team members.
+
+    PS: It could be the implementation of an interactive Calendar as we've already planned,
+        since this isn't an actual requirement given by the professor.
