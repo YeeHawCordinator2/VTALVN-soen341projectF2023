@@ -6,11 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real Estate </title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/searchBar.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 <body>
 <header>
     <img id="logo3" src="css/logo3.png" alt="logo3">
-    <a href="login"> <button id="header-button" >Sign in</button></a>
+    <a href="login"> <button id="header-button" style="right:0;" >Sign in</button></a>
 </header>
 
 <!-- Rest of your website content goes here -->
@@ -51,7 +54,6 @@
 
 
     </div>
-
 </nav>
 <main class="main">
     <button onclick="toggleNav()"><ion-icon name="menu-outline"></ion-icon></button>
@@ -63,8 +65,22 @@
     }
 </script>
 
+<div  id="searchbar">
+    <form action="/searchBroker" method="POST">
+            <input type="text" class="answ" id="brks" name ="username" placeholder="Search for broker by name">
+        <input type="submit" value="Search" id="button">
 
-<h1> Page is under construction </h1>
+    </form>
+</div>
+<h1 style="color:red; margin:2%;"> <%= message %> </h1>
+<h1 class="mb-4">Brokers</h1>
+<% brokers.forEach(broker => { %>
+    <div class="card-brk" style=" outline: 1vmin solid black; margin: 5%;  padding:3% 0; padding-left:10%; font-size: 2.5vmax">
+        <h4 class="card-title">   <%= broker.name %></h4>
+        <div class="card-text mb-2"> <%= broker.username%></div>
+    </div>
+
+ <% }) %>
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
