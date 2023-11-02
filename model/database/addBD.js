@@ -44,13 +44,17 @@ async function addNewHouse(client, listingName, price, location, numOfBed, numOf
 
 }
 
-async function addNewBroker(client, username, name, password){  //encrypt user n pass
+async function addNewBroker(client, username, name, password, license, agency, email, phone){  //encrypt user n pass
     try{
 
      await client.db("soen_341").collection("brokers").insertOne({
         name: name,
         username: username,
-        password: await bcrypt.hash(password, 10)
+        password: await bcrypt.hash(password, 10),
+        agency: agency,
+        license: license,
+        email: email,
+        phone: phone
     });}
     catch(e){
         console.log("error - add broker");

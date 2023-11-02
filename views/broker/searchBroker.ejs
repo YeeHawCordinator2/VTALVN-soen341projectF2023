@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real Estate </title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/searchBar.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/searchBar.css">
+    <link rel="stylesheet" href=" https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 <body>
 <header>
-    <img id="logo3" src="css/logo3.png" alt="logo3">
-    <a href="login"> <button id="header-button" style="right:0;" >Sign in</button></a>
+    <img id="logo3" src="../css/logo3.png" alt="logo3">
+    <a href="/login"> <button id="header-button" style="right:0;" >Sign in</button></a>
 </header>
 
 <!-- Rest of your website content goes here -->
@@ -23,28 +23,28 @@
         <ion-icon name="close-outline" size="large"></ion-icon>
     </button>
     <div class="nav-links-container" id="BaseMenu" >
-        <a href="buy_rentU" class="nav__link">
+        <a href="/buy_rentU" class="nav__link">
             <span class="nav__text">Buy/Rent</span>
             <ion-icon name="cash-outline" size="large"></ion-icon>
         </a>
 
-        <a href="fillerU" class="nav__link">
+        <a href="/fillerU" class="nav__link">
             <span class="nav__text">Favorites</span>
             <ion-icon name="heart-outline" size="large"></ion-icon>
         </a>
-        <a href="fillerU" class="nav__link">
+        <a href="/fillerU" class="nav__link">
             <span class="nav__text">Calendar</span>
             <ion-icon name="calendar-outline" size="large"></ion-icon>
         </a>
-        <a href="fillerU" class="nav__link">
+        <a href="/editMyInfoU" class="nav__link">
             <span class="nav__text">Personal Info</span>
             <ion-icon name="person-outline" size="large"></ion-icon>
         </a>
-        <a href="fillerU" class="nav__link">
+        <a href="/fillerU" class="nav__link">
             <span class="nav__text">Morgage Calculator</span>
             <ion-icon name="calculator-outline" size="large"></ion-icon>
         </a>
-        <a href="searchBroker" class="nav__link">
+        <a href="/searchBroker" class="nav__link">
             <span class="nav__text">Find Agent</span>
             <ion-icon name="search-outline" size="large"></ion-icon>
         </a>
@@ -78,11 +78,14 @@
     <div class="card-brk" style=" outline: 1vmin solid black; margin: 5%;  padding:3% 0; padding-left:10%; font-size: 2.5vmax">
         <h4 class="card-title">   <%= broker.name %></h4>
         <div class="card-text mb-2"> <%= broker.username%></div>
+        <div class="card-body">
+            <a href="listings/showB/<%= broker.username %>" class="btn btn-primary"> Read More</a>
+        </div>
     </div>
 
  <% }) %>
 
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script type="module" src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
