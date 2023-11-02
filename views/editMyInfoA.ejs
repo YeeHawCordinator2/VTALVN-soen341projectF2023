@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real Estate </title>
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href=" https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 <body>
 <header>
-    <img id="logo3" src="../css/logo3.png" alt="logo3">
+    <img id="logo3" src="css/logo3.png" alt="logo3">
     <a href="/login"> <button id="header-button" style="right:0;" >Sign in</button></a>
 </header>
 
@@ -55,19 +55,29 @@
     }
 </script>
 
-<h1> List of brokers</h1>
-<a href="/addBroker"> <button id="header-button" >Add Broker</button></a>
 
-<% brokers.forEach(broker => { %>
-    <div class="card-brk" style=" outline: 1vmin solid black; margin: 5%;  padding:3% 0; padding-left:10%; font-size: 2.5vmax">
-        <%= broker.name %>
-        <a href="broker/edit/<%= broker.username %>" id="header-button" style="margin: 0 5%" >Edit</a>
-        <form action="/broker/<%= broker.username %>?_method=DELETE" method="POST" class="d-inline">
-            <button type="submit" id="header-button">Delete</button>
-        </form>
-    </div>
 
- <% }) %>
+<h1> Edit Admin <%= admin.name %></h1>
+<p> change whatever information you need to change <br> to keep old password type it again</p>
+<form action="/editBroker" method="POST">
+<div class="input-box">
+
+    <label for="name">Name</label> <br>
+    <input type="text" value="<%= admin.name %>" name="name" required>
+</div> <br>
+<div class="input-box">
+    <label for="email">Username</label> <br>
+    <input type="text" value="<%= admin.username %>" name="username" required>
+    <input type="text" value="<%= admin.username %>" name="user_id" style="display: none">
+</div> <br>
+<div class="input-box">
+    <label for="password">Password</label> <br>
+    <input type="password" placeholder="****" name="password" required>
+</div>
+<button id="header-button" type="submit" class="btn"> Edit </button>
+</form>
+
+
 
 <script type="module" src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
