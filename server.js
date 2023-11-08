@@ -24,7 +24,7 @@ const {get1Broker, get1User, get1Admin, getHouseGarage, getHouseLocation, getHou
     getHouseAfterDate
 } = require("./model/database/getDB");
 const {checkBroker, checkUser, checkAdmin, checkUsername} = require("./model/database/checkPassword");
-const {addNewUser, addNewBroker, addNewHouse} = require("./model/database/addBD");
+const {addNewUser, addNewBroker, addNewHouse, addNewOffer} = require("./model/database/addBD");
 const listingsRouter = require('./routes/listings');
 const app = express();
 const brkRouter = require('./routes/brokers');
@@ -705,7 +705,27 @@ app.post("/editListingss",async(req,res)=> {
 
 
 });
+app.post('/offerSubmit', async (req,res)=> {
+    
+    
+    const price = req.body.price;
+    
+    const house_id = req.body.name;
+    const occupancy_date = req.body.occupancy_date;
+    const deed_date = req.body.deed_date;
+    const user_adress = req.body.Uadress;
+    const user_email = req.body.Uemail;
+    const user_name = req.body.Uname;
 
+    
+    try{
+        addNewOffer(client, user_name, user_adress, user_email, price, house_id, deed_date, occupancy_date);
+        res.redirect("/buy_rentB");
+    }catch (e) {
+        console.log("Error");
+        res.redirect("/offerListing");
+    }
+});
 app.post('/request',async (req,res)=> {
 
     const houses = await client.db("soen_341").collection("houses").find().toArray();
@@ -855,7 +875,9 @@ app.get('/showB.ejs', async (req,res)=> {
 app.get('/requestB.ejs', async (req,res)=> {
     res.render('listings/requestB.ejs');
 });
-
+app.get('/offerListing.ejs', async (req,res)=> {
+    res.render('listings/offerListing.ejs');
+});
 
 app.get('/searchBroker', async (req,res)=> {
     const broker = await client.db("soen_341").collection("brokers").find().toArray();

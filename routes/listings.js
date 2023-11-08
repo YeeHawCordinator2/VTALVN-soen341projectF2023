@@ -63,6 +63,15 @@ router.get('/edit/:id', async (req, res) => {
     res.render('listings/editListings.ejs', {houses: houses})
 })
 
+router.get('/offer/:id', async (req, res) => {
+    const houses = await get1House(client,  req.params.id);
+    const broker = await client.db("soen_341").collection("brokers").findOne({_id: houses.broker});
+    //console.log(await get1Broker(client, houses[0].broker));
+    
+    res.render('listings/offerListing.ejs', {houses: houses, brokers:broker})
+})
+
+
 router.delete('/:id', async (req, res) => {
     await deleteHouse(client, req.params.id);
     res.redirect('/myListings')
