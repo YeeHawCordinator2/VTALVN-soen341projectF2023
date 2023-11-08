@@ -875,6 +875,7 @@ app.get('/editMyInfoB', async (req,res)=> {
         const broker = await client.db("soen_341").collection("brokers").findOne({username: session.userid});
     console.log(broker.license);
         res.render('editMyInfoB.ejs',{broker:broker});
+
 }});
 app.get('/editMyInfoU', async (req,res)=> {
 
