@@ -720,7 +720,7 @@ app.post('/request',async (req,res)=> {
 
     res.render( 'listings/buy_rentU.ejs' ,{houses: houses, message: message}); // opens localhost on index.html
 });
-app.get('/', async(req,res)=> {
+app.get('/', async (req,res)=> {
     const houses = await client.db("soen_341").collection("houses").find().toArray();
 
     const pics= await client.db("soen_341").collection("house_pic").find().toArray();

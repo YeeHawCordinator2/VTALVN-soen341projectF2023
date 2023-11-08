@@ -14,6 +14,7 @@ app.use(bodyParser.urlencoded({
 })); //
 
 
+
 const uri = "mongodb+srv://naolal30:ConnectdatabasetoWebstorm100.@cluster0.ttfusik.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
 
