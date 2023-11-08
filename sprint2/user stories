@@ -71,7 +71,7 @@ Acceptance Criteria:
 [4] - Search for Broker
 
 User Story Description:
-As a client , I should be able to search and acquire a broker for my transactions. 
+As a client, I should be able to search and acquire a broker for my transactions.
 There should be a search bar and predefined specifications to facilitate in the process of searching for a broker. 
 Predefined specifications are the following; the number of years of experience, skills, education level and more.   
 
