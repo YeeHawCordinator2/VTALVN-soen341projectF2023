@@ -29,12 +29,17 @@ try{
 //Not for creating new brokers, this function takes REGISTERED brokers and 'gets' them from the database
 router.get('/edit/:id', async (req, res) => {
     const broker = await get1Broker(client, req.params.id);
-    //console.log(broker.name)
+//console.log(broker.name)
     res.render('broker/editBroker.ejs', {broker: broker})
-    //res.send("patoe")
+//res.send("patoe")
 
 })
 
+router.get('/show/:id', async (req, res) => {
+    const broker = await get1Broker(client, req.params.id);
+    res.render('broker/showBroker.ejs', {broker: broker})
+    
+})
 
 router.delete('/:id', async (req, res) => {
     await deleteBroker(client, req.params.id);

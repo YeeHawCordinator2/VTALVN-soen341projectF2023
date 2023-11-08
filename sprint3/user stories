@@ -1,0 +1,58 @@
+User Stories for on:
+1. Mortgage Calculator (in the Homebuyer profile)
+    Not much information available currently on the implementation of the Mortgage Calculator.
+    There are many different Mortgage Calculator available online such as:
+        - Mortgage Payment Calculator
+        - Mortgage Affordability Calculator
+        - Down Payment Calculator
+
+    Here are some examples of some Mortgage Calculator from Banks:
+        - RBC: https://apps.royalbank.com/apps/mortgages/mortgage-payment-calculator/
+        - TD Bank: https://www.td.com/ca/en/personal-banking/products/mortgages/calculators-tools
+        - Scotiabank: https://www.scotiabank.com/ca/en/personal/mortgages/mortgage-calculator.html
+
+    The following Real-Estate website has three different Mortgage Calculators implemented:
+        From REALTOR.ca: https://www.realtor.ca/calculator#v=payment
+        - Payment Calculator
+        - Land Transfer Tax Calculator
+        - Affordability Calculator
+
+        (It would be easier for us to implement just one of the calculators - probably the Payment Calculator - but we
+        could implement more than one if the team wants to.)
+
+2. A new feature proposed by the team to make the web app more productive than the competence.
+    This feature will be discussed and chosen among the team members.
+
+    PS: It could be the implementation of an interactive Calendar as we've already planned,
+        since this isn't an actual requirement given by the professor.
+
+
+    Implementing CRUD Operation for Admin
+
+
+[1] - Mortgage Calculator
+User Story Description:
+As a client, I should be able to use the mortgage calculator tool to calculate my monthly mortgage payment.
+There should be a "Mortgage Calculator" tab available in the menu bar to the client, which will re-direct the client
+to the Mortgage Calculator Tool page on-click.
+
+User Acceptance Flow:
+By clicking on the "Mortgage Calculator" tab from the menu bar, the client is redirected to the Mortgage Payment Calculator
+page. The Mortgage Calculator should calculate the monthly payment based on the mortgage amount, the amortization period,
+the payment frequency, the interest rate, and the interest term.
+
+(For more information, look at the Advanced Mortgage Payment Calculator provided by RBC:
+https://apps.royalbank.com/apps/mortgages/mortgage-payment-calculator/)
+
+Acceptance Criteria:
+1. Given that the client is logged in and on the home page.
+2. When the client clicks on the "Mortgage Calculator" tab from the menu bar.
+3. The client is redirected to the Mortgage Calculator page.
+4. The client inputs the mortgage amount and chooses the amortization period, the payment frequency, the interest rate, and the interest term.
+5. The client clicks on the "Calculate" button.
+6. The Monthly Mortgage Payment is displayed to the client.
+
+[2] - CRUD Operations for Administrator
+User Story Description:
+User Acceptance Flow:
+Acceptance Criteria:

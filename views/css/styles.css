@@ -27,10 +27,12 @@ header {
 #header-button:hover {
     background-color: #e64c00;
 }
+
 body {
     margin: 0;
     overflow-x: hidden;
-    background-color: whitesmoke;/*new*/
+    background-color: whitesmoke;
+    /*new*/
 }
 
 .nav-open .nav {
@@ -94,3 +96,47 @@ body {
 .main {
     transition: transform 0.2s;
 }
+
+/* CSS for the showBroker.ejs page */
+/* Center the main container */
+#broker_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+/* Style the rectangle */
+#broker_rectangle {
+    background-color: #fff;
+    /* Set the background color for the rectangle */
+    border-radius: 10px;
+    /* Rounded corners */
+    padding: 100px;
+    /* Add some padding for content spacing */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* Add a subtle box shadow for a smooth look */
+    text-align: center;
+    max-width: 1000px;
+    /* Adjust the width as needed */
+}
+
+/* Style the person's name */
+#broker_name {
+    font-size: 34px;
+    /* Set the font size for the name */
+    font-weight: bold;
+    /* Make it bold */
+    margin-bottom: 10px;
+    /* Add some spacing below the name */
+}
+
+/* Style the properties */
+#broker_property {
+    font-size: 24px;
+    /* Set the font size for properties */
+    margin: 20px 0;
+    /* Add spacing between properties */
+    text-align: justify;
+}
+/* End of showBroker.ejs css*/
