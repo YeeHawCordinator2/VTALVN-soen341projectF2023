@@ -720,7 +720,7 @@ app.post('/request',async (req,res)=> {
 
     res.render( 'listings/buy_rentU.ejs' ,{houses: houses, message: message}); // opens localhost on index.html
 });
-app.get('/', async(req,res)=> {
+app.get('/', async (req,res)=> {
     const houses = await client.db("soen_341").collection("houses").find().toArray();
 
     const pics= await client.db("soen_341").collection("house_pic").find().toArray();
@@ -880,6 +880,7 @@ app.get('/editMyInfoB', async (req,res)=> {
         const broker = await client.db("soen_341").collection("brokers").findOne({username: session.userid});
     console.log(broker.license);
         res.render('editMyInfoB.ejs',{broker:broker});
+
 }});
 app.get('/editMyInfoU', async (req,res)=> {
 
