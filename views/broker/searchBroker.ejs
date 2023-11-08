@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real Estate </title>
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/searchBar.css">
     <link rel="stylesheet" href=" https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
@@ -21,26 +22,35 @@
     <button type="button" class="nav-close" onclick="toggleNav()">
         <ion-icon name="close-outline" size="large"></ion-icon>
     </button>
-    <div class="nav-links-container" id="AdminMenu" >
-
-        <a href="/ViewBrokers" class="nav__link">
-            <span class="nav__text">View All Brokers</span>
-            <ion-icon name="eye-outline" size="large"></ion-icon>
+    <div class="nav-links-container" id="BaseMenu" >
+        <a href="/buy_rentU" class="nav__link">
+            <span class="nav__text">Buy/Rent</span>
+            <ion-icon name="cash-outline" size="large"></ion-icon>
         </a>
 
-        <a href="/editMyInfoA" class="nav__link">
+        <a href="/fillerU" class="nav__link">
+            <span class="nav__text">Favorites</span>
+            <ion-icon name="heart-outline" size="large"></ion-icon>
+        </a>
+        <a href="/fillerU" class="nav__link">
+            <span class="nav__text">Calendar</span>
+            <ion-icon name="calendar-outline" size="large"></ion-icon>
+        </a>
+        <a href="/editMyInfoU" class="nav__link">
             <span class="nav__text">Personal Info</span>
             <ion-icon name="person-outline" size="large"></ion-icon>
         </a>
-
-        <a href="/fillerA" class="nav__link">
-            <span class="nav__text">CRUD Admin</span>
+        <a href="/fillerU" class="nav__link">
+            <span class="nav__text">Morgage Calculator</span>
+            <ion-icon name="calculator-outline" size="large"></ion-icon>
+        </a>
+        <a href="/searchBroker" class="nav__link">
+            <span class="nav__text">Find Agent</span>
             <ion-icon name="search-outline" size="large"></ion-icon>
         </a>
         <form action="/logout" method="post">
             <button id="header-button"> log out </button>
         </form>
-
 
 
     </div>
@@ -55,16 +65,22 @@
     }
 </script>
 
-<h1> List of brokers</h1>
-<a href="/addBroker"> <button id="header-button" >Add Broker</button></a>
+<div  id="searchbar">
+    <form action="/searchBroker" method="POST">
+            <input type="text" class="answ" id="brks" name ="username" placeholder="Search for broker by name">
+        <input type="submit" value="Search" id="button">
 
+    </form>
+</div>
+<h1 style="color:red; margin:2%;"> <%= message %> </h1>
+<h1 class="mb-4">Brokers</h1>
 <% brokers.forEach(broker => { %>
     <div class="card-brk" style=" outline: 1vmin solid black; margin: 5%;  padding:3% 0; padding-left:10%; font-size: 2.5vmax">
-        <%= broker.name %>
-        <a href="broker/edit/<%= broker.username %>" id="header-button" style="margin: 0 5%" >Edit</a>
-        <form action="/broker/<%= broker.username %>?_method=DELETE" method="POST" class="d-inline">
-            <button type="submit" id="header-button">Delete</button>
-        </form>
+        <h4 class="card-title">   <%= broker.name %></h4>
+        <div class="card-text mb-2"> <%= broker.username%></div>
+        <div class="card-body">
+            <a href="broker/show/<%= broker.username %>" class="btn btn-primary"> Read More</a>
+        </div>
     </div>
 
  <% }) %>

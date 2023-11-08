@@ -21,37 +21,37 @@
     </button>
 
     <div class="nav-links-container" id="BrokerMenu"  >
-        <a href="buy_rentB" class="nav__link">
+        <a href="/buy_rentB" class="nav__link">
             <span class="nav__text">Buy / Rent</span>
             <ion-icon name="cash-outline" size="large"></ion-icon>
         </a>
 
-        <a href="myListings" class="nav__link">
+        <a href="/myListings" class="nav__link">
             <span class="nav__text">My Listings</span>
             <ion-icon name="list-outline" size="large"></ion-icon>
 
         </a>
-        <a href="fillerB" class="nav__link">
+        <a href="/fillerB" class="nav__link">
             <span class="nav__text">My Visits</span>
             <ion-icon name="calendar-outline" size="large"></ion-icon>
         </a>
-        <a href="fillerB" class="nav__link">
+        <a href="/fillerB" class="nav__link">
             <span class="nav__text">Visit Requests</span>
             <ion-icon name="calendar-outline" size="large"></ion-icon>
         </a>
-        <a href="fillerB" class="nav__link">
+        <a href="/editMyInfoB" class="nav__link">
             <span class="nav__text">Personal Info</span>
             <ion-icon name="person-outline" size="large"></ion-icon>
         </a>
-        <a href="fillerB" class="nav__link">
+        <a href="/fillerB" class="nav__link">
             <span class="nav__text">Calendar</span>
             <ion-icon name="calculator-outline" size="large"></ion-icon>
         </a>
-        <a href="fillerB" class="nav__link">
+        <a href="/fillerB" class="nav__link">
             <span class="nav__text">Match Property</span>
             <ion-icon name="search-outline" size="large"></ion-icon>
         </a>
-        <a href="fillerB" class="nav__link">
+        <a href="/fillerB" class="nav__link">
             <span class="nav__text">Offers</span>
             <ion-icon name="cash-outline" size="large"></ion-icon>
         </a>
@@ -76,7 +76,37 @@
 
 <h1> Page is under construction </h1>
 
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<div> Hello
+</div>
+<div class="container">
+
+<!--    <h1 class="mb-4">Listings</h1>-->
+    <% houses.forEach(houses => { %>
+        <div class="card mt-4">
+            <div class="card-body">
+                <img src="<%= houses.image %>" alt="" class="img-fluid mb-3">
+                <h4 class="card-title"><%= houses.name %></h4>
+                <div class="card-subtitle text-muted mb-2">
+                    Price: <%= houses.price.toString().concat("$") %>
+                </div>
+                <div class="card-text mb-2">
+                    <%= houses.location %>
+                </div>
+            </div>
+            <div class="card-body">
+                <a href="listings/showB/<%= houses.name %>" class="btn btn-primary"> Read More</a>
+            </div>
+            <div class="card-body">
+                <a href="listings/requestB/<%= houses.name %>" class="btn btn-primary">  Request Visit </a>
+            </div>
+            <div class="card-body">
+                <a href="" class = "btn btn-primary">Submit an Offer</a>
+            </div>
+        </div>
+    <% }) %>
+</div>
+
+<script type="module" src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
