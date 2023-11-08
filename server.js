@@ -855,9 +855,14 @@ app.get('/showB.ejs', async (req,res)=> {
 app.get('/requestB.ejs', async (req,res)=> {
     res.render('listings/requestB.ejs');
 });
+
+
 app.get('/searchBroker', async (req,res)=> {
     const broker = await client.db("soen_341").collection("brokers").find().toArray();
     res.render('broker/searchBroker.ejs',{brokers:broker, message:""});
+});
+app.get('/showBroker.ejs', async (req,res)=> {
+    res.render('broker/showBroker.ejs');
 });
 app.get('/editMyInfoA', async (req,res)=> {
     if(session.userid===undefined || session.type!=="admin"){
