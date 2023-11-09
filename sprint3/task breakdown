@@ -1,1 +1,9 @@
 Task Breakdown for each User Stories for Spring 4
+1. Mortgage Calculator Tool for Clients
+
+    Issue #160: Task - Implementation of the Mortgage Calculator Page for the Client
+    Issue #162: Task - Implementation of the Mortgage Calculator UI for the Client (FRONT-END)
+    Issue #163: Task - Implementation of the Mortgage Calculator "Calculate" Function (BACK-END)
+
+2. CRUD Operations of Administrator Users
+
