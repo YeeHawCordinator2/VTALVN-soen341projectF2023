@@ -60,28 +60,38 @@
 <h1> Edit Broker <%= broker.name %></h1>
 <p> change whatever information you need to change <br> to keep old password type it again</p>
 <form action="/editBroker" method="POST">
+<div class="input-box">
+
+    <label for="name">Name</label> <br>
+    <input type="text" value="<%= broker.name %>" name="name" required>
+</div> <br>
+<div class="input-box">
+    <label for="email">Username</label> <br>
+    <input type="text" value="<%= broker.username %>" name="username" required>
+    <input type="text" value="<%= broker.username %>" name="user_id" style="display: none">
+</div> <br>
+<div class="input-box">
+    <label for="password">Password</label> <br>
+    <input type="password" placeholder="****" name="password" required>
+</div><br>
     <div class="input-box">
-        <input class="form-control" type="text" placeholder="Name" name="name" required>
-    </div>
+        <label for="phone">Phone</label> <br>
+        <input type="tel" value="<%= broker.phone %>" name="phone" required>
+    </div><br>
     <div class="input-box">
-        <input class="form-control" type="text" placeholder="Username" name="username" required>
-    </div>
+        <label for="agency">Agency</label> <br>
+        <input type="text" value="<%= broker.agency %>" name="agency" required>
+    </div><br>
     <div class="input-box">
-        <input class="form-control" type="password" placeholder="Password" name="password" required>
-    </div>
+        <label for="license">License</label> <br>
+        <input type="number" value="<%= broker.license %>"  name="license" required>
+    </div><br>
     <div class="input-box">
-        <input class="form-control" type="tel" name="phone" placeholder="Phone number (xxx-xxx-xxxx)" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
+        <label for="email">Email</label> <br>
+        <input type="email" Value="<%= broker.email %>" name="email" required>
     </div>
-    <div class="input-box">
-        <input class="form-control" type="number" placeholder="License number" name="license" required>
-    </div>
-    <div class="input-box">
-        <input class="form-control" type="email" placeholder="Email (testEmail@test.com)" name="email" required>
-    </div>
-    <div class="input-box">
-        <input class="form-control" type="text" placeholder="Agency name" name="agency" required>
-    </div>
-    <button id="header-button" type="submit" class="btn">Edit</button>
+
+<button id="header-button" type="submit" class="btn"> Edit </button>
 </form>
 
 
