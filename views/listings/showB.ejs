@@ -66,57 +66,39 @@
 
 <!-- Rest of your website content goes here -->
 
-
 <div class="container">
-    <div class="card-body">
-        <h1>Listing Details</h1>
-        <h2 class="card-title"><%= houses.name %></h2>
-        <img src="<%= houses.image %>" alt="" class="img-fluid mb-3">
-        <div class="card-subtitle text-muted mb-2">
-            Price: <%= houses.price.toString().concat("$") %>
+    <h1 class="mb-4"> Offers </h1>
+    <% offers.forEach(offers => { %>
+        <div class="card mt-4">
+            <div class="card-body">
+                <h4 class="card-title">Offer for <%= offers.house_name %></h4>
+                <div class="card-text mb-2">
+                    Address: <%= offers.address %>
+                </div>
+                <div class="card-text mb-2">
+                    Name of the buyer: <%= offers.user_id %>
+                </div>
+                <div class="card-text mb-2">
+                    Associated Email: <%= offers.email %>
+                </div>
+                <div class="card-text mb-2">
+                    Price: <%= offers.price.toString().concat("$") %>
+                </div>
+                <div class="card-text mb-2">
+                    Deed date: <%= offers.deed_date %>
+                </div>
+                <div class="card-text mb-2">
+                    Occupancy date: <%= offers.occDate %>
+                </div>
+                <form onSubmit="return confirm('Are you sure about your selection?')" action="/listings/<%= offers.house_name %>?_method=DELETE" method="POST" class="d-inline">
+                    <button type="submit" class="btn btn-info"> Accept </button>
+                    <button type="submit" class="btn btn-danger"> Delete </button>
+                </form>
+            </div>
         </div>
-
-        <div class="card-subtitle text-muted mb-2">
-            Location: <%= houses.location %>
-        </div>
-        <div class="card-subtitle text-muted mb-2">
-            Type of Building: <%= houses.buildType %>
-        </div>
-        <div class="card-subtitle text-muted mb-2">
-            Number of Stories: <%= houses.stories %>
-        </div>
-        <div class="card-subtitle text-muted mb-2">
-            Number Of Bathrooms: <%= houses.numOfBath %>
-        </div>
-        <div class="card-subtitle text-muted mb-2">
-            Number Of Bedrooms: <%= houses.numOfBed %>
-        </div>
-        <div class="card-subtitle text-muted mb-2">
-            Size of Property (In Square/Feet): <%= houses.sizeOfProp %>
-        </div>
-        <div class="card-subtitle text-muted mb-2">
-            Year of Construction: <%= houses.buildYRS %>
-        </div>
-        <div class="card-subtitle text-muted mb-2">
-            Furnished?: <%= houses.furnished %>
-        </div>
-        <div class="card-subtitle text-muted mb-2">
-            Listing Type: <%= houses.listingType %>
-        </div>
-        <div class="card-subtitle text-muted mb-2">
-            Extra: <%= houses.extra %>
-        </div>
-        <div class="card-subtitle text-muted mb-2">
-            Garage: <%= houses.garage %>
-        </div>
-        <div class="card-subtitle text-muted mb-2">
-            Listing Date: <%= houses.listingDate %>
-        </div>
-        <div class="card-subtitle text-muted mb-2">
-            Listing Type: <%= houses.listingType %>
-        </div>
-    </div>
+    <% }) %>
 </div>
+
 
 <script>
     function toggleNav() {
