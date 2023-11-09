@@ -770,10 +770,10 @@ app.get('/registerUserExist',(req,res)=> {
     res.render( 'registerUserExist.ejs' ); // opens localhost on index.html
 });
 function checkSession(){
-    if(session.===undefined)
-        return false;
-    else
+    if(session.id===undefined )
         return true;
+    else
+        return false;
 }
 
 app.get('/buy_rentU',async(req,res)=> {
@@ -939,6 +939,7 @@ app.use('/broker', brkRouter);
 app.listen(3000);
 console.log("Server listening on port 3000");
 
+module.exports = {checkSession}
 
 
 

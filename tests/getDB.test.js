@@ -1,4 +1,9 @@
-test("string matchers",() => {
+const {MongoClient} = require("mongodb");
+
+const uri = "mongodb+srv://naolal30:ConnectdatabasetoWebstorm100.@cluster0.ttfusik.mongodb.net/test?retryWrites=true&w=majority";
+const client = new MongoClient(uri);
+
+test("check if add broker works",() => {
 
     var string1 = "BrowserStack - Automation tool"
 
@@ -8,11 +13,10 @@ test("string matchers",() => {
 
 
 
-
     // test for not match the string - Failure
 
     expect(string1).not.toMatch(/abc/)});
-test("numeric comparison", () => {
+test("check if there is only one broker with username", () => {
 
     var number1 = 100;
 
@@ -33,7 +37,7 @@ test("numeric comparison", () => {
     expect(number3).toBeGreaterThanOrEqual(0)
 
 });
-test("truthiness Assertion", () => {
+test("test if image is connected to listings", () => {
 
     var test="Software Testing demo"
 
@@ -58,11 +62,11 @@ test("truthiness Assertion", () => {
     expect(0).toBeFalsy()
 
 });
-test("Exact value matchers", () => {
+test("test how many admin there is", async() => {
 
-    expect(2*2).toBe(4);
+    let n = await client.db("soen_341").collection("system_admin").find().toArray();
+    expect(n.length).toBe(5);
 
-    expect(4-2).not.toBe(1);
 
 });
 
