@@ -5,13 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real Estate </title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../../css/styles.css">
     <link rel="stylesheet" href=" https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js">
+
 </head>
 <body>
 <header>
-    <img id="logo3" src="../css/logo3.png" alt="logo3">
-    <a href="/login"> <button id="header-button" >Sign in</button></a>
+    <img id="logo3" src="../../css/logo3.png" alt="logo3">
+    <a href="../../login"> <button id="header-button" >Sign in</button></a>
 </header>
 <nav class="nav" style = "z-index:1000;">
     <button type="button" class="nav-close" onclick="toggleNav()">
@@ -28,23 +30,23 @@
             <ion-icon name="list-outline" size="large"></ion-icon>
 
         </a>
-        <a href="/fillerB" class="nav__link">
+        <a href="../../fillerB" class="nav__link">
             <span class="nav__text">My Visits</span>
             <ion-icon name="calendar-outline" size="large"></ion-icon>
         </a>
-        <a href="/fillerB" class="nav__link">
+        <a href="../../fillerB" class="nav__link">
             <span class="nav__text">Visit Requests</span>
             <ion-icon name="calendar-outline" size="large"></ion-icon>
         </a>
-        <a href="/editMyInfoB" class="nav__link">
+        <a href="../../editMyInfoB" class="nav__link">
             <span class="nav__text">Personal Info</span>
             <ion-icon name="person-outline" size="large"></ion-icon>
         </a>
-        <a href="/fillerB" class="nav__link">
+        <a href="../../fillerB" class="nav__link">
             <span class="nav__text">Calendar</span>
             <ion-icon name="calculator-outline" size="large"></ion-icon>
         </a>
-        <a href="/fillerB" class="nav__link">
+        <a href="../../fillerB" class="nav__link">
             <span class="nav__text">Match Property</span>
             <ion-icon name="search-outline" size="large"></ion-icon>
         </a>
@@ -52,9 +54,10 @@
             <span class="nav__text">Offers</span>
             <ion-icon name="cash-outline" size="large"></ion-icon>
         </a>
-        <form action="/logout" method="post">
+        <form action="../../logout" method="post">
             <button id="header-button"> log out </button>
         </form>
+
     </div>
 
 </nav>
@@ -65,31 +68,33 @@
 
 <!-- Rest of your website content goes here -->
 
-<div class="container">
-    <h1 class="mb-4">My Listings</h1>
-    <a href="/newListings" class="btn btn-success">New Listings</a>
-    
-    <% houses.forEach(houses => { %>
-        <div class="card mt-4">
-            <div class="card-body">
-                <img src="<%= houses.image %>" alt="" class="img-fluid mb-3">
-                <h4 class="card-title"><%= houses.name %></h4>
-                <div class="card-subtitle text-muted mb-2">
-                    Price: <%= houses.price.toString().concat("$") %>
-                </div>
-                <div class="card-text mb-2"> 
-                    <%= houses.location %>
-                </div>
-                <a href="listings/edit/<%= houses.name %>" class="btn btn-info">Edit</a>
-                <form onSubmit="return confirm('Are you sure you want to delete?')" action="/listings/<%= houses.name %>?_method=DELETE" method="POST" class="d-inline">
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
-            </div>
-        </div>
-    <% }) %>
-</div>
+<h1> Submit an offer for <%= houses.name %> </h1>
 
-<!-- ====================================== -->
+<form action="/offerSubmit" method="POST">
+    <div class="container">
+    <label>  Listing Name </label><br>
+    <input type="text" name="name" value="<%= houses.name %>"><br>
+    <label> Broker Name </label><br>
+    <input type = "text" name="brkName" value="<%= brokers.name %>"><br>
+    <label> Broker License </label><br>
+    <input type = "text" name="license" value="<%= brokers.license %>"><br>
+    <label> Broker Agency </label><br>
+    <input type= "text" name="agency" value="<%= brokers.agency %>"><br>
+    <input type= "text" name="Uname" placeholder="Enter client name"><br>
+    <input type= "email" name="Uemail" placeholder="Enter client email"><br>
+    <input type= "text" name="Uadress" placeholder="Enter client address"><br>
+    <label> House Address </label><br>
+    <input type= "text" name="adress" value="<%= houses.adress %>"><br>
+    <label> House Price </label><br>
+    <input type= "number" name="price" value="<%= houses.price %>"><br>
+    <input type= "text" name="deed_date" placeholder="Enter deed of sale date"><br>
+    <input type= "text" name="occupancy_date" placeholder="Enter date of occupancy"><br>
+    <input type="submit" value="Submit">
+    <a href="/buy_rentB" class="btn btn-secondary"> Cancel </a>
+    </div>
+</form>
+
+
 
 <script>
     function toggleNav() {
