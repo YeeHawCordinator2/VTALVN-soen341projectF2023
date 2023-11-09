@@ -154,6 +154,7 @@ test('check if the listings user exists', async() => {
     await client.close();
 
 });
+*/
 test('check if the listings image exists', async() => {
     await client.connect();
 
@@ -168,5 +169,5 @@ test('check if the listings image exists', async() => {
     expect(answer).toBe(false);
     await client.close();
 
-});*/
+});
 
