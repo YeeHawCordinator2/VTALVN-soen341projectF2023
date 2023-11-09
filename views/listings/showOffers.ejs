@@ -35,7 +35,7 @@
             <span class="nav__text">My Visits</span>
             <ion-icon name="calendar-outline" size="large"></ion-icon>
         </a>
-        <a href="/showOffers" class="nav__link">
+        <a href="../../fillerB" class="nav__link">
             <span class="nav__text">Visit Requests</span>
             <ion-icon name="calendar-outline" size="large"></ion-icon>
         </a>
@@ -150,29 +150,35 @@
     </form>
 </div>
 
+
 <div class="container">
-    <h1 style="color: red"> <%= message %> </h1>
-    <h1 class="mb-4">Listings</h1>
-    <% houses.forEach(houses => { %>
+    <h1 class="mb-4"> Offers </h1>
+    <% offers.forEach(offers => { %>
         <div class="card mt-4">
             <div class="card-body">
-                <img src="<%= houses.image %>" alt="" class="img-fluid mb-3">
-                <h4 class="card-title"><%= houses.name %></h4>
-                <div class="card-subtitle text-muted mb-2">
-                    Price: <%= houses.price.toString().concat("$") %>
+                <h4 class="card-title">Offer for <%= offers.house_name %></h4>
+                <div class="card-text mb-2">
+                    Address: <%= offers.address %>
+                </div>
+                <div class="card-text mb-2">
+                    Name of the buyer: <%= offers.user_id %>
                 </div>
                 <div class="card-text mb-2"> 
-                    <%= houses.location %>
+                    Associated Email: <%= offers.email %>
                 </div>
-            </div>
-            <div class="card-body"> 
-                <a href="listings/showB/<%= houses.name %>" class="btn btn-primary"> Read More</a>
-            </div>
-            <div class="card-body"> 
-                <a href="listings/requestB/<%= houses.name %>" class="btn btn-primary">  Request Visit </a>
-            </div>
-            <div class="card-body">
-                <a href="listings/offer/<%= houses.name %>" class = "btn btn-primary">Submit an Offer</a>
+                <div class="card-text mb-2">
+                    Price: <%= offers.price.toString().concat("$") %>
+                </div>
+                <div class="card-text mb-2"> 
+                    Deed date: <%= offers.deed_date %>
+                </div>
+                <div class="card-text mb-2"> 
+                    Occupancy date: <%= offers.occDate %>
+                </div>
+                <form onSubmit="return confirm('Are you sure about your selection?')" action="/listings/<%= offers.house_name %>?_method=DELETE" method="POST" class="d-inline">
+                    <button type="submit" class="btn btn-info"> Accept </button>
+                    <button type="submit" class="btn btn-danger"> Delete </button>
+                </form>
             </div>
         </div>
     <% }) %>
