@@ -1,4 +1,4 @@
-test("server check",() => {
+test("string matchers",() => {
 
     var string1 = "BrowserStack - Automation tool"
 
@@ -65,4 +65,3 @@ test("Exact value matchers", () => {
     expect(4-2).not.toBe(1);
 
 });
-
