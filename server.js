@@ -21,7 +21,8 @@ const upload = multer({storage: storage});
 const {get1Broker, get1User, get1Admin, getHouseGarage, getHouseLocation, getHousePriceLower, getHousePriceHigher,
     getHouseBathgreaterThan, getHouseBuildYRSGreater, getHouseBedgreaterThan, getHouseBuildType, getHouseFurnished,
     getHouseStories, getHouseextra, getHouseSizeOfPropGreater, getHouseListingType, readHouses,
-    getHouseAfterDate
+    getHouseAfterDate,
+    get1House
 } = require("./model/database/getDB");
 const {checkBroker, checkUser, checkAdmin, checkUsername} = require("./model/database/checkPassword");
 const {addNewUser, addNewBroker, addNewHouse, addNewOffer} = require("./model/database/addBD");
@@ -878,7 +879,17 @@ app.get('/requestB.ejs', async (req,res)=> {
 app.get('/offerListing.ejs', async (req,res)=> {
     res.render('listings/offerListing.ejs');
 });
-
+app.get('/showOffers', async (req, res) => {
+    
+    const offers = await client.db("soen_341").collection("offers").find().toArray(); //works
+    // const houses = await get1House(client, offers[0].house_name); //works
+    // console.log(houses);
+    for (let i = 0; i < offers.length; i++) {
+        const houses = await get1House(client, offers[i].house_name);
+        console.log(houses);
+    }
+    res.render('listings/showOffers.ejs', { offers: offers})
+})
 app.get('/searchBroker', async (req,res)=> {
     const broker = await client.db("soen_341").collection("brokers").find().toArray();
     res.render('broker/searchBroker.ejs',{brokers:broker, message:""});
