@@ -154,7 +154,7 @@ test('check if the listings user exists', async() => {
     await client.close();
 
 });
-*/
+
 test('check if the listings image exists', async() => {
     await client.connect();
 
@@ -170,4 +170,41 @@ test('check if the listings image exists', async() => {
     await client.close();
 
 });
+*/
+// sumArray.test.js
+const sumArray = require('./sumArray');
 
+describe('sumArray function', () => {
+  test('should return the sum of elements in the array', () => {
+    // Arrange
+    const array = [1, 2, 3, 4, 5];
+
+    // Act
+    const result = sumArray(array);
+
+    // Assert
+    expect(result).toBe(15);
+  });
+
+  test('should return 0 for an empty array', () => {
+    // Arrange
+    const array = [];
+
+    // Act
+    const result = sumArray(array);
+
+    // Assert
+    expect(result).toBe(0);
+  });
+
+  test('should handle negative numbers', () => {
+    // Arrange
+    const array = [-1, -2, -3, -4, -5];
+
+    // Act
+    const result = sumArray(array);
+
+    // Assert
+    expect(result).toBe(-15);
+  });
+});
