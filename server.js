@@ -748,6 +748,12 @@ app.get('/register',(req,res)=> {
 app.get('/registerUserExist',(req,res)=> {
     res.render( 'registerUserExist.ejs' ); // opens localhost on index.html
 });
+function checkSession(){
+    if(session.===undefined)
+        return false;
+    else
+        return true;
+}
 
 app.get('/buy_rentU',async(req,res)=> {
     const houses = await client.db("soen_341").collection("houses").find().toArray();

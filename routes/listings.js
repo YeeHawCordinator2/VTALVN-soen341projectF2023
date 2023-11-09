@@ -29,6 +29,15 @@ router.get('/requestU/:id', async (req, res) => {
     const houses = await get1House(client, req.params.id);
     res.render('listings/requestU.ejs', {houses: houses})
 });
+async function checkStatus(client, id){
+    try{
+        const uri = "mongodb+srv://naolal30:ConnectdatabasetoWebstorm100.@cluster0.ttfusik.mongodb.net/test?retryWrites=true&w=majority";
+        const client = new MongoClient(uri);
+        return true
+    }catch (e) {
+        console.log("Error connecting to database");
+        return false;
+}}
 
 router.get('/showU/:id', async (req, res) => {
     const houses = await get1House(client, req.params.id);
@@ -70,3 +79,4 @@ router.delete('/:id', async (req, res) => {
 
 
 module.exports = router;
+module.exports = {checkStatus};
