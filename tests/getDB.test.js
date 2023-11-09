@@ -1,4 +1,4 @@
-test("string matchers",() => {
+test("server check",() => {
 
     var string1 = "BrowserStack - Automation tool"
 
