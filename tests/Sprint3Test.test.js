@@ -14,36 +14,62 @@ test('check session status', () => {
 });
 
 test('check if there are brokers', async() => {
+    await client.connect();
+
     let x = await client.db("soen_341").collection("brokers").find().toArray();
-    expect(x).toBeGreaterThan(3)
+    await expect(x).resolves.toBeGreaterThan(3)
+    await client.close();
+
 });
 test('check if there are user', async() => {
+    await client.connect();
+
     let x = await client.db("soen_341").collection("brokers").find().toArray();
-    expect(x).toBeGreaterThan(0)
+    await expect(x).resolves.toBeGreaterThan(0)
+    await client.close();
+
 });
 test('check if there are admin', async() => {
+    await client.connect();
+
     let x = await client.db("soen_341").collection("brokers").find().toArray();
-    expect(x).toBeGreaterThan(4)
+    await expect(x).resolves.toBeGreaterThan(4)
+    await client.close();
+
 });
 test('check if there are listings', async() => {
+    await client.connect();
+
     let x = await client.db("soen_341").collection("brokers").find().toArray();
-    expect(x).toBeGreaterThan(15)
+    await expect(x).resolves.toBeGreaterThan(15)
+    await client.close();
+
 });
 test('check if there are offers', async() => {
+    await client.connect();
+
     let x = await client.db("soen_341").collection("offers").find().toArray();
-    expect(x).toBeGreaterThan(15)
+    await expect(x).resolves.toBeGreaterThan(15)
+    await client.close();
+
 });
 test('check if the listings broker exists', async() => {
-let val = await client.db("soen_341").collection("listings").find().toArray();
+    await client.connect();
+
+    let val = await client.db("soen_341").collection("listings").find().toArray();
 let answer=false;
     for(let i=0;i<val.length;i++){
 if(val[0].broker!=null){
     answer=true;
 
 }}
-expect(answer).toBe(true);
+await expect(answer).resolves.toBe(true);
+    await client.close();
+
 });
 test('check if the listings user exists', async() => {
+    await client.connect();
+
     let val = await client.db("soen_341").collection("listings").find().toArray();
     let answer=false;
     for(let i=0;i<val.length;i++){
@@ -52,9 +78,13 @@ test('check if the listings user exists', async() => {
         }
 
     }
-    expect(answer).toBe(true);
+    await expect(answer).resolves.toBe(true);
+    await client.close();
+
 });
 test('check if the listings image exists', async() => {
+    await client.connect();
+
     let val = await client.db("soen_341").collection("listings").find().toArray();
     let answer=false;
     for(let i=0;i<val.length;i++){
@@ -63,5 +93,7 @@ test('check if the listings image exists', async() => {
         }
 
     }
-    expect(answer).toBe(true);
+    await expect(answer).resolves.toBe(true);
+    await client.close();
+
 });

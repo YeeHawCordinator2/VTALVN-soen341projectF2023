@@ -63,9 +63,10 @@ test("test if image is connected to listings", () => {
 
 });
 test("test how many admin there is", async() => {
-
+    await client.connect();
     let n = await client.db("soen_341").collection("system_admin").find().toArray();
-    expect(n.length).toBe(5);
+    await expect(n.length).resolves.toBe(5);
+    await client.close();
 
 
 });

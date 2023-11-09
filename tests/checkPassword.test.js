@@ -9,7 +9,6 @@ const client = new MongoClient(uri);
 test('check broker right user right pass', async () => {
     await client.connect();
     await expect( checkBroker(client, "broker1", "password")).resolves.toBe(true);
-    await client.close();
 });
 
 test('check broker right user wrong pass', async() => {
