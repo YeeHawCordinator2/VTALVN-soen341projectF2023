@@ -103,20 +103,22 @@ async function addNewAdmin(client, username, name, password){ //encrypt user n p
 }
 
 
-async function addNewOffer(client, Uname, Uadress, Uemail, price, houseId, date, sale){
+async function addNewOffer(client, Uname, Uadress, Uemail, price, houseId, deed_date, occDate){
     try {
-        const user = await getUserID(client, Uname);
-        return await client.db("soen_341").collection("offers").insertOne({
-            user_id: user,
+        
+        await client.db("soen_341").collection("offers").insertOne({
+            user_id: Uname,
             address: Uadress,
             email: Uemail,
             price: price,
-            house_id: houseId,
-            date: date,
-            sale: sale
+            house_name: houseId,
+            deed_date: deed_date,
+            occDate: occDate
+            
         });
+        console.log("Offer successfully popped out")
     }catch(e){
         console.log("error - add offer");
     }
 }
-module.exports = { addNewHouse, addNewBroker, addNewUser, addNewAdmin};
+module.exports = { addNewHouse, addNewBroker, addNewUser, addNewAdmin, addNewOffer};
