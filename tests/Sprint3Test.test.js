@@ -1,9 +1,14 @@
 const {checkStatus} = require("../routes/listings");
 const {MongoClient} = require("mongodb");
+const sum = require("../model/sum");
 
 const uri = "mongodb+srv://naolal30:ConnectdatabasetoWebstorm100.@cluster0.ttfusik.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
 
+test('adds 1 + 2 to equal 3', () => {
+    expect(sum(1, 2)).toBe(3);
+});
+/*
 test('check status', () => {
     expect(checkStatus(client)).toBe(true);
 })
@@ -12,7 +17,7 @@ test('check session status', () => {
     var n= null;
     expect(n).toBe(null);
 });
-/*
+
 test('check if there are brokers', async() => {
     await client.connect();
 

@@ -32,7 +32,7 @@ test('check user right user right pass', async() => {
     await expect (checkUser(client,"user1","password")).resolves.toBe(true);
     await client.close();
 
-});/*
+});
 test('check user right user wrong pass',async () => {
     await client.connect();
 
@@ -87,4 +87,3 @@ test('check user wrong username', async() => {
     await client.close();
 });
 
-*/
