@@ -101,4 +101,24 @@ async function addNewAdmin(client, username, name, password){ //encrypt user n p
         console.log("error - add admin");
     }
 }
-module.exports = { addNewHouse, addNewBroker, addNewUser, addNewAdmin};
+
+
+async function addNewOffer(client, Uname, Uadress, Uemail, price, houseId, deed_date, occDate){
+    try {
+        
+        await client.db("soen_341").collection("offers").insertOne({
+            user_id: Uname,
+            address: Uadress,
+            email: Uemail,
+            price: price,
+            house_name: houseId,
+            deed_date: deed_date,
+            occDate: occDate
+            
+        });
+        console.log("Offer successfully popped out")
+    }catch(e){
+        console.log("error - add offer");
+    }
+}
+module.exports = { addNewHouse, addNewBroker, addNewUser, addNewAdmin, addNewOffer};

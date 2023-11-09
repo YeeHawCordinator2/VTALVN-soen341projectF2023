@@ -6,15 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real Estate </title>
     <link rel="stylesheet" href="../../css/styles.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js">
+    <link rel="stylesheet" href=" https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js">
 
-    <style>
-        /* Optional: Add some basic styling to the date picker input */
-        input[type="date"] {
-            padding: 5px;
-        }
-    </style>
 </head>
 <body>
 <header>
@@ -44,7 +38,7 @@
             <span class="nav__text">Visit Requests</span>
             <ion-icon name="calendar-outline" size="large"></ion-icon>
         </a>
-        <a href="../../fillerB" class="nav__link">
+        <a href="../../editMyInfoB" class="nav__link">
             <span class="nav__text">Personal Info</span>
             <ion-icon name="person-outline" size="large"></ion-icon>
         </a>
@@ -56,7 +50,7 @@
             <span class="nav__text">Match Property</span>
             <ion-icon name="search-outline" size="large"></ion-icon>
         </a>
-        <a href="../../fillerB" class="nav__link">
+        <a href="/showOffers" class="nav__link">
             <span class="nav__text">Offers</span>
             <ion-icon name="cash-outline" size="large"></ion-icon>
         </a>
@@ -74,24 +68,32 @@
 
 <!-- Rest of your website content goes here -->
 
-<h1> Request A Visit For <%= houses.name %> </h1>
+<h1> Submit an offer for <%= houses.name %> </h1>
 
-<form action="/request" method="POST">
-    <label for="datePicker">Select a Date:</label>
-    <input type="date" id="datePicker" name="selectedDate"><br>
+<form action="/offerSubmit" method="POST">
+    <div class="container">
+    <label>  Listing Name </label><br>
+    <input type="text" name="name" value="<%= houses.name %>"><br>
+    <label> Broker Name </label><br>
+    <input type = "text" name="brkName" value="<%= brokers.name %>"><br>
+    <label> Broker License </label><br>
+    <input type = "text" name="license" value="<%= brokers.license %>"><br>
+    <label> Broker Agency </label><br>
+    <input type= "text" name="agency" value="<%= brokers.agency %>"><br>
+    <input type= "text" name="Uname" placeholder="Enter client name"><br>
+    <input type= "email" name="Uemail" placeholder="Enter client email"><br>
+    <input type= "text" name="Uadress" placeholder="Enter client address"><br>
+    <label> House Address </label><br>
+    <input type= "text" name="adress" value="<%= houses.adress %>"><br>
+    <label> House Price </label><br>
+    <input type= "number" name="price" value="<%= houses.price %>"><br>
+    <input type= "text" name="deed_date" placeholder="Enter deed of sale date"><br>
+    <input type= "text" name="occupancy_date" placeholder="Enter date of occupancy"><br>
     <input type="submit" value="Submit">
+    <a href="/buy_rentB" class="btn btn-secondary"> Cancel </a>
+    </div>
 </form>
 
-<script>
-    // Optional: Add JavaScript to handle the selected date
-    const datePicker = document.getElementById('datePicker');
-
-    datePicker.addEventListener('change', function () {
-        const selectedDate = datePicker.value;
-        console.log('Selected Date: ' + selectedDate);
-        
-    });
-</script>
 
 
 <script>
@@ -99,7 +101,7 @@
         document.body.classList.toggle("nav-open");
     }
 </script>
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script type="module" src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
