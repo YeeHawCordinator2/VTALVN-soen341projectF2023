@@ -30,11 +30,13 @@ router.get('/requestU/:id', async (req, res) => {
     const houses = await get1House(client, req.params.id);
     res.render('listings/requestU.ejs', {houses: houses})
 });
-async function checkStatus(client, id){
+function checkStatus(){
     try{
         const uri = "mongodb+srv://naolal30:ConnectdatabasetoWebstorm100.@cluster0.ttfusik.mongodb.net/test?retryWrites=true&w=majority";
-        const client = new MongoClient(uri);
-        return true
+        const clients = new MongoClient(uri);
+        clients.connect();
+        clients.close();
+        return true;
     }catch (e) {
         console.log("Error connecting to database");
         return false;
