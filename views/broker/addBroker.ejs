@@ -81,40 +81,6 @@
     <button id="header-button" type="submit" class="btn">Create</button>
 </form>
 
-<form action="/addBroker" method="POST">
-    <div class="input-box">
-
-        <label for="name">Name</label> <br>
-        <input type="text" value="<%= broker.name %>" name="name" required>
-    </div> <br>
-    <div class="input-box">
-        <label for="email">Username</label> <br>
-        <input type="text" value="<%= broker.username %>" name="username" required>
-        <input type="text" value="<%= broker.username %>" name="user_id" style="display: none">
-    </div> <br>
-    <div class="input-box">
-        <label for="password">Password</label> <br>
-        <input type="password" placeholder="****" name="password" required>
-    </div><br>
-    <div class="input-box">
-        <label for="phone">Phone</label> <br>
-        <input type="tel" value="<%= broker.phone %>" name="phone" required>
-    </div><br>
-    <div class="input-box">
-        <label for="agency">Agency</label> <br>
-        <input type="text" value="<%= broker.agency %>" name="agency" required>
-    </div><br>
-    <div class="input-box">
-        <label for="license">License</label> <br>
-        <input type="number" value="<%= broker.license %>"  name="license" required>
-    </div><br>
-    <div class="input-box">
-        <label for="email">Email</label> <br>
-        <input type="email" Value="<%= broker.email %>" name="email" required>
-    </div>
-
-    <button id="header-button" type="submit" class="btn"> Add </button>
-</form>
 
 <script type="module" src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
