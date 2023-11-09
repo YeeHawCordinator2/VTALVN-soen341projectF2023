@@ -10,7 +10,7 @@ test('check broker right user right pass', async () => {
     await client.connect();
     await expect( checkBroker(client, "broker1", "password")).resolves.toBe(true);
     await client.close();
-})
+});
 
 test('check broker right user wrong pass', async() => {
     await client.connect();
@@ -18,7 +18,6 @@ test('check broker right user wrong pass', async() => {
     await client.close();
 
 });
-
 test('check broker wrong user random pass', async() => {
     await client.connect();
     await expect( checkBroker(client,"hanseltime","potatoland")).resolves.toBe(false);
@@ -86,4 +85,3 @@ test('check user wrong username', async() => {
     await expect(checkUsername(client,"user0")).resolves.toBe(false);
     await client.close();
 });
-
