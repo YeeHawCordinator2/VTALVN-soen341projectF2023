@@ -1,17 +1,17 @@
 Task Breakdown for each User Stories for Spring 4
 1. Mortgage Calculator Tool for Clients
 
-    Issue #160: Task - Implementation of the Mortgage Calculator Page for the Client
-    Issue #162: Task - Implementation of the Mortgage Calculator UI for the Client (FRONT-END)
-    Issue #163: Task - Implementation of the Mortgage Calculator "Calculate" Function (BACK-END)
+    Issue #160: Task - Implementation of the Mortgage Calculator Page for the Client :Alessandro
+    Issue #162: Task - Implementation of the Mortgage Calculator UI for the Client (FRONT-END): Mustafa
+    Issue #163: Task - Implementation of the Mortgage Calculator "Calculate" Function (BACK-END): richard
 
 2. CRUD Operations of Administrator Users
 
-    Issue #171: Task - Implementation of a CRUD Operations Page for Admin Users (FRONT-END)
-    Issue #172: Task - Implementation of the "Create" CRUD Operations for Admin (BACK-END)
-    Issue #173: Task - Implementation of the "Read" CRUD Operations for Admin (BACK-END)
-    Issue #175: Task - Implementation of the "Update" CRUD Operations for Admin (BACK-END)
-    Issue #176: Task - Implementation of the "Delete" CRUD Operations for Admin (BACK-END)
+    Issue #171: Task - Implementation of a CRUD Operations Page for Admin Users (FRONT-END) : Darren
+    Issue #172: Task - Implementation of the "Create" CRUD Operations for Admin (BACK-END):Amine
+    Issue #173: Task - Implementation of the "Read" CRUD Operations for Admin (BACK-END): Alessandro
+    Issue #175: Task - Implementation of the "Update" CRUD Operations for Admin (BACK-END) : Nao
+    Issue #176: Task - Implementation of the "Delete" CRUD Operations for Admin (BACK-END) : Mustafa
 
 
 
