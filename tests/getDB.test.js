@@ -1,4 +1,4 @@
-test("server check",() => {
+test("string matchers",() => {
 
     var string1 = "BrowserStack - Automation tool"
 
@@ -64,13 +64,4 @@ test("Exact value matchers", () => {
 
     expect(4-2).not.toBe(1);
 
-});const {checkStatus} = require("../routes/listings");
-const {MongoClient} = require("mongodb");
-const sum = require("../model/sum");
-
-const uri = "mongodb+srv://naolal30:ConnectdatabasetoWebstorm100.@cluster0.ttfusik.mongodb.net/test?retryWrites=true&w=majority";
-const client = new MongoClient(uri);
-
-test('adds 1 + 2 to equal 3', () => {
-    expect(sum(1, 2)).toBe(3);
 });
