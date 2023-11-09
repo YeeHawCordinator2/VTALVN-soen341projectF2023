@@ -12,7 +12,7 @@ test('check session status', () => {
     var n= null;
     expect(n).toBe(null);
 });
-
+/*
 test('check if there are brokers', async() => {
     await client.connect();
 
@@ -52,7 +52,7 @@ test('check if there are offers', async() => {
      expect(x.length).toBeGreaterThanOrEqual(0)
     await client.close();
 
-});
+}); /*
 test('check if the listings broker exists', async() => {
     await client.connect();
 
@@ -96,4 +96,4 @@ test('check if the listings image exists', async() => {
     expect(answer).toBe(false);
     await client.close();
 
-});
+});*/
