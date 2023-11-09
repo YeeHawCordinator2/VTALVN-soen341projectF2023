@@ -60,20 +60,20 @@
 <h1> Edit Broker <%= broker.name %></h1>
 <p> change whatever information you need to change <br> to keep old password type it again</p>
 <form action="/editBroker" method="POST">
-    <div class="input-box">
+<div class="input-box">
 
-        <label for="name">Name</label> <br>
-        <input type="text" value="<%= broker.name %>" name="name" required>
-    </div> <br>
-    <div class="input-box">
-        <label for="email">Username</label> <br>
-        <input type="text" value="<%= broker.username %>" name="username" required>
-        <input type="text" value="<%= broker.username %>" name="user_id" style="display: none">
-    </div> <br>
-    <div class="input-box">
-        <label for="password">Password</label> <br>
-        <input type="password" placeholder="****" name="password" required>
-    </div><br>
+    <label for="name">Name</label> <br>
+    <input type="text" value="<%= broker.name %>" name="name" required>
+</div> <br>
+<div class="input-box">
+    <label for="email">Username</label> <br>
+    <input type="text" value="<%= broker.username %>" name="username" required>
+    <input type="text" value="<%= broker.username %>" name="user_id" style="display: none">
+</div> <br>
+<div class="input-box">
+    <label for="password">Password</label> <br>
+    <input type="password" placeholder="****" name="password" required>
+</div><br>
     <div class="input-box">
         <label for="phone">Phone</label> <br>
         <input type="tel" value="<%= broker.phone %>" name="phone" required>
@@ -91,7 +91,7 @@
         <input type="email" Value="<%= broker.email %>" name="email" required>
     </div>
 
-    <button id="header-button" type="submit" class="btn"> Edit </button>
+<button id="header-button" type="submit" class="btn"> Edit </button>
 </form>
 
 
