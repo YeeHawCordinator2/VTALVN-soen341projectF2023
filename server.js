@@ -897,6 +897,9 @@ app.get('/searchBroker', async (req,res)=> {
 app.get('/showBroker.ejs', async (req,res)=> {
     res.render('broker/showBroker.ejs');
 });
+app.get('/brokerListings.ejs', async (req,res)=> {
+    res.render('broker/brokerListings.ejs');
+});
 app.get('/editMyInfoA', async (req,res)=> {
     if(session.userid===undefined || session.type!=="admin"){
         res.redirect("/login");
