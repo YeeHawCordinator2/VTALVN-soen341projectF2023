@@ -37,7 +37,7 @@ to use CRUD operations to manage staff members' account (both admin and broker a
 
 Acceptance Criteria:
 1. Given that the administrator is logged in and on the home page.
-2. WHen the administrator clicks on the "CRUD Admin" button from the menu bar.
+2. When the administrator clicks on the "CRUD Admin" button from the menu bar.
 3. The administrator is redirected to the CRUD Admin Operation page with the current list of administrator and broker users.
 4. The administrator clicks on "Add Member" which opens a form to create a new account for an administrator user or a broker.
 5. The administrator clicks on "Edit Member" which opens a form specific to a member (admin/broker) to change their information and permissions.
