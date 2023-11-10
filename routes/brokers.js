@@ -1,6 +1,6 @@
 const express = require('express')
 const {get1Broker, get1House} = require("../model/database/getDB");
-const {MongoClient} = require("mongodb");
+const {MongoClient, ObjectId} = require("mongodb");
 const {deleteBroker} = require("../model/database/deleteDB");
 const bodyParser = require("body-parser");
 const router = express.Router()
@@ -43,7 +43,7 @@ router.get('/show/:id', async (req, res) => {
 
 router.get('/brokerListings/:id', async (req, res) => {
     
-    const houses = await client.db("soen_341").collection("houses").find({broker_id: req.params.id}).toArray();
+    const houses = await client.db("soen_341").collection("houses").find({broker: new ObjectId(req.params.id)}).toArray();
     res.render('broker/brokerListings.ejs', {houses: houses})
 });
 
