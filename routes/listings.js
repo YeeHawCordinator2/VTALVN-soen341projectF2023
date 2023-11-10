@@ -69,14 +69,14 @@ router.get('/offer/:id', async (req, res) => {
     const broker = await client.db("soen_341").collection("brokers").findOne({_id: houses.broker});
     //console.log(await get1Broker(client, houses[0].broker));
     
-    res.render('listings/offerListing.ejs', {houses: houses, brokers:broker})
+    res.render('listings/offerListing.ejs', {houses: houses, brokers:broker, message: ""})
 })
 router.get('/showOffers/:id', async (req, res) => {
     const houses = await get1House(client, req.params.id);
     const offers = await client.db("soen_341").collection("offers").find().toArray();
     const pics= await client.db("soen_341").collection("house_pic").findOne({_id: houses.image_id});
     houses.image=pics.file;
-    res.render('listings/showOffers.ejs', {houses: houses, offers: offers})
+    res.render('listings/showOffers.ejs', {houses: houses, offers: offers, message: ""})
 })
 
 router.delete('/:id', async (req, res) => {
