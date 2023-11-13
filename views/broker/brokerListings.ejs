@@ -16,40 +16,47 @@
     <a href="../../login"> <button id="header-button" >Sign in</button></a>
 </header>
 
-<!-- Rest of your website content goes here -->
-
 <nav class="nav" style="z-index: 1000">
     <button type="button" class="nav-close" onclick="toggleNav()">
         <ion-icon name="close-outline" size="large"></ion-icon>
     </button>
-    <div class="nav-links-container" id="BaseMenu" >
-        <a href="/buy_rentU" class="nav__link">
-            <span class="nav__text">Buy/Rent</span>
+    <div class="nav-links-container" id="BrokerMenu"  >
+        <a href="/buy_rentB" class="nav__link">
+            <span class="nav__text">Buy / Rent</span>
             <ion-icon name="cash-outline" size="large"></ion-icon>
         </a>
 
-        <a href="../../fillerU" class="nav__link">
-            <span class="nav__text">Favorites</span>
-            <ion-icon name="heart-outline" size="large"></ion-icon>
+        <a href="/myListings" class="nav__link">
+            <span class="nav__text">My Listings</span>
+            <ion-icon name="list-outline" size="large"></ion-icon>
+
         </a>
-        <a href="../../fillerU" class="nav__link">
-            <span class="nav__text">Calendar</span>
+        <a href="../../fillerB" class="nav__link">
+            <span class="nav__text">My Visits</span>
             <ion-icon name="calendar-outline" size="large"></ion-icon>
         </a>
-        <a href="../../editMyInfoU" class="nav__link">
+        <a href="/showOffers" class="nav__link">
+            <span class="nav__text">Visit Requests</span>
+            <ion-icon name="calendar-outline" size="large"></ion-icon>
+        </a>
+        <a href="../../editMyInfoB" class="nav__link">
             <span class="nav__text">Personal Info</span>
             <ion-icon name="person-outline" size="large"></ion-icon>
         </a>
-        <a href="../../fillerU" class="nav__link">
-            <span class="nav__text">Mortgage Calculator</span>
+        <a href="../../fillerB" class="nav__link">
+            <span class="nav__text">Calendar</span>
             <ion-icon name="calculator-outline" size="large"></ion-icon>
         </a>
-        <a href="../../searchBroker" class="nav__link">
-            <span class="nav__text">Find Agent</span>
+        <a href="../../fillerB" class="nav__link">
+            <span class="nav__text">Match Property</span>
             <ion-icon name="search-outline" size="large"></ion-icon>
         </a>
-        <form action="/logout" method="post">
-            <button id="header-button"> log out </button>
+        <a href="/showOffers" class="nav__link">
+            <span class="nav__text">Offers</span>
+            <ion-icon name="cash-outline" size="large"></ion-icon>
+        </a>
+        <form action="../../logout" method="post">
+            "<button id="header-button"> log out </button>
         </form>
 
     </div>
@@ -66,7 +73,7 @@
 </script>
 
 <div  id="searchbar">
-    <form action="/buy_rentU" method="POST">
+    <form action="/buy_rentB" method="POST">
         <div class="horizontal">
             <input type="text" class="answ" name ="location" placeholder="Location">
             <input type="text" class="answ" id="minPrice"  name ="minPrice" placeholder="minPrice">
@@ -91,7 +98,7 @@
                 <option value="4">4+</option>
                 <option value="5">5+</option>
             </select>
-            <input type="text" id="yearBuilt" class="answ" name ="yearBuild" placeholder="yearBuilt >">
+            <input type="text" id="yearBuilt" class="answ" name ="yearBuild +" placeholder="yearBuilt">
             <select name="floors" id="floors" class="answ">
                 <option value="any" disabled selected>Floors</option>
                 <option value="any">Any</option>
@@ -126,11 +133,11 @@
             </select>
             <select name="extra" id="extra" class="answ">
                 <option value="any" disabled selected>Extra</option>
-                <option value="any" >Any</option>
+                <option value="none" >none</option>
                 <option value="pool">pool</option>
                 <option value="gym" >gym</option>
             </select>
-            <input type="text" id="propsize" class="answ" name ="propsize" placeholder="Property size >">
+            <input type="text" id="propsize" class="answ" name ="propsize" placeholder="Property size +">
             <select name="listing" id="listing" class="answ">
                 <option value="any" disabled selected>Listing Type</option>
                 <option value="buy" >buy</option>
@@ -143,28 +150,18 @@
     </form>
 </div>
 
-<h1 style="color:red; margin:2%;"> <%= message %> </h1>
 <div class="container">
+    
     <h1 class="mb-4">Listings</h1>
     <% houses.forEach(houses => { %>
         <div class="card mt-4">
             <div class="card-body">
-                <img src="<%= houses.image %>" alt="" class="img-fluid mb-3">
                 <h4 class="card-title"><%= houses.name %></h4>
-                <div class="card-subtitle text-muted mb-2">
-                    Price: <%= houses.price.toString().concat("$") %>
-                </div>
                 <div class="card-text mb-2"> 
                     <%= houses.location %>
                 </div>
             </div>
-            <div class="card-body"> 
-                <a href="listings/showU/<%= houses.name %>" class="btn btn-primary"> Read More</a>
-            </div>
-            <div class="card-body"> 
-                <a href="listings/requestU/<%= houses.name %>" class="btn btn-primary">  Request Visit </a>
-
-            </div>
+            
         </div>
     <% }) %>
 </div>
