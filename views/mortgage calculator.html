@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mortgage Calculator</title>
+</head>
+<body>
+<h1> Mortgage Calculator </h1>
+<div>
+  <form>
+    <fieldset>
+        <label for="mortgageAmount"> Mortgage Amount </label> </br>
+        <span>$</span>
+        <input type="text" id="mortgageAmount" name = "mortgageAmount"> </br></br>
+        <label for="amortizationPeriod"> Amortization Period</label> </br>
+        <select name="amortizationPeriod" id="amortizationPeriod">
+            <option value="0">0 Years</option>
+            <option value="1">1 Year</option>
+            <option value="2">2 Years</option>
+            <option value="3">3 Years</option>
+            <option value="4">4 Years</option>
+            <option value="5">5 Years</option>
+            <option value="6">6 Years</option>
+            <option value="7">7 Years</option>
+            <option value="8">8 Years</option>
+            <option value="9">9 Years</option>
+            <option value="10">10 Years</option>
+        </select> </br></br>
+<!--        <input type="text" id="amortizationPeriod" name="amortizationPeriod">-->
+<!--        <span>Years</span> </br> </br>-->
+        <label for="paymentFrequency"> Payment Frequency </label> </br>
+            <select name="paymentFrequency" id="paymentFrequency">
+                <option value="1">Monthly</option>
+                <option value="2">Semi-Monthly</option>
+                <option value="4">Weekly</option>
+                <option value="8">Twice-Weekly</option>
+            </select>
+        </br></br>
+        <label for="interestRate"> Interest Rate </label> </br>
+        <input type="text" id="interestRate" name="interest">
+        <span>%</span> </br></br>
+
+    </fieldset>
+      </br>
+      <input type="submit" value="Calculate">
+  </form>
+</div>
+
+</body>
+</html>
