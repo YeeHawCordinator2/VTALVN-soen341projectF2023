@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+<!-- CSS part-->
+    <style>
+       
+        input[type="password"]{
+            color:orangered;   
+            border-color: orangered;  
+            border-radius: 20px;
+            width: 100%; 
+            padding: 10px;  
+        }
+
+        body {
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: lightgrey;
+            display: flex;
+          
+        }
+       
+    form {
+            
+            align-items: center;    
+            flex-direction: column;
+            display: flex;
+       }
+       label {
+           display: block;
+           color: Black;
+           font-weight:bold;
+       }
+      
+       button{
+           margin :30px;
+           padding: 16px 30px;
+           border-radius: 5px;
+           border-color: orangered;  
+           font-weight: bold;
+           font-size:14px;
+          
+           }
+        button:hover{
+            background-color: orangered;
+            color: black;
+            
+        }
+        .block {
+            padding: 80px;
+            background-color:whitesmoke;
+            border-radius: 8px;
+            
+            border: 4px solid orangered; 
+            border-radius: 20px; 
+            width: 500px;
+            text-align:center;
+            position: fixed;
+            height: 550px;
+            box-shadow: 5px 5px 50px black;
+            
+        }
+        
+        .block h1 {
+            color: black;
+            text-align: center;
+            font-weight:bold;
+        }
+      
+      </style>
+</head>
+<body>
+      
+    <div class="block">
+        <form>
+        <h1>Admin Login: Security Questions</h1>
+        <br>
+
+<label for="fullName">Enter your Full Name:</label>
+<input type="password" placeholder="Example: Zlatan Ibrahimovic" id="fullName"><br><br>
+<label for="favouriteCuisine">Enter your Favourite Cuisine:</label>
+<input type="password" placeholder="Example: Italian" id="favouriteCuisine">
+<br><br>
+<label for="favouriteMovie">Enter your Favourite Movie:</label>
+<input type="password" placeholder="Example: The Big Short" id="favouriteMovie">
+<br><br>
+<label for="adminSecurityCode">Enter Admin Security Code:</label>
+<input type="password" placeholder="Example: 12345678" id="adminSecurityCode">
+
+<br>
+
+    <button type="submit">Save and Proceed</button>
+        </form>
+        
+    </div>
+
+</body>
+</html>

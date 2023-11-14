@@ -31,5 +31,14 @@ async function deleteAdmin(client,username){
         console.log("user not found or user preference not found");
     }
 }
-
-module.exports = {deleteHouse, deleteBroker, deleteUser, deleteAdmin};
+async function deleteOffer(client, house_name){
+    try {
+        console.log("Deletion in progress");
+        return await client.db("soen_341").collection("offers").deleteOne({house_name: house_name});
+        
+        //maybe edit listing to remove any instance of that broker
+    }catch (e) {
+        console.log("Offer not found");
+    }
+}
+module.exports = {deleteHouse, deleteBroker, deleteUser, deleteAdmin, deleteOffer};

@@ -21,7 +21,8 @@ const upload = multer({storage: storage});
 const {get1Broker, get1User, get1Admin, getHouseGarage, getHouseLocation, getHousePriceLower, getHousePriceHigher,
     getHouseBathgreaterThan, getHouseBuildYRSGreater, getHouseBedgreaterThan, getHouseBuildType, getHouseFurnished,
     getHouseStories, getHouseextra, getHouseSizeOfPropGreater, getHouseListingType, readHouses,
-    getHouseAfterDate
+    getHouseAfterDate,
+    get1House
 } = require("./model/database/getDB");
 const {checkBroker, checkUser, checkAdmin, checkUsername} = require("./model/database/checkPassword");
 const {addNewUser, addNewBroker, addNewHouse, addNewOffer} = require("./model/database/addBD");
@@ -31,6 +32,7 @@ const brkRouter = require('./routes/brokers');
 const methodOverride = require('method-override')
 const {editBroker, edit1HouseAllProperty} = require("./model/database/editDB");
 const bcrypt = require("bcrypt");
+const {checkPhone, checkPrice, checkName, checkEmails, checkDates} = require("./views/js/CheckForm");
 
 app.use(bodyParser.json());
 app.set('view-engine', 'ejs');
@@ -706,20 +708,48 @@ app.post("/editListingss",async(req,res)=> {
 
 });
 app.post('/offerSubmit', async (req,res)=> {
-    
+    let message = "";
     
     const price = req.body.price;
-    
-    const house_id = req.body.name;
+    let house_id = req.body.name;
     const occupancy_date = req.body.occupancy_date;
     const deed_date = req.body.deed_date;
     const user_adress = req.body.Uadress;
     const user_email = req.body.Uemail;
     const user_name = req.body.Uname;
+    const user_phone = req.body.Uphone;
+    const houses = await client.db("soen_341").collection("houses").find().toArray();
+    const pics= await client.db("soen_341").collection("house_pic").find().toArray();
+    for(let i=0;i<houses.length;i++){
+        for(let j=0;j<pics.length;j++){
+            if(houses[i].image_id.toString() === pics[j]._id.toString())
+                houses[i].image=pics[j].file;
+        }
+    }
 
+    if(checkPhone(user_phone)===false) {
+        message = "Invalid phone number";
+        res.render('listings/buy_rentB.ejs', {houses:houses, message: message});
+    }
+     if (checkPrice(price)===false) {
+        message = "Invalid price";
+        res.render('listings/buy_rentB.ejs', {houses:houses, message: message});
+    }
+     if( checkName(user_name)===false) {
+        message = "Invalid name";
+        res.render('listings/buy_rentB.ejs', {houses:houses, message: message});
+    }
+     if (checkEmails(user_email)===false) {
+        message = "Invalid email";
+        res.render('listings/buy_rentB.ejs', {houses:houses, message: message});
+    }
+     if(checkDates(deed_date)===false) {
+        message = "Invalid deed date";
+        res.render('listings/buy_rentB.ejs', {houses:houses, message: message});
+    }
     
     try{
-        addNewOffer(client, user_name, user_adress, user_email, price, house_id, deed_date, occupancy_date);
+        await addNewOffer(client, user_name, user_adress, user_email, price, house_id, deed_date, occupancy_date);
         res.redirect("/buy_rentB");
     }catch (e) {
         console.log("Error");
@@ -876,15 +906,28 @@ app.get('/requestB.ejs', async (req,res)=> {
     res.render('listings/requestB.ejs');
 });
 app.get('/offerListing.ejs', async (req,res)=> {
-    res.render('listings/offerListing.ejs');
+    res.render('listings/offerListing.ejs' , {message: ""});
 });
-
+app.get('/showOffers', async (req, res) => {
+    
+    const offers = await client.db("soen_341").collection("offers").find().toArray(); //works
+    // const houses = await get1House(client, offers[0].house_name); //works
+    // console.log(houses);
+    for (let i = 0; i < offers.length; i++) {
+        const houses = await get1House(client, offers[i].house_name);
+        console.log(houses);
+    }
+    res.render('listings/showOffers.ejs', { offers: offers});
+})
 app.get('/searchBroker', async (req,res)=> {
     const broker = await client.db("soen_341").collection("brokers").find().toArray();
     res.render('broker/searchBroker.ejs',{brokers:broker, message:""});
 });
 app.get('/showBroker.ejs', async (req,res)=> {
     res.render('broker/showBroker.ejs');
+});
+app.get('/brokerListings.ejs', async (req,res)=> {
+    res.render('broker/brokerListings.ejs');
 });
 app.get('/editMyInfoA', async (req,res)=> {
     if(session.userid===undefined || session.type!=="admin"){

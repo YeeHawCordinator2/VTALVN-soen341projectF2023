@@ -27,9 +27,9 @@ Therefore, the calendar will have many functionalities that the client will bene
 Acceptance criteria:
 - [] User acceptance flow respected
 - [] Schedule appointment 
-- [] Sellar contact information
+- [] Seller contact information
 - [] Slots are available
-- [] Appointments cancelation
+- [] Appointments cancellation
 
 2.	CRUD operations on properties.
 User Story Description:
@@ -38,7 +38,7 @@ A broker should be able to:
 •Create a property by collecting information about the property, such as its name, location, price, and any other relevant details.
 •Read property details like property price and the number of rooms
 •Update property information to cases such as when the property is rented, sold or transfer of ownership.
-•Delete a property that is no longer availabe.
+•Delete a property that is no longer available.
 NOTE*: Archive option may be useful if the user want to keep historical data while deleting the property from searches.
 User Acceptance Flow:
 The client will most likely ask the broker to create his/her property with all the components that come with.
