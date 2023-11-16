@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Mortgage Loan Calculator</title>
+</head>
+<body>
+  <div id="loancal">
+    <h1>Loan Calculator</h1>
+    <p>Loan Amount: $ <input type="number" id="amount" min="1" max="1000000000" onchange="computeLoan()"
+    placeholder='please enter loan amount'>
+    </p>
+
+    <p>Interest rate <input type="number" id="interest_rate" min="1" max="100" onchange="computeLoan()"
+      step="0.1" value="10">
+      </p>
+
+      <p>Months <input type="number" id="months" min="1" step='1' max="600" onchange="computeLoan()"
+        value="1">
+        </p>
+
+        <h2 id="payment"> </h2>
+    
+  </div>
+  <script src='Mortgage.js'></script>
+</body>
+</html>
