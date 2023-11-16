@@ -12,3 +12,4 @@ document.getElementById('payment').innerHTML = `Monthly Payment = ${payment}`
 
 
 }
+// css style to be implemented later on
