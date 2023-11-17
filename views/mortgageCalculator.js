@@ -8,15 +8,16 @@
 
 // Function to calculate PMT
 function calculateMortgage (){
-    var homePrice = document.getElementById("mortgage").elements.namedItem("homePrice").value;
-    var downPayment = document.getElementById("mortgage").elements.namedItem("downPayment").value;
-    var interestRate = document.getElementById("mortgage").elements.namedItem("interestRate").value;
-    var duration = document.getElementById("mortgage").elements.namedItem("loanPeriod").value;
-    principal = homePrice - (downPayment*homePrice/100);
-    monthlyInterestRate = interestRate/(12*100);
-    numPayments = 12 * duration;
-    monthlyAmount = principal * ((monthlyInterestRate*(1+monthlyInterestRate)**numPayments)/(((1+monthlyInterestRate)**numPayments)-1));
+    var homePrice = parseFloat(document.getElementById("homePrice").value);
+    var downPayment = parseFloat(document.getElementById("downPayment").value);
+    var interestRate = parseFloat(document.getElementById("interestRate").value);
+    var duration = parseFloat(document.getElementById("loanPeriod").value);
+
+    var principal = homePrice - (downPayment*homePrice/100);
+    var monthlyInterestRate = interestRate/(12*100);
+    var numPayments = 12 * duration;
+    var monthlyAmount = principal * ((monthlyInterestRate*(1+monthlyInterestRate)**numPayments)/(((1+monthlyInterestRate)**numPayments)-1));
     document.getElementById("calculate").innerHTML = "The monthly mortgage payment is $" + monthlyAmount.toFixed(2);
-    return monthlyAmount.toFixed(2);
+    // return monthlyAmount.toFixed(2);
 
 }
