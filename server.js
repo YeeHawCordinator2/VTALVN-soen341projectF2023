@@ -760,6 +760,17 @@ app.post('/request', async (req, res) => {
 
     res.render('../project/views/listings/buy_rentU.ejs', {houses: houses, message: message}); // opens localhost on index.html
 });
+app.post('/compare', async (req, res) => {
+    const prop1 = req.body.first;
+    const prop2 = req.body.second;
+    const house1 = await client.db("soen_341").collection("houses").findOne({name:prop1});
+    const house2 = await client.db("soen_341").collection("houses").findOne({name:prop2});
+    const user = await client.db("soen_341").collection("houses").find().toArray();
+
+
+
+    res.render('../project/views/compareProp.ejs', {props: user, prop1: house1, prop2: house2}); // opens localhost on index.html
+});
 app.get('/', async (req, res) => {
     const houses = await client.db("soen_341").collection("houses").find().toArray();
 
@@ -941,14 +952,11 @@ app.get('/editMyInfoB', async (req, res) => {
 
     }
 });
-app.get('/editMyInfoU', async (req, res) => {
 
-    if (session.userid === undefined || session.type !== "user") {
-        res.redirect("/login");
-    } else {
-        const user = await client.db("soen_341").collection("users").findOne({username: session.userid});
-        res.render('../project/views/editMyInfoU.ejs', {user: user});
-    }
+app.get('/compareProp', async (req, res) => {
+
+        const user = await client.db("soen_341").collection("houses").find({}).toArray();
+        res.render('../project/views/compareProp.ejs', {props: user, prop1: null, prop2: null});
 });
 
 //controller
