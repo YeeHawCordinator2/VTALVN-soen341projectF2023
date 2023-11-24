@@ -61,7 +61,7 @@
 </script>
 
 <div  id="searchbar">
-    <form action="/buy_rentU" method="POST">
+    <form action="listings/buy_rentUU" method="POST">
         <div class="horizontal">
             <input type="text" class="answ" name ="location" placeholder="Location">
             <input type="text" class="answ" id="minPrice"  name ="minPrice" placeholder="minPrice">
@@ -152,14 +152,18 @@
                 <div class="card-text mb-2"> 
                     <%= houses.location %>
                 </div>
+                <div class="card-text mb-2">
+                    <%= houses.listingType %>
+                </div>
             </div>
-            <div class="card-body"> 
+            <div class="card-body">
                 <a href="listings/showU/<%= houses.name %>" class="btn btn-primary"> Read More</a>
             </div>
+            <% if(houses.listingType !== "sold"){ %>
             <div class="card-body"> 
                 <a href="listings/requestU/<%= houses.name %>" class="btn btn-primary">  Request Visit </a>
-
             </div>
+            <% } %>
         </div>
     <% }) %>
 </div>
