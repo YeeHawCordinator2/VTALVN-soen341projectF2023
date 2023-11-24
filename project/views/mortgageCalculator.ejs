@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Mortgage Calculator </title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/searchBar.css">
+    <link rel="stylesheet" href=" https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+<header>
+    <img id="logo3" src="../../css/logo3.png" alt="logo3">
+    <a href="../../login"> <button id="header-button" >Sign in</button></a>
+</header>
+
+<!-- Rest of your website content goes here -->
+
+<nav class="nav" style="z-index: 1000">
+    <button type="button" class="nav-close" onclick="toggleNav()">
+        <ion-icon name="close-outline" size="large"></ion-icon>
+    </button>
+    <div class="nav-links-container" id="BaseMenu" >
+        <a href="/buy_rentU" class="nav__link">
+            <span class="nav__text">Buy/Rent</span>
+            <ion-icon name="cash-outline" size="large"></ion-icon>
+        </a>
+        <a href="../../editMyInfoU" class="nav__link">
+            <span class="nav__text">Personal Info</span>
+            <ion-icon name="person-outline" size="large"></ion-icon>
+        </a>
+        <a href="../../mortgageCalculator" class="nav__link">
+            <span class="nav__text">Mortgage Calculator</span>
+            <ion-icon name="calculator-outline" size="large"></ion-icon>
+        </a>
+        <a href="../../searchBroker" class="nav__link">
+            <span class="nav__text">Find Agent</span>
+            <ion-icon name="search-outline" size="large"></ion-icon>
+        </a>
+        <a href="../../compareProp" class="nav__link">
+            <span class="nav__text">Compare properties</span>
+            <ion-icon name="home-outline" size="large"></ion-icon>
+        </a>
+        <form action="/logout" method="post">
+            <button id="header-button"> log out </button>
+        </form>
+
+    </div>
+
+</nav>
+<main class="main">
+    <button onclick="toggleNav()"><ion-icon name="menu-outline"></ion-icon></button>
+
+</main>
+<script>
+    function toggleNav() {
+        document.body.classList.toggle("nav-open");
+    }
+</script>
+
+<!-- Content -->
+<h1>Mortgage Calculator</h1>
+    <div class="container">
+        <div class="card mt-4">
+            <form id="mortgage">
+            <fieldset>
+                <label for="homePrice">Home Price</label><br>
+                <span>$</span>
+                <input type="text" id="homePrice" name="homePrice"><br><br>
+
+                <label for="downPayment">Enter a Down Payment (In percentage)</label><br>
+                <input type="text" id="downPayment" name="downPayment">
+                <span>%</span><br><br>
+
+                <label for="loanPeriod">Select a Loan Period</label><br>
+                <select name="loanPeriod" id="loanPeriod">
+                    <option value="30">30 years</option>
+                    <option value="20">20 years</option>
+                    <option value="15">15 years</option>
+                    <option value="10">10 years</option>
+                </select><br><br>
+
+                <label for="interestRate">Enter Interest Rate</label><br>
+                <input type="text" id="interestRate" name="interestRate">
+                <span>%</span><br><br>
+            </fieldset>
+            <br>
+            <input type="button" value="Calculate" onclick="calculateMortgage()">
+            </form>
+            <p id="calculate" style = "font-size: medium; font-weight: bold;"></p>
+        </div>
+    </div>
+
+    <script>
+        function calculateMortgage() {
+            var homePrice = parseFloat(document.getElementById("homePrice").value);
+            var downPayment = parseFloat(document.getElementById("downPayment").value);
+            var interestRate = parseFloat(document.getElementById("interestRate").value);
+            var duration = parseInt(document.getElementById("loanPeriod").value);
+
+            var principal = homePrice - (downPayment * homePrice / 100);
+            var monthlyInterestRate = interestRate / (12 * 100);
+            var numPayments = 12 * duration;
+            var monthlyAmount = principal * ((monthlyInterestRate * Math.pow(1 + monthlyInterestRate, numPayments)) / (Math.pow(1 + monthlyInterestRate, numPayments) - 1));
+
+            document.getElementById("calculate").innerHTML = "The monthly mortgage payment is $" + monthlyAmount.toFixed(2);
+        }
+    </script>
+
+
+<script type="module" src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
