@@ -4,6 +4,7 @@ const {MongoClient} = require("mongodb");
 const {deleteHouse} = require("../model/database/deleteDB");
 const {deleteOffer} = require("../model/database/deleteDB");
 const bodyParser = require("body-parser");
+const {buy_rentJS} = require("./serverListing");
 const router  = express.Router();
 
 const app = express();
@@ -29,6 +30,29 @@ try{
 router.get('/requestU/:id', async (req, res) => {
     const houses = await get1House(client, req.params.id);
     res.render('../project/views/listings/requestU.ejs', {houses: houses})
+});
+
+router.post("/buy_rentUU", async (req, res) => {
+    let location = req.body.location.toLowerCase();
+    let minPrice = req.body.minPrice;
+    let maxPrice = req.body.maxPrice;
+    let bath = req.body.bath;
+    let beds = req.body.beds;
+    let yearBuild = req.body.yearBuild;
+    let floors = req.body.floors;
+    let garage = req.body.garage;
+    let prop = req.body.prop;
+    let furnished = req.body.furnished;
+    let extra = req.body.extra;
+    let propsize = req.body.propsize;
+    let listingType = req.body.listing;
+    let time = req.body.time;
+    const houseArr1 = await buy_rentJS(location, minPrice, maxPrice, bath, beds, yearBuild, floors, garage, prop, furnished, extra, propsize, listingType, time, client);
+
+    let message = "";
+    if (houseArr1[1] === true) message = "No results found";
+
+    res.render('../project/views/listings/buy_rentU.ejs', {houses: houseArr1[0], message: message}); // opens localhost on index.html
 });
 
 router.get('/showU/:id', async (req, res) => {
@@ -67,8 +91,6 @@ router.get('/edit/:id', async (req, res) => {
 router.get('/offer/:id', async (req, res) => {
     const houses = await get1House(client,  req.params.id);
     const broker = await client.db("soen_341").collection("brokers").findOne({_id: houses.broker});
-    //console.log(await get1Broker(client, houses[0].broker));
-    
     res.render('../project/views/listings/offerListing.ejs', {houses: houses, brokers:broker, message: ""})
 })
 router.get('/showOffers/:id', async (req, res) => {
