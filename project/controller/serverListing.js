@@ -17,8 +17,22 @@ const {
 } = require("../model/database/getDB");
 const {ObjectId} = require("mongodb");
 
-async function buy_rentJS(location, minPrice, maxPrice, bath, beds, yearBuild, floors, garage, prop, furnished, extra, propsize, listingType, time, client) {
+async function buy_rentJS(req, client) {
 
+    let location = req.body.location.toLowerCase();
+    let minPrice = req.body.minPrice;
+    let maxPrice = req.body.maxPrice;
+    let bath = req.body.bath;
+    let beds = req.body.beds;
+    let yearBuild = req.body.yearBuild;
+    let floors = req.body.floors;
+    let garage = req.body.garage;
+    let prop = req.body.prop;
+    let furnished = req.body.furnished;
+    let extra = req.body.extra;
+    let propsize = req.body.propsize;
+    let listingType = req.body.listing;
+    let time = req.body.time;
     arr = [];
     let arr11 = [];
     let isEmpty = false; // if is empty is true at the end whatever that was search was no good
