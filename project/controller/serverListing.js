@@ -238,4 +238,16 @@ async function buy_rentJS(req, client) {
     return arr1;
 }
 
-module.exports = {buy_rentJS};
+async function returnHouse(client) {
+    const houses = await client.db("soen_341").collection("houses").find().toArray();
+    const pics = await client.db("soen_341").collection("house_pic").find().toArray();
+    for (let i = 0; i < houses.length; i++) {
+        for (let j = 0; j < pics.length; j++) {
+            if (houses[i].image_id.toString() === pics[j]._id.toString())
+                houses[i].image = pics[j].file;
+        }
+    }
+    return houses;
+
+}
+module.exports = {buy_rentJS, returnHouse};

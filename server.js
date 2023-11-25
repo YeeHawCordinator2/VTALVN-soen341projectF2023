@@ -17,9 +17,8 @@ const storage = multer.diskStorage({
 );
 const encode = require('nodejs-base64-encode');
 const upload = multer({storage: storage});
-const {
-    get1Broker, get1User, get1Admin,get1House} = require("./project/model/database/getDB");
-const {buy_rentJS} = require("./project/controller/serverListing");
+const {returnHouse} = require("./project/controller/serverListing");
+const {get1Broker, get1User, get1Admin,get1House} = require("./project/model/database/getDB");
 const {checkBroker, checkUser, checkAdmin, checkUsername} = require("./project/model/database/checkPassword");
 const {addNewUser, addNewBroker, addNewHouse, addNewOffer} = require("./project/model/database/addBD");
 const listingsRouter = require('./project/controller/listings');
@@ -52,6 +51,7 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
+
 const oneDay = 1000 * 60 * 60 * 24;
 app.set('trust proxy', 1)
 app.use(session({
@@ -232,10 +232,29 @@ app.post("/editListingss", async (req, res) => {
     const og = req.body.house_id;
 
     try {
+        edit1HouseAllProperty(client, og, {
+            name: name,
+            image_id: new ObjectId(piclink),
+            price: price,
+            location: location,
+            numOfBath: numOfBath,
+            numOfBed: numOfBed,
+            furnished: furnished,
+            buildYRS: buildYRS,
+            extra: extra,
+            buildType: buildType,
+            stories: stories,
+            sizeOfProp: sizeOfProp,
+            garage: garage,
+            listingType: listingType,
+            listingDate: new Date(),
+            seller: (await client.db("soen_341").collection("users").findOne({username: clName}))._id,
+            broker: (await client.db("soen_341").collection("brokers").findOne({username: brkName}))._id
+        })
         res.redirect("/myListings");
     } catch (e) {
         console.log("Error editing house");
-        res.redirect("/editListings");
+        res.redirect("/myListings");
     }
 
 
@@ -290,15 +309,7 @@ app.post('/offerSubmit', async (req, res) => {
     }
 });
 app.post('/request', async (req, res) => {
-
-    const houses = await client.db("soen_341").collection("houses").find().toArray();
-    const pics = await client.db("soen_341").collection("house_pic").find().toArray();
-    for (let i = 0; i < houses.length; i++) {
-        for (let j = 0; j < pics.length; j++) {
-            if (houses[i].image_id.toString() === pics[j]._id.toString())
-                houses[i].image = pics[j].file;
-        }
-    }
+    const houses =  await returnHouse(client);
     let message = "";
 
     res.render('../project/views/listings/buy_rentU.ejs', {houses: houses, message: message}); // opens localhost on index.html
@@ -309,21 +320,10 @@ app.post('/compare', async (req, res) => {
     const house1 = await client.db("soen_341").collection("houses").findOne({name:prop1});
     const house2 = await client.db("soen_341").collection("houses").findOne({name:prop2});
     const user = await client.db("soen_341").collection("houses").find().toArray();
-
-
-
     res.render('../project/views/compareProp.ejs', {props: user, prop1: house1, prop2: house2}); // opens localhost on index.html
 });
 app.get('/', async (req, res) => {
-    const houses = await client.db("soen_341").collection("houses").find().toArray();
-
-    const pics = await client.db("soen_341").collection("house_pic").find().toArray();
-    for (let i = 0; i < houses.length; i++) {
-        for (let j = 0; j < pics.length; j++) {
-            if (houses[i].image_id.toString() === pics[j]._id.toString())
-                houses[i].image = pics[j].file;
-        }
-    }
+    const houses =  await returnHouse(client);
     let message = "";
     res.render('../project/views/listings/buy_rentU.ejs', {houses: houses, message: message});
 
@@ -345,27 +345,13 @@ app.get('/registerUserExist', (req, res) => {
 });
 
 app.get('/buy_rentU', async (req, res) => {
-    const houses = await client.db("soen_341").collection("houses").find().toArray();
-    const pics = await client.db("soen_341").collection("house_pic").find().toArray();
-    for (let i = 0; i < houses.length; i++) {
-        for (let j = 0; j < pics.length; j++) {
-            if (houses[i].image_id.toString() === pics[j]._id.toString())
-                houses[i].image = pics[j].file;
-        }
-    }
+    const houses =  await returnHouse(client);
     let message = "";
 
     res.render('../project/views/listings/buy_rentU.ejs', {houses: houses, message: message}); // opens localhost on index.html
 });
 app.get('/buy_rentB', async (req, res) => {
-    const houses = await client.db("soen_341").collection("houses").find().toArray();
-    const pics = await client.db("soen_341").collection("house_pic").find().toArray();
-    for (let i = 0; i < houses.length; i++) {
-        for (let j = 0; j < pics.length; j++) {
-            if (houses[i].image_id.toString() === pics[j]._id.toString())
-                houses[i].image = pics[j].file;
-        }
-    }
+    const houses =  await returnHouse(client);
     let message = "";
 
     res.render('../project/views/listings/buy_rentB.ejs', {houses: houses, message: message}); // opens localhost on index.html
@@ -398,7 +384,6 @@ app.get('/login_successA', (req, res) => {
 });
 app.get('/ViewBrokers', async (req, res) => {
     const brokers = await client.db("soen_341").collection("brokers").find().toArray();
-
     res.render('../project/views/broker/ViewBrokers.ejs', {brokers: brokers});
 });
 app.get('/addBroker', (req, res) => {
@@ -410,14 +395,7 @@ app.get('/editBroker', (req, res) => {
 
 //connects to server
 app.get('/myListings', async (req, res) => {
-    const houses = await client.db("soen_341").collection("houses").find().toArray();
-    const pics = await client.db("soen_341").collection("house_pic").find().toArray();
-    for (let i = 0; i < houses.length; i++) {
-        for (let j = 0; j < pics.length; j++) {
-            if (houses[i].image_id.toString() === pics[j]._id.toString())
-                houses[i].image = pics[j].file;
-        }
-    }
+    const houses = await returnHouse(client)
     res.render('../project/views/listings/myListings.ejs', {houses: houses});
 });
 
@@ -428,9 +406,7 @@ app.get('/newListings', (req, res) => {
 app.get('/newListingsFail', (req, res) => {
     res.render('../project/views/listings/newListingsFail.ejs',);
 });
-app.get('/editListings', (req, res) => {
-    res.render('../project/views/listings/editListings.ejs');
-});
+
 app.get('/showU.ejs', async (req, res) => {
 
     res.render('../project/views/listings/showU.ejs');
@@ -450,8 +426,6 @@ app.get('/offerListing.ejs', async (req, res) => {
 });
 app.get('/showOffers', async (req, res) => {
     const offers = await client.db("soen_341").collection("offers").find().toArray(); //works
-    // const houses = await get1House(client, offers[0].house_name); //works
-    // console.log(houses);
     for (let i = 0; i < offers.length; i++) {
         const houses = await get1House(client, offers[i].house_name);
         console.log(houses);

@@ -7,14 +7,6 @@ const router = express.Router()
 const app = express();
 app.use(bodyParser.json());
 
-app.set('poop-engine', 'ejs');
-app.use(express.static(__dirname+'/poop'));
-app.use(bodyParser.urlencoded({
-    extended: true
-})); //
-
-
-
 const uri = "mongodb+srv://naolal30:ConnectdatabasetoWebstorm100.@cluster0.ttfusik.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
 
@@ -25,14 +17,9 @@ try{
     console.log("Error connecting to database");
 }
 
-
-//Not for creating new brokers, this function takes REGISTERED brokers and 'gets' them from the database
 router.get('/edit/:id', async (req, res) => {
     const broker = await get1Broker(client, req.params.id);
-//console.log(broker.name)
     res.render('../project/views/broker/editBroker.ejs', {broker: broker})
-//res.send("patoe")
-
 })
 
 router.get('/show/:id', async (req, res) => {
