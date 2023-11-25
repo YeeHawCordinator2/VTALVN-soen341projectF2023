@@ -491,6 +491,10 @@ app.get('/compareProp', async (req, res) => {
         res.render('../project/views/compareProp.ejs', {props: user, prop1: null, prop2: null});
 });
 
+app.get('/mortgageCalculator', async (req, res) => {
+    res.render('../project/views/mortgageCalculator.ejs');
+});
+
 //controller
 app.use('/listings', listingsRouter);
 app.use('/broker', brkRouter);
