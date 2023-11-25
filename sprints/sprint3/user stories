@@ -1,0 +1,45 @@
+User Stories for Sprint 4:
+
+[1] - Mortgage Calculator
+User Story Description:
+As a client, I should be able to use the mortgage calculator tool to calculate my monthly mortgage payment.
+There should be a "Mortgage Calculator" tab available in the menu bar to the client, which will re-direct the client
+to the Mortgage Calculator Tool page on-click.
+
+User Acceptance Flow:
+By clicking on the "Mortgage Calculator" tab from the menu bar, the client is redirected to the Mortgage Payment Calculator
+page. The Mortgage Calculator should calculate the monthly payment based on the mortgage amount, the amortization period,
+the payment frequency, the interest rate, and the interest term.
+
+(For more information, look at the Advanced Mortgage Payment Calculator provided by RBC:
+https://apps.royalbank.com/apps/mortgages/mortgage-payment-calculator/)
+
+Acceptance Criteria:
+1. Given that the client is logged in and on the home page.
+2. When the client clicks on the "Mortgage Calculator" tab from the menu bar.
+3. The client is redirected to the Mortgage Calculator page.
+4. The client inputs the mortgage amount and chooses the amortization period, the payment frequency, the interest rate, and the interest term.
+5. The client clicks on the "Calculate" button.
+6. The Monthly Mortgage Payment is displayed to the client.
+
+
+[2] - CRUD Operations for Administrator
+User Story Description:
+As a administrator, I should be able to do CRUD operations made specifically for Admin users (on top of the CRUD operations for brokers) to:
+1. Create a new admin or broker account.
+2. Read the current list of admin and broker accounts with their personal information.
+3. Update administrator and broker information (permission, personal information).
+4. Delete inactive administrator and broker accounts.
+
+User Acceptance Flow:
+By clicking on the "CRUD Admin" button in the menu bar, the admin user is redirected to another web page that will allow the current admin
+to use CRUD operations to manage staff members' account (both admin and broker accounts).
+
+Acceptance Criteria:
+1. Given that the administrator is logged in and on the home page.
+2. When the administrator clicks on the "CRUD Admin" button from the menu bar.
+3. The administrator is redirected to the CRUD Admin Operation page with the current list of administrator and broker users.
+4. The administrator clicks on "Add Member" which opens a form to create a new account for an administrator user or a broker.
+5. The administrator clicks on "Edit Member" which opens a form specific to a member (admin/broker) to change their information and permissions.
+6. The administrator clicks on "Remove Member" which deletes the account of an inactive administrator or inactive broker.
+
