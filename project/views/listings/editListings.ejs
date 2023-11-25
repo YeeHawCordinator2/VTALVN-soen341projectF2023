@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate </title>
+
+    <link rel="stylesheet" href="../../css/styles.css">
+
+    <link rel="stylesheet" href=" https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+</head>
+<body>
+<header>
+
+    <img id="logo3" src="../../css/logo3.png" alt="logo3">
+
+    <a href="../../login"> <button id="header-button" >Sign in</button></a>
+</header>
+<nav class="nav" style = "z-index:1000;">
+    <button type="button" class="nav-close" onclick="toggleNav()">
+        <ion-icon name="close-outline" size="large"></ion-icon>
+    </button>
+    <div class="nav-links-container" id="BrokerMenu"  >
+        <a href="/buy_rentB" class="nav__link">
+            <span class="nav__text">Buy / Rent</span>
+            <ion-icon name="cash-outline" size="large"></ion-icon>
+        </a>
+
+        <a href="/myListings" class="nav__link">
+            <span class="nav__text">My Listings</span>
+            <ion-icon name="list-outline" size="large"></ion-icon>
+
+        </a>
+        <a href="../../fillerB" class="nav__link">
+            <span class="nav__text">My Visits</span>
+            <ion-icon name="calendar-outline" size="large"></ion-icon>
+        </a>
+        <a href="../../fillerB" class="nav__link">
+            <span class="nav__text">Visit Requests</span>
+            <ion-icon name="calendar-outline" size="large"></ion-icon>
+        </a>
+        <a href="../../editMyInfoB" class="nav__link">
+            <span class="nav__text">Personal Info</span>
+            <ion-icon name="person-outline" size="large"></ion-icon>
+        </a>
+        <a href="../../fillerB" class="nav__link">
+            <span class="nav__text">Calendar</span>
+            <ion-icon name="calculator-outline" size="large"></ion-icon>
+        </a>
+        <a href="../../fillerB" class="nav__link">
+            <span class="nav__text">Match Property</span>
+            <ion-icon name="search-outline" size="large"></ion-icon>
+        </a>
+        <a href="/showOffers" class="nav__link">
+            <span class="nav__text">Offers</span>
+            <ion-icon name="cash-outline" size="large"></ion-icon>
+        </a>
+        <form action="../../logout" method="post">
+            <button id="header-button"> log out </button>
+        </form>
+
+    </div>
+
+</nav>
+<main class="main">
+    <button onclick="toggleNav()"><ion-icon name="menu-outline"></ion-icon></button>
+
+</main>
+
+<!-- Rest of your website content goes here -->
+
+<div class="container">
+<h1> Edit Listings </h1>
+<p> Change values of <%= houses.name %> </p>
+
+
+<form action="/editListingss" method="POST">
+    <div class="input-box">
+        <label >House Name</label>
+        <input class="form-control" type="text" value="<%= houses.name %>" name="name" >
+        <input type="text" value="<%= houses.name %>" name="house_id" style="display: none">
+    </div>
+    <div class="input-box">
+        <label >House Price</label>
+        <input class="form-control" type="text" value="<%= houses.price %>" name="price" >
+    </div>
+    <div class="input-box">
+        <label >Seller username</label>
+        <input class="form-control" type="text" value="<%= houses.seller %>" name="clName" >
+    </div>
+    <div class="input-box">
+        <label >Broker Username</label>
+        <input class="form-control" type="text" value="<%= houses.brk %>" name="brkName" required>
+    </div>
+    <div class="input-box">
+        <label >House Type</label>
+        <select class="form-control" name="buildType" required>
+            <option value="<%= houses.buildType%>" > <%= houses.buildType%> </option>
+
+            <option value="house"> House </option>
+            <option value="condo"> Condo </option>
+            <option value="apartment"> Apartment </option>
+        </select>
+    </div>
+    <div class="input-box">
+
+        <label >Number of Stories</label>
+        <input class="form-control" type="text" value="<%= houses.stories %>" name="stories" required>
+    </div>
+    <div class="input-box">
+        <label >Number of Bathrooms</label>
+        <input class="form-control" type="text" value="<%= houses.numOfBath %>" name="numOfBath" required>
+    </div>
+    <div class="input-box">
+        <label > Number of Bedrooms</label>
+        <input class="form-control" type="text" value="<%= houses.numOfBed %>" name="numOfBed" required>
+    </div>
+    <div class="input-box">
+        <label >Size of Property</label>
+        <input class="form-control" type="text" value="<%= houses.sizeOfProp %>" name="sizeOfProp" required>
+    </div>
+    <div class="input-box">
+        <label >Location</label>
+        <input class="form-control" type="text" value="<%= houses.location %>" name="location" required>
+    </div>
+    <div class="input-box">
+        <label >Garage</label>
+        <select class="form-control" name="garage" required>
+            <option value="<%= houses.garage%>" ><%= houses.garage%></option>
+
+            <option value="yes"> Yes </option>
+            <option value="no"> No </option>
+        </select>
+    </div>
+    <div class="input-box">
+    
+        <label >House build year</label>
+        <input class="form-control" type="text" value="<%= houses.buildYRS%>" name="buildYRS" required>
+    </div>
+    <div class="input-box">
+        <label >Furnished</label>
+        <select class="form-control" name="furnished" required>
+            <option value="<%= houses.furnished%>" > <%= houses.furnished%> </option>
+
+            <option value="yes"> Yes </option>
+            <option value="no"> No </option>
+        </select>
+    </div>
+    <div class="input-box">
+
+        <label >House extras</label>
+        <input class="form-control" type="text" value="<%= houses.extra %>" name="extra" required>
+    </div>
+    <div class="input-box">
+        <label >Listing Type</label>
+        <select class="form-control" name="listingType" required>
+            <option value="<%= houses.listingType%>"> <%= houses.listingType%> </option>
+
+            <option value="buy"> Buy </option>
+            <option value="rent"> Rent </option>
+            <option value="sold"> Sold </option>
+        </select>
+    </div>
+
+    <button id="header-button" type="submit" class="btn"> Edit Listing </button>
+
+    <a href="/myListings" class="btn btn-secondary"> Cancel </a>
+</form>
+
+</div>
+
+<script>
+    function toggleNav() {
+        document.body.classList.toggle("nav-open");
+    }
+</script>
+<script type="module" src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

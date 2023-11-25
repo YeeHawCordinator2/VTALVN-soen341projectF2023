@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate </title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href=" https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+<header>
+    <img id="logo3" src="../../css/logo3.png" alt="logo3">
+    <a href="/login"> <button id="header-button" style="right:0;" >Sign in</button></a>
+</header>
+
+<!-- Rest of your website content goes here -->
+
+<nav class="nav">
+    <button type="button" class="nav-close" onclick="toggleNav()">
+        <ion-icon name="close-outline" size="large"></ion-icon>
+    </button>
+    <div class="nav-links-container" id="AdminMenu" >
+
+        <a href="/ViewBrokers" class="nav__link">
+            <span class="nav__text">View All Brokers</span>
+            <ion-icon name="eye-outline" size="large"></ion-icon>
+        </a>
+
+        <a href="/editMyInfoA" class="nav__link">
+            <span class="nav__text">Personal Info</span>
+            <ion-icon name="person-outline" size="large"></ion-icon>
+        </a>
+        <form action="/logout" method="post">
+            <button id="header-button"> log out </button>
+        </form>
+
+
+
+    </div>
+</nav>
+<main class="main">
+    <button onclick="toggleNav()"><ion-icon name="menu-outline"></ion-icon></button>
+
+</main>
+<script>
+    function toggleNav() {
+        document.body.classList.toggle("nav-open");
+    }
+</script>
+
+<h1> List of brokers</h1>
+<a href="/addBroker"> <button id="header-button" >Add Broker</button></a>
+
+<% brokers.forEach(broker => { %>
+    <div class="card-brk" style=" outline: 1vmin solid black; margin: 5%;  padding:3% 0; padding-left:10%; font-size: 2.5vmax">
+        <%= broker.name %>
+        <a href="broker/edit/<%= broker.username %>" id="header-button" style="margin: 0 5%" >Edit</a>
+        <form action="/broker/<%= broker.username %>?_method=DELETE" method="POST" class="d-inline">
+            <button type="submit" id="header-button">Delete</button>
+        </form>
+    </div>
+
+ <% }) %>
+
+<script type="module" src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
