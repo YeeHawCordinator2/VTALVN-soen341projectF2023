@@ -6,17 +6,23 @@ const cookieParser = require("cookie-parser");
 const session = require('express-session');
 const multer = require("multer");
 const fs = require("fs");
+const uploadMaxSize = 20 * 1024 * 1024; // 20 MB
 const storage = multer.diskStorage({
-        destination: (req, file, cb) => {
-            cb(null, "project/uploads");
-        },
-        filename: (req, file, cb) => {
-            cb(null, file.fieldname + '-' + Date.now());
-        }
+    destination: (req, file, cb) => {
+        cb(null, "project/uploads");
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now());
+    },
+    limits: {
+        fileSize: uploadMaxSize  // Restrict file size to 20MB
     }
-);
+});
 const encode = require('nodejs-base64-encode');
-const upload = multer({storage: storage});
+var upload = multer({
+    storage: storage,
+    limits: { fileSize: uploadMaxSize }
+  })
 const {returnHouse, buy_rentJS} = require("./project/controller/serverListing");
 const {get1Broker, get1User, get1Admin, get1House} = require("./project/model/database/getDB");
 const {checkBroker, checkUser, checkAdmin, checkUsername} = require("./project/model/database/checkPassword");
