@@ -1,0 +1,51 @@
+#searchbar{
+
+    background-color: #333333;
+    font-size:3vmin;
+    padding:2% 5%;
+
+}
+.horizontal{
+    background-color: white;
+
+}
+.answ{
+    font-size:3vmin;
+    border:none;
+    padding: 1%;
+    border-left: 1px solid #333333;
+}
+#beds,#extra,#propsize,#listing,#time,#button{
+    margin-left:2%;
+    padding:1%;
+}
+#minPrice, #maxPrice{
+    width:13vmin;
+}
+#yearBuilt{
+    margin-left:2%;
+    width:18vmin;
+}
+
+#h2{
+    margin-top:2%
+}
+#button{
+    font-size:3vmin;
+    border:none;
+    border-left: 1px solid #333333;
+    background-color: #e64c00;
+    color: white;
+    padding:1% 5%;
+}
+#button:hover{
+    border: 1px solid #333333;
+    background-color: white;
+    color: #e64c00;
+
+}
+#brks{
+    margin-left:2%;
+    padding:1%;
+    width:80%;
+}

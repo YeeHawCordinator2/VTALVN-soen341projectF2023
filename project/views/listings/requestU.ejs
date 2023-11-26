@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate </title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href=" https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js">
+
+    <style>
+        /* Optional: Add some basic styling to the date picker input */
+        input[type="date"] {
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <img id="logo3" src="../../css/logo3.png" alt="logo3">
+    <a href="../../login"> <button id="header-button" >Sign in</button></a>
+</header>
+<nav class="nav" style="z-index: 1000">
+    <button type="button" class="nav-close" onclick="toggleNav()">
+        <ion-icon name="close-outline" size="large"></ion-icon>
+    </button>
+    <div class="nav-links-container" id="BaseMenu" >
+        <a href="/buy_rentU" class="nav__link">
+            <span class="nav__text">Buy/Rent</span>
+            <ion-icon name="cash-outline" size="large"></ion-icon>
+        </a>
+        <a href="../../editMyInfoU" class="nav__link">
+            <span class="nav__text">Personal Info</span>
+            <ion-icon name="person-outline" size="large"></ion-icon>
+        </a>
+        <a href="../../fillerU" class="nav__link">
+            <span class="nav__text">Mortgage Calculator</span>
+            <ion-icon name="calculator-outline" size="large"></ion-icon>
+        </a>
+        <a href="../../searchBroker" class="nav__link">
+            <span class="nav__text">Find Agent</span>
+            <ion-icon name="search-outline" size="large"></ion-icon>
+        </a>
+        <a href="../../compareProp" class="nav__link">
+            <span class="nav__text">Compare properties</span>
+            <ion-icon name="home-outline" size="large"></ion-icon>
+        </a>
+        <form action="/logout" method="post">
+            <button id="header-button"> log out </button>
+        </form>
+
+    </div>
+
+</nav>
+<main class="main">
+    <button onclick="toggleNav()"><ion-icon name="menu-outline"></ion-icon></button>
+
+</main>
+
+<!-- Rest of your website content goes here -->
+
+<h1> Request A User Visit For <%= houses.name %> </h1>
+
+<form action="/request" method="POST">
+    <label for="datePicker">Select a Date:</label>
+    <input type="date" id="datePicker" name="selectedDate"><br>
+    <input type="submit" value="Submit">
+</form>
+
+<script>
+    // Optional: Add JavaScript to handle the selected date
+    const datePicker = document.getElementById('datePicker');
+
+    datePicker.addEventListener('change', function () {
+        const selectedDate = datePicker.value;
+        console.log('Selected Date: ' + selectedDate);
+        
+    });
+</script>
+
+
+<script>
+    function toggleNav() {
+        document.body.classList.toggle("nav-open");
+    }
+</script>
+<script type="module" src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

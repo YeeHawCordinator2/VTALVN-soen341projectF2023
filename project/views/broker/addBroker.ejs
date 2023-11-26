@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate </title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href=" https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+<header>
+    <img id="logo3" src="../../css/logo3.png" alt="logo3">
+    <a href="/login"> <button id="header-button" >Sign in</button></a>
+</header>
+
+<!-- Rest of your website content goes here -->
+
+<nav class="nav">
+    <button type="button" class="nav-close" onclick="toggleNav()">
+        <ion-icon name="close-outline" size="large"></ion-icon>
+    </button>
+    <div class="nav-links-container" id="AdminMenu" >
+
+        <a href="/ViewBrokers" class="nav__link">
+            <span class="nav__text">View All Brokers</span>
+            <ion-icon name="eye-outline" size="large"></ion-icon>
+        </a>
+
+        <a href="/editMyInfoA" class="nav__link">
+            <span class="nav__text">Personal Info</span>
+            <ion-icon name="person-outline" size="large"></ion-icon>
+        </a>
+        <form action="/logout" method="post">
+            <button id="header-button"> log out </button>
+        </form>
+
+
+
+    </div>
+</nav>
+<main class="main">
+    <button onclick="toggleNav()"><ion-icon name="menu-outline"></ion-icon></button>
+
+</main>
+<script>
+    function toggleNav() {
+        document.body.classList.toggle("nav-open");
+    }
+</script>
+
+<h1> Add a broker</h1>
+<form action="/addBroker" method="POST">
+    <div class="input-box">
+        <input class="form-control" type="text" placeholder="Name" name="name" required>
+    </div>
+    <div class="input-box">
+        <input class="form-control" type="text" placeholder="Username" name="username" required>
+    </div>
+    <div class="input-box">
+        <input class="form-control" type="password" placeholder="Password" name="password" required>
+    </div>
+    <div class="input-box">
+        <input class="form-control" type="tel" name="phone" placeholder="Phone number (xxx-xxx-xxxx)" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
+    </div>
+    <div class="input-box">
+        <input class="form-control" type="number" placeholder="License number" name="license" required>
+    </div>
+    <div class="input-box">
+        <input class="form-control" type="email" placeholder="Email (testEmail@test.com)" name="email" required>
+    </div>
+    <div class="input-box">
+        <input class="form-control" type="text" placeholder="Agency name" name="agency" required>
+    </div>
+    <button id="header-button" type="submit" class="btn">Create</button>
+</form>
+
+
+<script type="module" src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

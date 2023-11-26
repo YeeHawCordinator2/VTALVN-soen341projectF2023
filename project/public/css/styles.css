@@ -1,0 +1,141 @@
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#logo {
+    width: 120px;
+    height: auto;
+}
+
+#header-button {
+    background-color: #ff5733;
+    color: #fff;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#header-button:hover {
+    background-color: #e64c00;
+}
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+    background-color: whitesmoke;
+    /*new*/
+}
+
+.nav-open .nav {
+    transform: translateX(0);
+}
+
+.nav-open .main {
+    transform: translateX(350px);
+}
+
+.nav {
+    width: 350px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #333333;
+    transform: translateX(-350px);
+    transition: transform 0.2s;
+    overflow: hidden;
+}
+
+.nav-close {
+    background: none;
+    display: flex;
+    align-items: center;
+    border: none;
+    padding: 15px 25px;
+    color: #dddddd;
+    margin-top: auto;
+    cursor: pointer;
+}
+
+.nav-close:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-links-container {
+    box-shadow: 0 -10px 10px rgba(0, 0, 0, 0.15);
+}
+
+.nav__link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 25px;
+    text-decoration: none;
+    color: #dddddd;
+}
+
+.nav__text {
+    font-size: 22px;
+    font-family: "Assistant", sans-serif;
+    font-weight: 500;
+}
+
+.nav__link:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.main {
+    transition: transform 0.2s;
+}
+
+/* CSS for the showBroker.ejs page */
+/* Center the main container */
+#broker_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+/* Style the rectangle */
+#broker_rectangle {
+    background-color: #fff;
+    /* Set the background color for the rectangle */
+    border-radius: 10px;
+    /* Rounded corners */
+    padding: 100px;
+    /* Add some padding for content spacing */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* Add a subtle box shadow for a smooth look */
+    text-align: center;
+    max-width: 1000px;
+    /* Adjust the width as needed */
+}
+
+/* Style the person's name */
+#broker_name {
+    font-size: 34px;
+    /* Set the font size for the name */
+    font-weight: bold;
+    /* Make it bold */
+    margin-bottom: 10px;
+    /* Add some spacing below the name */
+}
+
+/* Style the properties */
+#broker_property {
+    font-size: 24px;
+    /* Set the font size for properties */
+    margin: 20px 0;
+    /* Add spacing between properties */
+    text-align: justify;
+}
+/* End of showBroker.ejs css*/

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate </title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<header>
+    <img id="logo3" src="../css/logo3.png" alt="logo3">
+    <a href="/login"> <button id="header-button" >Sign in</button></a>
+</header>
+
+<!-- Rest of your website content goes here -->
+
+<nav class="nav">
+    <button type="button" class="nav-close" onclick="toggleNav()">
+        <ion-icon name="close-outline" size="large"></ion-icon>
+    </button>
+    <div class="nav-links-container" id="BrokerMenu"  >
+        <a href="/buy_rentB" class="nav__link">
+            <span class="nav__text">Buy / Rent</span>
+            <ion-icon name="cash-outline" size="large"></ion-icon>
+        </a>
+
+        <a href="/myListings" class="nav__link">
+            <span class="nav__text">My Listings</span>
+            <ion-icon name="list-outline" size="large"></ion-icon>
+
+        </a>
+        <a href="/editMyInfoB" class="nav__link">
+            <span class="nav__text">Personal Info</span>
+            <ion-icon name="person-outline" size="large"></ion-icon>
+        </a>
+        <a href="/showOffers" class="nav__link">
+            <span class="nav__text">Offers</span>
+            <ion-icon name="cash-outline" size="large"></ion-icon>
+        </a>
+        <form action="/logout" method="post">
+            <button id="header-button"> log out </button>
+        </form>
+
+
+    </div>
+
+</nav>
+<main class="main">
+    <button onclick="toggleNav()"><ion-icon name="menu-outline"></ion-icon></button>
+
+</main>
+<script>
+    function toggleNav() {
+        document.body.classList.toggle("nav-open");
+    }
+</script>
+
+<H1> YOU ARE NOW LOGGED IN</H1>
+
+<script type="module" src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
