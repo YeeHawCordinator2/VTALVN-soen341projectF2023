@@ -28,6 +28,7 @@ const methodOverride = require('method-override')
 const {editBroker, edit1HouseAllProperty} = require("./project/model/database/editDB");
 const bcrypt = require("bcrypt");
 const {checkPhone, checkPrice, checkName, checkEmails, checkDates} = require("./project/public/js/CheckForm");
+const {checkYES_NO, checklistingType, checkUserss, checkBrokerss, checkBuildtype} = require("./project/views/js/CheckForm");
 
 app.use(bodyParser.json());
 app.set('views-engine', 'ejs');
@@ -196,8 +197,22 @@ app.post("/newListings", upload.single("picpic"), async (req, res) => {
     const piclink = fs.readFileSync(path.join(__dirname + '/project/uploads/' + req.file.filename));
     const base64data = encode.encode(piclink, 'base64');
     const pic = "data:image/jpeg;base64," + base64data;
-
-
+    if (checkYES_NO(furnished) === false) {
+        messages = "Invalid furnished type";
+        res.render('../project/views/listings/newListings.ejs', {message: messages});
+    }
+    if (checkYES_NO(garage) === false) {
+        messages = "Invalid garage type";
+        res.render('../project/views/listings/newListings.ejs', {message: messages});
+    }
+    if (checklistingType(listingType) === false) {
+        messages = "Invalid listing type";
+        res.render('../project/views/listings/newListings.ejs', {message: messages});
+    }
+    if (checkBuildtype(buildType) === false) {
+        messages = "Invalid build type";
+        res.render('../project/views/listings/newListings.ejs', {message: messages});
+    }
     try {
         const message = await addNewHouse(client, name, price, location, numOfBed, numOfBath, furnished, buildYRS, extra, buildType, stories, clName, brkName, sizeOfProp, garage, listingType, pic);
         if (message === 1)
@@ -208,7 +223,7 @@ app.post("/newListings", upload.single("picpic"), async (req, res) => {
     } catch (e) {
         console.log(e)
         console.log("Error adding house");
-        res.redirect("/newListingsFail");
+        res.render("../project/views/listings/newListings.ejs", {message: "Error adding house"});
     }
 });
 app.post("/editListingss", async (req, res) => {
@@ -401,7 +416,7 @@ app.get('/myListings', async (req, res) => {
 
 //connects to server
 app.get('/newListings', (req, res) => {
-    res.render('../project/views/listings/newListings.ejs',);
+    res.render('../project/views/listings/newListings.ejs',{message:""});
 });
 app.get('/newListingsFail', (req, res) => {
     res.render('../project/views/listings/newListingsFail.ejs',);
