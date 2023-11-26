@@ -13,4 +13,16 @@ function checkEmails(email){
 function checkDates(date){
 return /^\d{2}\/\d{2}\/\d{4}$/.test(date.toString());
 }
-module.exports = {checkPhone,checkPrice,checkName,checkEmails,checkDates};
+
+function checkBuildtype(build){
+    return build == "house" ||  build == "apartment" || build == "condo";
+}
+function checkYES_NO(furnished){
+    return furnished == "yes" || furnished == "no";
+
+}
+function checklistingType(listingType){
+    return listingType == "sell" || listingType == "rent" || listingType  === "sold";
+
+}
+module.exports = {checkPhone,checkPrice,checkName,checkEmails,checkDates, checklistingType, checkYES_NO, checkBrokerss, checkBuildtype}
