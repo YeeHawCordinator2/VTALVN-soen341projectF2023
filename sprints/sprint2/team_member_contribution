@@ -1,6 +1,6 @@
 Nao
 
-setting up pipeline (3h)
+setting up pipeline (1h)
 setting up database with all related function (2h)
 fix up the server.js and the whole project structure (60 min)
 login and register page backend with richard (30 min)
@@ -13,7 +13,6 @@ Darren
 Crud listing (4h)
 property card with richard (1h)
 request visit(1h)
-fix project after merge in main (1h)
 
 
 
@@ -28,7 +27,6 @@ search bar (3h)
 delete broker(1h)
 user stories with amine and richard(2h)
 task breakdown with amine (1h)
-creating tasks that are derived from the user stories (1h)
 
 richard
 writing meeting minutes 1 (20m)
@@ -38,10 +36,10 @@ writing meeting minutes 4 (20m)
 property card with darren (1h)
 fixing meeting minutes after feedback (1h)
 login and register page backend with nao (1h)
-user stories with amine and alessandro(2h)
+user stories with amine and alessandro(1h)
 
 
-mustafa
+Mustafa
 edit broker(1h)
 request for visits (4h)
 writing meeting minutes 5 (20m)

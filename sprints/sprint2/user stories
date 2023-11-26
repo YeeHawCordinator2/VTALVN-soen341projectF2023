@@ -125,5 +125,8 @@ Acceptance Criteria:
 1.Given that the broker is logged in and is viewing his property listing.
 2.When broker clicks on “View Offers”
 3.Then broker is redirected to a page where it can see all the offers from the clients and the broker can either accept or reject the offer.
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> Nao
