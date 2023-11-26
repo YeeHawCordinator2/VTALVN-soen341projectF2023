@@ -478,6 +478,22 @@ app.get('/mortgageCalculator', async (req, res) => {
     res.render('../project/views/mortgageCalculator.ejs');
 });
 
+//this code is for when the user clicks on the accept button on the offer page. The listingType property 
+//of the house will be changed to "sold" and the offer will be deleted from the offers collection
+app.post('/acceptOffer/:id', async (req, res) => {
+    try {
+        const offerId = req.params.id;
+        const { fieldToChange } = req.body;
+
+        // Update the specific field in your MongoDB collection
+        await client.db("soen_341").collection("offers").findByIdAndUpdate(offerId, { $set: { fieldToChange } });
+
+        res.redirect('/'); // Redirect to the appropriate page after the update
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
 //controller
 app.use('/listings', listingsRouter);
 app.use('/broker', brkRouter);

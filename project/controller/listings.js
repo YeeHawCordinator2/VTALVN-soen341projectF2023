@@ -95,7 +95,22 @@ router.delete('/:id', async (req, res) => {
     res.redirect('/myListings')
 })
 
-
+//when the form from showOffers is submitted, this method is called. It will update the listingType of the house to sold and delete the offer.
+router.post('/actions/:id', async (req, res) => {
+    const houseId = req.params.id;
+    try {
+        await client.db("soen_341").collection("houses").findOneAndUpdate(
+            { name: houseId},
+            { $set: { listingType: "sold" } },
+        );
+        await deleteOffer(client, houseId);
+        console.log("Successfully sold");
+        res.redirect('/showOffers');
+    } catch (error) {
+        console.log("Internal server error");
+        res.redirect('/showOffers');
+    }
+});
 
 router.post('/compare', async (req, res) => {
     const prop1 = req.body.first;

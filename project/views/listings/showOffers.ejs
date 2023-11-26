@@ -142,32 +142,50 @@
         <div class="card mt-4">
             <div class="card-body">
                 <h4 class="card-title">Offer for <%= offers.house_name %></h4>
-                <div class="card-text mb-2">
-                    Address: <%= offers.address %>
-                </div>
-                <div class="card-text mb-2">
-                    Name of the buyer: <%= offers.user_id %>
-                </div>
-                <div class="card-text mb-2"> 
-                    Associated Email: <%= offers.email %>
-                </div>
-                <div class="card-text mb-2">
-                    Price: <%= offers.price.toString().concat("$") %>
-                </div>
-                <div class="card-text mb-2"> 
-                    Deed date: <%= offers.deed_date %>
-                </div>
-                <div class="card-text mb-2"> 
-                    Occupancy date: <%= offers.occDate %>
-                </div>
-                <form onSubmit="return confirm('Are you sure about your selection?')" action="/listings/delete/<%= offers.house_name %>?_method=DELETE" method="POST" class="d-inline">
+                <span id="offer_card" style="display: none;">
+                    <div class="card-text mb-2">
+                        <span id="address">Address: <%= offers.address %></span>
+                    </div>
+                    <div class="card-text mb-2">
+                        <span id="buyer">Name of the buyer: <%= offers.user_id %></span>
+                    </div>
+                    <div class="card-text mb-2"> 
+                        <span id="email">Associated Email: <%= offers.email %></span>
+                    </div>
+                    <div class="card-text mb-2">
+                        <span id="price">Price: <%= offers.price.toString().concat("$") %></span>
+                    </div>
+                    <div class="card-text mb-2"> 
+                        <span id="deedDate"> Deed date: <%= offers.deed_date %></span>
+                    </div>
+                    <div class="card-text mb-2"> 
+                        <span id="occDate">Occupancy date: <%= offers.occDate %></span>
+                    </div>
+                </span>
+                <button class="btn btn-info" onclick="toggleDetails(this)">View</button>
+                <form onSubmit="return confirm('Are you sure about your selection?')" action="/listings/actions/<%= offers.house_name %>" method="POST" class="d-inline">
                     <button type="submit" class="btn btn-info"> Accept </button>
+                </form>
+                <form onSubmit="return confirm('Are you sure about your selection?')" action="/listings/delete/<%= offers.house_name %>?_method=DELETE" method="POST" class="d-inline">
                     <button type="submit" class="btn btn-danger"> Delete </button>
                 </form>
             </div>
         </div>
     <% }) %>
 </div>
+
+<script>
+    function toggleDetails(button) {
+        var offerCard = button.parentNode.querySelector("#offer_card");
+        if (offerCard.style.display === "none") {
+            offerCard.style.display = "block";
+            button.textContent = "Hide";
+        } else {
+            offerCard.style.display = "none";
+            button.textContent = "View";
+        }
+    }
+</script>
 
 
 <script type="module" src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
