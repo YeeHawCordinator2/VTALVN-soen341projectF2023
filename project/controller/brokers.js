@@ -3,6 +3,7 @@ const {get1Broker, get1House} = require("../model/database/getDB");
 const {MongoClient, ObjectId} = require("mongodb");
 const {deleteBroker} = require("../model/database/deleteDB");
 const bodyParser = require("body-parser");
+const {addNewBroker} = require("../model/database/addBD");
 const router = express.Router()
 const app = express();
 app.use(bodyParser.json());
@@ -38,6 +39,24 @@ router.delete('/:id', async (req, res) => {
     await deleteBroker(client, req.params.id);
     res.redirect('/ViewBrokers')
 })
+
+
+router.post("/addBroker", async (req, res) => {
+    const username = req.body.username;
+    const name = req.body.name;
+    const password = req.body.password;
+    const agency = req.body.agency;
+    const phone = req.body.phone;
+    const email = req.body.email;
+    const license = req.body.license;
+    try {
+        await addNewBroker(client, username, name, password, license, agency, email, phone);
+        res.redirect("/ViewBrokers");
+    } catch (e) {
+        console.log("Error adding user");
+        res.redirect("/addBroker");
+    }
+});
 
 
 

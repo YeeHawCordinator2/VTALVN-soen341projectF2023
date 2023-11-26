@@ -238,6 +238,7 @@ async function buy_rentJS(req, client) {
     return arr1;
 }
 
+
 async function returnHouse(client) {
     const houses = await client.db("soen_341").collection("houses").find().toArray();
     const pics = await client.db("soen_341").collection("house_pic").find().toArray();
