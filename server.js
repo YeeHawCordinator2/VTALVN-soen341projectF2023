@@ -19,7 +19,7 @@ const storage = multer.diskStorage({
     }
 });
 const encode = require('nodejs-base64-encode');
-const upload = multer({
+var upload = multer({
     storage: storage,
     limits: { fileSize: uploadMaxSize }
   })
