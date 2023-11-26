@@ -57,7 +57,6 @@ async  function editBrokerUsername(client, listingName,user){
 async function editBroker(client, listingName,all){
     try {
         const brk = await client.db("soen_341").collection("brokers").updateOne({username: listingName}, {$set: all});
-        return await editBrokerHouse(client, listingName, brk);
     }catch (e) {
         console.log("broker not found");
     }

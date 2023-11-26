@@ -3,17 +3,10 @@ const {get1Broker, get1House} = require("../model/database/getDB");
 const {MongoClient, ObjectId} = require("mongodb");
 const {deleteBroker} = require("../model/database/deleteDB");
 const bodyParser = require("body-parser");
+const {addNewBroker} = require("../model/database/addBD");
 const router = express.Router()
 const app = express();
 app.use(bodyParser.json());
-
-app.set('poop-engine', 'ejs');
-app.use(express.static(__dirname+'/poop'));
-app.use(bodyParser.urlencoded({
-    extended: true
-})); //
-
-
 
 const uri = "mongodb+srv://naolal30:ConnectdatabasetoWebstorm100.@cluster0.ttfusik.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
@@ -25,14 +18,9 @@ try{
     console.log("Error connecting to database");
 }
 
-
-//Not for creating new brokers, this function takes REGISTERED brokers and 'gets' them from the database
 router.get('/edit/:id', async (req, res) => {
     const broker = await get1Broker(client, req.params.id);
-//console.log(broker.name)
     res.render('../project/views/broker/editBroker.ejs', {broker: broker})
-//res.send("patoe")
-
 })
 
 router.get('/show/:id', async (req, res) => {
@@ -51,6 +39,24 @@ router.delete('/:id', async (req, res) => {
     await deleteBroker(client, req.params.id);
     res.redirect('/ViewBrokers')
 })
+
+
+router.post("/addBroker", async (req, res) => {
+    const username = req.body.username;
+    const name = req.body.name;
+    const password = req.body.password;
+    const agency = req.body.agency;
+    const phone = req.body.phone;
+    const email = req.body.email;
+    const license = req.body.license;
+    try {
+        await addNewBroker(client, username, name, password, license, agency, email, phone);
+        res.redirect("/ViewBrokers");
+    } catch (e) {
+        console.log("Error adding user");
+        res.redirect("/addBroker");
+    }
+});
 
 
 

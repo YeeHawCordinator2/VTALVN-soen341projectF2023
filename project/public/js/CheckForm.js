@@ -25,4 +25,4 @@ function checklistingType(listingType){
     return listingType == "sell" || listingType == "rent" || listingType  === "sold";
 
 }
-module.exports = {checkPhone,checkPrice,checkName,checkEmails,checkDates, checklistingType, checkYES_NO, checkBrokerss, checkBuildtype}
+module.exports = {checkPhone,checkPrice,checkName,checkEmails,checkDates, checklistingType, checkYES_NO, checkBuildtype}

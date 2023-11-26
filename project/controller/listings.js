@@ -1,21 +1,29 @@
 const express = require('express');
-const {get1Broker, get1House} = require("../model/database/getDB");
-const {MongoClient} = require("mongodb");
+const { get1House} = require("../model/database/getDB");
+const {MongoClient, ObjectId} = require("mongodb");
 const {deleteHouse} = require("../model/database/deleteDB");
 const {deleteOffer} = require("../model/database/deleteDB");
 const bodyParser = require("body-parser");
-const {buy_rentJS} = require("./serverListing");
+const {buy_rentJS, returnHouse} = require("./serverListing");
+const {addNewBroker, addNewHouse, addNewOffer} = require("../model/database/addBD");
+const fs = require("fs");
+const path = require("path");
+const encode = require("nodejs-base64-encode");
+const {
+    checkYES_NO,
+    checklistingType,
+    checkBuildtype,
+    checkPhone,
+    checkPrice,
+    checkName,
+    checkEmails,
+    checkDates
+} = require("../public/js/CheckForm");
+const {edit1HouseAllProperty} = require("../model/database/editDB");
 const router  = express.Router();
 
 const app = express();
 app.use(bodyParser.json());
-
-app.set('poop-engine', 'ejs');
-app.use(express.static(__dirname+'/poop'));
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-
 
 const uri = "mongodb+srv://naolal30:ConnectdatabasetoWebstorm100.@cluster0.ttfusik.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
@@ -30,29 +38,6 @@ try{
 router.get('/requestU/:id', async (req, res) => {
     const houses = await get1House(client, req.params.id);
     res.render('../project/views/listings/requestU.ejs', {houses: houses})
-});
-
-router.post("/buy_rentUU", async (req, res) => {
-    let location = req.body.location.toLowerCase();
-    let minPrice = req.body.minPrice;
-    let maxPrice = req.body.maxPrice;
-    let bath = req.body.bath;
-    let beds = req.body.beds;
-    let yearBuild = req.body.yearBuild;
-    let floors = req.body.floors;
-    let garage = req.body.garage;
-    let prop = req.body.prop;
-    let furnished = req.body.furnished;
-    let extra = req.body.extra;
-    let propsize = req.body.propsize;
-    let listingType = req.body.listing;
-    let time = req.body.time;
-    const houseArr1 = await buy_rentJS(location, minPrice, maxPrice, bath, beds, yearBuild, floors, garage, prop, furnished, extra, propsize, listingType, time, client);
-
-    let message = "";
-    if (houseArr1[1] === true) message = "No results found";
-
-    res.render('../project/views/listings/buy_rentU.ejs', {houses: houseArr1[0], message: message}); // opens localhost on index.html
 });
 
 router.get('/showU/:id', async (req, res) => {
@@ -81,7 +66,6 @@ router.get('/edit/:id', async (req, res) => {
     const houses = await get1House(client,  req.params.id);
     const broker = await client.db("soen_341").collection("brokers").findOne({_id: houses.broker});
     const user = await client.db("soen_341").collection("users").findOne({_id: houses.seller});
-    //console.log(await get1Broker(client, houses[0].broker));
     houses.brk = broker.username;
     houses.seller = user.username;
 
@@ -110,6 +94,18 @@ router.delete('/:id', async (req, res) => {
     await deleteHouse(client, req.params.id);
     res.redirect('/myListings')
 })
+
+
+
+router.post('/compare', async (req, res) => {
+    const prop1 = req.body.first;
+    const prop2 = req.body.second;
+    const house1 = await client.db("soen_341").collection("houses").findOne({name:prop1});
+    const house2 = await client.db("soen_341").collection("houses").findOne({name:prop2});
+    const user = await client.db("soen_341").collection("houses").find().toArray();
+    res.render('../project/views/compareProp.ejs', {props: user, prop1: house1, prop2: house2}); // opens localhost on index.html
+});
+
 
 
 module.exports = router;

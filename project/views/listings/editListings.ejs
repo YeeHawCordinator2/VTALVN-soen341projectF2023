@@ -139,6 +139,11 @@
         <label >House build year</label>
         <input class="form-control" type="text" value="<%= houses.buildYRS%>" name="buildYRS" required>
     </div>
+    <div class="input-box" style="display: none">
+
+        <label >House build year</label>
+        <input class="form-control" type="text" value="<%= houses.image_id%>" name="piclink">
+    </div>
     <div class="input-box">
         <label >Furnished</label>
         <select class="form-control" name="furnished" required>
@@ -158,7 +163,7 @@
         <select class="form-control" name="listingType" required>
             <option value="<%= houses.listingType%>"> <%= houses.listingType%> </option>
 
-            <option value="buy"> Buy </option>
+            <option value="sell"> Sell </option>
             <option value="rent"> Rent </option>
             <option value="sold"> Sold </option>
         </select>

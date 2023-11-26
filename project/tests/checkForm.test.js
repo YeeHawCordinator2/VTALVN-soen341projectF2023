@@ -1,5 +1,5 @@
 const {checkEmails, checkName, checkPhone, checkDates, checkPrice} = require("../public/js/CheckForm");
-const {checkBuildtype, checkYES_NO, checklistingType} = require("../views/js/CheckForm");
+const {checkBuildtype, checkYES_NO, checklistingType} = require("../public/js/CheckForm");
 test('form check Name True', () => {
     expect(checkName("hello kitty")).toBe(true);
 });
