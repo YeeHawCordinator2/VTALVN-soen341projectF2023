@@ -19,10 +19,10 @@ const storage = multer.diskStorage({
     }
 });
 const encode = require('nodejs-base64-encode');
-var upload = multer({
+const upload = multer({
     storage: storage,
     limits: { fileSize: uploadMaxSize }
-  })
+  }) //restricts multer Storage to upload file size to 20MB. upload needs to be a `const` per security compliance  
 const {returnHouse, buy_rentJS} = require("./project/controller/serverListing");
 const {get1Broker, get1User, get1Admin, get1House} = require("./project/model/database/getDB");
 const {checkBroker, checkUser, checkAdmin, checkUsername} = require("./project/model/database/checkPassword");
