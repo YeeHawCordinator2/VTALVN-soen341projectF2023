@@ -65,15 +65,15 @@
     <label> Broker Agency </label><br>
     <input type= "text" name="agency" value="<%= brokers.agency %>"><br>
     <input type= "text" name="Uname" placeholder="Enter client name (First name Last Name)"><br>
-    <input type= "text" name="Uemail" placeholder="Enter client email (example@some.com)"><br>
+    <input type= "email" name="Uemail" placeholder="Enter client email (example@some.com)"><br>
     <input type= "text" name="Uadress" placeholder="Enter client address"><br>
-    <input type= "text" name="Uphone" placeholder="Enter client phone (000-000-0000)"><br>
+    <input type= "phone" name="Uphone" placeholder="Enter client phone (000-000-0000)"><br>
     <label> House Address </label><br>
     <input type= "text" name="adress" value="<%= houses.adress %>"><br>
     <label> House Price </label><br>
-    <input type= "text" name="price" value="<%= houses.price %>"><br>
-    <input type= "text" name="deed_date" placeholder="Enter deed of sale date (dd/mm/YYYY)"><br>
-    <input type= "text" name="occupancy_date" placeholder="Enter date of occupancy (dd/mm/YYYY)"><br>
+    <input type= "number" name="price" value="<%= houses.price %>"><br>
+    <input type= "date" name="deed_date" placeholder="Enter deed of sale date (dd/mm/YYYY)"><br>
+    <input type= "date" name="occupancy_date" placeholder="Enter date of occupancy (dd/mm/YYYY)"><br>
     <input type="submit" value="Submit">
     <a href="/buy_rentB" class="btn btn-secondary"> Cancel </a>
     </div>
