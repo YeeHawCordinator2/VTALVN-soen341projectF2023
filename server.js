@@ -4,19 +4,26 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const cookieParser = require("cookie-parser");
 const session = require('express-session');
+const cors = require('cors');
 const multer = require("multer");
 const fs = require("fs");
+const uploadMaxSize = 20 * 1024 * 1024; // 20 MB
 const storage = multer.diskStorage({
-        destination: (req, file, cb) => {
-            cb(null, "project/uploads");
-        },
-        filename: (req, file, cb) => {
-            cb(null, file.fieldname + '-' + Date.now());
-        }
+    destination: (req, file, cb) => {
+        cb(null, "project/uploads");
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now());
+    },
+    limits: {
+        fileSize: uploadMaxSize  // Restrict file size to 20MB
     }
-);
+});
 const encode = require('nodejs-base64-encode');
-const upload = multer({storage: storage});
+const upload = multer({
+    storage: storage,
+    limits: { fileSize: uploadMaxSize }
+  }) //restricts multer Storage to upload file size to 20MB. upload needs to be a `const` per security compliance  
 const {returnHouse, buy_rentJS} = require("./project/controller/serverListing");
 const {get1Broker, get1User, get1Admin, get1House} = require("./project/model/database/getDB");
 const {checkBroker, checkUser, checkAdmin, checkUsername} = require("./project/model/database/checkPassword");
@@ -36,6 +43,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 app.use(cookieParser());
+app.use(cors());
 
 const uri = "mongodb+srv://naolal30:ConnectdatabasetoWebstorm100.@cluster0.ttfusik.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
