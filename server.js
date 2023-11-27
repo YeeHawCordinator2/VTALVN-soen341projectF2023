@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const cookieParser = require("cookie-parser");
 const session = require('express-session');
+const cors = require('cors');
 const multer = require("multer");
 const fs = require("fs");
 const uploadMaxSize = 20 * 1024 * 1024; // 20 MB
@@ -42,6 +43,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 app.use(cookieParser());
+app.use(cors());
 
 const uri = "mongodb+srv://naolal30:ConnectdatabasetoWebstorm100.@cluster0.ttfusik.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
