@@ -251,4 +251,5 @@ async function returnHouse(client) {
     return houses;
 
 }
+
 module.exports = {buy_rentJS, returnHouse};

@@ -139,27 +139,26 @@ app.post("/newListings", upload.single("picpic"), async (req, res) => {
     const pic = "data:image/jpeg;base64," + base64data;
     if (checkYES_NO(furnished) === false) {
         messages = "Invalid furnished type";
-        res.render('../project/views/listings/newListings.ejs', {message: messages});
     }
     if (checkYES_NO(garage) === false) {
         messages = "Invalid garage type";
-        res.render('../project/views/listings/newListings.ejs', {message: messages});
     }
     if (checklistingType(listingType) === false) {
         messages = "Invalid listing type";
-        res.render('../project/views/listings/newListings.ejs', {message: messages});
     }
     if (checkBuildtype(buildType) === false) {
         messages = "Invalid build type";
-        res.render('../project/views/listings/newListings.ejs', {message: messages});
     }
     try {
-        const message = await addNewHouse(client, name, price, location, numOfBed, numOfBath, furnished, buildYRS, extra, buildType, stories, clName, brkName, sizeOfProp, garage, listingType, pic);
-        if (message === 1)
-            res.redirect("/myListings");
-        else
-            res.redirect("/newListingsFail")
-
+        if(messages === "") {
+            const message = await addNewHouse(client, name, price, location, numOfBed, numOfBath, furnished, buildYRS, extra, buildType, stories, clName, brkName, sizeOfProp, garage, listingType, pic);
+            if (message === 1)
+                res.redirect("/myListings");
+            else
+                res.redirect("/newListingsFail")
+        } else {
+            res.render('../project/views/listings/newListings.ejs', {message: messages});
+        }
     } catch (e) {
         console.log(e)
         console.log("Error adding house");
@@ -190,7 +189,6 @@ app.post('/requestB', async (req, res) => {
 });
 app.post('/offerSubmit', async (req, res) => {
     let message = "";
-
     const price = req.body.price;
     let house_id = req.body.name;
     const occupancy_date = req.body.occupancy_date;
@@ -207,35 +205,22 @@ app.post('/offerSubmit', async (req, res) => {
                 houses[i].image = pics[j].file;
         }
     }
-
     if (checkPhone(user_phone) === false) {
         message = "Invalid phone number";
-        res.render('../project/views/listings/buy_rentB.ejs', {houses: houses, message: message});
     }
     if (checkPrice(price) === false) {
         message = "Invalid price";
-        res.render('../project/views/listings/buy_rentB.ejs', {houses: houses, message: message});
     }
     if (checkName(user_name) === false) {
         message = "Invalid name";
-        res.render('../project/views/listings/buy_rentB.ejs', {houses: houses, message: message});
     }
     if (checkEmails(user_email) === false) {
         message = "Invalid email";
-        res.render('../project/views/listings/buy_rentB.ejs', {houses: houses, message: message});
     }
-    if (checkDates(deed_date) === false) {
-        message = "Invalid deed date";
-        res.render('../project/views/listings/buy_rentB.ejs', {houses: houses, message: message});
-    }
-
-    try {
-        await addNewOffer(client, user_name, user_adress, user_email, price, house_id, deed_date, occupancy_date);
-        res.redirect("/buy_rentB");
-    } catch (e) {
-        console.log("Error");
-        res.redirect("/buy_rentB");
-    }
+        if(message === "") {
+            await addNewOffer(client, user_name, user_adress, user_email, price, house_id, deed_date, occupancy_date);
+        }
+    res.render('../project/views/listings/buy_rentB.ejs', {houses: houses, message: message}); // opens localhost on index.html
 });
 app.post("/editListingss", async (req, res) => {
 
