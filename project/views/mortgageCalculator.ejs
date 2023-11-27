@@ -7,7 +7,7 @@
     <title> Mortgage Calculator </title>
     <link rel="stylesheet" href="../../css/styles.css">
     <link rel="stylesheet" href="../../css/searchBar.css">
-    <script src="../public/js/mortgageCalculator.js"></script>
+    
     <link rel="stylesheet" href=" https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 </head>
@@ -106,7 +106,10 @@
             var interestRate = parseFloat(document.getElementById("interestRate").value);
             var duration = parseInt(document.getElementById("loanPeriod").value);
 
-            const monthlyAmount = calculateMortgage(homePrice, downPayment, interestRate, duration);
+            var principal = homePrice - (downPayment * homePrice / 100);
+            var monthlyInterestRate = interestRate / (12 * 100);
+            var numPayments = 12 * duration;
+            var monthlyAmount = principal * ((monthlyInterestRate * Math.pow(1 + monthlyInterestRate, numPayments)) / (Math.pow(1 + monthlyInterestRate, numPayments) - 1));
 
             document.getElementById("calculate").innerHTML = "The monthly mortgage payment is $" + monthlyAmount.toFixed(2);
         }
