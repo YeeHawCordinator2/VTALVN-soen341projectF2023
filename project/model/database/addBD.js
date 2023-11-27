@@ -103,17 +103,20 @@ async function addNewAdmin(client, username, name, password){ //encrypt user n p
 }
 
 
-async function addNewOffer(client, Uname, Uadress, Uemail, price, houseId, deed_date, occDate){
+async function addNewOffer(client, brkName, Uname, Uadress, Uemail, price, houseId, deed_date, occDate, sender){
     try {
         
         await client.db("soen_341").collection("offers").insertOne({
             user_id: Uname,
+            sender: sender,
+            broker: brkName,
             address: Uadress,
             email: Uemail,
             price: price,
             house_name: houseId,
             deed_date: deed_date,
-            occDate: occDate
+            occDate: occDate,
+            status: "pending"
             
         });
         console.log("Offer successfully popped out")

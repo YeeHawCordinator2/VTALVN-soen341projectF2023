@@ -79,14 +79,25 @@ router.get('/offer/:id', async (req, res) => {
 })
 router.get('/showOffers/:id', async (req, res) => {
     const houses = await get1House(client, req.params.id);
-    const offers = await client.db("soen_341").collection("offers").find().toArray();
+    const all_offers = await client.db("soen_341").collection("offers").find().toArray();
+    const offers = [];
+    for (let i = 0; i < all_offers.length; i++) {
+        if (all_offers[i].broker == houses.name) {
+            offers.push(all_offers[i]);
+            
+        }
+    }
+
     const pics= await client.db("soen_341").collection("house_pic").findOne({_id: houses.image_id});
     houses.image=pics.file;
     res.render('../project/views/listings/showOffers.ejs', {houses: houses, offers: offers, message: ""})
 })
 
-router.delete('/delete/:id', async (req, res) => {
-    await deleteOffer(client, req.params.id);
+router.post('/status/:id', async (req, res) => {
+    await client.db("soen_341").collection("offers").findOneAndUpdate(
+        { house_name: req.params.id},
+        { $set: { status: "rejected" } },
+    );
     res.redirect('/showOffers')
 })
 
@@ -97,13 +108,13 @@ router.delete('/:id', async (req, res) => {
 
 //when the form from showOffers is submitted, this method is called. It will update the listingType of the house to sold and delete the offer.
 router.post('/actions/:id', async (req, res) => {
-    const houseId = req.params.id;
+    const house_name = req.params.id;
     try {
-        await client.db("soen_341").collection("houses").findOneAndUpdate(
-            { name: houseId},
-            { $set: { listingType: "sold" } },
+        await client.db("soen_341").collection("offers").findOneAndUpdate(
+            { house_name: house_name},
+            { $set: { status: "sold" } },
         );
-        await deleteOffer(client, houseId);
+        
         console.log("Successfully sold");
         res.redirect('/showOffers');
     } catch (error) {
