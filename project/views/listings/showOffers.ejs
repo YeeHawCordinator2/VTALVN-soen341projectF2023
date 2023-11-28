@@ -144,6 +144,7 @@
 <div class="container">
     <h1 class="mb-4"> Offers </h1>
     <% offers.forEach(offers => { %>
+        
         <div class="card mt-4">
             <div class="card-body">
                 <h4 class="card-title">Offer for <%= offers.house_name %></h4>
@@ -166,16 +167,58 @@
                     <div class="card-text mb-2"> 
                         <span id="occDate">Occupancy date: <%= offers.occDate %></span>
                     </div>
+                    <div class="card-text mb-2"> 
+                        <span id="status">Status: <%= offers.status %></span>
+                    </div>
                 </span>
                 <button class="btn btn-info" onclick="toggleDetails(this)">View</button>
+                <% if ( offers.status == "pending"){ %>
                 <form onSubmit="return confirm('Are you sure about your selection?')" action="/listings/actions/<%= offers.house_name %>" method="POST" class="d-inline">
                     <button type="submit" class="btn btn-info"> Accept </button>
                 </form>
-                <form onSubmit="return confirm('Are you sure about your selection?')" action="/listings/delete/<%= offers.house_name %>?_method=DELETE" method="POST" class="d-inline">
-                    <button type="submit" class="btn btn-danger"> Delete </button>
-                </form>
+                <form onSubmit="return confirm('Are you sure about your selection?')" action="/listings/status/<%= offers.house_name %>" method="POST" class="d-inline">
+                    <button type="submit" class="btn btn-danger"> Decline </button>
+                </form> 
+                <% } %>
             </div>
         </div>
+        
+    <% }) %>
+</div>
+<div class="container">
+    <h1 class="mb-4"> Submitted Offers </h1>
+    <% offersB.forEach(offersB => { %>
+        <div class="card mt-4">
+            <div class="card-body">
+                <h4 class="card-title">Offer for <%= offersB.house_name %></h4>
+                <span id="offer_card" style="display: none;">
+                    <div class="card-text mb-2">
+                        <span id="address">Address: <%= offersB.address %></span>
+                    </div>
+                    <div class="card-text mb-2">
+                        <span id="buyer">Name of the buyer: <%= offersB.user_id %></span>
+                    </div>
+                    <div class="card-text mb-2"> 
+                        <span id="email">Associated Email: <%= offersB.email %></span>
+                    </div>
+                    <div class="card-text mb-2">
+                        <span id="price">Price: <%= offersB.price.toString().concat("$") %></span>
+                    </div>
+                    <div class="card-text mb-2"> 
+                        <span id="deedDate"> Deed date: <%= offersB.deed_date %></span>
+                    </div>
+                    <div class="card-text mb-2"> 
+                        <span id="occDate">Occupancy date: <%= offersB.occDate %></span>
+                    </div>
+                    <div class="card-text mb-2"> 
+                        <span id="status">Status: <%= offersB.status %></span>
+                    </div>
+                </span>
+                <button class="btn btn-info" onclick="toggleDetails(this)">View</button>
+                
+            </div>
+        </div>
+        
     <% }) %>
 </div>
 

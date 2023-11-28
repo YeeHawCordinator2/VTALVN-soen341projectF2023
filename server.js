@@ -139,27 +139,26 @@ app.post("/newListings", upload.single("picpic"), async (req, res) => {
     const pic = "data:image/jpeg;base64," + base64data;
     if (checkYES_NO(furnished) === false) {
         messages = "Invalid furnished type";
-        res.render('../project/views/listings/newListings.ejs', {message: messages});
     }
     if (checkYES_NO(garage) === false) {
         messages = "Invalid garage type";
-        res.render('../project/views/listings/newListings.ejs', {message: messages});
     }
     if (checklistingType(listingType) === false) {
         messages = "Invalid listing type";
-        res.render('../project/views/listings/newListings.ejs', {message: messages});
     }
     if (checkBuildtype(buildType) === false) {
         messages = "Invalid build type";
-        res.render('../project/views/listings/newListings.ejs', {message: messages});
     }
     try {
-        const message = await addNewHouse(client, name, price, location, numOfBed, numOfBath, furnished, buildYRS, extra, buildType, stories, clName, brkName, sizeOfProp, garage, listingType, pic);
-        if (message === 1)
-            res.redirect("/myListings");
-        else
-            res.redirect("/newListingsFail")
-
+        if(messages === "") {
+            const message = await addNewHouse(client, name, price, location, numOfBed, numOfBath, furnished, buildYRS, extra, buildType, stories, clName, brkName, sizeOfProp, garage, listingType, pic);
+            if (message === 1)
+                res.redirect("/myListings");
+            else
+                res.redirect("/newListingsFail")
+        } else {
+            res.render('../project/views/listings/newListings.ejs', {message: messages});
+        }
     } catch (e) {
         console.log(e)
         console.log("Error adding house");
@@ -190,9 +189,9 @@ app.post('/requestB', async (req, res) => {
 });
 app.post('/offerSubmit', async (req, res) => {
     let message = "";
-
     const price = req.body.price;
     let house_id = req.body.name;
+    const broker_id = req.body.brkName;
     const occupancy_date = req.body.occupancy_date;
     const deed_date = req.body.deed_date;
     const user_adress = req.body.Uadress;
@@ -207,35 +206,24 @@ app.post('/offerSubmit', async (req, res) => {
                 houses[i].image = pics[j].file;
         }
     }
-
     if (checkPhone(user_phone) === false) {
         message = "Invalid phone number";
-        res.render('../project/views/listings/buy_rentB.ejs', {houses: houses, message: message});
     }
     if (checkPrice(price) === false) {
         message = "Invalid price";
-        res.render('../project/views/listings/buy_rentB.ejs', {houses: houses, message: message});
     }
     if (checkName(user_name) === false) {
         message = "Invalid name";
-        res.render('../project/views/listings/buy_rentB.ejs', {houses: houses, message: message});
     }
     if (checkEmails(user_email) === false) {
         message = "Invalid email";
-        res.render('../project/views/listings/buy_rentB.ejs', {houses: houses, message: message});
     }
-    if (checkDates(deed_date) === false) {
-        message = "Invalid deed date";
-        res.render('../project/views/listings/buy_rentB.ejs', {houses: houses, message: message});
-    }
-
-    try {
-        await addNewOffer(client, user_name, user_adress, user_email, price, house_id, deed_date, occupancy_date);
-        res.redirect("/buy_rentB");
-    } catch (e) {
-        console.log("Error");
-        res.redirect("/buy_rentB");
-    }
+        if(message === "") {
+            const sender = session.userid;
+            console.log(sender);
+            await addNewOffer(client, broker_id, user_name, user_adress, user_email, price, house_id, deed_date, occupancy_date, sender);
+        }
+    res.render('../project/views/listings/buy_rentB.ejs', {houses: houses, message: message}); // opens localhost on index.html
 });
 app.post("/editListingss", async (req, res) => {
 
@@ -334,6 +322,7 @@ app.post("/searchBroker", async (req, res) => {
 });
 
 app.get('/', async (req, res) => {
+
     const houses = await returnHouse(client);
     let message = "";
     res.render('../project/views/listings/buy_rentU.ejs', {houses: houses, message: message});
@@ -361,11 +350,15 @@ app.get('/buy_rentU', async (req, res) => {
     res.render('../project/views/listings/buy_rentU.ejs', {houses: houses, message: message}); // opens localhost on index.html
 });
 app.get('/buy_rentB', async (req, res) => {
+    if (session.userid === undefined || session.type !== "broker") {
+        res.redirect("/login");
+    } 
+    else {
     const houses = await returnHouse(client);
     let message = "";
 
     res.render('../project/views/listings/buy_rentB.ejs', {houses: houses, message: message}); // opens localhost on index.html
-
+    }
 });
 
 app.get('/calendarU', (req, res) => {
@@ -435,12 +428,30 @@ app.get('/offerListing.ejs', async (req, res) => {
     res.render('../project/views/listings/offerListing.ejs', {message: ""});
 });
 app.get('/showOffers', async (req, res) => {
-    const offers = await client.db("soen_341").collection("offers").find().toArray(); //works
-    for (let i = 0; i < offers.length; i++) {
-        const houses = await get1House(client, offers[i].house_name);
-        console.log(houses);
+    if (session.userid === undefined || session.type !== "broker") {
+            res.redirect("/login");
     }
-    res.render('../project/views/listings/showOffers.ejs', {offers: offers});
+    else {
+        const offer = [];
+        const offers = await client.db("soen_341").collection("offers").find().toArray(); //works
+        const broker = (await client.db("soen_341").collection("brokers").findOne({username: session.userid}))._id;
+        const offerB = [];
+        
+        for (let i = 0; i < offers.length; i++) {
+            const houses = await get1House(client, offers[i].house_name);
+                if (houses.broker.toString() === broker.toString()){
+                    offer.push(offers[i]);
+                }
+                
+                else if (offers[i].sender === session.userid){
+                   offerB.push(offers[i]); 
+
+                }
+                // console.log(houses);
+            }
+        
+        res.render('../project/views/listings/showOffers.ejs', {offers: offer,offersB: offerB, broker: broker});
+    }
 })
 app.get('/searchBroker', async (req, res) => {
     const broker = await client.db("soen_341").collection("brokers").find().toArray();
